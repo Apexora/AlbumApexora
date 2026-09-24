@@ -159,24 +159,17 @@
   "stickers": [
     {
       "id": "umbra-001",
-      "nation": "umbra",
-      "name": "Soldado Raso",
+      "nation": "sinfalia",
+      "name": "Seilá Anamé",
       "rarity": "comun",
-      "image": ""
-    },
-    {
-      "id": "umbra-002",
-      "nation": "umbra",
-      "name": "Cuartel de Hierro",
-      "rarity": "comun",
-      "image": ""
+      "image": "stickers/Seila-Aname.png"
     },
     {
       "id": "umbra-003",
-      "nation": "umbra",
+      "nation": "sinfalia",
       "name": "Verdugo de Frontera",
       "rarity": "comun",
-      "image": ""
+      "image": "stickers/Lael.png"
     },
     {
       "id": "umbra-004",
@@ -203,13 +196,6 @@
       "id": "umbra-007",
       "nation": "umbra",
       "name": "Fragua de Sangre",
-      "rarity": "comun",
-      "image": ""
-    },
-    {
-      "id": "umbra-008",
-      "nation": "umbra",
-      "name": "Reclutador Brutal",
       "rarity": "comun",
       "image": ""
     },
@@ -298,23 +284,9 @@
       "image": ""
     },
     {
-      "id": "luminarae-005",
-      "nation": "luminarae",
-      "name": "Mercado de Ofrendas",
-      "rarity": "comun",
-      "image": ""
-    },
-    {
       "id": "luminarae-006",
       "nation": "luminarae",
       "name": "Monje Itinerante",
-      "rarity": "comun",
-      "image": ""
-    },
-    {
-      "id": "luminarae-007",
-      "nation": "luminarae",
-      "name": "Capilla del Amanecer",
       "rarity": "comun",
       "image": ""
     },
@@ -385,27 +357,6 @@
       "id": "luxor-001",
       "nation": "luxor",
       "name": "Guardián del Umbral",
-      "rarity": "comun",
-      "image": ""
-    },
-    {
-      "id": "luxor-002",
-      "nation": "luxor",
-      "name": "Bazar de Amuletos",
-      "rarity": "comun",
-      "image": ""
-    },
-    {
-      "id": "luxor-003",
-      "nation": "luxor",
-      "name": "Escriba de Misterios",
-      "rarity": "comun",
-      "image": ""
-    },
-    {
-      "id": "luxor-004",
-      "nation": "luxor",
-      "name": "Oráculo Menor",
       "rarity": "comun",
       "image": ""
     },

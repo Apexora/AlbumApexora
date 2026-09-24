@@ -542,8 +542,8 @@ function albumScreen(){
   window.addEventListener('resize', onResize);
 
   layout(true);
-  buildChips();
   buildBook();
+  buildChips();
   updateHeader();
 }
 
@@ -572,18 +572,29 @@ function layout(first){
 
 function buildPages(){
   const pages = [{ k: 'cover' }, { k: 'index' }];
-  D.nations.forEach((n, i) => {
+  const dioses = D.nations.find(n => n.id === 'dioses');
+  const realNations = D.nations.filter(n => n.id !== 'dioses');
+  realNations.forEach((n, i) => {
     const st = D.stickers.filter(s => s.nation === n.id);
     const half = Math.ceil(st.length / 2);
     pages.push({ k: 'nation', n, i, part: 1, parts: 2, st: st.slice(0, half) });
     pages.push({ k: 'nation', n, i, part: 2, parts: 2, st: st.slice(half) });
   });
+  if (dioses) pages.push({ k: 'nation', n: dioses, i: realNations.length, part: 1, parts: 1, st: D.stickers.filter(s => s.nation === dioses.id) });
   if ((pages.length + 1) % 2 === 1) pages.push({ k: 'notes' });
   pages.push({ k: 'back' });
+  // Agrupa en "spreads": las dos hojas de una misma nación siempre se muestran juntas; el resto va sola.
+  let sp = 0;
+  for (let i = 0; i < pages.length; i++){
+    pages[i].spread = sp;
+    if (pages[i].k === 'nation' && pages[i].part === 1 && pages[i].parts === 2 && pages[i + 1]){ pages[i + 1].spread = sp; i++; }
+    sp++;
+  }
   return pages;
 }
 const romanPart = p => p === 2 ? 'II' : 'I';
-const pageTitle = pg => !pg ? '' : pg.k === 'cover' ? 'Portada' : pg.k === 'index' ? 'Atlas' : pg.k === 'nation' ? `${pg.n.name} ${romanPart(pg.part)}` : pg.k === 'notes' ? 'Notas' : 'Contraportada';
+const pageTitle = pg => !pg ? '' : pg.k === 'cover' ? 'Portada' : pg.k === 'index' ? 'Atlas' : pg.k === 'nation' ? (pg.parts > 1 ? `${pg.n.name} ${romanPart(pg.part)}` : pg.n.name) : pg.k === 'notes' ? 'Notas' : 'Contraportada';
+const firstPageOfNation = nid => S.pages.findIndex(pg => pg.k === 'nation' && pg.n && pg.n.id === nid);
 
 function buildBook(){
   S.pages = buildPages(); S.L = S.pages.length / 2;
@@ -611,7 +622,7 @@ function pageHTML(pg, idx){
     const total = D.stickers.length, got = D.stickers.filter(s => c[s.id]).length;
     const rows = D.nations.map((n, i) => {
       const st = D.stickers.filter(s => s.nation === n.id), g = st.filter(s => c[s.id]).length;
-      return `<li data-goto="${2 + i * 2}" style="--nc:${col(n.color)}"><span class="e">${esc(n.emoji || '✦')}</span>
+      return `<li data-goto="${firstPageOfNation(n.id)}" style="--nc:${col(n.color)}"><span class="e">${esc(n.emoji || '✦')}</span>
         <span class="t"><b>${esc(n.name)}</b><div class="bar"><i style="width:${st.length ? g / st.length * 100 : 0}%"></i></div></span><span class="c">${g}/${st.length}</span></li>`;
     }).join('');
     const leg = rKeys().map(k => `<span style="--rc:${col(D.rarities[k].color, '#999')}"><i></i>${esc(D.rarities[k].label)}</span>`).join('');
@@ -630,7 +641,7 @@ function pageHTML(pg, idx){
   }).join('');
   return `<div class="page paper"><div class="in nation" style="--nc:${col(n.color)}">
     <div class="mark">${esc(n.emoji || '✦')}</div>
-    <div class="nh"><div class="nb">${esc(n.emoji || '✦')}</div><div class="nt"><h2>${esc(n.name)} <small style="opacity:.6">· Hoja ${pg.part}/${pg.parts}</small></h2><p>${esc(n.motto || '')}</p></div><div class="np">${allGot}/${allSt.length}</div></div>
+    <div class="nh"><div class="nb">${esc(n.emoji || '✦')}</div><div class="nt"><h2>${esc(n.name)}${pg.parts > 1 ? ` <small style="opacity:.6">· Hoja ${pg.part}/${pg.parts}</small>` : ''}</h2><p>${esc(n.motto || '')}</p></div><div class="np">${allGot}/${allSt.length}</div></div>
     ${st.length ? `<div class="grid" style="--cols:${cols};--rows:${rows}">${slots}</div>` : `<div class="none">Todavía no hay pegatinas en esta hoja.</div>`}
     ${st.length && got === st.length && allGot === allSt.length ? '<div class="stamp">Nación completa</div>' : ''}
     <div class="pn">${idx}</div></div></div>`;
@@ -657,13 +668,28 @@ document.addEventListener('error', e => {
 }, true);
 
 /* --- navegación --- */
-const pageToP = pi => S.mode === 'mobile' ? pi : (pi === 0 ? 0 : (pi % 2 ? pi : pi - 1));
+// El cursor S.p siempre queda en la primera página de un "spread" (grupo que se muestra junto).
+function firstOfSpread(pi){
+  pi = clamp(pi, 0, S.pages.length - 1);
+  let i = pi; while (i > 0 && S.pages[i].spread === S.pages[i - 1].spread) i--;
+  return i;
+}
+const pageToP = pi => S.mode === 'mobile' ? clamp(pi, 0, S.pages.length - 1) : firstOfSpread(pi);
 function setP(np){
   const now = Date.now(); if (now - S.lock < 220) return; S.lock = now;
   S.p = clamp(np, 0, S.pages.length - 1); apply();
 }
-function next(){ const P = S.pages.length; const np = S.mode === 'mobile' ? S.p + 1 : (S.p === 0 ? 1 : S.p + 2); if (np <= P - 1) setP(np); }
-function prev(){ const np = S.mode === 'mobile' ? S.p - 1 : (S.p <= 1 ? 0 : S.p - 2); if (np >= 0) setP(np); }
+function next(){
+  if (S.mode === 'mobile'){ if (S.p + 1 <= S.pages.length - 1) setP(S.p + 1); return; }
+  const sp = S.pages[S.p].spread, idx = S.pages.findIndex(pg => pg.spread === sp + 1);
+  if (idx !== -1) setP(idx);
+}
+function prev(){
+  if (S.mode === 'mobile'){ if (S.p - 1 >= 0) setP(S.p - 1); return; }
+  const sp = S.pages[S.p].spread; if (sp <= 0) return;
+  const idx = S.pages.findIndex(pg => pg.spread === sp - 1);
+  if (idx !== -1) setP(idx);
+}
 function goToPage(pi){ S.lock = 0; setP(pageToP(pi)); }
 
 function apply(){
@@ -681,9 +707,9 @@ function apply(){
 }
 
 function visiblePages(){
-  const P = S.pages.length;
   if (S.mode === 'mobile') return [S.p];
-  return S.p === 0 ? [0] : [S.p, S.p + 1].filter(i => i < P);
+  const sp = S.pages[S.p].spread;
+  return S.pages.reduce((a, pg, i) => { if (pg.spread === sp) a.push(i); return a; }, []);
 }
 function updateNav(){
   const vis = visiblePages();
@@ -694,7 +720,7 @@ function updateNav(){
 }
 function buildChips(){
   $('#chips').innerHTML = `<button class="chip" data-goto="1" title="Atlas">📖 Atlas</button>` +
-    D.nations.map((n, i) => `<button class="chip" data-goto="${2 + i * 2}">${esc(n.emoji || '✦')} ${esc(n.name)}</button>`).join('');
+    D.nations.map((n, i) => `<button class="chip" data-goto="${firstPageOfNation(n.id)}">${esc(n.emoji || '✦')} ${esc(n.name)}</button>`).join('');
   $('#chips').onclick = e => { const b = e.target.closest('[data-goto]'); if (b) goToPage(+b.dataset.goto); };
 }
 function updateHeader(){
@@ -848,13 +874,8 @@ function openPackFlow(){
     $('#aSee', acts).onclick = () => {
       close();
       const first = ids.find((id, k) => newFlags[k]) || ids[0];
-      const nid = stickerById(first).nation, ni = D.nations.findIndex(x => x.id === nid);
-      if (ni >= 0){
-        const st = D.stickers.filter(s => s.nation === nid), half = Math.ceil(st.length / 2);
-        const si = st.findIndex(s => s.id === first);
-        const part = si >= half ? 1 : 0;
-        setTimeout(() => goToPage(2 + ni * 2 + part), 150);
-      }
+      const pi = firstPageOfNation(stickerById(first).nation);
+      if (pi >= 0) setTimeout(() => goToPage(pi), 150);
     };
     const ag = $('#aAgain', acts); if (ag) ag.onclick = () => { close(); setTimeout(openPackFlow, 60); };
   }

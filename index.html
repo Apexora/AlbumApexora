@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a1220">
+<title>Álbum de Apexora</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a1220; --gold:#e3bf73; --gold-2:#f7e6b0; --gold-3:#a67c2e;
+  --ink:#2b2117; --paper:#f3e8cc; --paper-2:#e7d6ac;
+  --ft:'Cinzel','Trajan Pro',Georgia,serif;
+  --fb:'Crimson Pro',Georgia,'Times New Roman',serif;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;margin:0}
+body{
+  font-family:var(--fb);font-size:18px;color:#f3ead6;overflow:hidden;position:relative;
+  background:
+    radial-gradient(1100px 650px at 50% -10%,#1e3a63 0%,transparent 62%),
+    radial-gradient(800px 600px at 100% 100%,#33204f 0%,transparent 58%),
+    var(--bg);
+}
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;opacity:.55;
+  background-image:
+    radial-gradient(1px 1px at 20px 30px,#fff9,transparent),
+    radial-gradient(1px 1px at 120px 80px,#fff7,transparent),
+    radial-gradient(1.5px 1.5px at 60px 150px,#ffe9b5aa,transparent),
+    radial-gradient(1px 1px at 170px 170px,#fff6,transparent);
+  background-size:200px 200px;
+}
+#app{position:relative;height:100%;display:flex;flex-direction:column}
+.hidden{display:none!important}
+button,input,select,textarea{font-family:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--gold-2);outline-offset:2px}
+
+/* ---------- botones ---------- */
+.btn{
+  border:0;border-radius:999px;padding:.62em 1.3em;font-family:var(--ft);font-weight:700;letter-spacing:.05em;
+  font-size:.86rem;white-space:nowrap;color:#2b1c05;text-decoration:none;display:inline-flex;align-items:center;gap:.5em;justify-content:center;
+  background:linear-gradient(180deg,var(--gold-2),var(--gold) 55%,var(--gold-3));
+  box-shadow:0 2px 0 #7a5a1c,0 6px 18px #0006,inset 0 1px 0 #fff8;transition:transform .15s,filter .15s;
+}
+.btn:hover{filter:brightness(1.08)}
+.btn:active{transform:translateY(1px)}
+.btn:disabled{opacity:.45;cursor:not-allowed;filter:grayscale(.5)}
+.btn.ghost{background:#ffffff14;color:#f3ead6;box-shadow:inset 0 0 0 1px #ffffff30}
+.btn.sm{padding:.42em .95em;font-size:.74rem}
+.btn.danger{background:linear-gradient(180deg,#eb9a8e,#c0483a);color:#fff}
+.btn.round{width:44px;height:44px;padding:0;font-size:1.4rem}
+
+/* ---------- acceso ---------- */
+.login{flex:1;display:grid;place-items:center;padding:20px}
+.login-card{
+  width:min(400px,100%);text-align:center;padding:34px 28px 28px;border-radius:22px;
+  background:linear-gradient(160deg,#16294a,#0d1830);
+  box-shadow:0 0 0 1px #e3bf7344,0 0 0 6px #0a1220,0 0 0 7px #e3bf7333,0 30px 60px #000a;
+}
+.login-card .emb{width:96px;height:96px;margin:0 auto 8px;color:var(--gold);filter:drop-shadow(0 0 14px #e3bf7355)}
+.login-card h1{font:900 1.9rem/1.1 var(--ft);letter-spacing:.06em;margin:0 0 6px;color:var(--gold-2)}
+.login-card p{margin:0 0 20px;opacity:.75}
+.login-card input[type=password],.login-card input[type=text]{
+  width:100%;padding:.8em 1em;border-radius:12px;border:1px solid #e3bf7355;background:#081020;color:#fff;font-size:1.05rem;text-align:center;letter-spacing:.08em
+}
+.chk{display:flex;gap:.5em;align-items:center;justify-content:center;margin:14px 0 18px;font-size:.95rem;opacity:.8}
+.err{min-height:1.4em;margin-top:12px;color:#ff9c8f;font-size:.98rem}
+
+/* ---------- barra superior ---------- */
+.top{height:60px;flex:none;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:0 max(14px,env(safe-area-inset-right)) 0 max(14px,env(safe-area-inset-left))}
+.brand{display:flex;align-items:center;gap:10px;min-width:0}
+.brand b{font:700 1.05rem var(--ft);letter-spacing:.05em;color:var(--gold-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.logo{color:var(--gold);font-size:1.3rem}
+.who{display:flex;align-items:center;gap:8px}
+.pill{padding:.3em .85em;border-radius:99px;background:#ffffff14;font-size:.95rem;white-space:nowrap}
+.gift{position:relative}
+.gift.has{animation:pulse 1.8s ease-in-out infinite}
+.gift .n{min-width:1.5em;padding:0 .4em;border-radius:99px;background:#2b1c05;color:var(--gold-2);font-size:.85rem;line-height:1.5em}
+@keyframes pulse{0%,100%{box-shadow:0 2px 0 #7a5a1c,0 6px 18px #0006,0 0 0 0 #e3bf7300}50%{box-shadow:0 2px 0 #7a5a1c,0 6px 18px #0006,0 0 0 9px #e3bf7333}}
+
+/* ---------- libro ---------- */
+.stage{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;padding:8px;touch-action:pan-y}
+.viewport{position:relative;width:calc(var(--pw)*2);height:var(--ph);filter:drop-shadow(0 22px 26px #000b)}
+.stage.mobile .viewport{width:var(--pw);overflow:hidden}
+.book{position:relative;width:calc(var(--pw)*2);height:var(--ph);perspective:calc(var(--pw)*3.6);transition:transform .95s cubic-bezier(.645,.045,.355,1)}
+.leaf{
+  position:absolute;top:0;left:50%;width:50%;height:100%;transform-origin:left center;transform-style:preserve-3d;
+  transition:transform 1s cubic-bezier(.645,.045,.355,1);
+}
+.leaf.flipped{transform:rotateY(-180deg)}
+.book.no-anim,.book.no-anim .leaf{transition:none!important}
+.face{position:absolute;inset:0;overflow:hidden;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.face.front{border-radius:4px 14px 14px 4px}
+.face.back{transform:rotateY(180deg);border-radius:14px 4px 4px 14px}
+.face::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:5}
+.face.front::after{background:linear-gradient(to right,#0000004d,#0000001a 3%,transparent 9%),linear-gradient(to left,#0000001a,transparent 3%)}
+.face.back::after{background:linear-gradient(to left,#0000004d,#0000001a 3%,transparent 9%),linear-gradient(to right,#0000001a,transparent 3%)}
+
+.page{position:absolute;inset:0;container-type:size;color:var(--ink);font-family:var(--fb)}
+.in{position:absolute;inset:0}
+.paper{
+  background:
+    radial-gradient(120% 80% at 50% 0%,#fff6dc80,transparent 60%),
+    repeating-linear-gradient(0deg,#6b4e1d0a 0 1px,transparent 1px 4px),
+    linear-gradient(160deg,var(--paper),var(--paper-2));
+}
+.leather{
+  color:var(--gold);
+  background:
+    repeating-radial-gradient(circle at 20% 30%,#ffffff07 0 1px,transparent 1px 3px),
+    radial-gradient(120% 90% at 30% 15%,#22566a,#0e2a38 55%,#071823);
+}
+.pn{position:absolute;bottom:2.6cqw;left:0;right:0;text-align:center;font:600 3.2cqw var(--ft);opacity:.5}
+
+/* portada */
+.cover{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4.5cqw;padding:10cqw;text-align:center}
+.cover::before{content:"";position:absolute;inset:4.5cqw;border:.5cqw solid var(--gold);border-radius:2.5cqw;box-shadow:inset 0 0 0 1.6cqw #0000,inset 0 0 0 1.9cqw #e3bf7355}
+.cover .emb{width:46cqw;height:46cqw;filter:drop-shadow(0 0 2.4cqw #e3bf7366)}
+.cover h1{margin:0;font:900 12.5cqw/1 var(--ft);letter-spacing:.1em;padding-left:.1em;background:linear-gradient(180deg,#fff2c4,#e3bf73 50%,#9b7428);-webkit-background-clip:text;background-clip:text;color:transparent}
+.cover .sub{font:500 4.6cqw var(--ft);letter-spacing:.22em}
+.cover .own{font-style:italic;font-size:4.4cqw;opacity:.85;margin-top:2cqw}
+
+/* índice */
+.index{padding:9cqw 8cqw 8cqw;display:flex;flex-direction:column}
+.index h2{margin:0;font:700 7.4cqw/1.1 var(--ft);letter-spacing:.05em}
+.index .who2{margin:1.5cqw 0 4cqw;font-style:italic;font-size:4cqw;opacity:.7}
+.index .tot{display:flex;align-items:baseline;gap:2cqw;font:700 9cqw var(--ft);margin-bottom:3cqw}
+.index .tot small{font:400 4cqw var(--fb);opacity:.7}
+.index ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2.4cqw;flex:1;min-height:0;overflow:hidden}
+.index li{display:flex;align-items:center;gap:3cqw;padding:1.6cqw 2.4cqw;border-radius:2.4cqw;cursor:pointer;background:#2b211710;transition:background .2s}
+.index li:hover{background:#2b211724}
+.index li .e{font-size:5.4cqw;width:8cqw;text-align:center}
+.index li .t{flex:1;min-width:0}
+.index li .t b{display:block;font:700 4.3cqw/1.1 var(--ft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.index li .bar{height:1.2cqw;border-radius:9cqw;background:#2b21171f;margin-top:1.2cqw;overflow:hidden}
+.index li .bar i{display:block;height:100%;background:var(--nc)}
+.index li .c{font:600 3.8cqw var(--ft);opacity:.75}
+.legend{display:flex;flex-wrap:wrap;gap:2cqw 4cqw;margin-top:3cqw;font-size:3.4cqw}
+.legend span{display:inline-flex;align-items:center;gap:1.2cqw}
+.legend i{width:2.6cqw;height:2.6cqw;border-radius:50%;background:var(--rc);box-shadow:0 0 0 .5cqw #0003}
+
+/* nación */
+.nation{padding:7cqw 6cqw 9cqw;display:flex;flex-direction:column;gap:3.2cqw}
+.nation::before{content:"";position:absolute;left:0;right:0;top:0;height:2.4cqw;background:var(--nc)}
+.mark{position:absolute;right:-8cqw;bottom:-4cqw;font-size:64cqw;line-height:1;opacity:.06;pointer-events:none}
+.nh{display:flex;align-items:center;gap:3.4cqw}
+.nb{flex:none;width:13cqw;height:13cqw;border-radius:50%;display:grid;place-items:center;font-size:6.6cqw;background:var(--nc);box-shadow:inset 0 0 0 .7cqw #fff9,0 .6cqw 1.4cqw #0004}
+.nt{min-width:0;flex:1}
+.nt h2{margin:0;font:700 6.4cqw/1.05 var(--ft);letter-spacing:.04em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nt p{margin:1cqw 0 0;font-style:italic;font-size:3.7cqw;line-height:1.2;opacity:.75}
+.np{flex:none;font:700 4.3cqw var(--ft);padding:1.1cqw 3cqw;border-radius:99cqw;background:#2b211716}
+.grid{flex:1;min-height:0;position:relative;display:grid;grid-template-columns:repeat(var(--cols),minmax(0,1fr));grid-template-rows:repeat(var(--rows),minmax(0,1fr));gap:2.6cqw}
+.slot{position:relative;min-height:0;min-width:0}
+.slot[data-sid]{cursor:zoom-in}
+.slot.is-new{animation:isnew 1.2s ease-in-out 6}
+@keyframes isnew{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+.empty{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.8cqw;padding:1cqw;text-align:center;border:.5cqw dashed #6b4e1d66;border-radius:3cqw;background:#2b21170a;color:#2b2117}
+.empty b{font:700 6cqw var(--ft);opacity:.35}
+.empty span{font-size:2.7cqw;line-height:1.1;opacity:.55}
+.empty::after{content:"";width:2.4cqw;height:2.4cqw;border-radius:50%;background:var(--rc);opacity:.7;margin-top:.6cqw}
+.stamp{position:absolute;right:5cqw;top:22cqw;transform:rotate(-12deg);padding:1.2cqw 3.4cqw;border:.7cqw solid #b5483a;color:#b5483a;font:900 4.6cqw var(--ft);border-radius:1.6cqw;opacity:.85;pointer-events:none;background:#fff3}
+.none{flex:1;display:grid;place-items:center;text-align:center;font-style:italic;opacity:.6;font-size:4cqw}
+.notes{padding:10cqw 9cqw;display:flex;flex-direction:column}
+.notes h2{margin:0 0 4cqw;font:700 6.4cqw var(--ft)}
+.notes i{display:block;height:0;border-bottom:.3cqw solid #6b4e1d40;margin-top:9cqw}
+.back-c{display:grid;place-items:center}
+.back-c .emb{width:26cqw;height:26cqw;opacity:.7}
+.back-c::before{content:"";position:absolute;inset:4.5cqw;border:.4cqw solid #e3bf7377;border-radius:2.5cqw}
+
+/* ---------- pegatina ---------- */
+.sticker{position:absolute;inset:0;container-type:size}
+.sk{
+  position:absolute;inset:0;border-radius:8cqw;background:#fdfaf2;
+  box-shadow:0 1cqw 2.4cqw #0007,0 0 0 .5cqw #0003;
+}
+.art{position:absolute;inset:5cqw;border-radius:5cqw;overflow:hidden;background:var(--nc)}
+@supports (background:color-mix(in srgb,red,blue)){
+  .art{background:linear-gradient(155deg,color-mix(in srgb,var(--nc) 62%,#fff),color-mix(in srgb,var(--nc) 70%,#000))}
+}
+.art img{width:100%;height:100%;object-fit:cover;display:block;user-select:none;-webkit-user-drag:none}
+.ph{width:100%;height:100%;display:grid;place-items:center;font-size:40cqw;padding-bottom:12cqw;filter:drop-shadow(0 1.2cqw 1.2cqw #0006)}
+.cap{position:absolute;left:0;right:0;bottom:0;padding:11cqw 4cqw 4.6cqw;background:linear-gradient(transparent,#000d);color:#fff;text-align:center}
+.cap b{display:block;font:700 10.5cqw/1.1 var(--ft);text-shadow:0 .4cqw .8cqw #000}
+.cap i{display:block;font-style:normal;font-size:7.4cqw;margin-top:1cqw;color:var(--rc);font-weight:600;filter:brightness(1.25)}
+.no{position:absolute;left:7cqw;top:7cqw;z-index:2;padding:.3cqw 2.6cqw;border-radius:99cqw;background:#000a;color:#fff;font:600 6cqw var(--ft)}
+.dup{position:absolute;right:6.5cqw;top:6.5cqw;z-index:2;padding:.2cqw 2.8cqw;border-radius:99cqw;background:var(--gold);color:#2b1c05;font:700 7.4cqw var(--ft);box-shadow:0 .5cqw 1cqw #0006}
+.foil{position:absolute;inset:0;border-radius:8cqw;pointer-events:none;z-index:3;display:none;mix-blend-mode:screen;opacity:.75;
+  background:linear-gradient(115deg,transparent 22%,#ffffff88 34%,#ff7ee066 44%,#7ee8ff66 54%,transparent 68%);background-size:260% 260%;animation:foil 4.5s linear infinite}
+@keyframes foil{0%{background-position:130% 0}100%{background-position:-130% 0}}
+.t1 .sk{box-shadow:0 1cqw 2.4cqw #0007,0 0 0 1cqw var(--rc),0 0 6cqw var(--rc)}
+.t2 .sk{box-shadow:0 1cqw 2.4cqw #0007,0 0 0 1.3cqw var(--rc),0 0 9cqw var(--rc)}
+.t3 .sk{box-shadow:0 1cqw 2.4cqw #0007,0 0 0 1.6cqw var(--rc),0 0 12cqw var(--rc);animation:legend 2.6s ease-in-out infinite}
+.t2 .foil,.t3 .foil{display:block}
+@keyframes legend{0%,100%{filter:brightness(1)}50%{filter:brightness(1.18) saturate(1.2)}}
+.sticker.mini .cap,.sticker.mini .no,.sticker.mini .dup{display:none}
+
+/* ---------- pie ---------- */
+.foot{flex:none;padding:6px 10px max(10px,env(safe-area-inset-bottom));display:flex;flex-direction:column;align-items:center;gap:8px;max-width:100%}
+.navrow{display:flex;align-items:center;gap:14px}
+.plabel{min-width:min(46vw,300px);text-align:center;font:600 .95rem var(--ft);letter-spacing:.04em;color:var(--gold-2)}
+.chips{display:flex;gap:6px;max-width:100%;overflow-x:auto;padding:2px 4px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;border:0;border-radius:99px;padding:.32em .8em;background:#ffffff12;color:#f3ead6;font-size:.9rem;transition:background .2s}
+.chip:hover{background:#ffffff24}
+.chip.on{background:var(--gold);color:#2b1c05;font-weight:600}
+
+/* ---------- superposiciones ---------- */
+.ov{position:fixed;inset:0;z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:radial-gradient(900px 600px at 50% 40%,#2a2350ee,#080d18f5);backdrop-filter:blur(6px);animation:fadein .3s;overflow:hidden}
+@keyframes fadein{from{opacity:0}}
+.ov .x{position:absolute;top:max(12px,env(safe-area-inset-top));right:14px;width:42px;height:42px;border-radius:50%;border:0;background:#ffffff1c;color:#fff;font-size:1.1rem;z-index:5}
+.ov.flash::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 45%,#ffe9a8cc,transparent 65%);animation:flash .8s ease-out forwards;pointer-events:none}
+@keyframes flash{from{opacity:1}to{opacity:0}}
+
+.lightbox{cursor:zoom-out}
+.lb-card{position:relative;width:min(74vw,330px);aspect-ratio:5/7;transition:transform .1s ease-out;transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg))}
+.lb-info{margin-top:22px;text-align:center}
+.lb-info h3{margin:0;font:700 1.4rem var(--ft);color:var(--gold-2)}
+.lb-info p{margin:6px 0 0;opacity:.8}
+
+.pk-top{position:absolute;top:max(16px,env(safe-area-inset-top));left:0;right:0;text-align:center;pointer-events:none}
+.pk-title{font:700 1.1rem var(--ft);letter-spacing:.05em;color:var(--gold-2)}
+.pk-stage{position:relative;width:min(62vw,250px);aspect-ratio:5/7;margin:18px 0 12px;perspective:1100px}
+.pack{position:absolute;inset:0;cursor:pointer;animation:float 3.2s ease-in-out infinite;border:0;background:none;padding:0}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-10px) rotate(1deg)}}
+.pack .body{position:absolute;inset:0;border-radius:10px;overflow:hidden;background:linear-gradient(160deg,#7b46bd,#2b2a75 48%,#c39a3d 125%);
+  box-shadow:0 0 0 2px #e3bf7388,0 24px 50px #000a,0 0 60px #7b46bd66;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;color:var(--gold-2)}
+.pack .body::before,.pack .body::after{content:"";position:absolute;left:0;right:0;height:9%;background:repeating-linear-gradient(90deg,#0000004d 0 2px,#ffffff30 2px 4px),#5c3d99}
+.pack .body::before{top:0}.pack .body::after{bottom:0}
+.pack .body .emb{width:46%;color:var(--gold)}
+.pack .body b{font:900 1.15rem/1.1 var(--ft);letter-spacing:.08em}
+.pack .body small{font-size:.9rem;opacity:.85}
+.pack .shine{position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,#ffffff55 45%,transparent 60%);background-size:250% 100%;animation:sweep 3s ease-in-out infinite;mix-blend-mode:screen}
+@keyframes sweep{0%{background-position:150% 0}100%{background-position:-100% 0}}
+.pack .flap{position:absolute;left:0;right:0;top:0;height:9%;z-index:3;border-radius:10px 10px 0 0;background:repeating-linear-gradient(90deg,#0000004d 0 2px,#ffffff30 2px 4px),#5c3d99;transform-origin:0 100%}
+.pack.open{animation:none}
+.pack.open .flap{transition:transform .7s ease-in,opacity .7s;transform:translate(40px,-120px) rotate(28deg);opacity:0}
+.pack.open .body{animation:unwrap .8s .25s ease-in forwards}
+@keyframes unwrap{0%{transform:scale(1);filter:brightness(1)}40%{transform:scale(1.08);filter:brightness(2.2)}100%{transform:scale(1.5);opacity:0;filter:brightness(3)}}
+.pk-msg{min-height:3.2em;text-align:center;padding:0 24px;max-width:420px;line-height:1.25}
+.pk-msg b{display:block;font:700 1.2rem var(--ft);color:var(--gold-2);margin-bottom:2px}
+.pk-tray{display:flex;gap:8px;margin-top:10px;transition:transform .5s}
+.tslot{position:relative;width:clamp(44px,13vw,64px);aspect-ratio:5/7;border-radius:8px;border:1px dashed #ffffff44;display:grid;place-items:center;color:#ffffff55;font:600 .9rem var(--ft)}
+.tslot .sticker{animation:pop .5s cubic-bezier(.2,1.6,.4,1)}
+@keyframes pop{from{transform:scale(.4);opacity:0}}
+.pk-tray.done{transform:scale(1.35);margin-top:20px}
+.pk-actions{display:flex;gap:10px;margin-top:22px;min-height:44px;flex-wrap:wrap;justify-content:center;padding:0 12px}
+
+.pcard{position:absolute;inset:0;perspective:1100px;cursor:pointer}
+.pcard.enter{animation:enter .5s cubic-bezier(.2,.8,.2,1) backwards}
+@keyframes enter{from{transform:translateY(60px) scale(.85);opacity:0}}
+.pcard.stack .pinner{box-shadow:5px 5px 0 -1px #ffffff2b,10px 10px 0 -2px #ffffff14}
+.pinner{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .75s cubic-bezier(.4,.1,.2,1);border-radius:16px}
+.pcard.flip .pinner{transform:rotateY(180deg)}
+.pface{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:16px}
+.pface.front{transform:rotateY(180deg)}
+.pface.back{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;color:var(--gold);
+  background:repeating-radial-gradient(circle at 20% 30%,#ffffff07 0 1px,transparent 1px 3px),radial-gradient(120% 90% at 30% 15%,#22566a,#0e2a38 55%,#071823);
+  box-shadow:inset 0 0 0 2px #e3bf7399,inset 0 0 0 7px #0e2a38,inset 0 0 0 8px #e3bf7355,0 18px 40px #000a}
+.pface.back .emb{width:52%}
+.pface.back em{font:700 1rem var(--ft);letter-spacing:.3em;font-style:normal;padding-left:.3em}
+.badge{position:absolute;left:50%;top:-16px;transform:translateX(-50%);z-index:6;padding:.25em 1em;border-radius:99px;font:700 .85rem var(--ft);white-space:nowrap;animation:pop .45s cubic-bezier(.2,1.6,.4,1) backwards}
+.badge.new{background:var(--gold);color:#2b1c05;box-shadow:0 0 18px #e3bf73aa}
+.badge.dup{background:#ffffff26;color:#fff}
+.fx{position:absolute;left:50%;top:50%;width:0;height:0;pointer-events:none;z-index:8}
+.fx i{position:absolute;left:0;top:0;width:var(--s);height:var(--s);margin:calc(var(--s)/-2);border-radius:50%;background:var(--c);box-shadow:0 0 12px var(--c);animation:fly 1.1s cubic-bezier(.1,.8,.3,1) forwards}
+@keyframes fly{to{transform:translate(var(--dx),var(--dy)) scale(.2);opacity:0}}
+.fx u{position:absolute;left:0;top:0;width:60px;height:60px;margin:-30px;border-radius:50%;border:3px solid var(--c);animation:ring .9s ease-out forwards}
+@keyframes ring{to{transform:scale(8);opacity:0}}
+
+.modal{position:fixed;inset:0;z-index:120;display:grid;place-items:center;padding:16px;background:#050a14cc;backdrop-filter:blur(4px);animation:fadein .2s}
+.modal .box{width:min(520px,100%);max-height:90vh;overflow:auto;padding:22px;border-radius:18px;background:#101e38;box-shadow:0 0 0 1px #e3bf7344,0 30px 60px #000a}
+.modal h3{margin:0 0 10px;font:700 1.2rem var(--ft);color:var(--gold-2)}
+.modal p{margin:.4em 0;opacity:.85;line-height:1.35}
+.modal textarea{width:100%;height:96px;border-radius:10px;border:1px solid #e3bf7344;background:#081020;color:#fff;padding:.6em;font-size:.8rem;word-break:break-all}
+.modal .row{display:flex;gap:8px;margin:10px 0;flex-wrap:wrap}
+.toast{position:fixed;left:50%;bottom:max(24px,env(safe-area-inset-bottom));transform:translateX(-50%);z-index:200;padding:.7em 1.3em;border-radius:99px;background:#101e38;box-shadow:0 0 0 1px #e3bf7366,0 10px 30px #000a;animation:fadein .25s;max-width:90vw;text-align:center}
+
+/* ---------- administración ---------- */
+.admwrap{flex:1;min-height:0;overflow:auto;padding:6px max(14px,env(safe-area-inset-left)) 40px;width:100%;max-width:1040px;margin:0 auto}
+.banner{margin:6px 0 12px;padding:.7em 1em;border-radius:12px;background:#e3bf7322;box-shadow:inset 0 0 0 1px #e3bf7366;line-height:1.3}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.tab{border:0;border-radius:99px;padding:.45em 1.1em;background:#ffffff12;color:#f3ead6;font-size:.95rem}
+.tab.on{background:var(--gold);color:#2b1c05;font-weight:600}
+.panel{background:#ffffff0c;border-radius:16px;padding:16px;margin-bottom:16px;box-shadow:inset 0 0 0 1px #ffffff14}
+.panel h3{margin:0 0 4px;font:700 1.05rem var(--ft);color:var(--gold-2)}
+.panel .hint{margin:0 0 12px;opacity:.7;font-size:.95rem;line-height:1.3}
+.arow{display:grid;gap:10px;align-items:center;padding:10px 0;border-top:1px solid #ffffff12}
+.arow:first-of-type{border-top:0}
+.arow.pl{grid-template-columns:minmax(120px,1.2fr) 110px 1fr auto}
+.arow.st{grid-template-columns:56px 1.2fr 1fr 1fr 1.4fr 40px}
+.arow.na{grid-template-columns:70px 1fr 2fr 56px auto}
+.arow small{display:block;opacity:.6;font-size:.82rem}
+.arow .big{font:700 1.5rem var(--ft);color:var(--gold-2)}
+.acts{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.acts .btn,.acts button.mini{padding:.35em .8em;font-size:.78rem}
+button.mini{border:0;border-radius:99px;background:#ffffff1c;color:#fff}
+button.mini:hover{background:#ffffff33}
+button.mini.warn{background:#c0483a99}
+.admwrap input,.admwrap select,.admwrap textarea{width:100%;min-width:0;padding:.5em .7em;border-radius:9px;border:1px solid #ffffff2a;background:#081020;color:#fff;font-size:.95rem}
+.admwrap input[type=color]{padding:2px;height:36px}
+.admwrap input[type=number].ninp{width:68px}
+.admwrap textarea{min-height:90px;resize:vertical}
+.formrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:10px 0;align-items:end}
+.formrow label{display:block;font-size:.85rem;opacity:.8;margin-bottom:3px}
+.thumb{width:48px;height:60px;border-radius:8px;overflow:hidden;background:#ffffff14;display:grid;place-items:center;font-size:1.6rem}
+.thumb img{width:100%;height:100%;object-fit:cover}
+.code{width:100%;height:220px;font:12px/1.4 ui-monospace,Menlo,Consolas,monospace!important}
+
+@media (max-width:860px){
+  .arow.pl,.arow.st,.arow.na{grid-template-columns:1fr 1fr}
+  .arow.pl>*:last-child{grid-column:1/-1}
+  .brand b{font-size:.92rem}
+}
+@media (max-width:520px){
+  .brand b{display:none}
+  .pill{font-size:.85rem}
+  .plabel{min-width:0;flex:1;font-size:.85rem}
+}
+@media (prefers-reduced-motion:reduce){
+  .pack,.gift.has,.foil,.t3 .sk,.slot.is-new{animation:none!important}
+  .leaf,.book,.pinner{transition-duration:.01s!important}
+}
+</style>
+</head>
+<body>
+<div id="app"></div>
+
+<script>
+(() => {
+'use strict';
+
+/* ================= utilidades ================= */
+const $  = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const col = (c, d = '#c9a24a') => /^#[0-9a-f]{3,8}$/i.test(c || '') ? c : d;
+const pad = n => String(n).padStart(2, '0');
+const clamp = (n, a, b) => Math.max(a, Math.min(b, n));
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+const clone = o => JSON.parse(JSON.stringify(o));
+const app = $('#app');
+const mkStore = area => ({
+  get(k){ try { return area.getItem(k); } catch { return null; } },
+  set(k, v){ try { area.setItem(k, v); } catch {} },
+  del(k){ try { area.removeItem(k); } catch {} },
+});
+const store = mkStore(window.localStorage);
+const sess  = mkStore(window.sessionStorage);
+const K_SESSION = 'apexora:v1:session', K_REMEMBER = 'apexora:v1:remember', K_DRAFT = 'apexora:v1:draft';
+const K_PROGRESS = id => 'apexora:v1:progress:' + id;
+
+const EMBLEM = `<svg class="emb" viewBox="0 0 100 100" fill="none" stroke="currentColor" aria-hidden="true">
+  <circle cx="50" cy="50" r="46" stroke-width="1.6"/><circle cx="50" cy="50" r="40" stroke-width=".8" stroke-dasharray="1.5 2.5"/>
+  <path d="M50 4 58 42 96 50 58 58 50 96 42 58 4 50 42 42Z" fill="currentColor" stroke="none" opacity=".95"/>
+  <path d="M50 20 54 46 80 50 54 54 50 80 46 54 20 50 46 46Z" stroke="#071823" stroke-width="1.2" fill="none"/>
+  <circle cx="50" cy="50" r="6" fill="#071823" stroke="none"/><circle cx="50" cy="50" r="3" fill="currentColor" stroke="none"/>
+</svg>`;
+
+/* ================= estado ================= */
+let D = null;                    // datos publicados (data.json)
+const S = { player: null, progress: { opened: [] }, p: 0, mode: 'desktop', pages: [], L: 0, newIds: new Set(), lock: 0 };
+
+const rKeys   = () => Object.keys(D.rarities);
+const tierOf  = k => { const n = rKeys().length, i = Math.max(0, rKeys().indexOf(k)); return n <= 1 ? 0 : Math.round(i / (n - 1) * 3); };
+const nationOf = id => D.nations.find(n => n.id === id) || { id, name: '¿?', emoji: '✦', color: '#999' };
+const stickerById = id => D.stickers.find(s => s.id === id);
+const rarityOf = k => D.rarities[k] || { label: k, color: '#bbb', weight: 1 };
+
+function toast(msg, ms = 3200){
+  const t = document.createElement('div'); t.className = 'toast'; t.textContent = msg;
+  document.body.appendChild(t); setTimeout(() => t.remove(), ms);
+}
+function modal(html){
+  const m = document.createElement('div'); m.className = 'modal';
+  m.innerHTML = `<div class="box">${html}</div>`;
+  m.addEventListener('click', e => { if (e.target === m || e.target.closest('[data-close]')) m.remove(); });
+  document.body.appendChild(m); return m;
+}
+
+/* ================= contraseñas ================= */
+const enc = new TextEncoder();
+const hex = buf => [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, '0')).join('');
+async function hashPw(pw, salt, iter){
+  const key = await crypto.subtle.importKey('raw', enc.encode(pw), 'PBKDF2', false, ['deriveBits']);
+  return hex(await crypto.subtle.deriveBits({ name: 'PBKDF2', hash: 'SHA-256', salt: enc.encode(salt), iterations: iter }, key, 256));
+}
+const newSalt = () => hex(crypto.getRandomValues(new Uint8Array(12)));
+function genPw(){
+  const a = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789', r = crypto.getRandomValues(new Uint8Array(8));
+  return [...r].map(x => a[x % a.length]).join('');
+}
+
+/* ================= progreso del jugador ================= */
+function loadProgress(id){
+  try { const o = JSON.parse(store.get(K_PROGRESS(id))); if (o && Array.isArray(o.opened)) return o; } catch {}
+  return { opened: [] };
+}
+const saveProgress = () => store.set(K_PROGRESS(S.player.id), JSON.stringify(S.progress));
+function counts(){
+  const c = {};
+  for (const pk of S.progress.opened) for (const id of pk) if (stickerById(id)) c[id] = (c[id] || 0) + 1;
+  return c;
+}
+const availablePacks = () => Math.max(0, S.player.packs - S.progress.opened.length);
+
+/* ================= sobres (determinista) ================= */
+function xmur3(str){
+  let h = 1779033703 ^ str.length;
+  for (let i = 0; i < str.length; i++){ h = Math.imul(h ^ str.charCodeAt(i), 3432918353); h = h << 13 | h >>> 19; }
+  return () => { h = Math.imul(h ^ h >>> 16, 2246822507); h = Math.imul(h ^ h >>> 13, 3266489909); return (h ^= h >>> 16) >>> 0; };
+}
+function mulberry32(a){
+  return () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
+}
+function drawPack(player, index){
+  const rnd = mulberry32(xmur3(`${player.id}|${index}|${player.salt}`)());
+  const byR = {};
+  for (const s of D.stickers) (byR[s.rarity] = byR[s.rarity] || []).push(s);
+  const rs = rKeys().filter(k => byR[k] && byR[k].length);
+  if (!rs.length) return [];
+  const total = rs.reduce((a, k) => a + Math.max(0, +D.rarities[k].weight || 0), 0) || rs.length;
+  const out = [];
+  for (let i = 0; i < (D.packSize || 5); i++){
+    let x = rnd() * total, pick = rs[rs.length - 1];
+    for (const k of rs){ x -= (Math.max(0, +D.rarities[k].weight || 0) || (total === rs.length ? 1 : 0)); if (x < 0){ pick = k; break; } }
+    const arr = byR[pick];
+    out.push(arr[Math.floor(rnd() * arr.length)]);
+  }
+  // Las mejores salen al final para dar suspenso
+  return out.sort((a, b) => rKeys().indexOf(a.rarity) - rKeys().indexOf(b.rarity)).map(s => s.id);
+}
+
+/* ================= arranque ================= */
+async function init(){
+  try {
+    const r = await fetch('data.json?v=' + Date.now(), { cache: 'no-store' });
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    D = await r.json();
+  } catch (e){
+    app.innerHTML = `<div class="login"><div class="login-card"><h1>No se pudo cargar</h1>
+      <p>No encuentro <b>data.json</b>. Si abriste el archivo haciendo doble clic, ábrelo desde un servidor (por ejemplo GitHub Pages, o <code>python -m http.server</code> en la carpeta).</p>
+      <div class="err">${esc(e.message)}</div></div></div>`;
+    return;
+  }
+  D.kdf = D.kdf || 100000; D.packSize = D.packSize || 5;
+  D.nations = D.nations || []; D.stickers = D.stickers || []; D.players = D.players || [];
+  D.rarities = D.rarities || { comun: { label: 'Común', weight: 1, color: '#b9c2cc' } };
+  document.title = D.title || 'Álbum';
+  route();
+}
+window.addEventListener('hashchange', route);
+
+function route(){
+  if (location.hash === '#admin') return adminScreen();
+  const id = sess.get(K_SESSION) || store.get(K_REMEMBER);
+  const pl = id && D.players.find(p => p.id === id);
+  if (pl) return startAlbum(pl);
+  loginScreen();
+}
+
+/* ================= acceso ================= */
+function loginScreen(msg = ''){
+  document.removeEventListener('keydown', onKey);
+  window.removeEventListener('resize', onResize);
+  app.innerHTML = `<div class="login"><div class="login-card">
+    ${EMBLEM}
+    <h1>${esc(D.title)}</h1>
+    <p>Escribe tu contraseña privada para abrir tu álbum.</p>
+    <input id="pw" type="password" autocomplete="current-password" placeholder="Contraseña" aria-label="Contraseña">
+    <label class="chk"><input type="checkbox" id="rem"> Recordarme en este dispositivo</label>
+    <button class="btn" id="go">Abrir mi álbum</button>
+    <div class="err" id="err" role="alert">${esc(msg)}</div>
+  </div></div>`;
+  const go = async () => {
+    const pw = $('#pw').value.trim(); if (!pw) return;
+    const btn = $('#go'); btn.disabled = true; btn.textContent = 'Comprobando…';
+    let found = null;
+    try { for (const p of D.players){ if (await hashPw(pw, p.salt, D.kdf) === p.hash){ found = p; break; } } }
+    catch { $('#err').textContent = 'Tu navegador no permite comprobar contraseñas aquí. Usa https o localhost.'; btn.disabled = false; btn.textContent = 'Abrir mi álbum'; return; }
+    if (!found){ $('#err').textContent = 'Contraseña incorrecta. Revisa mayúsculas y espacios.'; btn.disabled = false; btn.textContent = 'Abrir mi álbum'; return; }
+    (($('#rem').checked) ? store : sess).set(($('#rem').checked) ? K_REMEMBER : K_SESSION, found.id);
+    startAlbum(found);
+  };
+  $('#go').onclick = go;
+  $('#pw').addEventListener('keydown', e => { if (e.key === 'Enter') go(); });
+  $('#pw').focus();
+}
+function logout(){
+  sess.del(K_SESSION); store.del(K_REMEMBER);
+  S.player = null; loginScreen();
+}
+
+/* ================= álbum ================= */
+function startAlbum(pl){
+  S.player = pl; S.progress = loadProgress(pl.id); S.p = 0; S.newIds = new Set();
+  albumScreen();
+}
+
+function albumScreen(){
+  app.innerHTML = `
+  <header class="top">
+    <div class="brand"><span class="logo">✦</span><b>${esc(D.title)}</b></div>
+    <div class="who">
+      <span class="pill" id="prog"></span>
+      <button class="btn sm gift" id="btnPacks" title="Abrir un sobre">🎁 Sobres <span class="n" id="packN">0</span></button>
+      <button class="btn ghost sm" id="btnBackup" title="Copia de seguridad" aria-label="Copia de seguridad">💾</button>
+      <button class="btn ghost sm" id="btnOut" title="Cerrar sesión">Salir</button>
+    </div>
+  </header>
+  <main class="stage" id="stage"><div class="viewport"><div class="book" id="book"></div></div></main>
+  <footer class="foot">
+    <div class="navrow">
+      <button class="btn round" id="prev" aria-label="Página anterior">‹</button>
+      <div class="plabel" id="plabel"></div>
+      <button class="btn round" id="next" aria-label="Página siguiente">›</button>
+    </div>
+    <nav class="chips" id="chips" aria-label="Naciones"></nav>
+  </footer>`;
+  $('#btnPacks').onclick = openPackFlow;
+  $('#btnOut').onclick = logout;
+  $('#btnBackup').onclick = showBackup;
+  $('#prev').onclick = prev; $('#next').onclick = next;
+
+  const book = $('#book');
+  book.addEventListener('click', e => {
+    const g = e.target.closest('[data-goto]'); if (g){ goToPage(+g.dataset.goto); return; }
+    const s = e.target.closest('.slot[data-sid]'); if (s) showSticker(s.dataset.sid);
+  });
+  let tx = 0, ty = 0;
+  const st = $('#stage');
+  st.addEventListener('touchstart', e => { tx = e.touches[0].clientX; ty = e.touches[0].clientY; }, { passive: true });
+  st.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty;
+    if (Math.abs(dx) > 55 && Math.abs(dy) < 70) (dx < 0 ? next : prev)();
+  }, { passive: true });
+  document.addEventListener('keydown', onKey);
+  window.addEventListener('resize', onResize);
+
+  layout(true);
+  buildChips();
+  buildBook();
+  updateHeader();
+}
+
+const onKey = e => {
+  if (document.querySelector('.ov,.modal') || !S.player) return;
+  if (e.key === 'ArrowRight') next();
+  if (e.key === 'ArrowLeft') prev();
+};
+let rzT; const onResize = () => { clearTimeout(rzT); rzT = setTimeout(() => layout(false), 120); };
+
+function layout(first){
+  const st = $('#stage'); if (!st) return;
+  const vw = innerWidth, vh = innerHeight, mobile = vw < 860;
+  const availH = vh - 60 - 118 - 20;
+  let pw = mobile ? Math.min(vw - 28, availH * 0.72) : Math.min((vw - 120) / 2, availH * 0.72, 640);
+  pw = Math.max(190, pw);
+  st.style.setProperty('--pw', pw + 'px'); st.style.setProperty('--ph', (pw / 0.72) + 'px');
+  const mode = mobile ? 'mobile' : 'desktop';
+  st.classList.toggle('mobile', mobile);
+  if (mode !== S.mode){
+    S.mode = mode;
+    if (mode === 'desktop') S.p = S.p === 0 ? 0 : (S.p % 2 ? S.p : S.p - 1);
+    if (!first){ $('#book').classList.add('no-anim'); apply(); requestAnimationFrame(() => requestAnimationFrame(() => $('#book').classList.remove('no-anim'))); }
+  }
+}
+
+function buildPages(){
+  const pages = [{ k: 'cover' }, { k: 'index' }];
+  D.nations.forEach((n, i) => pages.push({ k: 'nation', n, i }));
+  if ((pages.length + 1) % 2 === 1) pages.push({ k: 'notes' });
+  pages.push({ k: 'back' });
+  return pages;
+}
+const pageTitle = pg => !pg ? '' : pg.k === 'cover' ? 'Portada' : pg.k === 'index' ? 'Atlas' : pg.k === 'nation' ? pg.n.name : pg.k === 'notes' ? 'Notas' : 'Contraportada';
+
+function buildBook(){
+  S.pages = buildPages(); S.L = S.pages.length / 2;
+  const f = Math.ceil(S.p / 2), L = S.L;
+  const book = $('#book'); book.classList.add('no-anim');
+  let h = '';
+  for (let k = 0; k < L; k++){
+    const fl = k < f;
+    h += `<div class="leaf${fl ? ' flipped' : ''}" style="z-index:${fl ? k : L - k}">
+      <div class="face front">${pageHTML(S.pages[2 * k], 2 * k)}</div>
+      <div class="face back">${pageHTML(S.pages[2 * k + 1], 2 * k + 1)}</div></div>`;
+  }
+  book.innerHTML = h;
+  apply();
+  requestAnimationFrame(() => requestAnimationFrame(() => book.classList.remove('no-anim')));
+}
+
+function pageHTML(pg, idx){
+  if (!pg) return '';
+  const c = counts();
+  if (pg.k === 'cover') return `<div class="page leather"><div class="in cover">${EMBLEM}<h1>APEXORA</h1><div class="sub">Álbum de naciones</div><div class="own">Coleccionista: ${esc(S.player.name)}</div></div></div>`;
+  if (pg.k === 'back')  return `<div class="page leather"><div class="in back-c">${EMBLEM}</div></div>`;
+  if (pg.k === 'notes') return `<div class="page paper"><div class="in notes"><h2>Notas del explorador</h2>${'<i></i>'.repeat(9)}<div class="pn">${idx}</div></div></div>`;
+  if (pg.k === 'index'){
+    const total = D.stickers.length, got = D.stickers.filter(s => c[s.id]).length;
+    const rows = D.nations.map((n, i) => {
+      const st = D.stickers.filter(s => s.nation === n.id), g = st.filter(s => c[s.id]).length;
+      return `<li data-goto="${2 + i}" style="--nc:${col(n.color)}"><span class="e">${esc(n.emoji || '✦')}</span>
+        <span class="t"><b>${esc(n.name)}</b><div class="bar"><i style="width:${st.length ? g / st.length * 100 : 0}%"></i></div></span><span class="c">${g}/${st.length}</span></li>`;
+    }).join('');
+    const leg = rKeys().map(k => `<span style="--rc:${col(D.rarities[k].color, '#999')}"><i></i>${esc(D.rarities[k].label)}</span>`).join('');
+    return `<div class="page paper"><div class="in index"><h2>Atlas de Apexora</h2><div class="who2">Colección de ${esc(S.player.name)}</div>
+      <div class="tot">${got}/${total}<small>pegatinas</small></div><ul>${rows}</ul><div class="legend">${leg}</div><div class="pn">${idx}</div></div></div>`;
+  }
+  // nación
+  const n = pg.n, st = D.stickers.filter(s => s.nation === n.id), got = st.filter(s => c[s.id]).length;
+  const cols = st.length <= 9 ? 3 : st.length <= 16 ? 4 : 5, rows = Math.max(1, Math.ceil(st.length / cols));
+  const slots = st.map((s, k) => {
+    const r = rarityOf(s.rarity);
+    if (c[s.id]) return `<div class="slot${S.newIds.has(s.id) ? ' is-new' : ''}" data-sid="${esc(s.id)}">${stickerHTML(s, { count: c[s.id], num: k + 1 })}</div>`;
+    return `<div class="slot"><div class="empty" style="--rc:${col(r.color, '#999')}"><b>${pad(k + 1)}</b><span>${esc(s.name)}</span></div></div>`;
+  }).join('');
+  return `<div class="page paper"><div class="in nation" style="--nc:${col(n.color)}">
+    <div class="mark">${esc(n.emoji || '✦')}</div>
+    <div class="nh"><div class="nb">${esc(n.emoji || '✦')}</div><div class="nt"><h2>${esc(n.name)}</h2><p>${esc(n.motto || '')}</p></div><div class="np">${got}/${st.length}</div></div>
+    ${st.length ? `<div class="grid" style="--cols:${cols};--rows:${rows}">${slots}</div>` : `<div class="none">Todavía no hay pegatinas en esta nación.</div>`}
+    ${st.length && got === st.length ? '<div class="stamp">Nación completa</div>' : ''}
+    <div class="pn">${idx}</div></div></div>`;
+}
+
+function stickerHTML(s, o = {}){
+  const r = rarityOf(s.rarity), n = nationOf(s.nation), t = tierOf(s.rarity);
+  const art = s.image
+    ? `<img src="${esc(s.image)}" alt="${esc(s.name)}" draggable="false">`
+    : `<div class="ph">${esc(s.emoji || n.emoji || '✦')}</div>`;
+  return `<div class="sticker t${t}${o.mini ? ' mini' : ''}" style="--rc:${col(r.color, '#bbb')};--nc:${col(n.color)}">
+    <div class="sk"><div class="art">${art}<div class="cap"><b>${esc(s.name)}</b><i>${esc(r.label)}</i></div></div>
+    ${o.num ? `<span class="no">${pad(o.num)}</span>` : ''}${o.count > 1 ? `<span class="dup">×${o.count}</span>` : ''}<div class="foil"></div></div></div>`;
+}
+// Si una imagen falla, se muestra el marcador de posición
+document.addEventListener('error', e => {
+  const im = e.target;
+  if (im && im.tagName === 'IMG' && im.closest('.art')){
+    const sid = im.closest('[data-sid]')?.dataset.sid, s = sid && stickerById(sid);
+    const d = document.createElement('div'); d.className = 'ph';
+    d.textContent = (s && (s.emoji || nationOf(s.nation).emoji)) || '✦';
+    im.replaceWith(d);
+  }
+}, true);
+
+/* --- navegación --- */
+const pageToP = pi => S.mode === 'mobile' ? pi : (pi === 0 ? 0 : (pi % 2 ? pi : pi - 1));
+function setP(np){
+  const now = Date.now(); if (now - S.lock < 220) return; S.lock = now;
+  S.p = clamp(np, 0, S.pages.length - 1); apply();
+}
+function next(){ const P = S.pages.length; const np = S.mode === 'mobile' ? S.p + 1 : (S.p === 0 ? 1 : S.p + 2); if (np <= P - 1) setP(np); }
+function prev(){ const np = S.mode === 'mobile' ? S.p - 1 : (S.p <= 1 ? 0 : S.p - 2); if (np >= 0) setP(np); }
+function goToPage(pi){ S.lock = 0; setP(pageToP(pi)); }
+
+function apply(){
+  const f = Math.ceil(S.p / 2), L = S.L, mobile = S.mode === 'mobile';
+  $$('.leaf').forEach((lf, i) => {
+    const flipped = i < f;
+    if (flipped !== lf.classList.contains('flipped')){
+      lf.style.zIndex = L + 5; lf.classList.toggle('flipped', flipped);
+      clearTimeout(lf._t); lf._t = setTimeout(() => { lf.style.zIndex = flipped ? i : L - i; }, 1000);
+    }
+  });
+  const tx = mobile ? (S.p % 2 === 0 ? -50 : 0) : (f === 0 ? -25 : (f === L ? 25 : 0));
+  $('#book').style.transform = `translateX(${tx}%)`;
+  updateNav();
+}
+
+function visiblePages(){
+  const P = S.pages.length;
+  if (S.mode === 'mobile') return [S.p];
+  return S.p === 0 ? [0] : [S.p, S.p + 1].filter(i => i < P);
+}
+function updateNav(){
+  const vis = visiblePages();
+  $('#plabel').textContent = vis.map(i => pageTitle(S.pages[i])).join(' y ');
+  $('#prev').disabled = S.p === 0;
+  $('#next').disabled = S.p >= S.pages.length - 1 || (S.mode === 'desktop' && S.p >= S.pages.length - 1);
+  $$('#chips .chip').forEach(c => c.classList.toggle('on', vis.includes(+c.dataset.goto)));
+}
+function buildChips(){
+  $('#chips').innerHTML = `<button class="chip" data-goto="1" title="Atlas">📖 Atlas</button>` +
+    D.nations.map((n, i) => `<button class="chip" data-goto="${2 + i}">${esc(n.emoji || '✦')} ${esc(n.name)}</button>`).join('');
+  $('#chips').onclick = e => { const b = e.target.closest('[data-goto]'); if (b) goToPage(+b.dataset.goto); };
+}
+function updateHeader(){
+  const c = counts(), total = D.stickers.length, got = D.stickers.filter(s => c[s.id]).length;
+  $('#prog').textContent = `${got} de ${total}`;
+  const n = availablePacks();
+  $('#packN').textContent = n; $('#btnPacks').classList.toggle('has', n > 0);
+}
+function refreshAlbum(){ buildBook(); updateHeader(); }
+
+/* --- ver pegatina grande --- */
+function showSticker(sid){
+  const s = stickerById(sid); if (!s) return;
+  const c = counts()[sid] || 0, r = rarityOf(s.rarity), n = nationOf(s.nation);
+  const ov = document.createElement('div'); ov.className = 'ov lightbox';
+  ov.innerHTML = `<div class="lb-card">${stickerHTML(s, { count: c })}</div>
+    <div class="lb-info"><h3>${esc(s.name)}</h3><p>${esc(r.label)}, ${esc(n.name)}${c > 1 ? `. Tienes ${c} copias.` : ''}</p></div>`;
+  const card = $('.lb-card', ov);
+  const tilt = e => {
+    const b = card.getBoundingClientRect(), x = ((e.clientX ?? e.touches[0].clientX) - b.left) / b.width - .5, y = ((e.clientY ?? e.touches[0].clientY) - b.top) / b.height - .5;
+    card.style.setProperty('--ry', (x * 26) + 'deg'); card.style.setProperty('--rx', (-y * 26) + 'deg');
+  };
+  ov.addEventListener('mousemove', tilt); ov.addEventListener('touchmove', tilt, { passive: true });
+  const close = () => { ov.remove(); document.removeEventListener('keydown', esc2); };
+  const esc2 = e => { if (e.key === 'Escape') close(); };
+  ov.addEventListener('click', close); document.addEventListener('keydown', esc2);
+  document.body.appendChild(ov);
+}
+
+/* --- copia de seguridad --- */
+const encodeProgress = () => btoa(unescape(encodeURIComponent(JSON.stringify({ v: 1, p: S.player.id, o: S.progress.opened }))));
+function showBackup(){
+  const m = modal(`<h3>Copia de seguridad</h3>
+    <p>Tus sobres abiertos se guardan en este dispositivo. Copia este código para no perderlos si cambias de móvil o borras los datos del navegador.</p>
+    <textarea id="bkOut" readonly>${esc(encodeProgress())}</textarea>
+    <div class="row"><button class="btn sm" id="bkCopy">Copiar código</button></div>
+    <p>Para recuperar tu progreso en otro dispositivo, pega aquí tu código:</p>
+    <textarea id="bkIn" placeholder="Pega tu código"></textarea>
+    <div class="row"><button class="btn sm" id="bkGo">Restaurar</button><button class="btn ghost sm" data-close>Cerrar</button></div>`);
+  $('#bkCopy', m).onclick = async () => { try { await navigator.clipboard.writeText($('#bkOut', m).value); toast('Código copiado'); } catch { $('#bkOut', m).select(); toast('Selecciónalo y cópialo a mano'); } };
+  $('#bkGo', m).onclick = () => {
+    try {
+      const o = JSON.parse(decodeURIComponent(escape(atob($('#bkIn', m).value.trim()))));
+      if (o.p !== S.player.id || !Array.isArray(o.o) || !o.o.every(a => Array.isArray(a))) throw 0;
+      if (o.o.length > S.player.packs) { toast('Ese código tiene más sobres de los que te han dado.'); return; }
+      S.progress.opened = o.o.map(a => a.map(String)); saveProgress(); m.remove(); refreshAlbum(); toast('Progreso restaurado');
+    } catch { toast('Ese código no es válido para tu álbum.'); }
+  };
+}
+
+/* ================= apertura de sobres ================= */
+function openPackFlow(){
+  if (availablePacks() <= 0){ toast('No tienes sobres por abrir. Pídele más al administrador.'); return; }
+  const idx = S.progress.opened.length;
+  const ids = drawPack(S.player, idx);
+  if (!ids.length){ toast('Todavía no hay pegatinas cargadas en el álbum.'); return; }
+  const stickers = ids.map(stickerById), n = ids.length;
+  let phase = 'sealed', i = 0, saved = false, card = null;
+  const newFlags = [];
+
+  const ov = document.createElement('div'); ov.className = 'ov pack-ov';
+  ov.innerHTML = `
+    <button class="x" aria-label="Cerrar">✕</button>
+    <div class="pk-top"><div class="pk-title">Sobre de naciones</div></div>
+    <div class="pk-stage" id="pkStage">
+      <button class="pack" id="pack" aria-label="Abrir sobre"><div class="flap"></div>
+        <div class="body">${EMBLEM}<b>APEXORA</b><small>${n} pegatinas</small><div class="shine"></div></div></button>
+    </div>
+    <div class="pk-msg" id="pkMsg">Toca el sobre para abrirlo</div>
+    <div class="pk-tray" id="pkTray">${ids.map((_, k) => `<div class="tslot" data-i="${k}">${k + 1}</div>`).join('')}</div>
+    <div class="pk-actions" id="pkActs"></div>`;
+  document.body.appendChild(ov);
+  const stage = $('#pkStage', ov), msg = $('#pkMsg', ov), tray = $('#pkTray', ov), acts = $('#pkActs', ov), pack = $('#pack', ov);
+
+  const close = () => {
+    ov.remove(); document.removeEventListener('keydown', onEsc);
+    if (saved){ refreshAlbum(); clearTimeout(S._nt); S._nt = setTimeout(() => { S.newIds.clear(); $$('.slot.is-new').forEach(e => e.classList.remove('is-new')); }, 9000); }
+  };
+  const onEsc = e => { if (e.key === 'Escape') close(); };
+  document.addEventListener('keydown', onEsc);
+  $('.x', ov).onclick = close;
+
+  const tear = () => {
+    if (phase !== 'sealed') return; phase = 'tearing';
+    // Se guarda al abrir: el contenido ya no cambia aunque cierres a medias
+    const before = counts(), seen = new Set();
+    ids.forEach(id => { newFlags.push(!before[id] && !seen.has(id)); seen.add(id); });
+    S.progress.opened.push(ids); saveProgress(); saved = true; updateHeader();
+    S.newIds = new Set(ids.filter((id, k) => newFlags[k]));
+    pack.classList.add('open'); msg.textContent = '';
+    setTimeout(() => { pack.remove(); deal(); }, 1050);
+  };
+  pack.onclick = tear;
+
+  function deal(){
+    const s = stickers[i], remaining = n - i;
+    card = document.createElement('div'); card.className = 'pcard enter' + (remaining > 1 ? ' stack' : '');
+    card.innerHTML = `<div class="pinner"><div class="pface back">${EMBLEM}<em>APEXORA</em></div><div class="pface front">${stickerHTML(s)}</div></div>`;
+    stage.appendChild(card); phase = 'hidden';
+    msg.innerHTML = `<b>Pegatina ${i + 1} de ${n}</b>Toca para descubrirla`;
+    card.onclick = onCard;
+  }
+  function onCard(){ if (phase === 'hidden') reveal(); else if (phase === 'shown') stow(); }
+
+  function reveal(){
+    phase = 'flipping'; const s = stickers[i], t = tierOf(s.rarity), r = rarityOf(s.rarity);
+    card.classList.remove('stack'); card.classList.add('flip');
+    setTimeout(() => burst(t, col(r.color, '#ffd76b')), 380);
+    if (t >= 3){ ov.classList.add('flash'); setTimeout(() => ov.classList.remove('flash'), 850); }
+    setTimeout(() => {
+      phase = 'shown';
+      const b = document.createElement('div'); b.className = 'badge ' + (newFlags[i] ? 'new' : 'dup'); b.textContent = newFlags[i] ? '¡Nueva!' : 'Repetida';
+      card.appendChild(b);
+      msg.innerHTML = `<b>${esc(s.name)}</b>${esc(r.label)}, ${esc(nationOf(s.nation).name)}. Toca para guardarla.`;
+    }, 760);
+  }
+  function burst(t, color){
+    const fx = document.createElement('div'); fx.className = 'fx'; fx.innerHTML = `<u style="--c:${color}"></u>`;
+    const cnt = 8 + t * 9;
+    for (let k = 0; k < cnt; k++){
+      const a = Math.random() * Math.PI * 2, d = 90 + Math.random() * (110 + t * 50), sz = 5 + Math.random() * (5 + t * 2);
+      const p = document.createElement('i');
+      p.style.cssText = `--dx:${Math.cos(a) * d}px;--dy:${Math.sin(a) * d}px;--s:${sz}px;--c:${k % 3 ? color : '#fff'}`;
+      fx.appendChild(p);
+    }
+    stage.appendChild(fx); setTimeout(() => fx.remove(), 1300);
+  }
+  function stow(){
+    phase = 'moving';
+    const slot = tray.children[i], cr = card.getBoundingClientRect(), sr = slot.getBoundingClientRect();
+    const dx = sr.left + sr.width / 2 - (cr.left + cr.width / 2), dy = sr.top + sr.height / 2 - (cr.top + cr.height / 2), sc = sr.width / cr.width;
+    const bd = $('.badge', card); if (bd) bd.remove();
+    card.style.animation = 'none';
+    card.style.transition = 'transform .6s cubic-bezier(.5,0,.2,1), opacity .25s .4s';
+    card.style.transformOrigin = 'center';
+    card.style.transform = `translate(${dx}px,${dy}px) scale(${sc})`; card.style.opacity = '0';
+    setTimeout(() => {
+      slot.innerHTML = stickerHTML(stickers[i], { mini: true }); slot.style.border = '0';
+      card.remove(); i++;
+      if (i < n) deal(); else finish();
+    }, 640);
+  }
+  function finish(){
+    phase = 'done';
+    const nn = newFlags.filter(Boolean).length;
+    msg.innerHTML = `<b>¡Sobre completo!</b>${nn ? `${nn} ${nn === 1 ? 'pegatina nueva' : 'pegatinas nuevas'}` : 'Todas repetidas esta vez'}${n - nn ? `, ${n - nn} ${n - nn === 1 ? 'repetida' : 'repetidas'}` : ''}.`;
+    tray.classList.add('done');
+    tray.onclick = e => { const sl = e.target.closest('.tslot'); if (sl) showSticker(stickers[+sl.dataset.i].id); };
+    const left = availablePacks();
+    acts.innerHTML = `<button class="btn" id="aSee">Ver en el álbum</button>${left ? `<button class="btn ghost" id="aAgain">Abrir otro (${left})</button>` : ''}`;
+    $('#aSee', acts).onclick = () => {
+      close();
+      const first = ids.find((id, k) => newFlags[k]) || ids[0];
+      const nid = stickerById(first).nation, ni = D.nations.findIndex(x => x.id === nid);
+      if (ni >= 0) setTimeout(() => goToPage(2 + ni), 150);
+    };
+    const ag = $('#aAgain', acts); if (ag) ag.onclick = () => { close(); setTimeout(openPackFlow, 60); };
+  }
+}
+
+/* ================= administración ================= */
+const A = { ok: false, d: null, tab: 'players', dirty: false, filter: '' };
+const persist = () => { A.dirty = true; store.set(K_DRAFT, JSON.stringify(A.d)); const b = $('#aBan'); if (b) b.classList.remove('hidden'); };
+const slug = s => String(s).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') || 'x';
+
+function adminScreen(){
+  document.removeEventListener('keydown', onKey); window.removeEventListener('resize', onResize);
+  if (!A.ok) return adminLogin();
+  const tabs = [['players', 'Jugadores y sobres'], ['stickers', 'Pegatinas'], ['nations', 'Naciones'], ['settings', 'Ajustes'], ['publish', 'Publicar']];
+  app.innerHTML = `
+  <header class="top"><div class="brand"><span class="logo">⚙</span><b>Panel de administración</b></div>
+    <div class="who"><button class="btn sm" id="aDl">⬇ Descargar data.json</button><button class="btn ghost sm" id="aOut">Salir</button></div></header>
+  <div class="admwrap">
+    <div class="banner ${A.dirty ? '' : 'hidden'}" id="aBan">Hay cambios sin publicar. Descarga <b>data.json</b> y súbelo a tu repositorio de GitHub para que los jugadores los vean.</div>
+    <nav class="tabs">${tabs.map(([k, l]) => `<button class="tab${A.tab === k ? ' on' : ''}" data-tab="${k}">${l}</button>`).join('')}</nav>
+    <div id="aBody"></div>
+  </div>`;
+  $('#aDl').onclick = downloadJson;
+  $('#aOut').onclick = () => { A.ok = false; location.hash = ''; route(); };
+  $('.tabs').onclick = e => { const t = e.target.closest('[data-tab]'); if (t){ A.tab = t.dataset.tab; adminScreen(); } };
+  const body = $('#aBody');
+  body.addEventListener('click', adminClick); body.addEventListener('change', adminChange);
+  renderTab();
+}
+
+function adminLogin(){
+  const first = !D.adminAuth;
+  app.innerHTML = `<div class="login"><div class="login-card">${EMBLEM}
+    <h1>Administración</h1>
+    <p>${first ? 'Crea la contraseña del administrador.' : 'Contraseña de administrador.'}</p>
+    <input id="apw" type="password" placeholder="Contraseña" autocomplete="off">
+    <div style="height:14px"></div>
+    <button class="btn" id="ago">${first ? 'Crear y entrar' : 'Entrar'}</button>
+    <div class="err" id="err"></div><p style="margin-top:14px"><a href="#" style="color:var(--gold-2)" id="back">Volver al álbum</a></p></div></div>`;
+  $('#back').onclick = e => { e.preventDefault(); location.hash = ''; route(); };
+  const go = async () => {
+    const pw = $('#apw').value.trim(); if (pw.length < 4){ $('#err').textContent = 'Usa al menos 4 caracteres.'; return; }
+    try {
+      const drRaw = store.get(K_DRAFT);
+      let base; try { base = drRaw ? JSON.parse(drRaw) : clone(D); } catch { base = clone(D); }
+      if (first){
+        const salt = newSalt(); base.adminAuth = { salt, hash: await hashPw(pw, salt, D.kdf) };
+        A.d = base; A.dirty = true; store.set(K_DRAFT, JSON.stringify(base)); A.ok = true;
+      } else {
+        if (await hashPw(pw, D.adminAuth.salt, D.kdf) !== D.adminAuth.hash){ $('#err').textContent = 'Contraseña incorrecta.'; return; }
+        A.d = base; A.dirty = !!drRaw; A.ok = true;
+      }
+      adminScreen();
+    } catch { $('#err').textContent = 'No se pudo comprobar la contraseña (usa https o localhost).'; }
+  };
+  $('#ago').onclick = go; $('#apw').addEventListener('keydown', e => { if (e.key === 'Enter') go(); }); $('#apw').focus();
+}
+
+function downloadJson(){
+  const blob = new Blob([JSON.stringify(A.d, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'data.json';
+  document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+}
+
+function renderTab(){
+  const b = $('#aBody'); if (!b) return;
+  b.innerHTML = ({ players: tabPlayers, stickers: tabStickers, nations: tabNations, settings: tabSettings, publish: tabPublish })[A.tab]();
+}
+
+/* --- pestaña jugadores --- */
+function tabPlayers(){
+  const d = A.d;
+  return `<div class="panel"><h3>Jugadores</h3>
+    <p class="hint">“Sobres otorgados” es el total que le has dado a cada jugador desde el principio. Cada jugador ve cuántos le quedan por abrir.</p>
+    ${d.players.length ? d.players.map((p, i) => `<div class="arow pl" data-i="${i}">
+      <div><b>${esc(p.name)}</b><small>id: ${esc(p.id)}</small></div>
+      <div><span class="big">${p.packs}</span><small>sobres otorgados</small></div>
+      <div class="acts"><button class="mini" data-act="grant" data-n="1">+1</button><button class="mini" data-act="grant" data-n="5">+5</button><button class="mini" data-act="grant" data-n="10">+10</button>
+        <input type="number" min="1" placeholder="N" class="ninp"><button class="mini" data-act="grantN">Dar</button><button class="mini" data-act="grant" data-n="-1">−1</button></div>
+      <div class="acts"><button class="mini" data-act="pw">Cambiar contraseña</button><button class="mini warn" data-act="del">Eliminar</button></div></div>`).join('')
+      : '<p class="hint">Aún no hay jugadores.</p>'}
+    ${d.players.length ? `<div class="acts" style="margin-top:12px"><button class="btn sm" data-act="giveAll" data-n="1">+1 sobre a todos</button><input type="number" min="1" class="ninp" id="allN" placeholder="N"><button class="btn ghost sm" data-act="giveAllN">Dar N a todos</button></div>` : ''}
+  </div>
+  <div class="panel"><h3>Nuevo jugador</h3>
+    <p class="hint">Cada jugador entra solo con su contraseña, así que debe ser distinta para cada uno. Se guarda cifrada: apúntala, después no se puede ver.</p>
+    <div class="formrow"><div><label>Nombre</label><input id="npName" placeholder="Ej.: Lucía"></div>
+      <div><label>Contraseña</label><input id="npPw" placeholder="Mínimo 4 caracteres"></div>
+      <div><label>Sobres iniciales</label><input id="npPacks" type="number" min="0" value="3"></div>
+      <div class="acts"><button class="mini" data-act="genPw">Generar contraseña</button><button class="btn sm" data-act="addPlayer">Crear jugador</button></div></div></div>`;
+}
+async function pwTaken(pw, exceptIdx = -1){
+  for (let k = 0; k < A.d.players.length; k++){ if (k === exceptIdx) continue; const p = A.d.players[k]; if (await hashPw(pw, p.salt, A.d.kdf) === p.hash) return true; }
+  return false;
+}
+async function adminClick(e){
+  const el = e.target.closest('[data-act]'); if (!el) return;
+  const act = el.dataset.act, row = el.closest('[data-i],[data-si],[data-ni]'), d = A.d;
+  const rerender = () => { persist(); renderTab(); };
+  // jugadores
+  if (act === 'grant'){ const p = d.players[+row.dataset.i]; p.packs = Math.max(0, p.packs + (+el.dataset.n)); return rerender(); }
+  if (act === 'grantN'){ const v = parseInt($('.ninp', row).value, 10); if (!(v > 0)) return toast('Escribe cuántos sobres dar.'); d.players[+row.dataset.i].packs += v; return rerender(); }
+  if (act === 'giveAll'){ d.players.forEach(p => p.packs += +el.dataset.n); return rerender(); }
+  if (act === 'giveAllN'){ const v = parseInt($('#allN').value, 10); if (!(v > 0)) return toast('Escribe cuántos sobres dar.'); d.players.forEach(p => p.packs += v); return rerender(); }
+  if (act === 'genPw'){ $('#npPw').value = genPw(); return; }
+  if (act === 'addPlayer'){
+    const name = $('#npName').value.trim(), pw = $('#npPw').value.trim(), packs = Math.max(0, parseInt($('#npPacks').value, 10) || 0);
+    if (!name) return toast('Falta el nombre.'); if (pw.length < 4) return toast('La contraseña necesita al menos 4 caracteres.');
+    if (await pwTaken(pw)) return toast('Otro jugador ya usa esa contraseña. Elige otra.');
+    let id = slug(name), k = 2; while (d.players.some(p => p.id === id)) id = slug(name) + '-' + k++;
+    const salt = newSalt(); d.players.push({ id, name, salt, hash: await hashPw(pw, salt, d.kdf), packs });
+    rerender(); return modal(`<h3>Jugador creado</h3><p><b>${esc(name)}</b> entra con esta contraseña:</p><p style="font:700 1.5rem var(--ft);color:var(--gold-2);text-align:center;user-select:all">${esc(pw)}</p><p>Anótala ahora: se guarda cifrada y no se puede volver a mostrar.</p><div class="row"><button class="btn sm" data-close>Entendido</button></div>`);
+  }
+  if (act === 'pw'){
+    const i = +row.dataset.i, p = d.players[i], sug = genPw();
+    const pw = (prompt(`Nueva contraseña para ${p.name} (mínimo 4 caracteres):`, sug) || '').trim(); if (!pw) return;
+    if (pw.length < 4) return toast('Mínimo 4 caracteres.'); if (await pwTaken(pw, i)) return toast('Otro jugador ya usa esa contraseña.');
+    p.salt = newSalt(); p.hash = await hashPw(pw, p.salt, d.kdf); persist(); return modal(`<h3>Contraseña cambiada</h3><p>Nueva contraseña de <b>${esc(p.name)}</b>:</p><p style="font:700 1.5rem var(--ft);color:var(--gold-2);text-align:center;user-select:all">${esc(pw)}</p><div class="row"><button class="btn sm" data-close>Entendido</button></div>`);
+  }
+  if (act === 'del'){ const p = d.players[+row.dataset.i]; if (confirm(`¿Eliminar a ${p.name}? Perderá el acceso a su álbum.`)){ d.players.splice(+row.dataset.i, 1); rerender(); } return; }
+  // pegatinas
+  if (act === 'delS'){ const s = d.stickers[+row.dataset.si]; if (confirm(`¿Eliminar “${s.name}”? Si algún jugador ya la tiene, dejará de contarse.`)){ d.stickers.splice(+row.dataset.si, 1); rerender(); } return; }
+  if (act === 'addS'){
+    const nid = $('#nsNation').value; if (!nid) return toast('Primero crea una nación.');
+    const name = $('#nsName').value.trim() || 'Pegatina nueva';
+    d.stickers.push({ id: newStickerId(nid), nation: nid, name, rarity: $('#nsRarity').value, image: $('#nsImage').value.trim() });
+    A.filter = nid; return rerender();
+  }
+  if (act === 'bulk'){
+    const nid = $('#bkNation').value, rar = $('#bkRarity').value; if (!nid) return toast('Primero crea una nación.');
+    const lines = $('#bkText').value.split('\n').map(l => l.trim()).filter(Boolean); if (!lines.length) return toast('Escribe al menos un nombre de archivo.');
+    lines.forEach(l => {
+      const [file, nm] = l.split('|').map(x => x.trim());
+      const image = /^(https?:|stickers\/)/i.test(file) ? file : 'stickers/' + file;
+      d.stickers.push({ id: newStickerId(nid), nation: nid, name: nm || file.replace(/^.*\//, '').replace(/\.[a-z0-9]+$/i, '').replace(/[-_]+/g, ' '), rarity: rar, image });
+    });
+    A.filter = nid; toast(`${lines.length} pegatinas añadidas`); return rerender();
+  }
+  // naciones
+  if (act === 'nUp' || act === 'nDown'){ const i = +row.dataset.ni, j = act === 'nUp' ? i - 1 : i + 1; if (j < 0 || j >= d.nations.length) return; [d.nations[i], d.nations[j]] = [d.nations[j], d.nations[i]]; return rerender(); }
+  if (act === 'nDel'){
+    const n = d.nations[+row.dataset.ni]; if (d.stickers.some(s => s.nation === n.id)) return toast('Esa nación aún tiene pegatinas. Elimínalas o muévelas antes.');
+    if (confirm(`¿Eliminar la nación ${n.name}?`)){ d.nations.splice(+row.dataset.ni, 1); rerender(); } return;
+  }
+  if (act === 'addN'){
+    const name = $('#nnName').value.trim(); if (!name) return toast('Falta el nombre de la nación.');
+    let id = slug(name), k = 2; while (d.nations.some(n => n.id === id)) id = slug(name) + '-' + k++;
+    d.nations.push({ id, name, emoji: $('#nnEmoji').value.trim() || '✦', color: $('#nnColor').value, motto: $('#nnMotto').value.trim() }); return rerender();
+  }
+  // ajustes y publicar
+  if (act === 'adminPw'){
+    const pw = (prompt('Nueva contraseña de administrador (mínimo 4 caracteres):') || '').trim(); if (!pw) return; if (pw.length < 4) return toast('Mínimo 4 caracteres.');
+    const salt = newSalt(); d.adminAuth = { salt, hash: await hashPw(pw, salt, d.kdf) }; persist(); return toast('Contraseña cambiada. Publica data.json para aplicarla.');
+  }
+  if (act === 'copyJson'){ try { await navigator.clipboard.writeText(JSON.stringify(d, null, 2)); toast('JSON copiado'); } catch { toast('No se pudo copiar. Usa la descarga.'); } return; }
+  if (act === 'dl') return downloadJson();
+  if (act === 'discard'){ if (confirm('Se perderán tus cambios sin publicar y se volverá a la versión del repositorio.')){ store.del(K_DRAFT); A.d = clone(D); A.dirty = false; adminScreen(); } return; }
+}
+function adminChange(e){
+  const el = e.target, d = A.d, f = el.dataset.f; if (!f) return;
+  const row = el.closest('[data-i],[data-si],[data-ni],[data-ri]');
+  if (row && row.dataset.si !== undefined){
+    const s = d.stickers[+row.dataset.si]; s[f] = el.value.trim();
+    if (f === 'image' || f === 'nation') { persist(); renderTab(); return; }
+    return persist();
+  }
+  if (row && row.dataset.ni !== undefined){ d.nations[+row.dataset.ni][f] = el.value; return persist(); }
+  if (row && row.dataset.ri !== undefined){ const r = d.rarities[row.dataset.ri]; r[f] = f === 'weight' ? Math.max(0, +el.value || 0) : el.value; return persist(); }
+  if (f === 'title'){ d.title = el.value.trim() || 'Álbum de Apexora'; return persist(); }
+  if (f === 'packSize'){ d.packSize = clamp(parseInt(el.value, 10) || 5, 1, 10); el.value = d.packSize; return persist(); }
+  if (f === 'filter'){ A.filter = el.value; return renderTab(); }
+}
+function newStickerId(nid){
+  let k = A.d.stickers.filter(s => s.nation === nid).length + 1, id;
+  do { id = `${nid}-${String(k++).padStart(3, '0')}`; } while (A.d.stickers.some(s => s.id === id));
+  return id;
+}
+
+/* --- pestaña pegatinas --- */
+function tabStickers(){
+  const d = A.d, nOpts = sel => d.nations.map(n => `<option value="${esc(n.id)}"${n.id === sel ? ' selected' : ''}>${esc(n.name)}</option>`).join('');
+  const rOpts = sel => Object.keys(d.rarities).map(k => `<option value="${esc(k)}"${k === sel ? ' selected' : ''}>${esc(d.rarities[k].label)}</option>`).join('');
+  const list = d.stickers.map((s, i) => ({ s, i })).filter(x => !A.filter || x.s.nation === A.filter);
+  return `<div class="panel"><h3>Añadir varias a la vez</h3>
+    <p class="hint">1. Sube tus imágenes a la carpeta <b>stickers/</b> de tu repositorio. 2. Escribe aquí un archivo por línea, con el nombre opcional después de “|”. Ejemplo: <b>guardia-alba.png | Guardia del Alba</b></p>
+    <div class="formrow"><div><label>Nación</label><select id="bkNation">${nOpts(A.filter)}</select></div><div><label>Rareza</label><select id="bkRarity">${rOpts()}</select></div></div>
+    <textarea id="bkText" placeholder="guardia-alba.png | Guardia del Alba&#10;mercado-dorado.png"></textarea>
+    <div class="acts" style="margin-top:10px"><button class="btn sm" data-act="bulk">Añadir pegatinas</button></div></div>
+  <div class="panel"><h3>Añadir una</h3>
+    <div class="formrow"><div><label>Nombre</label><input id="nsName"></div><div><label>Nación</label><select id="nsNation">${nOpts(A.filter)}</select></div>
+      <div><label>Rareza</label><select id="nsRarity">${rOpts()}</select></div><div><label>Imagen</label><input id="nsImage" placeholder="stickers/archivo.png"></div>
+      <div><button class="btn sm" data-act="addS">Añadir</button></div></div></div>
+  <div class="panel"><h3>Pegatinas (${list.length}${A.filter ? ' de ' + d.stickers.length : ''})</h3>
+    <div class="formrow"><div><label>Filtrar por nación</label><select data-f="filter"><option value="">Todas</option>${nOpts(A.filter)}</select></div></div>
+    ${list.length ? list.map(({ s, i }) => `<div class="arow st" data-si="${i}">
+      <div class="thumb">${s.image ? `<img src="${esc(s.image)}" alt="" onerror="this.replaceWith('✦')">` : esc(nationOf(s.nation).emoji || '✦')}</div>
+      <input data-f="name" value="${esc(s.name)}" aria-label="Nombre">
+      <select data-f="nation" aria-label="Nación">${nOpts(s.nation)}</select>
+      <select data-f="rarity" aria-label="Rareza">${rOpts(s.rarity)}</select>
+      <input data-f="image" value="${esc(s.image || '')}" placeholder="stickers/archivo.png" aria-label="Imagen">
+      <button class="mini warn" data-act="delS" aria-label="Eliminar">✕</button></div>`).join('') : '<p class="hint">No hay pegatinas para mostrar.</p>'}
+  </div>`;
+}
+
+/* --- pestaña naciones --- */
+function tabNations(){
+  const d = A.d;
+  return `<div class="panel"><h3>Naciones</h3><p class="hint">Cada nación es una página del álbum. El orden de esta lista es el orden de las páginas.</p>
+    ${d.nations.map((n, i) => `<div class="arow na" data-ni="${i}">
+      <input data-f="emoji" value="${esc(n.emoji || '')}" aria-label="Emoji" style="text-align:center;font-size:1.3rem">
+      <input data-f="name" value="${esc(n.name)}" aria-label="Nombre">
+      <input data-f="motto" value="${esc(n.motto || '')}" placeholder="Lema" aria-label="Lema">
+      <input data-f="color" type="color" value="${col(n.color, '#c9a24a').slice(0, 7)}" aria-label="Color">
+      <div class="acts"><button class="mini" data-act="nUp" aria-label="Subir">↑</button><button class="mini" data-act="nDown" aria-label="Bajar">↓</button><button class="mini warn" data-act="nDel" aria-label="Eliminar">✕</button></div></div>`).join('')}
+  </div>
+  <div class="panel"><h3>Nueva nación</h3>
+    <div class="formrow"><div><label>Nombre</label><input id="nnName"></div><div><label>Emoji</label><input id="nnEmoji" placeholder="🏔️"></div>
+      <div><label>Color</label><input id="nnColor" type="color" value="#c9a24a"></div><div><label>Lema</label><input id="nnMotto"></div>
+      <div><button class="btn sm" data-act="addN">Añadir nación</button></div></div></div>`;
+}
+
+/* --- pestaña ajustes --- */
+function tabSettings(){
+  const d = A.d;
+  return `<div class="panel"><h3>Álbum</h3>
+    <div class="formrow"><div><label>Título</label><input data-f="title" value="${esc(d.title)}"></div><div><label>Pegatinas por sobre</label><input data-f="packSize" type="number" min="1" max="10" value="${d.packSize}"></div></div></div>
+  <div class="panel"><h3>Rarezas</h3><p class="hint">El peso decide qué tan seguido sale cada rareza. Un peso de 60 contra 3 significa que la primera sale unas 20 veces más. La lista va de la más común a la más rara.</p>
+    ${Object.keys(d.rarities).map(k => `<div class="arow na" data-ri="${esc(k)}" style="grid-template-columns:1fr 120px 70px">
+      <input data-f="label" value="${esc(d.rarities[k].label)}" aria-label="Nombre de la rareza"><input data-f="weight" type="number" min="0" value="${d.rarities[k].weight}" aria-label="Peso"><input data-f="color" type="color" value="${col(d.rarities[k].color, '#bbbbbb').slice(0, 7)}" aria-label="Color"></div>`).join('')}</div>
+  <div class="panel"><h3>Contraseña de administrador</h3><div class="acts"><button class="btn sm" data-act="adminPw">Cambiar contraseña</button></div></div>`;
+}
+
+/* --- pestaña publicar --- */
+function tabPublish(){
+  return `<div class="panel"><h3>Publicar cambios</h3>
+    <p class="hint">GitHub Pages solo sirve archivos, así que los jugadores leen todo desde <b>data.json</b>. Para que vean tus cambios (sobres nuevos, pegatinas, jugadores):</p>
+    <p class="hint">1. Descarga el archivo. 2. En tu repositorio de GitHub, entra a <b>Add file, Upload files</b> y sube <b>data.json</b> (reemplaza el anterior). 3. Espera uno o dos minutos y pídeles que recarguen la página.</p>
+    <div class="acts"><button class="btn" data-act="dl">⬇ Descargar data.json</button><button class="btn ghost sm" data-act="copyJson">Copiar JSON</button><button class="mini warn" data-act="discard">Descartar borrador</button></div></div>
+  <div class="panel"><h3>Vista previa del archivo</h3><textarea class="code" readonly>${esc(JSON.stringify(A.d, null, 2))}</textarea></div>`;
+}
+
+init();
+})();
+</script>
+</body>
+</html>

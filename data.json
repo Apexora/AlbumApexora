@@ -1,0 +1,429 @@
+{
+  "title": "Álbum de Apexora",
+  "kdf": 100000,
+  "packSize": 5,
+  "adminAuth": {
+    "salt": "d5a65389309a0723130e613f",
+    "hash": "742da92f2bc63b9db77b1d9f7e82a9d58bd8d21fa0b4785fa1709ee1fdb026c9"
+  },
+  "rarities": {
+    "comun": {
+      "label": "Común",
+      "weight": 62,
+      "color": "#b9c2cc"
+    },
+    "rara": {
+      "label": "Rara",
+      "weight": 25,
+      "color": "#4aa3ff"
+    },
+    "epica": {
+      "label": "Épica",
+      "weight": 10,
+      "color": "#b46bff"
+    },
+    "legendaria": {
+      "label": "Legendaria",
+      "weight": 3,
+      "color": "#ffc93c"
+    }
+  },
+  "nations": [
+    {
+      "id": "solaria",
+      "name": "Solaria",
+      "emoji": "☀️",
+      "color": "#e0a52b",
+      "motto": "Donde el amanecer nunca pide permiso"
+    },
+    {
+      "id": "umbrath",
+      "name": "Umbrath",
+      "emoji": "🌑",
+      "color": "#7a4fb5",
+      "motto": "Lo que se calla también gobierna"
+    },
+    {
+      "id": "verdania",
+      "name": "Verdania",
+      "emoji": "🌿",
+      "color": "#3f9a5a",
+      "motto": "Cada raíz recuerda su promesa"
+    },
+    {
+      "id": "marenor",
+      "name": "Marenor",
+      "emoji": "🌊",
+      "color": "#2a8db8",
+      "motto": "La marea vuelve, siempre vuelve"
+    },
+    {
+      "id": "ferrox",
+      "name": "Ferrox",
+      "emoji": "⚒️",
+      "color": "#b5483a",
+      "motto": "Forjado en fuego, firmado en hierro"
+    },
+    {
+      "id": "aeris",
+      "name": "Aeris",
+      "emoji": "🌬️",
+      "color": "#5aa9d6",
+      "motto": "Sin muros, solo horizonte"
+    }
+  ],
+  "stickers": [
+    {
+      "id": "solaria-001",
+      "nation": "solaria",
+      "name": "Guardia del Alba",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "solaria-002",
+      "nation": "solaria",
+      "name": "Mercado Dorado",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "solaria-003",
+      "nation": "solaria",
+      "name": "Caravana Ámbar",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "solaria-004",
+      "nation": "solaria",
+      "name": "Sacerdotisa Solar",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "solaria-005",
+      "nation": "solaria",
+      "name": "Faro de Aurora",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "solaria-006",
+      "nation": "solaria",
+      "name": "Templo del Zénit",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "solaria-007",
+      "nation": "solaria",
+      "name": "Reina Radiante",
+      "rarity": "epica",
+      "image": ""
+    },
+    {
+      "id": "solaria-008",
+      "nation": "solaria",
+      "name": "El Sol Eterno",
+      "rarity": "legendaria",
+      "image": ""
+    },
+    {
+      "id": "umbrath-001",
+      "nation": "umbrath",
+      "name": "Vigía Silente",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "umbrath-002",
+      "nation": "umbrath",
+      "name": "Bazar de Sombras",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "umbrath-003",
+      "nation": "umbrath",
+      "name": "Cripta Lunar",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "umbrath-004",
+      "nation": "umbrath",
+      "name": "Tejedora de Velos",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "umbrath-005",
+      "nation": "umbrath",
+      "name": "Puerta Nocturna",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "umbrath-006",
+      "nation": "umbrath",
+      "name": "Archivo Oculto",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "umbrath-007",
+      "nation": "umbrath",
+      "name": "Regente Eclipse",
+      "rarity": "epica",
+      "image": ""
+    },
+    {
+      "id": "umbrath-008",
+      "nation": "umbrath",
+      "name": "El Vacío Coronado",
+      "rarity": "legendaria",
+      "image": ""
+    },
+    {
+      "id": "verdania-001",
+      "nation": "verdania",
+      "name": "Guardabosques",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "verdania-002",
+      "nation": "verdania",
+      "name": "Mercado de Savia",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "verdania-003",
+      "nation": "verdania",
+      "name": "Puente Viviente",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "verdania-004",
+      "nation": "verdania",
+      "name": "Druida del Musgo",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "verdania-005",
+      "nation": "verdania",
+      "name": "Claro Ancestral",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "verdania-006",
+      "nation": "verdania",
+      "name": "Jardín Colgante",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "verdania-007",
+      "nation": "verdania",
+      "name": "Madre Raíz",
+      "rarity": "epica",
+      "image": ""
+    },
+    {
+      "id": "verdania-008",
+      "nation": "verdania",
+      "name": "El Gran Roble",
+      "rarity": "legendaria",
+      "image": ""
+    },
+    {
+      "id": "marenor-001",
+      "nation": "marenor",
+      "name": "Marinero del Alba",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "marenor-002",
+      "nation": "marenor",
+      "name": "Puerto de Coral",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "marenor-003",
+      "nation": "marenor",
+      "name": "Faro de Espuma",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "marenor-004",
+      "nation": "marenor",
+      "name": "Cantora de Mareas",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "marenor-005",
+      "nation": "marenor",
+      "name": "Isla Sumergida",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "marenor-006",
+      "nation": "marenor",
+      "name": "Flota Perlada",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "marenor-007",
+      "nation": "marenor",
+      "name": "Almirante Abismo",
+      "rarity": "epica",
+      "image": ""
+    },
+    {
+      "id": "marenor-008",
+      "nation": "marenor",
+      "name": "Leviatán Sereno",
+      "rarity": "legendaria",
+      "image": ""
+    },
+    {
+      "id": "ferrox-001",
+      "nation": "ferrox",
+      "name": "Herrero Novato",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "ferrox-002",
+      "nation": "ferrox",
+      "name": "Mercado de Chispas",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "ferrox-003",
+      "nation": "ferrox",
+      "name": "Yunque Ardiente",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "ferrox-004",
+      "nation": "ferrox",
+      "name": "Maestra Forjadora",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "ferrox-005",
+      "nation": "ferrox",
+      "name": "Fundición Central",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "ferrox-006",
+      "nation": "ferrox",
+      "name": "Muralla de Acero",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "ferrox-007",
+      "nation": "ferrox",
+      "name": "Señor del Hierro",
+      "rarity": "epica",
+      "image": ""
+    },
+    {
+      "id": "ferrox-008",
+      "nation": "ferrox",
+      "name": "El Coloso Rojo",
+      "rarity": "legendaria",
+      "image": ""
+    },
+    {
+      "id": "aeris-001",
+      "nation": "aeris",
+      "name": "Mensajero del Viento",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "aeris-002",
+      "nation": "aeris",
+      "name": "Mercado Flotante",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "aeris-003",
+      "nation": "aeris",
+      "name": "Velero de Nubes",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "aeris-004",
+      "nation": "aeris",
+      "name": "Tejedora de Brisas",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "aeris-005",
+      "nation": "aeris",
+      "name": "Torre Cirrus",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "aeris-006",
+      "nation": "aeris",
+      "name": "Archipiélago Alto",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "aeris-007",
+      "nation": "aeris",
+      "name": "Reina Tormenta",
+      "rarity": "epica",
+      "image": ""
+    },
+    {
+      "id": "aeris-008",
+      "nation": "aeris",
+      "name": "El Gran Albatros",
+      "rarity": "legendaria",
+      "image": ""
+    }
+  ],
+  "players": [
+    {
+      "id": "demo",
+      "name": "Demo",
+      "salt": "83798bcf9e1e7a015cf64cd4",
+      "hash": "66cb469a5a8b99de1bca6862fcf234ee0b0a93a9cddc8521464e32193499e5bf",
+      "packs": 3
+    },
+    {
+      "id": "aria",
+      "name": "Aria",
+      "salt": "0df4a4e515204dc8332ba4ec",
+      "hash": "c66ca2556d3f374073746167f448023370156af1ff6626a80fdf0786b3c31c3d",
+      "packs": 1
+    }
+  ]
+}

@@ -162,7 +162,7 @@
       "nation": "sinfalia",
       "name": "Seilá Anamé",
       "rarity": "comun",
-      "image": "stickers/Seila-Aname.png"
+      "image": "stickers/Seilá-Anamé.png"
     },
     {
       "id": "umbra-003",
@@ -1977,14 +1977,14 @@
       "name": "Demo",
       "salt": "83798bcf9e1e7a015cf64cd4",
       "hash": "66cb469a5a8b99de1bca6862fcf234ee0b0a93a9cddc8521464e32193499e5bf",
-      "packs": 1
+      "packs": 31
     },
     {
       "id": "aria",
       "name": "Aria",
       "salt": "0df4a4e515204dc8332ba4ec",
       "hash": "c66ca2556d3f374073746167f448023370156af1ff6626a80fdf0786b3c31c3d",
-      "packs": 1
+      "packs": 31
     }
   ]
 }

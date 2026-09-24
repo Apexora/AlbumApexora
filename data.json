@@ -30,6 +30,13 @@
   },
   "nations": [
     {
+      "id": "objetos",
+      "name": "Objetos",
+      "emoji": "🪨",
+      "color": "#fef9be",
+      "motto": ""
+    },
+    {
       "id": "umbra",
       "name": "Umbra",
       "emoji": "⚔️",
@@ -2019,7 +2026,7 @@
       "name": "Demo",
       "salt": "83798bcf9e1e7a015cf64cd4",
       "hash": "66cb469a5a8b99de1bca6862fcf234ee0b0a93a9cddc8521464e32193499e5bf",
-      "packs": 3
+      "packs": 1
     },
     {
       "id": "aria",

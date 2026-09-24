@@ -30,382 +30,1985 @@
   },
   "nations": [
     {
-      "id": "solaria",
-      "name": "Solaria",
-      "emoji": "☀️",
-      "color": "#e0a52b",
-      "motto": "Donde el amanecer nunca pide permiso"
+      "id": "umbra",
+      "name": "Umbra",
+      "emoji": "⚔️",
+      "color": "#8a1c1c",
+      "motto": "La paz es solo la guerra que aún no ha empezado"
     },
     {
-      "id": "umbrath",
-      "name": "Umbrath",
-      "emoji": "🌑",
-      "color": "#7a4fb5",
-      "motto": "Lo que se calla también gobierna"
+      "id": "luminarae",
+      "name": "Luminarae",
+      "emoji": "🕊️",
+      "color": "#e8b923",
+      "motto": "Donde la fe se viste de oro"
     },
     {
-      "id": "verdania",
-      "name": "Verdania",
-      "emoji": "🌿",
-      "color": "#3f9a5a",
-      "motto": "Cada raíz recuerda su promesa"
+      "id": "luxor",
+      "name": "Luxor",
+      "emoji": "🔮",
+      "color": "#9b6fd1",
+      "motto": "Los dioses susurran, solo algunos escuchan"
     },
     {
-      "id": "marenor",
-      "name": "Marenor",
-      "emoji": "🌊",
-      "color": "#2a8db8",
-      "motto": "La marea vuelve, siempre vuelve"
+      "id": "lumis",
+      "name": "Lumis",
+      "emoji": "🤖",
+      "color": "#6fa8c9",
+      "motto": "El futuro ya fue calculado"
     },
     {
-      "id": "ferrox",
-      "name": "Ferrox",
-      "emoji": "⚒️",
-      "color": "#b5483a",
-      "motto": "Forjado en fuego, firmado en hierro"
+      "id": "arboris",
+      "name": "Arboris",
+      "emoji": "🌳",
+      "color": "#3f7a4a",
+      "motto": "Cada raíz guarda un hechizo antiguo"
     },
     {
-      "id": "aeris",
-      "name": "Aeris",
-      "emoji": "🌬️",
-      "color": "#5aa9d6",
-      "motto": "Sin muros, solo horizonte"
+      "id": "skaldrum",
+      "name": "Skaldrum",
+      "emoji": "🏰",
+      "color": "#d9821b",
+      "motto": "El honor se hereda, la tierra se defiende"
+    },
+    {
+      "id": "boro",
+      "name": "Boro",
+      "emoji": "🕶️",
+      "color": "#7c3aed",
+      "motto": "Todo se vende, todo se esconde"
+    },
+    {
+      "id": "markivton",
+      "name": "Markivton",
+      "emoji": "⚓",
+      "color": "#a85c32",
+      "motto": "Ningún puerto es ajeno al que comercia bien"
+    },
+    {
+      "id": "negatt",
+      "name": "Negatt",
+      "emoji": "💀",
+      "color": "#3b1655",
+      "motto": "La muerte también tiene reino"
+    },
+    {
+      "id": "tribus-skaldrak",
+      "name": "Tribus Skaldrak",
+      "emoji": "🏔️",
+      "color": "#8fd1e0",
+      "motto": "El frío templa lo que el fuego no puede"
+    },
+    {
+      "id": "sinfalia",
+      "name": "Sinfalía",
+      "emoji": "🎉",
+      "color": "#29c7c7",
+      "motto": "Nadie gobierna la alegría"
+    },
+    {
+      "id": "pongi",
+      "name": "Pongí",
+      "emoji": "🎀",
+      "color": "#e0529b",
+      "motto": "Siempre joven, siempre en orden"
+    },
+    {
+      "id": "disnjav",
+      "name": "Disnjav",
+      "emoji": "☣️",
+      "color": "#8a9a3b",
+      "motto": "Respira hondo, si puedes"
+    },
+    {
+      "id": "presidio-de-krahn",
+      "name": "Presidio de Krahn",
+      "emoji": "🔇",
+      "color": "#5c6f7e",
+      "motto": "El silencio también es una frontera"
+    },
+    {
+      "id": "urdimbre-de-sylvaris",
+      "name": "La Urdimbre de Sylvaris",
+      "emoji": "🕸️",
+      "color": "#33517a",
+      "motto": "Los ancestros nunca dejaron de opinar"
+    },
+    {
+      "id": "ostraca",
+      "name": "Ostraca",
+      "emoji": "🏺",
+      "color": "#b5432f",
+      "motto": "Ningún clon comete el mismo error dos veces"
+    },
+    {
+      "id": "dioses",
+      "name": "Dioses",
+      "emoji": "🌌",
+      "color": "#d9c46a",
+      "motto": "Antes de las naciones, ya había dioses"
     }
   ],
   "stickers": [
     {
-      "id": "solaria-001",
-      "nation": "solaria",
-      "name": "Guardia del Alba",
+      "id": "umbra-001",
+      "nation": "umbra",
+      "name": "Soldado Raso",
       "rarity": "comun",
       "image": ""
     },
     {
-      "id": "solaria-002",
-      "nation": "solaria",
-      "name": "Mercado Dorado",
+      "id": "umbra-002",
+      "nation": "umbra",
+      "name": "Cuartel de Hierro",
       "rarity": "comun",
       "image": ""
     },
     {
-      "id": "solaria-003",
-      "nation": "solaria",
-      "name": "Caravana Ámbar",
+      "id": "umbra-003",
+      "nation": "umbra",
+      "name": "Verdugo de Frontera",
       "rarity": "comun",
       "image": ""
     },
     {
-      "id": "solaria-004",
-      "nation": "solaria",
-      "name": "Sacerdotisa Solar",
+      "id": "umbra-004",
+      "nation": "umbra",
+      "name": "Herrero de Guerra",
       "rarity": "comun",
       "image": ""
     },
     {
-      "id": "solaria-005",
-      "nation": "solaria",
-      "name": "Faro de Aurora",
+      "id": "umbra-005",
+      "nation": "umbra",
+      "name": "Estandarte Carmesí",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "umbra-006",
+      "nation": "umbra",
+      "name": "Patrulla Nocturna",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "umbra-007",
+      "nation": "umbra",
+      "name": "Fragua de Sangre",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "umbra-008",
+      "nation": "umbra",
+      "name": "Reclutador Brutal",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "umbra-009",
+      "nation": "umbra",
+      "name": "Legión de Ceniza",
       "rarity": "rara",
       "image": ""
     },
     {
-      "id": "solaria-006",
-      "nation": "solaria",
-      "name": "Templo del Zénit",
+      "id": "umbra-010",
+      "nation": "umbra",
+      "name": "Fortaleza Negra",
       "rarity": "rara",
       "image": ""
     },
     {
-      "id": "solaria-007",
-      "nation": "solaria",
-      "name": "Reina Radiante",
+      "id": "umbra-011",
+      "nation": "umbra",
+      "name": "General Cicatrizado",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "umbra-012",
+      "nation": "umbra",
+      "name": "Muralla Quebrantada",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "umbra-013",
+      "nation": "umbra",
+      "name": "Mariscal de la Conquista",
       "rarity": "epica",
       "image": ""
     },
     {
-      "id": "solaria-008",
-      "nation": "solaria",
-      "name": "El Sol Eterno",
+      "id": "umbra-014",
+      "nation": "umbra",
+      "name": "Verdugo Supremo",
+      "rarity": "epica",
+      "image": ""
+    },
+    {
+      "id": "umbra-015",
+      "nation": "umbra",
+      "name": "El Tirano Eterno",
       "rarity": "legendaria",
       "image": ""
     },
     {
-      "id": "umbrath-001",
-      "nation": "umbrath",
-      "name": "Vigía Silente",
-      "rarity": "comun",
-      "image": ""
-    },
-    {
-      "id": "umbrath-002",
-      "nation": "umbrath",
-      "name": "Bazar de Sombras",
-      "rarity": "comun",
-      "image": ""
-    },
-    {
-      "id": "umbrath-003",
-      "nation": "umbrath",
-      "name": "Cripta Lunar",
-      "rarity": "comun",
-      "image": ""
-    },
-    {
-      "id": "umbrath-004",
-      "nation": "umbrath",
-      "name": "Tejedora de Velos",
-      "rarity": "comun",
-      "image": ""
-    },
-    {
-      "id": "umbrath-005",
-      "nation": "umbrath",
-      "name": "Puerta Nocturna",
-      "rarity": "rara",
-      "image": ""
-    },
-    {
-      "id": "umbrath-006",
-      "nation": "umbrath",
-      "name": "Archivo Oculto",
-      "rarity": "rara",
-      "image": ""
-    },
-    {
-      "id": "umbrath-007",
-      "nation": "umbrath",
-      "name": "Regente Eclipse",
-      "rarity": "epica",
-      "image": ""
-    },
-    {
-      "id": "umbrath-008",
-      "nation": "umbrath",
-      "name": "El Vacío Coronado",
+      "id": "umbra-016",
+      "nation": "umbra",
+      "name": "Corona de Guerra",
       "rarity": "legendaria",
       "image": ""
     },
     {
-      "id": "verdania-001",
-      "nation": "verdania",
-      "name": "Guardabosques",
+      "id": "luminarae-001",
+      "nation": "luminarae",
+      "name": "Peregrino de Luz",
       "rarity": "comun",
       "image": ""
     },
     {
-      "id": "verdania-002",
-      "nation": "verdania",
-      "name": "Mercado de Savia",
+      "id": "luminarae-002",
+      "nation": "luminarae",
+      "name": "Templo del Alba",
       "rarity": "comun",
       "image": ""
     },
     {
-      "id": "verdania-003",
-      "nation": "verdania",
-      "name": "Puente Viviente",
+      "id": "luminarae-003",
+      "nation": "luminarae",
+      "name": "Coro Sagrado",
       "rarity": "comun",
       "image": ""
     },
     {
-      "id": "verdania-004",
-      "nation": "verdania",
-      "name": "Druida del Musgo",
+      "id": "luminarae-004",
+      "nation": "luminarae",
+      "name": "Escriba Celestial",
       "rarity": "comun",
       "image": ""
     },
     {
-      "id": "verdania-005",
-      "nation": "verdania",
-      "name": "Claro Ancestral",
+      "id": "luminarae-005",
+      "nation": "luminarae",
+      "name": "Mercado de Ofrendas",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "luminarae-006",
+      "nation": "luminarae",
+      "name": "Monje Itinerante",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "luminarae-007",
+      "nation": "luminarae",
+      "name": "Capilla del Amanecer",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "luminarae-008",
+      "nation": "luminarae",
+      "name": "Portador de Reliquias",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "luminarae-009",
+      "nation": "luminarae",
+      "name": "Santuario Radiante",
       "rarity": "rara",
       "image": ""
     },
     {
-      "id": "verdania-006",
-      "nation": "verdania",
-      "name": "Jardín Colgante",
+      "id": "luminarae-010",
+      "nation": "luminarae",
+      "name": "Concilio de Videntes",
       "rarity": "rara",
       "image": ""
     },
     {
-      "id": "verdania-007",
-      "nation": "verdania",
-      "name": "Madre Raíz",
+      "id": "luminarae-011",
+      "nation": "luminarae",
+      "name": "Vitral Eterno",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "luminarae-012",
+      "nation": "luminarae",
+      "name": "Profeta Dorado",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "luminarae-013",
+      "nation": "luminarae",
+      "name": "Sumo Sacerdote",
       "rarity": "epica",
       "image": ""
     },
     {
-      "id": "verdania-008",
-      "nation": "verdania",
-      "name": "El Gran Roble",
+      "id": "luminarae-014",
+      "nation": "luminarae",
+      "name": "Custodio del Cielo",
+      "rarity": "epica",
+      "image": ""
+    },
+    {
+      "id": "luminarae-015",
+      "nation": "luminarae",
+      "name": "El Coro Divino",
       "rarity": "legendaria",
       "image": ""
     },
     {
-      "id": "marenor-001",
-      "nation": "marenor",
-      "name": "Marinero del Alba",
-      "rarity": "comun",
-      "image": ""
-    },
-    {
-      "id": "marenor-002",
-      "nation": "marenor",
-      "name": "Puerto de Coral",
-      "rarity": "comun",
-      "image": ""
-    },
-    {
-      "id": "marenor-003",
-      "nation": "marenor",
-      "name": "Faro de Espuma",
-      "rarity": "comun",
-      "image": ""
-    },
-    {
-      "id": "marenor-004",
-      "nation": "marenor",
-      "name": "Cantora de Mareas",
-      "rarity": "comun",
-      "image": ""
-    },
-    {
-      "id": "marenor-005",
-      "nation": "marenor",
-      "name": "Isla Sumergida",
-      "rarity": "rara",
-      "image": ""
-    },
-    {
-      "id": "marenor-006",
-      "nation": "marenor",
-      "name": "Flota Perlada",
-      "rarity": "rara",
-      "image": ""
-    },
-    {
-      "id": "marenor-007",
-      "nation": "marenor",
-      "name": "Almirante Abismo",
-      "rarity": "epica",
-      "image": ""
-    },
-    {
-      "id": "marenor-008",
-      "nation": "marenor",
-      "name": "Leviatán Sereno",
+      "id": "luminarae-016",
+      "nation": "luminarae",
+      "name": "Corona de Luminarae",
       "rarity": "legendaria",
       "image": ""
     },
     {
-      "id": "ferrox-001",
-      "nation": "ferrox",
-      "name": "Herrero Novato",
+      "id": "luxor-001",
+      "nation": "luxor",
+      "name": "Guardián del Umbral",
       "rarity": "comun",
       "image": ""
     },
     {
-      "id": "ferrox-002",
-      "nation": "ferrox",
-      "name": "Mercado de Chispas",
+      "id": "luxor-002",
+      "nation": "luxor",
+      "name": "Bazar de Amuletos",
       "rarity": "comun",
       "image": ""
     },
     {
-      "id": "ferrox-003",
-      "nation": "ferrox",
-      "name": "Yunque Ardiente",
+      "id": "luxor-003",
+      "nation": "luxor",
+      "name": "Escriba de Misterios",
       "rarity": "comun",
       "image": ""
     },
     {
-      "id": "ferrox-004",
-      "nation": "ferrox",
-      "name": "Maestra Forjadora",
+      "id": "luxor-004",
+      "nation": "luxor",
+      "name": "Oráculo Menor",
       "rarity": "comun",
       "image": ""
     },
     {
-      "id": "ferrox-005",
-      "nation": "ferrox",
-      "name": "Fundición Central",
+      "id": "luxor-005",
+      "nation": "luxor",
+      "name": "Jardín de Incienso",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "luxor-006",
+      "nation": "luxor",
+      "name": "Portador de Velos",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "luxor-007",
+      "nation": "luxor",
+      "name": "Aprendiz Arcano",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "luxor-008",
+      "nation": "luxor",
+      "name": "Vigilante del Templo",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "luxor-009",
+      "nation": "luxor",
+      "name": "Pirámide de Cristal",
       "rarity": "rara",
       "image": ""
     },
     {
-      "id": "ferrox-006",
-      "nation": "ferrox",
-      "name": "Muralla de Acero",
+      "id": "luxor-010",
+      "nation": "luxor",
+      "name": "Cámara de los Ecos",
       "rarity": "rara",
       "image": ""
     },
     {
-      "id": "ferrox-007",
-      "nation": "ferrox",
-      "name": "Señor del Hierro",
+      "id": "luxor-011",
+      "nation": "luxor",
+      "name": "Vidente Enmascarado",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "luxor-012",
+      "nation": "luxor",
+      "name": "Biblioteca Prohibida",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "luxor-013",
+      "nation": "luxor",
+      "name": "Sacerdotisa de los Velos",
       "rarity": "epica",
       "image": ""
     },
     {
-      "id": "ferrox-008",
-      "nation": "ferrox",
-      "name": "El Coloso Rojo",
+      "id": "luxor-014",
+      "nation": "luxor",
+      "name": "Guardián del Enigma",
+      "rarity": "epica",
+      "image": ""
+    },
+    {
+      "id": "luxor-015",
+      "nation": "luxor",
+      "name": "El Ojo que Todo lo Ve",
       "rarity": "legendaria",
       "image": ""
     },
     {
-      "id": "aeris-001",
-      "nation": "aeris",
-      "name": "Mensajero del Viento",
+      "id": "luxor-016",
+      "nation": "luxor",
+      "name": "Trono de los Misterios",
+      "rarity": "legendaria",
+      "image": ""
+    },
+    {
+      "id": "lumis-001",
+      "nation": "lumis",
+      "name": "Técnico de Circuitos",
       "rarity": "comun",
       "image": ""
     },
     {
-      "id": "aeris-002",
-      "nation": "aeris",
-      "name": "Mercado Flotante",
+      "id": "lumis-002",
+      "nation": "lumis",
+      "name": "Dron Mensajero",
       "rarity": "comun",
       "image": ""
     },
     {
-      "id": "aeris-003",
-      "nation": "aeris",
-      "name": "Velero de Nubes",
+      "id": "lumis-003",
+      "nation": "lumis",
+      "name": "Mercado de Chips",
       "rarity": "comun",
       "image": ""
     },
     {
-      "id": "aeris-004",
-      "nation": "aeris",
-      "name": "Tejedora de Brisas",
+      "id": "lumis-004",
+      "nation": "lumis",
+      "name": "Ingeniera Junior",
       "rarity": "comun",
       "image": ""
     },
     {
-      "id": "aeris-005",
-      "nation": "aeris",
-      "name": "Torre Cirrus",
+      "id": "lumis-005",
+      "nation": "lumis",
+      "name": "Torre de Datos",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "lumis-006",
+      "nation": "lumis",
+      "name": "Autómata Doméstico",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "lumis-007",
+      "nation": "lumis",
+      "name": "Calle de Neón",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "lumis-008",
+      "nation": "lumis",
+      "name": "Analista de Redes",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "lumis-009",
+      "nation": "lumis",
+      "name": "Núcleo Cuántico",
       "rarity": "rara",
       "image": ""
     },
     {
-      "id": "aeris-006",
-      "nation": "aeris",
-      "name": "Archipiélago Alto",
+      "id": "lumis-010",
+      "nation": "lumis",
+      "name": "Enjambre de Drones",
       "rarity": "rara",
       "image": ""
     },
     {
-      "id": "aeris-007",
-      "nation": "aeris",
-      "name": "Reina Tormenta",
+      "id": "lumis-011",
+      "nation": "lumis",
+      "name": "Arquitecta de IA",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "lumis-012",
+      "nation": "lumis",
+      "name": "Servidor Central",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "lumis-013",
+      "nation": "lumis",
+      "name": "Inteligencia Suprema",
       "rarity": "epica",
       "image": ""
     },
     {
-      "id": "aeris-008",
-      "nation": "aeris",
-      "name": "El Gran Albatros",
+      "id": "lumis-014",
+      "nation": "lumis",
+      "name": "Directora del Núcleo",
+      "rarity": "epica",
+      "image": ""
+    },
+    {
+      "id": "lumis-015",
+      "nation": "lumis",
+      "name": "La Singularidad",
+      "rarity": "legendaria",
+      "image": ""
+    },
+    {
+      "id": "lumis-016",
+      "nation": "lumis",
+      "name": "El Oráculo de Silicio",
+      "rarity": "legendaria",
+      "image": ""
+    },
+    {
+      "id": "arboris-001",
+      "nation": "arboris",
+      "name": "Guardabosques Feérico",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "arboris-002",
+      "nation": "arboris",
+      "name": "Mercado de Musgo",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "arboris-003",
+      "nation": "arboris",
+      "name": "Susurro de Hojas",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "arboris-004",
+      "nation": "arboris",
+      "name": "Aprendiz de Druida",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "arboris-005",
+      "nation": "arboris",
+      "name": "Puente de Raíces",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "arboris-006",
+      "nation": "arboris",
+      "name": "Recolectora de Savia",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "arboris-007",
+      "nation": "arboris",
+      "name": "Senda Encantada",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "arboris-008",
+      "nation": "arboris",
+      "name": "Centinela de Corteza",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "arboris-009",
+      "nation": "arboris",
+      "name": "Bosque Durmiente",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "arboris-010",
+      "nation": "arboris",
+      "name": "Círculo de Hadas",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "arboris-011",
+      "nation": "arboris",
+      "name": "Árbol de los Ecos",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "arboris-012",
+      "nation": "arboris",
+      "name": "Claro Sagrado",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "arboris-013",
+      "nation": "arboris",
+      "name": "Archidruida",
+      "rarity": "epica",
+      "image": ""
+    },
+    {
+      "id": "arboris-014",
+      "nation": "arboris",
+      "name": "Guardiana del Bosque Eterno",
+      "rarity": "epica",
+      "image": ""
+    },
+    {
+      "id": "arboris-015",
+      "nation": "arboris",
+      "name": "El Corazón del Bosque",
+      "rarity": "legendaria",
+      "image": ""
+    },
+    {
+      "id": "arboris-016",
+      "nation": "arboris",
+      "name": "La Voz de las Raíces",
+      "rarity": "legendaria",
+      "image": ""
+    },
+    {
+      "id": "skaldrum-001",
+      "nation": "skaldrum",
+      "name": "Siervo del Feudo",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "skaldrum-002",
+      "nation": "skaldrum",
+      "name": "Mercado del Vasallo",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "skaldrum-003",
+      "nation": "skaldrum",
+      "name": "Escudero Novato",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "skaldrum-004",
+      "nation": "skaldrum",
+      "name": "Guardia del Castillo",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "skaldrum-005",
+      "nation": "skaldrum",
+      "name": "Campesino Leal",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "skaldrum-006",
+      "nation": "skaldrum",
+      "name": "Heraldo del Barón",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "skaldrum-007",
+      "nation": "skaldrum",
+      "name": "Taberna del Camino",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "skaldrum-008",
+      "nation": "skaldrum",
+      "name": "Arquero Feudal",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "skaldrum-009",
+      "nation": "skaldrum",
+      "name": "Torre del Señorío",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "skaldrum-010",
+      "nation": "skaldrum",
+      "name": "Torneo de Otoño",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "skaldrum-011",
+      "nation": "skaldrum",
+      "name": "Caballero Jurado",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "skaldrum-012",
+      "nation": "skaldrum",
+      "name": "Salón del Trono",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "skaldrum-013",
+      "nation": "skaldrum",
+      "name": "Barón de Hierro",
+      "rarity": "epica",
+      "image": ""
+    },
+    {
+      "id": "skaldrum-014",
+      "nation": "skaldrum",
+      "name": "Comandante del Feudo",
+      "rarity": "epica",
+      "image": ""
+    },
+    {
+      "id": "skaldrum-015",
+      "nation": "skaldrum",
+      "name": "El Rey de Skaldrum",
+      "rarity": "legendaria",
+      "image": ""
+    },
+    {
+      "id": "skaldrum-016",
+      "nation": "skaldrum",
+      "name": "Corona Feudal",
+      "rarity": "legendaria",
+      "image": ""
+    },
+    {
+      "id": "boro-001",
+      "nation": "boro",
+      "name": "Contrabandista Novato",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "boro-002",
+      "nation": "boro",
+      "name": "Mercado Negro",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "boro-003",
+      "nation": "boro",
+      "name": "Traficante de Chips",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "boro-004",
+      "nation": "boro",
+      "name": "Informante Callejero",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "boro-005",
+      "nation": "boro",
+      "name": "Taller Clandestino",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "boro-006",
+      "nation": "boro",
+      "name": "Mensajero Encriptado",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "boro-007",
+      "nation": "boro",
+      "name": "Callejón de Neón",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "boro-008",
+      "nation": "boro",
+      "name": "Guardia Sobornado",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "boro-009",
+      "nation": "boro",
+      "name": "Almacén Fantasma",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "boro-010",
+      "nation": "boro",
+      "name": "Red Pirata",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "boro-011",
+      "nation": "boro",
+      "name": "Jefe de Distrito",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "boro-012",
+      "nation": "boro",
+      "name": "Subasta Ilegal",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "boro-013",
+      "nation": "boro",
+      "name": "Padrino de Boro",
+      "rarity": "epica",
+      "image": ""
+    },
+    {
+      "id": "boro-014",
+      "nation": "boro",
+      "name": "Reina del Mercado Negro",
+      "rarity": "epica",
+      "image": ""
+    },
+    {
+      "id": "boro-015",
+      "nation": "boro",
+      "name": "El Cartel Sin Nombre",
+      "rarity": "legendaria",
+      "image": ""
+    },
+    {
+      "id": "boro-016",
+      "nation": "boro",
+      "name": "El Código Prohibido",
+      "rarity": "legendaria",
+      "image": ""
+    },
+    {
+      "id": "markivton-001",
+      "nation": "markivton",
+      "name": "Estibador del Puerto",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "markivton-002",
+      "nation": "markivton",
+      "name": "Mercado de Especias",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "markivton-003",
+      "nation": "markivton",
+      "name": "Marinero Novato",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "markivton-004",
+      "nation": "markivton",
+      "name": "Cambista Portuario",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "markivton-005",
+      "nation": "markivton",
+      "name": "Taberna del Muelle",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "markivton-006",
+      "nation": "markivton",
+      "name": "Cartógrafo Menor",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "markivton-007",
+      "nation": "markivton",
+      "name": "Barcaza Comercial",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "markivton-008",
+      "nation": "markivton",
+      "name": "Aduanero del Puerto",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "markivton-009",
+      "nation": "markivton",
+      "name": "Flota Mercante",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "markivton-010",
+      "nation": "markivton",
+      "name": "Faro de Markivton",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "markivton-011",
+      "nation": "markivton",
+      "name": "Capitana Comerciante",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "markivton-012",
+      "nation": "markivton",
+      "name": "Ruta de las Sedas",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "markivton-013",
+      "nation": "markivton",
+      "name": "Almirante del Comercio",
+      "rarity": "epica",
+      "image": ""
+    },
+    {
+      "id": "markivton-014",
+      "nation": "markivton",
+      "name": "Gran Armador",
+      "rarity": "epica",
+      "image": ""
+    },
+    {
+      "id": "markivton-015",
+      "nation": "markivton",
+      "name": "El Galeón Dorado",
+      "rarity": "legendaria",
+      "image": ""
+    },
+    {
+      "id": "markivton-016",
+      "nation": "markivton",
+      "name": "El Señor de los Puertos",
+      "rarity": "legendaria",
+      "image": ""
+    },
+    {
+      "id": "negatt-001",
+      "nation": "negatt",
+      "name": "Aprendiz de Cripta",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "negatt-002",
+      "nation": "negatt",
+      "name": "Mercado de Huesos",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "negatt-003",
+      "nation": "negatt",
+      "name": "Sepulturero Menor",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "negatt-004",
+      "nation": "negatt",
+      "name": "Susurro de Ultratumba",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "negatt-005",
+      "nation": "negatt",
+      "name": "Vigía de la Tumba",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "negatt-006",
+      "nation": "negatt",
+      "name": "Alquimista Sombrío",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "negatt-007",
+      "nation": "negatt",
+      "name": "Cementerio Antiguo",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "negatt-008",
+      "nation": "negatt",
+      "name": "Portador de Cenizas",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "negatt-009",
+      "nation": "negatt",
+      "name": "Cripta de los Nombres",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "negatt-010",
+      "nation": "negatt",
+      "name": "Círculo Nigromante",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "negatt-011",
+      "nation": "negatt",
+      "name": "Espectro Guardián",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "negatt-012",
+      "nation": "negatt",
+      "name": "Altar de las Sombras",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "negatt-013",
+      "nation": "negatt",
+      "name": "Archinigromante",
+      "rarity": "epica",
+      "image": ""
+    },
+    {
+      "id": "negatt-014",
+      "nation": "negatt",
+      "name": "Señora de los Espíritus",
+      "rarity": "epica",
+      "image": ""
+    },
+    {
+      "id": "negatt-015",
+      "nation": "negatt",
+      "name": "El Rey Sin Tumba",
+      "rarity": "legendaria",
+      "image": ""
+    },
+    {
+      "id": "negatt-016",
+      "nation": "negatt",
+      "name": "El Libro de los Muertos",
+      "rarity": "legendaria",
+      "image": ""
+    },
+    {
+      "id": "tribus-skaldrak-001",
+      "nation": "tribus-skaldrak",
+      "name": "Cazador de las Nieves",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "tribus-skaldrak-002",
+      "nation": "tribus-skaldrak",
+      "name": "Mercado de Pieles",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "tribus-skaldrak-003",
+      "nation": "tribus-skaldrak",
+      "name": "Chamán Novato",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "tribus-skaldrak-004",
+      "nation": "tribus-skaldrak",
+      "name": "Guerrero del Hielo",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "tribus-skaldrak-005",
+      "nation": "tribus-skaldrak",
+      "name": "Tienda de Cuero",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "tribus-skaldrak-006",
+      "nation": "tribus-skaldrak",
+      "name": "Guía de Montaña",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "tribus-skaldrak-007",
+      "nation": "tribus-skaldrak",
+      "name": "Tallador de Hueso",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "tribus-skaldrak-008",
+      "nation": "tribus-skaldrak",
+      "name": "Vigía del Glaciar",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "tribus-skaldrak-009",
+      "nation": "tribus-skaldrak",
+      "name": "Círculo de Piedra",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "tribus-skaldrak-010",
+      "nation": "tribus-skaldrak",
+      "name": "Cueva de los Ancestros",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "tribus-skaldrak-011",
+      "nation": "tribus-skaldrak",
+      "name": "Chamán de las Tormentas",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "tribus-skaldrak-012",
+      "nation": "tribus-skaldrak",
+      "name": "Estandarte Tribal",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "tribus-skaldrak-013",
+      "nation": "tribus-skaldrak",
+      "name": "Jefe de las Mil Cumbres",
+      "rarity": "epica",
+      "image": ""
+    },
+    {
+      "id": "tribus-skaldrak-014",
+      "nation": "tribus-skaldrak",
+      "name": "Voz de los Espíritus",
+      "rarity": "epica",
+      "image": ""
+    },
+    {
+      "id": "tribus-skaldrak-015",
+      "nation": "tribus-skaldrak",
+      "name": "El Coloso de Hielo",
+      "rarity": "legendaria",
+      "image": ""
+    },
+    {
+      "id": "tribus-skaldrak-016",
+      "nation": "tribus-skaldrak",
+      "name": "El Padre Montaña",
+      "rarity": "legendaria",
+      "image": ""
+    },
+    {
+      "id": "sinfalia-001",
+      "nation": "sinfalia",
+      "name": "Bailarín Callejero",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "sinfalia-002",
+      "nation": "sinfalia",
+      "name": "Mercado del Regalo",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "sinfalia-003",
+      "nation": "sinfalia",
+      "name": "Músico Ambulante",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "sinfalia-004",
+      "nation": "sinfalia",
+      "name": "Anfitrión de Barrio",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "sinfalia-005",
+      "nation": "sinfalia",
+      "name": "Jardín Comunal",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "sinfalia-006",
+      "nation": "sinfalia",
+      "name": "Artesano Festivo",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "sinfalia-007",
+      "nation": "sinfalia",
+      "name": "Cocinera del Pueblo",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "sinfalia-008",
+      "nation": "sinfalia",
+      "name": "Portador de Guirnaldas",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "sinfalia-009",
+      "nation": "sinfalia",
+      "name": "Plaza de la Alegría",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "sinfalia-010",
+      "nation": "sinfalia",
+      "name": "Carnaval Eterno",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "sinfalia-011",
+      "nation": "sinfalia",
+      "name": "Consejo de Vecinos",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "sinfalia-012",
+      "nation": "sinfalia",
+      "name": "Fuente de los Dones",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "sinfalia-013",
+      "nation": "sinfalia",
+      "name": "Heraldo de la Armonía",
+      "rarity": "epica",
+      "image": ""
+    },
+    {
+      "id": "sinfalia-014",
+      "nation": "sinfalia",
+      "name": "Reina del Carnaval",
+      "rarity": "epica",
+      "image": ""
+    },
+    {
+      "id": "sinfalia-015",
+      "nation": "sinfalia",
+      "name": "El Espíritu de la Fiesta",
+      "rarity": "legendaria",
+      "image": ""
+    },
+    {
+      "id": "sinfalia-016",
+      "nation": "sinfalia",
+      "name": "La Ciudad que Nunca Calla",
+      "rarity": "legendaria",
+      "image": ""
+    },
+    {
+      "id": "pongi-001",
+      "nation": "pongi",
+      "name": "Vecino Sonriente",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "pongi-002",
+      "nation": "pongi",
+      "name": "Mercado Pastel",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "pongi-003",
+      "nation": "pongi",
+      "name": "Ciclista de Barrio",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "pongi-004",
+      "nation": "pongi",
+      "name": "Peluquera Retro",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "pongi-005",
+      "nation": "pongi",
+      "name": "Quiosco de Chicles",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "pongi-006",
+      "nation": "pongi",
+      "name": "Guardia Cordial",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "pongi-007",
+      "nation": "pongi",
+      "name": "Jardín Geométrico",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "pongi-008",
+      "nation": "pongi",
+      "name": "Repartidor Alegre",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "pongi-009",
+      "nation": "pongi",
+      "name": "Plaza Perfecta",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "pongi-010",
+      "nation": "pongi",
+      "name": "Desfile de Neón",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "pongi-011",
+      "nation": "pongi",
+      "name": "Alcaldesa Eterna",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "pongi-012",
+      "nation": "pongi",
+      "name": "Torre de Caramelo",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "pongi-013",
+      "nation": "pongi",
+      "name": "Ícono de Pongí",
+      "rarity": "epica",
+      "image": ""
+    },
+    {
+      "id": "pongi-014",
+      "nation": "pongi",
+      "name": "Guardián de la Juventud",
+      "rarity": "epica",
+      "image": ""
+    },
+    {
+      "id": "pongi-015",
+      "nation": "pongi",
+      "name": "La Eterna Sonrisa",
+      "rarity": "legendaria",
+      "image": ""
+    },
+    {
+      "id": "pongi-016",
+      "nation": "pongi",
+      "name": "El Corazón Retropop",
+      "rarity": "legendaria",
+      "image": ""
+    },
+    {
+      "id": "disnjav-001",
+      "nation": "disnjav",
+      "name": "Recolector de Niebla",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "disnjav-002",
+      "nation": "disnjav",
+      "name": "Mercado Enmascarado",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "disnjav-003",
+      "nation": "disnjav",
+      "name": "Obrero de Filtros",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "disnjav-004",
+      "nation": "disnjav",
+      "name": "Vigía del Vapor",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "disnjav-005",
+      "nation": "disnjav",
+      "name": "Muelle Oxidado",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "disnjav-006",
+      "nation": "disnjav",
+      "name": "Vendedora de Máscaras",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "disnjav-007",
+      "nation": "disnjav",
+      "name": "Callejón Tóxico",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "disnjav-008",
+      "nation": "disnjav",
+      "name": "Técnico de Válvulas",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "disnjav-009",
+      "nation": "disnjav",
+      "name": "Refinería Abandonada",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "disnjav-010",
+      "nation": "disnjav",
+      "name": "Nube Permanente",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "disnjav-011",
+      "nation": "disnjav",
+      "name": "Capataz del Gas",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "disnjav-012",
+      "nation": "disnjav",
+      "name": "Campana de Alarma",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "disnjav-013",
+      "nation": "disnjav",
+      "name": "Amo de la Niebla",
+      "rarity": "epica",
+      "image": ""
+    },
+    {
+      "id": "disnjav-014",
+      "nation": "disnjav",
+      "name": "Comandante de Máscaras",
+      "rarity": "epica",
+      "image": ""
+    },
+    {
+      "id": "disnjav-015",
+      "nation": "disnjav",
+      "name": "El Vapor Eterno",
+      "rarity": "legendaria",
+      "image": ""
+    },
+    {
+      "id": "disnjav-016",
+      "nation": "disnjav",
+      "name": "El Pulmón de Disnjav",
+      "rarity": "legendaria",
+      "image": ""
+    },
+    {
+      "id": "presidio-de-krahn-001",
+      "nation": "presidio-de-krahn",
+      "name": "Cadete Silenciador",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "presidio-de-krahn-002",
+      "nation": "presidio-de-krahn",
+      "name": "Mercado del Estrecho",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "presidio-de-krahn-003",
+      "nation": "presidio-de-krahn",
+      "name": "Vigilante del Ancla",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "presidio-de-krahn-004",
+      "nation": "presidio-de-krahn",
+      "name": "Escriba del Silencio",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "presidio-de-krahn-005",
+      "nation": "presidio-de-krahn",
+      "name": "Guardia Veterana",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "presidio-de-krahn-006",
+      "nation": "presidio-de-krahn",
+      "name": "Ancla Menor",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "presidio-de-krahn-007",
+      "nation": "presidio-de-krahn",
+      "name": "Patrulla del Muelle",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "presidio-de-krahn-008",
+      "nation": "presidio-de-krahn",
+      "name": "Aprendiz Gris",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "presidio-de-krahn-009",
+      "nation": "presidio-de-krahn",
+      "name": "Ancla de Antimagia",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "presidio-de-krahn-010",
+      "nation": "presidio-de-krahn",
+      "name": "Consejo de Ancianos",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "presidio-de-krahn-011",
+      "nation": "presidio-de-krahn",
+      "name": "Silenciador Mayor",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "presidio-de-krahn-012",
+      "nation": "presidio-de-krahn",
+      "name": "Torre del Estrecho",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "presidio-de-krahn-013",
+      "nation": "presidio-de-krahn",
+      "name": "Gran Silenciador",
+      "rarity": "epica",
+      "image": ""
+    },
+    {
+      "id": "presidio-de-krahn-014",
+      "nation": "presidio-de-krahn",
+      "name": "Custodio de la Estática",
+      "rarity": "epica",
+      "image": ""
+    },
+    {
+      "id": "presidio-de-krahn-015",
+      "nation": "presidio-de-krahn",
+      "name": "La Estática Total",
+      "rarity": "legendaria",
+      "image": ""
+    },
+    {
+      "id": "presidio-de-krahn-016",
+      "nation": "presidio-de-krahn",
+      "name": "El Último Anciano",
+      "rarity": "legendaria",
+      "image": ""
+    },
+    {
+      "id": "urdimbre-de-sylvaris-001",
+      "nation": "urdimbre-de-sylvaris",
+      "name": "Brote Ancestral",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "urdimbre-de-sylvaris-002",
+      "nation": "urdimbre-de-sylvaris",
+      "name": "Mercado de Raíces",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "urdimbre-de-sylvaris-003",
+      "nation": "urdimbre-de-sylvaris",
+      "name": "Susurro de Honor",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "urdimbre-de-sylvaris-004",
+      "nation": "urdimbre-de-sylvaris",
+      "name": "Guardián Vegetal",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "urdimbre-de-sylvaris-005",
+      "nation": "urdimbre-de-sylvaris",
+      "name": "Zarcillo Mensajero",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "urdimbre-de-sylvaris-006",
+      "nation": "urdimbre-de-sylvaris",
+      "name": "Aprendiz de la Urdimbre",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "urdimbre-de-sylvaris-007",
+      "nation": "urdimbre-de-sylvaris",
+      "name": "Sendero de Espinas",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "urdimbre-de-sylvaris-008",
+      "nation": "urdimbre-de-sylvaris",
+      "name": "Portador de Semillas",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "urdimbre-de-sylvaris-009",
+      "nation": "urdimbre-de-sylvaris",
+      "name": "Cámara de los Ancestros",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "urdimbre-de-sylvaris-010",
+      "nation": "urdimbre-de-sylvaris",
+      "name": "Mente Colmena",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "urdimbre-de-sylvaris-011",
+      "nation": "urdimbre-de-sylvaris",
+      "name": "Enredadera Sagrada",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "urdimbre-de-sylvaris-012",
+      "nation": "urdimbre-de-sylvaris",
+      "name": "Consejo Incorpóreo",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "urdimbre-de-sylvaris-013",
+      "nation": "urdimbre-de-sylvaris",
+      "name": "Voz de los Ancestros",
+      "rarity": "epica",
+      "image": ""
+    },
+    {
+      "id": "urdimbre-de-sylvaris-014",
+      "nation": "urdimbre-de-sylvaris",
+      "name": "Tejedora Mayor",
+      "rarity": "epica",
+      "image": ""
+    },
+    {
+      "id": "urdimbre-de-sylvaris-015",
+      "nation": "urdimbre-de-sylvaris",
+      "name": "La Urdimbre Eterna",
+      "rarity": "legendaria",
+      "image": ""
+    },
+    {
+      "id": "urdimbre-de-sylvaris-016",
+      "nation": "urdimbre-de-sylvaris",
+      "name": "El Ancestro Primordial",
+      "rarity": "legendaria",
+      "image": ""
+    },
+    {
+      "id": "ostraca-001",
+      "nation": "ostraca",
+      "name": "Clon Numerado",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "ostraca-002",
+      "nation": "ostraca",
+      "name": "Mercado de Sal",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "ostraca-003",
+      "nation": "ostraca",
+      "name": "Burócrata Confundido",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "ostraca-004",
+      "nation": "ostraca",
+      "name": "Guardia Duplicado",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "ostraca-005",
+      "nation": "ostraca",
+      "name": "Vendedor de Coral",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "ostraca-006",
+      "nation": "ostraca",
+      "name": "Escriba Desordenado",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "ostraca-007",
+      "nation": "ostraca",
+      "name": "Recluta Idéntico",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "ostraca-008",
+      "nation": "ostraca",
+      "name": "Vagabundo del Desierto",
+      "rarity": "comun",
+      "image": ""
+    },
+    {
+      "id": "ostraca-009",
+      "nation": "ostraca",
+      "name": "Archivo Incompleto",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "ostraca-010",
+      "nation": "ostraca",
+      "name": "Consejo Caótico",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "ostraca-011",
+      "nation": "ostraca",
+      "name": "Clon Disidente",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "ostraca-012",
+      "nation": "ostraca",
+      "name": "Ruinas de Coral",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "ostraca-013",
+      "nation": "ostraca",
+      "name": "Sumo Burócrata",
+      "rarity": "epica",
+      "image": ""
+    },
+    {
+      "id": "ostraca-014",
+      "nation": "ostraca",
+      "name": "Clon Original (Supuesto)",
+      "rarity": "epica",
+      "image": ""
+    },
+    {
+      "id": "ostraca-015",
+      "nation": "ostraca",
+      "name": "El Decreto Contradictorio",
+      "rarity": "legendaria",
+      "image": ""
+    },
+    {
+      "id": "ostraca-016",
+      "nation": "ostraca",
+      "name": "El Primer Clon",
+      "rarity": "legendaria",
+      "image": ""
+    },
+    {
+      "id": "dioses-001",
+      "nation": "dioses",
+      "name": "Ganore (La Nada)",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "dioses-002",
+      "nation": "dioses",
+      "name": "Kiprika (El Todo)",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "dioses-003",
+      "nation": "dioses",
+      "name": "Tapiem (Gravedad)",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "dioses-004",
+      "nation": "dioses",
+      "name": "Dacama (Tiempo)",
+      "rarity": "rara",
+      "image": ""
+    },
+    {
+      "id": "dioses-005",
+      "nation": "dioses",
+      "name": "Millot (Creación)",
+      "rarity": "epica",
+      "image": ""
+    },
+    {
+      "id": "dioses-006",
+      "nation": "dioses",
+      "name": "Jilper (Destrucción)",
+      "rarity": "epica",
+      "image": ""
+    },
+    {
+      "id": "dioses-007",
+      "nation": "dioses",
+      "name": "Cumacur (Infinidad)",
+      "rarity": "epica",
+      "image": ""
+    },
+    {
+      "id": "dioses-008",
+      "nation": "dioses",
+      "name": "Cabala (Finito)",
+      "rarity": "epica",
+      "image": ""
+    },
+    {
+      "id": "dioses-009",
+      "nation": "dioses",
+      "name": "Ape (Entropía y Oscuridad)",
+      "rarity": "legendaria",
+      "image": ""
+    },
+    {
+      "id": "dioses-010",
+      "nation": "dioses",
+      "name": "Xora (Orden y Luz)",
       "rarity": "legendaria",
       "image": ""
     }

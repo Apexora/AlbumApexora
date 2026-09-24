@@ -572,12 +572,18 @@ function layout(first){
 
 function buildPages(){
   const pages = [{ k: 'cover' }, { k: 'index' }];
-  D.nations.forEach((n, i) => pages.push({ k: 'nation', n, i }));
+  D.nations.forEach((n, i) => {
+    const st = D.stickers.filter(s => s.nation === n.id);
+    const half = Math.ceil(st.length / 2);
+    pages.push({ k: 'nation', n, i, part: 1, parts: 2, st: st.slice(0, half) });
+    pages.push({ k: 'nation', n, i, part: 2, parts: 2, st: st.slice(half) });
+  });
   if ((pages.length + 1) % 2 === 1) pages.push({ k: 'notes' });
   pages.push({ k: 'back' });
   return pages;
 }
-const pageTitle = pg => !pg ? '' : pg.k === 'cover' ? 'Portada' : pg.k === 'index' ? 'Atlas' : pg.k === 'nation' ? pg.n.name : pg.k === 'notes' ? 'Notas' : 'Contraportada';
+const romanPart = p => p === 2 ? 'II' : 'I';
+const pageTitle = pg => !pg ? '' : pg.k === 'cover' ? 'Portada' : pg.k === 'index' ? 'Atlas' : pg.k === 'nation' ? `${pg.n.name} ${romanPart(pg.part)}` : pg.k === 'notes' ? 'Notas' : 'Contraportada';
 
 function buildBook(){
   S.pages = buildPages(); S.L = S.pages.length / 2;
@@ -605,26 +611,28 @@ function pageHTML(pg, idx){
     const total = D.stickers.length, got = D.stickers.filter(s => c[s.id]).length;
     const rows = D.nations.map((n, i) => {
       const st = D.stickers.filter(s => s.nation === n.id), g = st.filter(s => c[s.id]).length;
-      return `<li data-goto="${2 + i}" style="--nc:${col(n.color)}"><span class="e">${esc(n.emoji || '✦')}</span>
+      return `<li data-goto="${2 + i * 2}" style="--nc:${col(n.color)}"><span class="e">${esc(n.emoji || '✦')}</span>
         <span class="t"><b>${esc(n.name)}</b><div class="bar"><i style="width:${st.length ? g / st.length * 100 : 0}%"></i></div></span><span class="c">${g}/${st.length}</span></li>`;
     }).join('');
     const leg = rKeys().map(k => `<span style="--rc:${col(D.rarities[k].color, '#999')}"><i></i>${esc(D.rarities[k].label)}</span>`).join('');
     return `<div class="page paper"><div class="in index"><h2>Atlas de Apexora</h2><div class="who2">Colección de ${esc(S.player.name)}</div>
       <div class="tot">${got}/${total}<small>pegatinas</small></div><ul>${rows}</ul><div class="legend">${leg}</div><div class="pn">${idx}</div></div></div>`;
   }
-  // nación
-  const n = pg.n, st = D.stickers.filter(s => s.nation === n.id), got = st.filter(s => c[s.id]).length;
+  // nación (una de dos hojas)
+  const n = pg.n, allSt = D.stickers.filter(s => s.nation === n.id), st = pg.st, got = st.filter(s => c[s.id]).length;
+  const allGot = allSt.filter(s => c[s.id]).length;
+  const baseNum = pg.part === 2 ? Math.ceil(allSt.length / 2) : 0;
   const cols = st.length <= 9 ? 3 : st.length <= 16 ? 4 : 5, rows = Math.max(1, Math.ceil(st.length / cols));
   const slots = st.map((s, k) => {
     const r = rarityOf(s.rarity);
-    if (c[s.id]) return `<div class="slot${S.newIds.has(s.id) ? ' is-new' : ''}" data-sid="${esc(s.id)}">${stickerHTML(s, { count: c[s.id], num: k + 1 })}</div>`;
-    return `<div class="slot"><div class="empty" style="--rc:${col(r.color, '#999')}"><b>${pad(k + 1)}</b><span>${esc(s.name)}</span></div></div>`;
+    if (c[s.id]) return `<div class="slot${S.newIds.has(s.id) ? ' is-new' : ''}" data-sid="${esc(s.id)}">${stickerHTML(s, { count: c[s.id], num: baseNum + k + 1 })}</div>`;
+    return `<div class="slot"><div class="empty" style="--rc:${col(r.color, '#999')}"><b>${pad(baseNum + k + 1)}</b><span>${esc(s.name)}</span></div></div>`;
   }).join('');
   return `<div class="page paper"><div class="in nation" style="--nc:${col(n.color)}">
     <div class="mark">${esc(n.emoji || '✦')}</div>
-    <div class="nh"><div class="nb">${esc(n.emoji || '✦')}</div><div class="nt"><h2>${esc(n.name)}</h2><p>${esc(n.motto || '')}</p></div><div class="np">${got}/${st.length}</div></div>
-    ${st.length ? `<div class="grid" style="--cols:${cols};--rows:${rows}">${slots}</div>` : `<div class="none">Todavía no hay pegatinas en esta nación.</div>`}
-    ${st.length && got === st.length ? '<div class="stamp">Nación completa</div>' : ''}
+    <div class="nh"><div class="nb">${esc(n.emoji || '✦')}</div><div class="nt"><h2>${esc(n.name)} <small style="opacity:.6">· Hoja ${pg.part}/${pg.parts}</small></h2><p>${esc(n.motto || '')}</p></div><div class="np">${allGot}/${allSt.length}</div></div>
+    ${st.length ? `<div class="grid" style="--cols:${cols};--rows:${rows}">${slots}</div>` : `<div class="none">Todavía no hay pegatinas en esta hoja.</div>`}
+    ${st.length && got === st.length && allGot === allSt.length ? '<div class="stamp">Nación completa</div>' : ''}
     <div class="pn">${idx}</div></div></div>`;
 }
 
@@ -686,7 +694,7 @@ function updateNav(){
 }
 function buildChips(){
   $('#chips').innerHTML = `<button class="chip" data-goto="1" title="Atlas">📖 Atlas</button>` +
-    D.nations.map((n, i) => `<button class="chip" data-goto="${2 + i}">${esc(n.emoji || '✦')} ${esc(n.name)}</button>`).join('');
+    D.nations.map((n, i) => `<button class="chip" data-goto="${2 + i * 2}">${esc(n.emoji || '✦')} ${esc(n.name)}</button>`).join('');
   $('#chips').onclick = e => { const b = e.target.closest('[data-goto]'); if (b) goToPage(+b.dataset.goto); };
 }
 function updateHeader(){
@@ -841,7 +849,12 @@ function openPackFlow(){
       close();
       const first = ids.find((id, k) => newFlags[k]) || ids[0];
       const nid = stickerById(first).nation, ni = D.nations.findIndex(x => x.id === nid);
-      if (ni >= 0) setTimeout(() => goToPage(2 + ni), 150);
+      if (ni >= 0){
+        const st = D.stickers.filter(s => s.nation === nid), half = Math.ceil(st.length / 2);
+        const si = st.findIndex(s => s.id === first);
+        const part = si >= half ? 1 : 0;
+        setTimeout(() => goToPage(2 + ni * 2 + part), 150);
+      }
     };
     const ag = $('#aAgain', acts); if (ag) ag.onclick = () => { close(); setTimeout(openPackFlow, 60); };
   }

@@ -571,7 +571,10 @@ function layout(first){
 }
 
 function buildPages(){
-  const pages = [{ k: 'cover' }, { k: 'index' }];
+  // cover(0) sola, luego atlas(1)+notas(2) forman la primera hoja doble.
+  // Al arrancar los países en la página 3 (impar), cada nación cae en un par (impar,par)
+  // y sus dos hojas se muestran siempre juntas.
+  const pages = [{ k: 'cover' }, { k: 'index' }, { k: 'notes' }];
   const dioses = D.nations.find(n => n.id === 'dioses');
   const realNations = D.nations.filter(n => n.id !== 'dioses');
   realNations.forEach((n, i) => {
@@ -581,15 +584,8 @@ function buildPages(){
     pages.push({ k: 'nation', n, i, part: 2, parts: 2, st: st.slice(half) });
   });
   if (dioses) pages.push({ k: 'nation', n: dioses, i: realNations.length, part: 1, parts: 1, st: D.stickers.filter(s => s.nation === dioses.id) });
-  if ((pages.length + 1) % 2 === 1) pages.push({ k: 'notes' });
+  if (pages.length % 2 === 0) pages.push({ k: 'notes' });
   pages.push({ k: 'back' });
-  // Agrupa en "spreads": las dos hojas de una misma nación siempre se muestran juntas; el resto va sola.
-  let sp = 0;
-  for (let i = 0; i < pages.length; i++){
-    pages[i].spread = sp;
-    if (pages[i].k === 'nation' && pages[i].part === 1 && pages[i].parts === 2 && pages[i + 1]){ pages[i + 1].spread = sp; i++; }
-    sp++;
-  }
   return pages;
 }
 const romanPart = p => p === 2 ? 'II' : 'I';
@@ -668,28 +664,13 @@ document.addEventListener('error', e => {
 }, true);
 
 /* --- navegación --- */
-// El cursor S.p siempre queda en la primera página de un "spread" (grupo que se muestra junto).
-function firstOfSpread(pi){
-  pi = clamp(pi, 0, S.pages.length - 1);
-  let i = pi; while (i > 0 && S.pages[i].spread === S.pages[i - 1].spread) i--;
-  return i;
-}
-const pageToP = pi => S.mode === 'mobile' ? clamp(pi, 0, S.pages.length - 1) : firstOfSpread(pi);
+const pageToP = pi => S.mode === 'mobile' ? pi : (pi === 0 ? 0 : (pi % 2 ? pi : pi - 1));
 function setP(np){
   const now = Date.now(); if (now - S.lock < 220) return; S.lock = now;
   S.p = clamp(np, 0, S.pages.length - 1); apply();
 }
-function next(){
-  if (S.mode === 'mobile'){ if (S.p + 1 <= S.pages.length - 1) setP(S.p + 1); return; }
-  const sp = S.pages[S.p].spread, idx = S.pages.findIndex(pg => pg.spread === sp + 1);
-  if (idx !== -1) setP(idx);
-}
-function prev(){
-  if (S.mode === 'mobile'){ if (S.p - 1 >= 0) setP(S.p - 1); return; }
-  const sp = S.pages[S.p].spread; if (sp <= 0) return;
-  const idx = S.pages.findIndex(pg => pg.spread === sp - 1);
-  if (idx !== -1) setP(idx);
-}
+function next(){ const P = S.pages.length; const np = S.mode === 'mobile' ? S.p + 1 : (S.p === 0 ? 1 : S.p + 2); if (np <= P - 1) setP(np); }
+function prev(){ const np = S.mode === 'mobile' ? S.p - 1 : (S.p <= 1 ? 0 : S.p - 2); if (np >= 0) setP(np); }
 function goToPage(pi){ S.lock = 0; setP(pageToP(pi)); }
 
 function apply(){
@@ -707,9 +688,9 @@ function apply(){
 }
 
 function visiblePages(){
+  const P = S.pages.length;
   if (S.mode === 'mobile') return [S.p];
-  const sp = S.pages[S.p].spread;
-  return S.pages.reduce((a, pg, i) => { if (pg.spread === sp) a.push(i); return a; }, []);
+  return S.p === 0 ? [0] : [S.p, S.p + 1].filter(i => i < P);
 }
 function updateNav(){
   const vis = visiblePages();

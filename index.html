@@ -304,6 +304,7 @@ button.mini.warn{background:#c0483a99}
 .admwrap input,.admwrap select,.admwrap textarea{width:100%;min-width:0;padding:.5em .7em;border-radius:9px;border:1px solid #ffffff2a;background:#081020;color:#fff;font-size:.95rem}
 .admwrap input[type=color]{padding:2px;height:36px}
 .admwrap input[type=number].ninp{width:68px}
+.filepick{ max-width:140px; }
 .admwrap textarea{min-height:90px;resize:vertical}
 .formrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:10px 0;align-items:end}
 .formrow label{display:block;font-size:.85rem;opacity:.8;margin-bottom:3px}
@@ -1015,7 +1016,15 @@ async function adminClick(e){
   if (act === 'discard'){ if (confirm('Se perderán tus cambios sin publicar y se volverá a la versión del repositorio.')){ store.del(K_DRAFT); A.d = clone(D); A.dirty = false; adminScreen(); } return; }
 }
 function adminChange(e){
-  const el = e.target, d = A.d, f = el.dataset.f; if (!f) return;
+  const el = e.target, d = A.d;
+  if (el.type === 'file'){
+    const file = el.files[0]; if (!file) return;
+    const path = 'stickers/' + file.name;
+    if (el.id === 'nsImageFile'){ $('#nsImage').value = path; return; }
+    if (el.dataset.si !== undefined){ d.stickers[+el.dataset.si].image = path; persist(); renderTab(); }
+    return;
+  }
+  const f = el.dataset.f; if (!f) return;
   const row = el.closest('[data-i],[data-si],[data-ni],[data-ri]');
   if (row && row.dataset.si !== undefined){
     const s = d.stickers[+row.dataset.si]; s[f] = el.value.trim();
@@ -1046,7 +1055,7 @@ function tabStickers(){
     <div class="acts" style="margin-top:10px"><button class="btn sm" data-act="bulk">Añadir pegatinas</button></div></div>
   <div class="panel"><h3>Añadir una</h3>
     <div class="formrow"><div><label>Nombre</label><input id="nsName"></div><div><label>Nación</label><select id="nsNation">${nOpts(A.filter)}</select></div>
-      <div><label>Rareza</label><select id="nsRarity">${rOpts()}</select></div><div><label>Imagen</label><input id="nsImage" placeholder="stickers/archivo.png"></div>
+      <div><label>Rareza</label><select id="nsRarity">${rOpts()}</select></div><div><label>Imagen</label><input id="nsImage" placeholder="stickers/archivo.png"><input id="nsImageFile" type="file" accept="image/*" class="filepick"></div>
       <div><button class="btn sm" data-act="addS">Añadir</button></div></div></div>
   <div class="panel"><h3>Pegatinas (${list.length}${A.filter ? ' de ' + d.stickers.length : ''})</h3>
     <div class="formrow"><div><label>Filtrar por nación</label><select data-f="filter"><option value="">Todas</option>${nOpts(A.filter)}</select></div></div>
@@ -1056,6 +1065,7 @@ function tabStickers(){
       <select data-f="nation" aria-label="Nación">${nOpts(s.nation)}</select>
       <select data-f="rarity" aria-label="Rareza">${rOpts(s.rarity)}</select>
       <input data-f="image" value="${esc(s.image || '')}" placeholder="stickers/archivo.png" aria-label="Imagen">
+      <input type="file" accept="image/*" class="filepick imgPick" data-si="${i}" aria-label="Elegir archivo de imagen">
       <button class="mini warn" data-act="delS" aria-label="Eliminar">✕</button></div>`).join('') : '<p class="hint">No hay pegatinas para mostrar.</p>'}
   </div>`;
 }

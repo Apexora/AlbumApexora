@@ -159,101 +159,108 @@
   "stickers": [
     {
       "id": "umbra-001",
-      "nation": "sinfalia",
-      "name": "Seilá Anamé",
+      "nation": "umbra",
+      "name": "Moktar",
       "rarity": "comun",
-      "image": "stickers/Seilá-Anamé.png"
+      "image": "stickers/Moktar.png"
+    },
+    {
+      "id": "umbra-002",
+      "nation": "umbra",
+      "name": "Grakk",
+      "rarity": "comun",
+      "image": "stickers/Grakk.png"
     },
     {
       "id": "umbra-003",
-      "nation": "sinfalia",
-      "name": "Verdugo de Frontera",
+      "nation": "umbra",
+      "name": "Rob",
       "rarity": "comun",
-      "image": "stickers/Lael.png"
+      "image": "stickers/rob.png"
     },
     {
       "id": "umbra-004",
       "nation": "umbra",
-      "name": "Herrero de Guerra",
+      "name": "Drog",
       "rarity": "comun",
-      "image": ""
+      "image": "stickers/Drog.jpeg"
     },
     {
       "id": "umbra-005",
       "nation": "umbra",
-      "name": "Estandarte Carmesí",
+      "name": "Guetto",
       "rarity": "comun",
-      "image": ""
+      "image": "stickers/guetto.png"
     },
     {
       "id": "umbra-006",
       "nation": "umbra",
-      "name": "Patrulla Nocturna",
+      "name": "Tropa",
       "rarity": "comun",
-      "image": ""
+      "image": "stickers/tropa.png"
     },
     {
       "id": "umbra-007",
       "nation": "umbra",
-      "name": "Fragua de Sangre",
+      "name": "Lyra Shadowntorn",
       "rarity": "comun",
-      "image": ""
+      "image": "stickers/lyra_shadowntorn.png"
     },
     {
       "id": "umbra-009",
       "nation": "umbra",
-      "name": "Legión de Ceniza",
+      "name": "Reggina",
       "rarity": "rara",
-      "image": ""
+      "image": "stickers/reggina.png"
     },
     {
       "id": "umbra-010",
       "nation": "umbra",
-      "name": "Fortaleza Negra",
+      "name": "Sapot",
       "rarity": "rara",
-      "image": ""
+      "image": "stickers/sapot.png"
     },
     {
       "id": "umbra-011",
       "nation": "umbra",
-      "name": "General Cicatrizado",
+      "name": "Abyssara",
       "rarity": "rara",
-      "image": ""
+      "image": "stickers/abyssara.png"
     },
     {
       "id": "umbra-012",
       "nation": "umbra",
-      "name": "Muralla Quebrantada",
+      "name": "Ova Caleus",
       "rarity": "rara",
-      "image": ""
+      "image": "stickers/ova caleus.png"
     },
     {
       "id": "umbra-013",
       "nation": "umbra",
-      "name": "Mariscal de la Conquista",
+      "name": "General Voragos",
       "rarity": "epica",
-      "image": ""
+      "image": "stickers/voragos.png"
     },
     {
       "id": "umbra-014",
       "nation": "umbra",
-      "name": "Verdugo Supremo",
+      "name": "Kru",
       "rarity": "epica",
-      "image": ""
+      "image": "stickers/Kru.jpeg"
     },
     {
       "id": "umbra-015",
       "nation": "umbra",
-      "name": "El Tirano Eterno",
+      "name": "Mit Caleus",
       "rarity": "legendaria",
-      "image": ""
+      "image": "stickers/caleus.png"
     },
     {
       "id": "umbra-016",
       "nation": "umbra",
-      "name": "Corona de Guerra",
+      "name": "Puj",
       "rarity": "legendaria",
-      "image": ""
+      "image": "stickers/puj.png"
     },
     {
       "id": "luminarae-001",

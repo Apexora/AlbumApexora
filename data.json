@@ -207,56 +207,56 @@
       "image": "stickers/lyra_shadowntorn.png"
     },
     {
-      "id": "umbra-009",
+      "id": "umbra-008",
       "nation": "umbra",
       "name": "Reggina",
       "rarity": "rara",
       "image": "stickers/reggina.png"
     },
     {
-      "id": "umbra-010",
+      "id": "umbra-09",
       "nation": "umbra",
       "name": "Sapot",
       "rarity": "rara",
       "image": "stickers/sapot.png"
     },
     {
-      "id": "umbra-011",
+      "id": "umbra-010",
       "nation": "umbra",
       "name": "Abyssara",
       "rarity": "rara",
       "image": "stickers/abyssara.png"
     },
     {
-      "id": "umbra-012",
+      "id": "umbra-011",
       "nation": "umbra",
       "name": "Ova Caleus",
       "rarity": "rara",
       "image": "stickers/ova caleus.png"
     },
     {
-      "id": "umbra-013",
+      "id": "umbra-012",
       "nation": "umbra",
       "name": "General Voragos",
       "rarity": "epica",
       "image": "stickers/voragos.png"
     },
     {
-      "id": "umbra-014",
+      "id": "umbra-013",
       "nation": "umbra",
       "name": "Kru",
       "rarity": "epica",
       "image": "stickers/Kru.jpeg"
     },
     {
-      "id": "umbra-015",
+      "id": "umbra-014",
       "nation": "umbra",
       "name": "Mit Caleus",
       "rarity": "legendaria",
       "image": "stickers/caleus.png"
     },
     {
-      "id": "umbra-016",
+      "id": "umbra-015",
       "nation": "umbra",
       "name": "Puj",
       "rarity": "legendaria",
@@ -265,43 +265,57 @@
     {
       "id": "luminarae-001",
       "nation": "luminarae",
-      "name": "Peregrino de Luz",
+      "name": "Escin Cob",
       "rarity": "comun",
-      "image": ""
+      "image": "stickers/escin_cob.png"
     },
     {
       "id": "luminarae-002",
       "nation": "luminarae",
-      "name": "Templo del Alba",
+      "name": "Icowha Kartohs Soliem.png",
       "rarity": "comun",
-      "image": ""
+      "image": "stickers/icowha kartohs soliem.png"
     },
     {
       "id": "luminarae-003",
       "nation": "luminarae",
-      "name": "Coro Sagrado",
+      "name": "ibrich Yugos",
       "rarity": "comun",
-      "image": ""
+      "image": "stickers/ibrich_yugos.png"
     },
     {
       "id": "luminarae-004",
       "nation": "luminarae",
-      "name": "Escriba Celestial",
+      "name": "Echo",
       "rarity": "comun",
-      "image": ""
+      "image": "stickers/echo.png"
+    },
+    {
+      "id": "luminarae-005",
+      "nation": "luminarae",
+      "name": "Silith",
+      "rarity": "comun",
+      "image": "stickers/silith.png"
     },
     {
       "id": "luminarae-006",
       "nation": "luminarae",
-      "name": "Monje Itinerante",
+      "name": "Galel",
       "rarity": "comun",
-      "image": ""
+      "image": "stickers/galel.png"
+    },
+    {
+      "id": "luminarae-007",
+      "nation": "luminarae",
+      "name": "Chudo",
+      "rarity": "comun",
+      "image": "stickers/chudo.png"
     },
     {
       "id": "luminarae-008",
       "nation": "luminarae",
       "name": "Portador de Reliquias",
-      "rarity": "comun",
+      "rarity": "rara",
       "image": ""
     },
     {
@@ -321,40 +335,33 @@
     {
       "id": "luminarae-011",
       "nation": "luminarae",
-      "name": "Vitral Eterno",
+      "name": "Profeta Dorado",
       "rarity": "rara",
       "image": ""
     },
     {
       "id": "luminarae-012",
       "nation": "luminarae",
-      "name": "Profeta Dorado",
-      "rarity": "rara",
-      "image": ""
-    },
-    {
-      "id": "luminarae-013",
-      "nation": "luminarae",
       "name": "Sumo Sacerdote",
       "rarity": "epica",
       "image": ""
     },
     {
-      "id": "luminarae-014",
+      "id": "luminarae-013",
       "nation": "luminarae",
       "name": "Custodio del Cielo",
       "rarity": "epica",
       "image": ""
     },
     {
-      "id": "luminarae-015",
+      "id": "luminarae-014",
       "nation": "luminarae",
       "name": "El Coro Divino",
       "rarity": "legendaria",
       "image": ""
     },
     {
-      "id": "luminarae-016",
+      "id": "luminarae-015",
       "nation": "luminarae",
       "name": "Corona de Luminarae",
       "rarity": "legendaria",

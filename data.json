@@ -580,114 +580,107 @@
     {
       "id": "arboris-001",
       "nation": "arboris",
-      "name": "Guardabosques Feérico",
+      "name": "Vrako Unis",
       "rarity": "comun",
-      "image": ""
+      "image": "stickers/Vrako Unis.jpg"
     },
     {
       "id": "arboris-002",
       "nation": "arboris",
       "name": "Mercado de Musgo",
       "rarity": "comun",
-      "image": ""
+      "image": "stickers/aranis durgun.jpg"
     },
     {
       "id": "arboris-003",
       "nation": "arboris",
-      "name": "Susurro de Hojas",
+      "name": "Torio",
       "rarity": "comun",
-      "image": ""
+      "image": "stickers/torio.png"
     },
     {
       "id": "arboris-004",
       "nation": "arboris",
-      "name": "Aprendiz de Druida",
+      "name": "Mido",
       "rarity": "comun",
-      "image": ""
+      "image": "stickers/mido.png"
     },
     {
       "id": "arboris-005",
       "nation": "arboris",
-      "name": "Puente de Raíces",
+      "name": "Mas-K-rade",
       "rarity": "comun",
-      "image": ""
+      "image": "stickers/Mas-K-rade.jpg"
     },
     {
       "id": "arboris-006",
       "nation": "arboris",
-      "name": "Recolectora de Savia",
+      "name": "Whillow Wis",
       "rarity": "comun",
-      "image": ""
+      "image": "stickers/whilow.jpg"
     },
     {
       "id": "arboris-007",
       "nation": "arboris",
-      "name": "Senda Encantada",
+      "name": "Macarabe",
       "rarity": "comun",
-      "image": ""
+      "image": "stickers/macarabe.jpg"
     },
     {
       "id": "arboris-008",
       "nation": "arboris",
-      "name": "Centinela de Corteza",
-      "rarity": "comun",
-      "image": ""
+      "name": "Hati",
+      "rarity": "rara",
+      "image": "stickers/hati.png"
     },
     {
-      "id": "arboris-009",
+      "id": "arboris-09",
       "nation": "arboris",
-      "name": "Bosque Durmiente",
+      "name": "Piuk de Chawces",
       "rarity": "rara",
-      "image": ""
+      "image": "stickers/piuk.jpg"
     },
     {
       "id": "arboris-010",
       "nation": "arboris",
-      "name": "Círculo de Hadas",
+      "name": "Asan Chawces",
       "rarity": "rara",
-      "image": ""
+      "image": "stickers/asan.png"
     },
     {
       "id": "arboris-011",
       "nation": "arboris",
-      "name": "Árbol de los Ecos",
+      "name": "Plumarquias",
       "rarity": "rara",
-      "image": ""
+      "image": "stickers/plumarquias.png"
     },
     {
       "id": "arboris-012",
       "nation": "arboris",
-      "name": "Claro Sagrado",
-      "rarity": "rara",
-      "image": ""
+      "name": "Aelyon",
+      "rarity": "epica",
+      "image": "stickers/Aelyon.png"
     },
     {
       "id": "arboris-013",
       "nation": "arboris",
-      "name": "Archidruida",
+      "name": "Tilimad",
       "rarity": "epica",
-      "image": ""
+      "image": "stickers/tilimad.png"
     },
     {
       "id": "arboris-014",
       "nation": "arboris",
-      "name": "Guardiana del Bosque Eterno",
-      "rarity": "epica",
-      "image": ""
+      "name": "Agamuno",
+      "rarity": "legendaria",
+      "image": "stickers/agamuno.jpg"
     },
     {
       "id": "arboris-015",
       "nation": "arboris",
-      "name": "El Corazón del Bosque",
+      "name": "Seah de Pato",
       "rarity": "legendaria",
-      "image": ""
-    },
-    {
-      "id": "arboris-016",
-      "nation": "arboris",
-      "name": "La Voz de las Raíces",
-      "rarity": "legendaria",
-      "image": ""
+      "image": "stickers/seah.jpg"
     },
     {
       "id": "skaldrum-001",
@@ -741,61 +734,54 @@
     {
       "id": "skaldrum-008",
       "nation": "skaldrum",
-      "name": "Arquero Feudal",
-      "rarity": "comun",
-      "image": ""
-    },
-    {
-      "id": "skaldrum-009",
-      "nation": "skaldrum",
       "name": "Torre del Señorío",
       "rarity": "rara",
       "image": ""
     },
     {
-      "id": "skaldrum-010",
+      "id": "skaldrum-009",
       "nation": "skaldrum",
       "name": "Torneo de Otoño",
       "rarity": "rara",
       "image": ""
     },
     {
-      "id": "skaldrum-011",
+      "id": "skaldrum-010",
       "nation": "skaldrum",
       "name": "Caballero Jurado",
       "rarity": "rara",
       "image": ""
     },
     {
-      "id": "skaldrum-012",
+      "id": "skaldrum-011",
       "nation": "skaldrum",
       "name": "Salón del Trono",
       "rarity": "rara",
       "image": ""
     },
     {
-      "id": "skaldrum-013",
+      "id": "skaldrum-012",
       "nation": "skaldrum",
       "name": "Barón de Hierro",
       "rarity": "epica",
       "image": ""
     },
     {
-      "id": "skaldrum-014",
+      "id": "skaldrum-013",
       "nation": "skaldrum",
       "name": "Comandante del Feudo",
       "rarity": "epica",
       "image": ""
     },
     {
-      "id": "skaldrum-015",
+      "id": "skaldrum-014",
       "nation": "skaldrum",
       "name": "El Rey de Skaldrum",
       "rarity": "legendaria",
       "image": ""
     },
     {
-      "id": "skaldrum-016",
+      "id": "skaldrum-015",
       "nation": "skaldrum",
       "name": "Corona Feudal",
       "rarity": "legendaria",
@@ -853,61 +839,54 @@
     {
       "id": "boro-008",
       "nation": "boro",
-      "name": "Guardia Sobornado",
-      "rarity": "comun",
-      "image": ""
-    },
-    {
-      "id": "boro-009",
-      "nation": "boro",
       "name": "Almacén Fantasma",
       "rarity": "rara",
       "image": ""
     },
     {
-      "id": "boro-010",
+      "id": "boro-09",
       "nation": "boro",
       "name": "Red Pirata",
       "rarity": "rara",
       "image": ""
     },
     {
-      "id": "boro-011",
+      "id": "boro-010",
       "nation": "boro",
       "name": "Jefe de Distrito",
       "rarity": "rara",
       "image": ""
     },
     {
-      "id": "boro-012",
+      "id": "boro-011",
       "nation": "boro",
       "name": "Subasta Ilegal",
       "rarity": "rara",
       "image": ""
     },
     {
-      "id": "boro-013",
+      "id": "boro-012",
       "nation": "boro",
       "name": "Padrino de Boro",
       "rarity": "epica",
       "image": ""
     },
     {
-      "id": "boro-014",
+      "id": "boro-013",
       "nation": "boro",
       "name": "Reina del Mercado Negro",
       "rarity": "epica",
       "image": ""
     },
     {
-      "id": "boro-015",
+      "id": "boro-014",
       "nation": "boro",
       "name": "El Cartel Sin Nombre",
       "rarity": "legendaria",
       "image": ""
     },
     {
-      "id": "boro-016",
+      "id": "boro-015",
       "nation": "boro",
       "name": "El Código Prohibido",
       "rarity": "legendaria",
@@ -965,61 +944,54 @@
     {
       "id": "markivton-008",
       "nation": "markivton",
-      "name": "Aduanero del Puerto",
-      "rarity": "comun",
-      "image": ""
-    },
-    {
-      "id": "markivton-009",
-      "nation": "markivton",
       "name": "Flota Mercante",
       "rarity": "rara",
       "image": ""
     },
     {
-      "id": "markivton-010",
+      "id": "markivton-09",
       "nation": "markivton",
       "name": "Faro de Markivton",
       "rarity": "rara",
       "image": ""
     },
     {
-      "id": "markivton-011",
+      "id": "markivton-010",
       "nation": "markivton",
       "name": "Capitana Comerciante",
       "rarity": "rara",
       "image": ""
     },
     {
-      "id": "markivton-012",
+      "id": "markivton-011",
       "nation": "markivton",
       "name": "Ruta de las Sedas",
       "rarity": "rara",
       "image": ""
     },
     {
-      "id": "markivton-013",
+      "id": "markivton-012",
       "nation": "markivton",
       "name": "Almirante del Comercio",
       "rarity": "epica",
       "image": ""
     },
     {
-      "id": "markivton-014",
+      "id": "markivton-013",
       "nation": "markivton",
       "name": "Gran Armador",
       "rarity": "epica",
       "image": ""
     },
     {
-      "id": "markivton-015",
+      "id": "markivton-014",
       "nation": "markivton",
       "name": "El Galeón Dorado",
       "rarity": "legendaria",
       "image": ""
     },
     {
-      "id": "markivton-016",
+      "id": "markivton-015",
       "nation": "markivton",
       "name": "El Señor de los Puertos",
       "rarity": "legendaria",

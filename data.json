@@ -188,16 +188,16 @@
     {
       "id": "umbra-005",
       "nation": "umbra",
-      "name": "Guetto",
+      "name": "Jaep",
       "rarity": "comun",
-      "image": "stickers/guetto.png"
+      "image": "stickers/jaep.png"
     },
     {
       "id": "umbra-006",
       "nation": "umbra",
-      "name": "Tropa",
+      "name": "Jup",
       "rarity": "comun",
-      "image": "stickers/tropa.png"
+      "image": "stickers/jup.png"
     },
     {
       "id": "umbra-007",
@@ -272,7 +272,7 @@
     {
       "id": "luminarae-002",
       "nation": "luminarae",
-      "name": "Icowha Kartohs Soliem.png",
+      "name": "Icowha Kartohs Soliem",
       "rarity": "comun",
       "image": "stickers/icowha kartohs soliem.png"
     },
@@ -314,261 +314,268 @@
     {
       "id": "luminarae-008",
       "nation": "luminarae",
-      "name": "Portador de Reliquias",
+      "name": "Secta Subterranea",
       "rarity": "rara",
-      "image": ""
+      "image": "stickers/secta_subterranea.png"
     },
     {
       "id": "luminarae-009",
       "nation": "luminarae",
-      "name": "Santuario Radiante",
+      "name": "Luminara Vigna",
       "rarity": "rara",
-      "image": ""
+      "image": "stickers/Luminara_Vigna.png"
     },
     {
       "id": "luminarae-010",
       "nation": "luminarae",
-      "name": "Concilio de Videntes",
+      "name": "File",
       "rarity": "rara",
-      "image": ""
+      "image": "stickers/file.png"
     },
     {
       "id": "luminarae-011",
       "nation": "luminarae",
-      "name": "Profeta Dorado",
+      "name": "Teniente Bull",
       "rarity": "rara",
-      "image": ""
+      "image": "stickers/teniente_bull.png"
     },
     {
       "id": "luminarae-012",
       "nation": "luminarae",
-      "name": "Sumo Sacerdote",
+      "name": "Tomah de la Luz de Xora",
       "rarity": "epica",
-      "image": ""
+      "image": "stickers/tomah.png"
     },
     {
       "id": "luminarae-013",
       "nation": "luminarae",
-      "name": "Custodio del Cielo",
+      "name": "Capitan Fuego",
       "rarity": "epica",
-      "image": ""
+      "image": "stickers/cap-fuego.png"
     },
     {
       "id": "luminarae-014",
       "nation": "luminarae",
-      "name": "El Coro Divino",
+      "name": "Reina Luminara IV",
       "rarity": "legendaria",
-      "image": ""
+      "image": "stickers/luminaraIV.png"
     },
     {
       "id": "luminarae-015",
       "nation": "luminarae",
-      "name": "Corona de Luminarae",
+      "name": "Solaris el Primero",
       "rarity": "legendaria",
-      "image": ""
+      "image": "stickers/solaris.png"
     },
     {
       "id": "luxor-001",
       "nation": "luxor",
-      "name": "Guardián del Umbral",
+      "name": "Cyic",
       "rarity": "comun",
-      "image": ""
+      "image": "stickers/CYIC.png"
+    },
+    {
+      "id": "luxor-002",
+      "nation": "luxor",
+      "name": "Iris Rin",
+      "rarity": "comun",
+      "image": "stickers/IRIS_RIN.png"
+    },
+    {
+      "id": "luxor-003",
+      "nation": "luxor",
+      "name": "Astra Solaris",
+      "rarity": "comun",
+      "image": "stickers/astra.png"
+    },
+    {
+      "id": "luxor-004",
+      "nation": "luxor",
+      "name": "Klyth",
+      "rarity": "comun",
+      "image": "stickers/KLYTH.png"
     },
     {
       "id": "luxor-005",
       "nation": "luxor",
-      "name": "Jardín de Incienso",
-      "rarity": "comun",
-      "image": ""
+      "name": "Nova",
+      "rarity": "rara",
+      "image": "stickers/Nova.png"
     },
     {
       "id": "luxor-006",
       "nation": "luxor",
-      "name": "Portador de Velos",
-      "rarity": "comun",
-      "image": ""
+      "name": "Lyra",
+      "rarity": "rara",
+      "image": "stickers/Lyra.png"
     },
     {
       "id": "luxor-007",
       "nation": "luxor",
-      "name": "Aprendiz Arcano",
-      "rarity": "comun",
-      "image": ""
-    },
-    {
-      "id": "luxor-008",
-      "nation": "luxor",
-      "name": "Vigilante del Templo",
-      "rarity": "comun",
-      "image": ""
-    },
-    {
-      "id": "luxor-009",
-      "nation": "luxor",
-      "name": "Pirámide de Cristal",
+      "name": "Orion",
       "rarity": "rara",
-      "image": ""
+      "image": "stickers/Orion.png"
+    },
+    {
+      "id": "luxor-08",
+      "nation": "luxor",
+      "name": "Luma Mazae",
+      "rarity": "rara",
+      "image": "stickers/luma.png"
+    },
+    {
+      "id": "luxor-09",
+      "nation": "luxor",
+      "name": "Zack Mazae",
+      "rarity": "rara",
+      "image": "stickers/zack.png"
     },
     {
       "id": "luxor-010",
       "nation": "luxor",
-      "name": "Cámara de los Ecos",
-      "rarity": "rara",
-      "image": ""
+      "name": "Aldebaran",
+      "rarity": "epica",
+      "image": "stickers/aldebaran.png"
     },
     {
       "id": "luxor-011",
       "nation": "luxor",
-      "name": "Vidente Enmascarado",
-      "rarity": "rara",
-      "image": ""
+      "name": "Vela VI",
+      "rarity": "epica",
+      "image": "stickers/vela.png"
     },
     {
       "id": "luxor-012",
       "nation": "luxor",
-      "name": "Biblioteca Prohibida",
-      "rarity": "rara",
-      "image": ""
+      "name": "Corvus V",
+      "rarity": "epica",
+      "image": "stickers/corvus.png"
     },
     {
       "id": "luxor-013",
       "nation": "luxor",
-      "name": "Sacerdotisa de los Velos",
-      "rarity": "epica",
-      "image": ""
+      "name": "Draco Goldsmith",
+      "rarity": "epica",  
+      "image": "stickers/draco.png"
     },
     {
       "id": "luxor-014",
       "nation": "luxor",
-      "name": "Guardián del Enigma",
-      "rarity": "epica",
-      "image": ""
+      "name": "Amark de Xora",
+      "rarity": "legendaria",
+      "image": "stickers/amark.png"
     },
     {
       "id": "luxor-015",
       "nation": "luxor",
-      "name": "El Ojo que Todo lo Ve",
+      "name": "Klio de Xavandra",
       "rarity": "legendaria",
-      "image": ""
-    },
-    {
-      "id": "luxor-016",
-      "nation": "luxor",
-      "name": "Trono de los Misterios",
-      "rarity": "legendaria",
-      "image": ""
+      "image": "stickers/Klio.png"
     },
     {
       "id": "lumis-001",
       "nation": "lumis",
-      "name": "Técnico de Circuitos",
+      "name": "Señora Abreluz",
       "rarity": "comun",
-      "image": ""
+      "image": "stickers/abreluz.png"
     },
     {
       "id": "lumis-002",
       "nation": "lumis",
-      "name": "Dron Mensajero",
+      "name": "Barrigan Zepi VII",
       "rarity": "comun",
-      "image": ""
+      "image": "stickers/Barrigan_Zepi_VII.png"
     },
     {
       "id": "lumis-003",
       "nation": "lumis",
-      "name": "Mercado de Chips",
+      "name": "Nira Luth",
       "rarity": "comun",
-      "image": ""
+      "image": "Nira_Luth.png"
     },
     {
       "id": "lumis-004",
       "nation": "lumis",
-      "name": "Ingeniera Junior",
+      "name": "Jarek Nohr",
       "rarity": "comun",
-      "image": ""
+      "image": "stickers/Jarek_Nohr.png"
     },
     {
       "id": "lumis-005",
       "nation": "lumis",
-      "name": "Torre de Datos",
+      "name": "Liora Venn",
       "rarity": "comun",
-      "image": ""
+      "image": "stickers/liora_venn.png"
     },
     {
       "id": "lumis-006",
       "nation": "lumis",
-      "name": "Autómata Doméstico",
+      "name": "DetectIA",
       "rarity": "comun",
-      "image": ""
+      "image": "stickers/ia.png"
     },
     {
       "id": "lumis-007",
       "nation": "lumis",
-      "name": "Calle de Neón",
+      "name": "Arkonia",
       "rarity": "comun",
-      "image": ""
+      "image": "stickers/Arkonia.png"
     },
     {
       "id": "lumis-008",
       "nation": "lumis",
-      "name": "Analista de Redes",
-      "rarity": "comun",
-      "image": ""
+      "name": "Chunchunmaru",
+      "rarity": "rara",
+      "image": "stickers/Chunchunmaru.png"
     },
     {
-      "id": "lumis-009",
+      "id": "lumis-09",
       "nation": "lumis",
-      "name": "Núcleo Cuántico",
+      "name": "LVL3BOT",
       "rarity": "rara",
-      "image": ""
+      "image": "stickers/LVL3BOT.png"
     },
     {
       "id": "lumis-010",
       "nation": "lumis",
-      "name": "Enjambre de Drones",
+      "name": "LVL4BOT",
       "rarity": "rara",
-      "image": ""
+      "image": "stickers/LVL4BOT.png"
     },
     {
       "id": "lumis-011",
       "nation": "lumis",
-      "name": "Arquitecta de IA",
+      "name": "Rolac (Falso Bane)",
       "rarity": "rara",
-      "image": ""
+      "image": "stickers/rolac.png"
     },
     {
       "id": "lumis-012",
       "nation": "lumis",
-      "name": "Servidor Central",
-      "rarity": "rara",
-      "image": ""
+      "name": "Solara Dawn",
+      "rarity": "epica",
+      "image": "stickers/solara.png"
     },
     {
       "id": "lumis-013",
       "nation": "lumis",
-      "name": "Inteligencia Suprema",
+      "name": "Directora del Núcleo",
       "rarity": "epica",
-      "image": ""
+      "image": "stickers/orx_archy.png"
     },
     {
       "id": "lumis-014",
       "nation": "lumis",
-      "name": "Directora del Núcleo",
-      "rarity": "epica",
-      "image": ""
+      "name": "Bane Ironhand",
+      "rarity": "legendaria",
+      "image": "stickers/bane.png"
     },
     {
       "id": "lumis-015",
       "nation": "lumis",
-      "name": "La Singularidad",
+      "name": "Neo NE7",
       "rarity": "legendaria",
-      "image": ""
-    },
-    {
-      "id": "lumis-016",
-      "nation": "lumis",
-      "name": "El Oráculo de Silicio",
-      "rarity": "legendaria",
-      "image": ""
+      "image": "stickers/NE7_NEO"
     },
     {
       "id": "arboris-001",

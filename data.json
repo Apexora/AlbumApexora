@@ -272,7 +272,7 @@
     {
       "id": "luminarae-002",
       "nation": "luminarae",
-      "name": "Icowha Kartohs Soliem",
+      "name": "Icowha Soliem",
       "rarity": "comun",
       "image": "stickers/icowha kartohs soliem.png"
     },
@@ -685,107 +685,86 @@
     {
       "id": "skaldrum-001",
       "nation": "skaldrum",
-      "name": "Siervo del Feudo",
+      "name": "Burun Balteus",
       "rarity": "comun",
-      "image": ""
+      "image": "stickers/Burun.png"
     },
     {
       "id": "skaldrum-002",
       "nation": "skaldrum",
-      "name": "Mercado del Vasallo",
+      "name": "Ullontras Hijo",
       "rarity": "comun",
-      "image": ""
+      "image": "stickers/ollontras_hijo.jpg"
     },
     {
       "id": "skaldrum-003",
       "nation": "skaldrum",
-      "name": "Escudero Novato",
+      "name": "Ullontras Padre",
       "rarity": "comun",
-      "image": ""
+      "image": "stickers/ullontras_padre.jpg"
     },
     {
       "id": "skaldrum-004",
       "nation": "skaldrum",
-      "name": "Guardia del Castillo",
+      "name": "Soldado de Skaldrum",
       "rarity": "comun",
-      "image": ""
+      "image": "stickers/soldado_skaldrum.jpg"
     },
     {
       "id": "skaldrum-005",
       "nation": "skaldrum",
-      "name": "Campesino Leal",
-      "rarity": "comun",
-      "image": ""
+      "name": "Saneones",
+      "rarity": "rara",
+      "image": "stickers/Saneones.jpeg"
     },
     {
       "id": "skaldrum-006",
       "nation": "skaldrum",
-      "name": "Heraldo del Barón",
-      "rarity": "comun",
-      "image": ""
+      "name": "Santomachelo",
+      "rarity": "rara",
+      "image": "stickers/santomachelo.jpg"
     },
     {
       "id": "skaldrum-007",
       "nation": "skaldrum",
-      "name": "Taberna del Camino",
-      "rarity": "comun",
-      "image": ""
+      "name": "Axeraide",
+      "rarity": "rara",
+      "image": "stickers/axeraide_3.png"
     },
     {
       "id": "skaldrum-008",
       "nation": "skaldrum",
-      "name": "Torre del Señorío",
+      "name": "Julio Balteus",
       "rarity": "rara",
-      "image": ""
+      "image": "stickers/julio.jpg"
     },
     {
       "id": "skaldrum-009",
       "nation": "skaldrum",
-      "name": "Torneo de Otoño",
-      "rarity": "rara",
-      "image": ""
+      "name": "Reina Lurim",
+      "rarity": "epica",
+      "image": "stickers/lurim.jpg"
     },
     {
       "id": "skaldrum-010",
       "nation": "skaldrum",
-      "name": "Caballero Jurado",
-      "rarity": "rara",
-      "image": ""
+      "name": "Emperador Oci",
+      "rarity": "legendaria",
+      "image": "stickers/oci.jpg"
     },
     {
       "id": "skaldrum-011",
       "nation": "skaldrum",
-      "name": "Salón del Trono",
-      "rarity": "rara",
-      "image": ""
+      "name": "Karim Balteus",
+      "rarity": "legendaria",
+      "image": "stickers/karim.jpg"
     },
     {
       "id": "skaldrum-012",
       "nation": "skaldrum",
-      "name": "Barón de Hierro",
-      "rarity": "epica",
-      "image": ""
-    },
-    {
-      "id": "skaldrum-013",
-      "nation": "skaldrum",
-      "name": "Comandante del Feudo",
-      "rarity": "epica",
-      "image": ""
-    },
-    {
-      "id": "skaldrum-014",
-      "nation": "skaldrum",
-      "name": "El Rey de Skaldrum",
+      "name": "Vina Miceus",
       "rarity": "legendaria",
-      "image": ""
-    },
-    {
-      "id": "skaldrum-015",
-      "nation": "skaldrum",
-      "name": "Corona Feudal",
-      "rarity": "legendaria",
-      "image": ""
+      "image": "stickers/vina.jpg"
     },
     {
       "id": "boro-001",

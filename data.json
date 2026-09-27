@@ -328,7 +328,7 @@
       "nation": "luminarae",
       "name": "Luminara Vigna",
       "rarity": "rara",
-      "image": "stickers/Luminara_Vigna.png"
+      "image": "stickers/Luminara_Vigna.jpg"
     },
     {
       "id": "luminarae-010",
@@ -496,7 +496,7 @@
       "nation": "lumis",
       "name": "Nira Luth",
       "rarity": "comun",
-      "image": "Nira_Luth.png"
+      "image": "stickers/Nira_Luth.png"
     },
     {
       "id": "lumis-004",
@@ -580,7 +580,7 @@
       "nation": "lumis",
       "name": "Neo NE7",
       "rarity": "legendaria",
-      "image": "stickers/NE7_NEO"
+      "image": "stickers/NE7_NEO.png"
     },
     {
       "id": "arboris-001",
@@ -650,7 +650,7 @@
       "nation": "arboris",
       "name": "Asan Chawces",
       "rarity": "rara",
-      "image": "stickers/asan.png"
+      "image": "stickers/asan.jpg"
     },
     {
       "id": "arboris-011",
@@ -930,7 +930,7 @@
       "nation": "markivton",
       "name": "Laki Dust",
       "rarity": "legendaria",
-      "image": "laki.jpg"
+      "image": "stickers/laki.jpg"
     },
     {
       "id": "negatt-001",
@@ -1230,72 +1230,80 @@
       "id": "dioses-001",
       "nation": "dioses",
       "name": "Ganore (La Nada)",
-      "rarity": "rara",
-      "image": ""
+      "rarity": "legendaria",
+      "image": "stickers/ganore.jpg"
     },
     {
       "id": "dioses-002",
       "nation": "dioses",
       "name": "Kiprika (El Todo)",
-      "rarity": "rara",
-      "image": ""
+      "rarity": "legendaria",
+      "image": "stickers/kiprika.jpg"
     },
     {
       "id": "dioses-003",
       "nation": "dioses",
       "name": "Tapiem (Gravedad)",
-      "rarity": "rara",
-      "image": ""
+      "rarity": "legendaria",
+      "image": "stickers/tapiem.jpg"
     },
     {
       "id": "dioses-004",
       "nation": "dioses",
       "name": "Dacama (Tiempo)",
-      "rarity": "rara",
-      "image": ""
+      "rarity": "legendaria",
+      "image": "stickers/dacama.jpg"
     },
     {
       "id": "dioses-005",
       "nation": "dioses",
       "name": "Millot (Creación)",
-      "rarity": "epica",
-      "image": ""
+      "rarity": "legendaria",
+      "image": "stickers/millot.jpg"
     },
     {
       "id": "dioses-006",
       "nation": "dioses",
       "name": "Jilper (Destrucción)",
-      "rarity": "epica",
-      "image": ""
+      "rarity": "legendaria",
+      "image": "stickers/jilper.jpg"
     },
     {
       "id": "dioses-007",
       "nation": "dioses",
       "name": "Cumacur (Infinidad)",
-      "rarity": "epica",
-      "image": ""
+      "rarity": "legendaria",
+      "image": "stickers/cumacur.jpg"
     },
     {
       "id": "dioses-008",
       "nation": "dioses",
       "name": "Cabala (Finito)",
-      "rarity": "epica",
-      "image": ""
+      "rarity": "legendaria",
+      "image": "stickers/cabala.jpg"
     },
     {
       "id": "dioses-009",
       "nation": "dioses",
       "name": "Ape (Entropía y Oscuridad)",
       "rarity": "legendaria",
-      "image": ""
+      "image": "stickers/ape.jpg"
     },
     {
       "id": "dioses-010",
       "nation": "dioses",
       "name": "Xora (Orden y Luz)",
       "rarity": "legendaria",
-      "image": ""
+      "image": "stickers/xora.jpg"
+    },
+    {
+      "id": "dioses-010",
+      "nation": "dioses",
+      "name": "Espacio",
+      "rarity": "unica",
+      "image": "espacio.jpg"
     }
+    
   ],
   "players": [
     {

@@ -165,77 +165,77 @@
   "stickers": [
     {
       "id": "objetos-001",
-      "nation": "lugares",
+      "nation": "objetos",
       "name": "Luminarae",
       "rarity": "comun",
       "image": "stickers/recital_luminarae.jpg"
     },    
     {
       "id": "objetos-002",
-      "nation": "lugares",
+      "nation": "objetos",
       "name": "Negatt",
       "rarity": "comun",
       "image": "stickers/Negatt.jpg"
     },
     {
       "id": "objetos-003",
-      "nation": "lugares",
+      "nation": "objetos",
       "name": "Luxor",
       "rarity": "comun",
       "image": "stickers/Luxor.jpg"
     },
     {
       "id": "objetos-004",
-      "nation": "lugares",
+      "nation": "objetos",
       "name": "Boro",
       "rarity": "comun",
       "image": "stickers/Boro.jpg"
     },
     {
       "id": "objetos-005",
-      "nation": "Arboris",
+      "nation": "objetos",
       "name": "Negatt",
       "rarity": "comun",
       "image": "stickers/Arboris.jpg"
     },
     {
       "id": "objetos-006",
-      "nation": "lugares",
+      "nation": "objetos",
       "name": "Markivton",
       "rarity": "comun",
       "image": "stickers/mark.png"
     },
     {
       "id": "objetos-007",
-      "nation": "lugares",
+      "nation": "objetos",
       "name": "Lumis",
       "rarity": "comun",
       "image": "stickers/lumis.png"
     },
     {
       "id": "objetos-008",
-      "nation": "lugares",
+      "nation": "objetos",
       "name": "Skaldrum",
       "rarity": "comun",
       "image": "stickers/Skaldrum_Capital1.jpg"
     },
     {
       "id": "objetos-009",
-      "nation": "lugares",
+      "nation": "objetos",
       "name": "Tribus Skaldrak",
       "rarity": "comun",
       "image": "stickers/Tribu_Frostpeak.jpg"
     },
     {
       "id": "objetos-010",
-      "nation": "lugares",
+      "nation": "objetos",
       "name": "Umbra",
       "rarity": "comun",
       "image": "stickers/Umbra.jpg"
     },
     {
       "id": "objetos-011",
-      "nation": "lugares",
+      "nation": "objetos",
       "name": "Sinfalia",
       "rarity": "comun",
       "image": "stickers/sinfalia.png"

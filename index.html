@@ -426,7 +426,7 @@ function saveProgress(){
 }
 function counts(){
   const c = {};
-  for (const pk of S.progress.opened) for (const id of pk) if (stickerById(id)) c[id] = (c[id] || 0) + 1;
+  for (const pk of S.progress.opened) for (const id of pk.ids) if (stickerById(id)) c[id] = (c[id] || 0) + 1;
   return c;
 }
 const availablePacks = () => Math.max(0, S.player.packs - S.progress.opened.length);
@@ -756,7 +756,7 @@ function showSticker(sid){
 }
 
 /* --- copia de seguridad --- */
-const encodeProgress = () => btoa(unescape(encodeURIComponent(JSON.stringify({ v: 1, p: S.player.id, o: S.progress.opened }))));
+const encodeProgress = () => btoa(unescape(encodeURIComponent(JSON.stringify({ v: 1, p: S.player.id, o: S.progress.opened.map(pk => pk.ids) }))));
 function showBackup(){
   const m = modal(`<h3>Copia de seguridad</h3>
     <p>Tus sobres abiertos se guardan en este dispositivo. Copia este código para no perderlos si cambias de móvil o borras los datos del navegador.</p>
@@ -771,7 +771,7 @@ function showBackup(){
       const o = JSON.parse(decodeURIComponent(escape(atob($('#bkIn', m).value.trim()))));
       if (o.p !== S.player.id || !Array.isArray(o.o) || !o.o.every(a => Array.isArray(a))) throw 0;
       if (o.o.length > S.player.packs) { toast('Ese código tiene más sobres de los que te han dado.'); return; }
-      S.progress.opened = o.o.map(a => a.map(String)); saveProgress(); m.remove(); refreshAlbum(); toast('Progreso restaurado');
+      S.progress.opened = o.o.map(a => ({ ids: a.map(String) })); saveProgress(); m.remove(); refreshAlbum(); toast('Progreso restaurado');
     } catch { toast('Ese código no es válido para tu álbum.'); }
   };
 }
@@ -813,7 +813,7 @@ function openPackFlow(){
     // Se guarda al abrir: el contenido ya no cambia aunque cierres a medias
     const before = counts(), seen = new Set();
     ids.forEach(id => { newFlags.push(!before[id] && !seen.has(id)); seen.add(id); });
-    S.progress.opened.push(ids); saveProgress(); saved = true; updateHeader();
+    S.progress.opened.push({ ids }); saveProgress(); saved = true; updateHeader();
     S.newIds = new Set(ids.filter((id, k) => newFlags[k]));
     pack.classList.add('open'); msg.textContent = '';
     setTimeout(() => { pack.remove(); deal(); }, 1050);

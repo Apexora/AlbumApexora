@@ -39,7 +39,7 @@
       "name": "Lugares",
       "emoji": "📍",
       "color": "#fef9be",
-      "motto": "",
+      "motto": "Fragmentados pero unidos",
       "horiz": true
     },
     {
@@ -163,6 +163,83 @@
     }
   ],
   "stickers": [
+    {
+      "id": "objetos-001",
+      "nation": "lugares",
+      "name": "Luminarae",
+      "rarity": "comun",
+      "image": "stickers/recital_luminarae.jpg"
+    },    
+    {
+      "id": "objetos-002",
+      "nation": "lugares",
+      "name": "Negatt",
+      "rarity": "comun",
+      "image": "stickers/Negatt.jpg"
+    },
+    {
+      "id": "objetos-003",
+      "nation": "lugares",
+      "name": "Luxor",
+      "rarity": "comun",
+      "image": "stickers/Luxor.jpg"
+    },
+    {
+      "id": "objetos-004",
+      "nation": "lugares",
+      "name": "Boro",
+      "rarity": "comun",
+      "image": "stickers/Boro.jpg"
+    },
+    {
+      "id": "objetos-005",
+      "nation": "Arboris",
+      "name": "Negatt",
+      "rarity": "comun",
+      "image": "stickers/Arboris.jpg"
+    },
+    {
+      "id": "objetos-006",
+      "nation": "lugares",
+      "name": "Markivton",
+      "rarity": "comun",
+      "image": "stickers/mark.png"
+    },
+    {
+      "id": "objetos-007",
+      "nation": "lugares",
+      "name": "Lumis",
+      "rarity": "comun",
+      "image": "stickers/lumis.png"
+    },
+    {
+      "id": "objetos-008",
+      "nation": "lugares",
+      "name": "Skaldrum",
+      "rarity": "comun",
+      "image": "stickers/Skaldrum_Capital1.jpg"
+    },
+    {
+      "id": "objetos-009",
+      "nation": "lugares",
+      "name": "Tribus Skaldrak",
+      "rarity": "comun",
+      "image": "stickers/Tribu_Frostpeak.jpg"
+    },
+    {
+      "id": "objetos-010",
+      "nation": "lugares",
+      "name": "Umbra",
+      "rarity": "comun",
+      "image": "stickers/Umbra.jpg"
+    },
+    {
+      "id": "objetos-011",
+      "nation": "lugares",
+      "name": "Sinfalia",
+      "rarity": "comun",
+      "image": "stickers/sinfalia.png"
+    },
     {
       "id": "umbra-001",
       "nation": "umbra",
@@ -461,7 +538,7 @@
       "id": "luxor-013",
       "nation": "luxor",
       "name": "Draco Goldsmith",
-      "rarity": "epica",  
+      "rarity": "epica",
       "image": "stickers/draco.png"
     },
     {
@@ -805,7 +882,7 @@
       "nation": "boro",
       "name": "Liyu Tak",
       "rarity": "rara",
-      "image": "stickers/LIYU.png" 
+      "image": "stickers/LIYU.png"
     },
     {
       "id": "boro-006",
@@ -1302,9 +1379,8 @@
       "nation": "dioses",
       "name": "Espacio",
       "rarity": "unica",
-      "image": "espacio.jpg"
+      "image": "stickers/espacio.jpg"
     }
-    
   ],
   "players": [
     {
@@ -1320,6 +1396,62 @@
       "salt": "0df4a4e515204dc8332ba4ec",
       "hash": "c66ca2556d3f374073746167f448023370156af1ff6626a80fdf0786b3c31c3d",
       "packs": 100
+    },
+    {
+      "id": "demian",
+      "name": "Demian",
+      "salt": "760bc85b9d6e1e3d188a6ba1",
+      "hash": "ce714e2681eba1aa6a798b8623ef2473e94cf1971fcd01ba68587a020e15ab90",
+      "packs": 5
+    },
+    {
+      "id": "blade",
+      "name": "Blade",
+      "salt": "4565c056eabf582917550b6b",
+      "hash": "06de78a4dd89c5dfc23464a0c756ad6d311021a6f757bce8cb2e798af01d6498",
+      "packs": 5
+    },
+    {
+      "id": "acalik",
+      "name": "Acalik",
+      "salt": "bd28a9637877b74b5fcadb46",
+      "hash": "c9e2f58e3effbff2f98b2d06ffdbb7f12eab8f28332e609cd2bc3bad4b406aa5",
+      "packs": 5
+    },
+    {
+      "id": "nones",
+      "name": "Nones",
+      "salt": "8ddb54b97073bca92450439e",
+      "hash": "661e3bb875c565c924243afcaaafc5063624d352384af82acf28c73e6f90e5fe",
+      "packs": 5
+    },
+    {
+      "id": "pura",
+      "name": "Pura",
+      "salt": "a04eb0ea7e2d8bed710bd947",
+      "hash": "bef3f2a0f9d5add83f2e1d4b8aecd3fac4b232a1f8ea1d34e09b37685dfa2130",
+      "packs": 5
+    },
+    {
+      "id": "santi",
+      "name": "Santi",
+      "salt": "20bf77723f1094fb54ea30a0",
+      "hash": "05c987f23d3b0f6c9db82e6634e03164d1850fcba065da15984e86618d30c8df",
+      "packs": 5
+    },
+    {
+      "id": "mica",
+      "name": "Mica",
+      "salt": "53b077f904f3472d5551fbf8",
+      "hash": "b11ea0f15027eb5f35dc014a53902b0974b9a9cd8cb0c7315b804142af0f6c62",
+      "packs": 5
+    },
+    {
+      "id": "rulo",
+      "name": "Rulo",
+      "salt": "5cda09852b8902d04025a733",
+      "hash": "03c433f9922d8025ba94a970aef8e12b20b48a8d67b1c4444723caa44b6eb3a8",
+      "packs": 5
     }
   ]
 }

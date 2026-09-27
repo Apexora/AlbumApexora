@@ -348,6 +348,8 @@ button.mini.warn{background:#c0483a99}
   firebase.initializeApp(firebaseConfig);
   const db = firebase.firestore();
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
 <div id="app"></div>
@@ -548,10 +550,11 @@ function albumScreen(){
       <button class="btn sm gift" id="btnPacks" title="Abrir un sobre">🎁 Sobres <span class="n" id="packN">0</span></button>
       <button class="btn ghost sm" id="btnDupes" title="Repetidas">🔁 Repetidas</button>
       <button class="btn ghost sm" id="btnBackup" title="Copia de seguridad" aria-label="Copia de seguridad">💾</button>
+        <button class="btn ghost sm" id="btnPDF" title="Exportar a PDF">📄 PDF</button>
       <button class="btn ghost sm" id="btnOut" title="Cerrar sesión">Salir</button>
     </div>
   </header>
-  <main class="stage" id="stage"><div class="viewport"><div class="book" id="book"></div></div></main>
+  <main class="stage" id="stage"><div class="viewport"><div class="book" id="book"></div></div><div id="pdfStage" style="position:fixed;left:-99999px;top:0;width:var(--pw);height:var(--ph);overflow:hidden"></div></main>
   <footer class="foot">
     <div class="navrow">
       <button class="btn round" id="prev" aria-label="Página anterior">‹</button>
@@ -563,6 +566,7 @@ function albumScreen(){
   $('#btnPacks').onclick = openPackFlow;
   $('#btnOut').onclick = logout;
   $('#btnBackup').onclick = showBackup;
+  $('#btnPDF').onclick = exportAlbumPDF;
     $('#btnDupes').onclick = showDupes;
   $('#prev').onclick = prev; $('#next').onclick = next;
 
@@ -790,6 +794,33 @@ function showBackup(){
       S.progress.opened = o.o.map(a => ({ ids: a.map(String) })); saveProgress(); m.remove(); refreshAlbum(); toast('Progreso restaurado');
     } catch { toast('Ese código no es válido para tu álbum.'); }
   };
+}
+async function exportAlbumPDF(){
+  const btn = $('#btnPDF'); const original = btn ? btn.textContent : '';
+  if (btn){ btn.disabled = true; }
+  const stageEl = $('#pdfStage');
+  const { jsPDF } = window.jspdf;
+  let doc = null;
+  const total = S.pages.length;
+  try {
+    for (let i = 0; i < total; i++){
+      stageEl.innerHTML = pageHTML(S.pages[i], i);
+      await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
+      const canvas = await html2canvas(stageEl, { backgroundColor: null, scale: 2, useCORS: true });
+      const img = canvas.toDataURL('image/jpeg', 0.9);
+      if (!doc) doc = new jsPDF({ unit: 'px', format: [canvas.width, canvas.height] });
+      else doc.addPage([canvas.width, canvas.height]);
+      doc.addImage(img, 'JPEG', 0, 0, canvas.width, canvas.height);
+      if (btn) btn.textContent = `📄 ${Math.round(((i + 1) / total) * 100)}%`;
+    }
+    doc.save(`album-${S.player.id}.pdf`);
+    toast('PDF descargado');
+  } catch (e){
+    console.error(e); toast('No se pudo generar el PDF.');
+  } finally {
+    stageEl.innerHTML = '';
+    if (btn){ btn.disabled = false; btn.textContent = original; }
+  }
 }
 const DUPE_RATE = 5; // cuántas repetidas valen 1 sobre
 

@@ -368,9 +368,6 @@ const mkStore = area => ({
 const store = mkStore(window.localStorage);
 const sess  = mkStore(window.sessionStorage);
 const K_SESSION = 'apexora:v1:session', K_REMEMBER = 'apexora:v1:remember', K_DRAFT = 'apexora:v1:draft';
-db.collection('players').doc('_test').set({ ok: true, at: Date.now() })
-  .then(() => console.log('✅ Firebase conectado'))
-  .catch(e => console.error('❌ Error Firebase:', e));
 const K_PROGRESS = id => 'apexora:v1:progress:' + id;
 
 const EMBLEM = `<svg class="emb" viewBox="0 0 100 100" fill="none" stroke="currentColor" aria-hidden="true">
@@ -416,11 +413,17 @@ function genPw(){
 }
 
 /* ================= progreso del jugador ================= */
-function loadProgress(id){
-  try { const o = JSON.parse(store.get(K_PROGRESS(id))); if (o && Array.isArray(o.opened)) return o; } catch {}
-  return { opened: [] };
+async function loadProgress(id){
+  try {
+    const doc = await db.collection('players').doc(id).get();
+    if (doc.exists){ const o = doc.data(); if (Array.isArray(o.opened)) return { opened: o.opened, bonus: o.bonus || 0 }; }
+  } catch (e){ console.error('No se pudo leer el progreso:', e); }
+  return { opened: [], bonus: 0 };
 }
-const saveProgress = () => store.set(K_PROGRESS(S.player.id), JSON.stringify(S.progress));
+function saveProgress(){
+  db.collection('players').doc(S.player.id).set(S.progress)
+    .catch(e => { console.error('No se pudo guardar:', e); toast('No se pudo guardar (revisá tu conexión)'); });
+}
 function counts(){
   const c = {};
   for (const pk of S.progress.opened) for (const id of pk) if (stickerById(id)) c[id] = (c[id] || 0) + 1;
@@ -516,8 +519,9 @@ function logout(){
 }
 
 /* ================= álbum ================= */
-function startAlbum(pl){
-  S.player = pl; S.progress = loadProgress(pl.id); S.p = 0; S.newIds = new Set();
+async function startAlbum(pl){
+  S.player = pl; S.p = 0; S.newIds = new Set();
+  S.progress = await loadProgress(pl.id);
   albumScreen();
 }
 

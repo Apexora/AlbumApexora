@@ -246,6 +246,7 @@ button{cursor:pointer}
 .pk-tray{display:flex;gap:8px;margin-top:10px;transition:transform .5s}
 .tslot{position:relative;width:clamp(44px,13vw,64px);aspect-ratio:5/7;border-radius:8px;border:1px dashed #ffffff44;display:grid;place-items:center;color:#ffffff55;font:600 .9rem var(--ft)}
 .tslot .sticker{animation:pop .5s cubic-bezier(.2,1.6,.4,1)}
+.lb-card.horiz,.pk-stage.horiz,.tslot.horiz{aspect-ratio:7/5}
 @keyframes pop{from{transform:scale(.4);opacity:0}}
 .pk-tray.done{transform:scale(1.35);margin-top:20px}
 .pk-actions{display:flex;gap:10px;margin-top:22px;min-height:44px;flex-wrap:wrap;justify-content:center;padding:0 12px}
@@ -327,6 +328,20 @@ button.mini.warn{background:#c0483a99}
   .leaf,.book,.pinner{transition-duration:.01s!important}
 }
 </style>
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyAsw466_wzsiLtbjw6FXZ1_O3HQ_AkVyU8",
+    authDomain: "album-apexora.firebaseapp.com",
+    projectId: "album-apexora",
+    storageBucket: "album-apexora.firebasestorage.app",
+    messagingSenderId: "17231648284",
+    appId: "1:17231648284:web:20edb8477453f50473f1d9"
+  };
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+</script>
 </head>
 <body>
 <div id="app"></div>
@@ -353,6 +368,9 @@ const mkStore = area => ({
 const store = mkStore(window.localStorage);
 const sess  = mkStore(window.sessionStorage);
 const K_SESSION = 'apexora:v1:session', K_REMEMBER = 'apexora:v1:remember', K_DRAFT = 'apexora:v1:draft';
+db.collection('players').doc('_test').set({ ok: true, at: Date.now() })
+  .then(() => console.log('✅ Firebase conectado'))
+  .catch(e => console.error('❌ Error Firebase:', e));
 const K_PROGRESS = id => 'apexora:v1:progress:' + id;
 
 const EMBLEM = `<svg class="emb" viewBox="0 0 100 100" fill="none" stroke="currentColor" aria-hidden="true">
@@ -369,6 +387,7 @@ const S = { player: null, progress: { opened: [] }, p: 0, mode: 'desktop', pages
 const rKeys   = () => Object.keys(D.rarities);
 const tierOf  = k => { const n = rKeys().length, i = Math.max(0, rKeys().indexOf(k)); return n <= 1 ? 0 : Math.round(i / (n - 1) * 3); };
 const nationOf = id => D.nations.find(n => n.id === id) || { id, name: '¿?', emoji: '✦', color: '#999' };
+const isHoriz = s => !!nationOf(s.nation).horiz;
 const stickerById = id => D.stickers.find(s => s.id === id);
 const rarityOf = k => D.rarities[k] || { label: k, color: '#bbb', weight: 1 };
 
@@ -718,7 +737,7 @@ function showSticker(sid){
   const s = stickerById(sid); if (!s) return;
   const c = counts()[sid] || 0, r = rarityOf(s.rarity), n = nationOf(s.nation);
   const ov = document.createElement('div'); ov.className = 'ov lightbox';
-  ov.innerHTML = `<div class="lb-card">${stickerHTML(s, { count: c })}</div>
+  ov.innerHTML = `<div class="lb-card${isHoriz(s) ? ' horiz' : ''}">${stickerHTML(s, { count: c })}</div>
     <div class="lb-info"><h3>${esc(s.name)}</h3><p>${esc(r.label)}, ${esc(n.name)}${c > 1 ? `. Tienes ${c} copias.` : ''}</p></div>`;
   const card = $('.lb-card', ov);
   const tilt = e => {
@@ -772,7 +791,7 @@ function openPackFlow(){
         <div class="body">${EMBLEM}<b>APEXORA</b><small>${n} pegatinas</small><div class="shine"></div></div></button>
     </div>
     <div class="pk-msg" id="pkMsg">Toca el sobre para abrirlo</div>
-    <div class="pk-tray" id="pkTray">${ids.map((_, k) => `<div class="tslot" data-i="${k}">${k + 1}</div>`).join('')}</div>
+        <div class="pk-tray" id="pkTray">${ids.map((_, k) => `<div class="tslot${isHoriz(stickers[k]) ? ' horiz' : ''}" data-i="${k}">${k + 1}</div>`).join('')}</div>
     <div class="pk-actions" id="pkActs"></div>`;
   document.body.appendChild(ov);
   const stage = $('#pkStage', ov), msg = $('#pkMsg', ov), tray = $('#pkTray', ov), acts = $('#pkActs', ov), pack = $('#pack', ov);
@@ -799,6 +818,7 @@ function openPackFlow(){
 
   function deal(){
     const s = stickers[i], remaining = n - i;
+    stage.classList.toggle('horiz', isHoriz(s));
     card = document.createElement('div'); card.className = 'pcard enter' + (remaining > 1 ? ' stack' : '');
     card.innerHTML = `<div class="pinner"><div class="pface back">${EMBLEM}<em>APEXORA</em></div><div class="pface front">${stickerHTML(s)}</div></div>`;
     stage.appendChild(card); phase = 'hidden';

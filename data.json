@@ -36,10 +36,11 @@
   "nations": [
     {
       "id": "objetos",
-      "name": "Objetos",
-      "emoji": "🪨",
+      "name": "Lugares",
+      "emoji": "📍",
       "color": "#fef9be",
-      "motto": ""
+      "motto": "",
+      "horiz": true
     },
     {
       "id": "umbra",

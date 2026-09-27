@@ -6,7 +6,7 @@
     "salt": "d5a65389309a0723130e613f",
     "hash": "742da92f2bc63b9db77b1d9f7e82a9d58bd8d21fa0b4785fa1709ee1fdb026c9"
   },
-"rarities": {
+  "rarities": {
     "comun": {
       "label": "Común",
       "weight": 61,
@@ -174,7 +174,7 @@
       "name": "Luminarae",
       "rarity": "comun",
       "image": "stickers/recital_luminarae.jpg"
-    },    
+    },
     {
       "id": "objetos-002",
       "nation": "objetos",
@@ -1414,21 +1414,21 @@
       "name": "Blade",
       "salt": "4565c056eabf582917550b6b",
       "hash": "06de78a4dd89c5dfc23464a0c756ad6d311021a6f757bce8cb2e798af01d6498",
-      "packs": 10
+      "packs": 15
     },
     {
       "id": "acalik",
       "name": "Acalik",
       "salt": "bd28a9637877b74b5fcadb46",
       "hash": "c9e2f58e3effbff2f98b2d06ffdbb7f12eab8f28332e609cd2bc3bad4b406aa5",
-      "packs": 10
+      "packs": 16
     },
     {
       "id": "nones",
       "name": "Nones",
       "salt": "8ddb54b97073bca92450439e",
       "hash": "661e3bb875c565c924243afcaaafc5063624d352384af82acf28c73e6f90e5fe",
-      "packs": 10
+      "packs": 15
     },
     {
       "id": "pura",

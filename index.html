@@ -283,6 +283,8 @@ button{cursor:pointer}
 .dn{flex:1;display:flex;flex-direction:column}
 .dqty{width:50px}
 .redeem{padding:10px;margin-bottom:10px;border:1px dashed #e3bf7355;border-radius:10px}
+.nlist{margin:10px 0;padding-left:20px}
+.nlist li{margin:4px 0}
 .toast{position:fixed;left:50%;bottom:max(24px,env(safe-area-inset-bottom));transform:translateX(-50%);z-index:200;padding:.7em 1.3em;border-radius:99px;background:#101e38;box-shadow:0 0 0 1px #e3bf7366,0 10px 30px #000a;animation:fadein .25s;max-width:90vw;text-align:center}
 
 /* ---------- administración ---------- */
@@ -424,6 +426,13 @@ async function loadProgress(id){
   } catch (e){ console.error('No se pudo leer el progreso:', e); }
   return { opened: [], bonus: 0 };
 }
+function showNotices(){
+  const notices = S.progress.notices || [];
+  if (!notices.length) return;
+  const list = notices.map(nt => { const s = stickerById(nt.sid); return `<li>${esc(nt.from)} te envió <b>${esc(s ? s.name : nt.sid)}</b></li>`; }).join('');
+  modal(`<h3>¡Recibiste pegatinas! 🎉</h3><ul class="nlist">${list}</ul><div class="row"><button class="btn sm" data-close>Genial</button></div>`);
+  S.progress.notices = []; saveProgress();
+}
 function saveProgress(){
   db.collection('players').doc(S.player.id).set(S.progress)
     .catch(e => { console.error('No se pudo guardar:', e); toast('No se pudo guardar (revisá tu conexión)'); });
@@ -527,6 +536,7 @@ async function startAlbum(pl){
   S.player = pl; S.p = 0; S.newIds = new Set();
   S.progress = await loadProgress(pl.id);
   albumScreen();
+  showNotices();
 }
 
 function albumScreen(){
@@ -535,7 +545,6 @@ function albumScreen(){
     <div class="brand"><span class="logo">✦</span><b>${esc(D.title)}</b></div>
     <div class="who">
       <span class="pill" id="prog"></span>
-      <button class="btn sm gift" id="btnPacks" title="Abrir un sobre">🎁 Sobres <span class="n" id="packN">0</span></button>
       <button class="btn sm gift" id="btnPacks" title="Abrir un sobre">🎁 Sobres <span class="n" id="packN">0</span></button>
       <button class="btn ghost sm" id="btnDupes" title="Repetidas">🔁 Repetidas</button>
       <button class="btn ghost sm" id="btnBackup" title="Copia de seguridad" aria-label="Copia de seguridad">💾</button>
@@ -797,6 +806,8 @@ async function sendSticker(sid, toId){
   saveProgress();
   const target = await loadProgress(toId);
   target.opened.push({ ids: [sid] });
+  target.notices = target.notices || [];
+  target.notices.push({ from: S.player.name, sid, at: Date.now() });
   try { await db.collection('players').doc(toId).set(target); } catch (e){ console.error(e); return false; }
   return true;
 }
@@ -853,8 +864,11 @@ function showDupes(){
     const toId = $('.dsel', row).value, qty = Math.max(1, +$('.dqty', row).value || 1);
     let sent = 0;
     for (let i = 0; i < qty; i++){ if (await sendSticker(sid, toId)) sent++; else break; }
-    if (sent){ toast(`Enviaste ${sent} pegatina${sent > 1 ? 's' : ''}`); m.remove(); refreshAlbum(); updateHeader(); showDupes(); }
-    else { toast('No se pudo enviar.'); btn.disabled = false; }
+    if (sent){
+      m.remove(); refreshAlbum(); updateHeader();
+      const pname = others.find(p => p.id === toId)?.name || 'el jugador';
+      modal(`<h3>¡Enviado! ✅</h3><p>Le mandaste ${sent} pegatina${sent > 1 ? 's' : ''} a ${esc(pname)}.</p><div class="row"><button class="btn sm" data-close>Cerrar</button></div>`);
+    } else { toast('No se pudo enviar.'); btn.disabled = false; }
   });
 }
 /* ================= apertura de sobres ================= */

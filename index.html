@@ -961,7 +961,7 @@ function openPackFlow(){
   function reveal(){
     phase = 'flipping'; const s = stickers[i], t = tierOf(s.rarity), r = rarityOf(s.rarity);
     card.classList.remove('stack'); card.classList.add('flip');
-    setTimeout(() => burst(t, col(r.color, '#ffd76b')), 380);
+    setTimeout(() => { burst(t, col(r.color, '#ffd76b')); playRaritySound(r); }, 380);
     if (t >= 3){ ov.classList.add('flash'); setTimeout(() => ov.classList.remove('flash'), 850); }
     setTimeout(() => {
       phase = 'shown';
@@ -970,6 +970,10 @@ function openPackFlow(){
       msg.innerHTML = `<b>${esc(s.name)}</b>${esc(r.label)}, ${esc(nationOf(s.nation).name)}. Toca para guardarla.`;
     }, 760);
   }
+  function playRaritySound(r){
+  if (!r.sound) return;
+  try { const a = new Audio(r.sound); a.volume = 0.8; a.play().catch(() => {}); } catch {}
+}
   function burst(t, color){
     const fx = document.createElement('div'); fx.className = 'fx'; fx.innerHTML = `<u style="--c:${color}"></u>`;
     const cnt = 8 + t * 9;

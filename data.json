@@ -6,31 +6,36 @@
     "salt": "d5a65389309a0723130e613f",
     "hash": "742da92f2bc63b9db77b1d9f7e82a9d58bd8d21fa0b4785fa1709ee1fdb026c9"
   },
-  "rarities": {
+"rarities": {
     "comun": {
       "label": "Común",
       "weight": 61,
-      "color": "#b9c2cc"
+      "color": "#b9c2cc",
+      "sound": "sounds/comun.mp3"
     },
     "rara": {
       "label": "Rara",
       "weight": 25,
-      "color": "#4aa3ff"
+      "color": "#4aa3ff",
+      "sound": "sounds/rara.mp3"
     },
     "epica": {
       "label": "Épica",
       "weight": 10,
-      "color": "#b46bff"
+      "color": "#b46bff",
+      "sound": "sounds/epica.mp3"
     },
     "legendaria": {
       "label": "Legendaria",
       "weight": 3,
-      "color": "#ffc93c"
+      "color": "#ffc93c",
+      "sound": "sounds/legendaria.mp3"
     },
     "unica": {
       "label": "unica",
       "weight": 1,
-      "color": "#000000"
+      "color": "#000000",
+      "sound": "sounds/unica.mp3"
     }
   },
   "nations": [

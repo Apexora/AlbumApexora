@@ -9,7 +9,7 @@
   "rarities": {
     "comun": {
       "label": "Común",
-      "weight": 62,
+      "weight": 61,
       "color": "#b9c2cc"
     },
     "rara": {
@@ -26,6 +26,11 @@
       "label": "Legendaria",
       "weight": 3,
       "color": "#ffc93c"
+    },
+    "unica": {
+      "label": "unica",
+      "weight": 1,
+      "color": "#000000"
     }
   },
   "nations": [
@@ -118,7 +123,7 @@
       "name": "Pongí",
       "emoji": "🎀",
       "color": "#e0529b",
-      "motto": "Siempre joven, siempre en orden"
+      "motto": "Siempre joven y libre"
     },
     {
       "id": "disnjav",
@@ -622,9 +627,9 @@
     {
       "id": "arboris-007",
       "nation": "arboris",
-      "name": "Macarabe",
-      "rarity": "comun",
-      "image": "stickers/macarabe.jpg"
+      "name": "Zarick",
+      "rarity": "legendaria",
+      "image": "stickers/zarick.png"
     },
     {
       "id": "arboris-008",
@@ -706,9 +711,9 @@
     {
       "id": "skaldrum-004",
       "nation": "skaldrum",
-      "name": "Soldado de Skaldrum",
+      "name": "Pinzarrak",
       "rarity": "comun",
-      "image": "stickers/soldado_skaldrum.jpg"
+      "image": "stickers/Pinzarrak.jpeg"
     },
     {
       "id": "skaldrum-005",
@@ -769,1108 +774,457 @@
     {
       "id": "boro-001",
       "nation": "boro",
-      "name": "Contrabandista Novato",
+      "name": "Sistar",
       "rarity": "comun",
-      "image": ""
+      "image": "stickers/sistar.png"
     },
     {
       "id": "boro-002",
       "nation": "boro",
-      "name": "Mercado Negro",
+      "name": "Doctor M",
       "rarity": "comun",
-      "image": ""
+      "image": "stickers/doctorM.png"
     },
     {
       "id": "boro-003",
       "nation": "boro",
-      "name": "Traficante de Chips",
+      "name": "Iris Mercader",
       "rarity": "comun",
-      "image": ""
+      "image": "stickers/Iris.jpg"
     },
     {
       "id": "boro-004",
       "nation": "boro",
-      "name": "Informante Callejero",
+      "name": "Marcel Tak",
       "rarity": "comun",
-      "image": ""
+      "image": "stickers/El Magnífico Marcel.png"
     },
     {
       "id": "boro-005",
       "nation": "boro",
-      "name": "Taller Clandestino",
-      "rarity": "comun",
-      "image": ""
+      "name": "Liyu Tak",
+      "rarity": "rara",
+      "image": "stickers/LIYU.png" 
     },
     {
       "id": "boro-006",
       "nation": "boro",
-      "name": "Mensajero Encriptado",
-      "rarity": "comun",
-      "image": ""
+      "name": "Aldric",
+      "rarity": "rara",
+      "image": "stickers/aldric.jpg"
     },
     {
       "id": "boro-007",
       "nation": "boro",
-      "name": "Callejón de Neón",
-      "rarity": "comun",
-      "image": ""
+      "name": "Sao",
+      "rarity": "rara",
+      "image": "stickers/sao.png"
     },
     {
       "id": "boro-008",
       "nation": "boro",
-      "name": "Almacén Fantasma",
-      "rarity": "rara",
-      "image": ""
+      "name": "Zhorak de Hierro",
+      "rarity": "epica",
+      "image": "stickers/Zhorak de Hierro.png"
     },
     {
       "id": "boro-09",
       "nation": "boro",
-      "name": "Red Pirata",
-      "rarity": "rara",
-      "image": ""
+      "name": "Beo de Boro",
+      "rarity": "epica",
+      "image": "stickers/beoDeBoro.png"
     },
     {
       "id": "boro-010",
       "nation": "boro",
-      "name": "Jefe de Distrito",
-      "rarity": "rara",
-      "image": ""
+      "name": "Criatura",
+      "rarity": "epica",
+      "image": "stickers/criatura.jpg"
     },
     {
       "id": "boro-011",
       "nation": "boro",
-      "name": "Subasta Ilegal",
-      "rarity": "rara",
-      "image": ""
+      "name": "Dorianus",
+      "rarity": "epica",
+      "image": "stickers/Dorianus.jpg"
     },
     {
       "id": "boro-012",
       "nation": "boro",
-      "name": "Padrino de Boro",
-      "rarity": "epica",
-      "image": ""
+      "name": "Sara",
+      "rarity": "legendaria",
+      "image": "stickers/Sara.jpeg"
     },
     {
       "id": "boro-013",
       "nation": "boro",
-      "name": "Reina del Mercado Negro",
-      "rarity": "epica",
-      "image": ""
-    },
-    {
-      "id": "boro-014",
-      "nation": "boro",
-      "name": "El Cartel Sin Nombre",
-      "rarity": "legendaria",
-      "image": ""
-    },
-    {
-      "id": "boro-015",
-      "nation": "boro",
-      "name": "El Código Prohibido",
-      "rarity": "legendaria",
-      "image": ""
+      "name": "Liyam Tak",
+      "rarity": "Legendaria",
+      "image": "stickers/Liyam Tak.png"
     },
     {
       "id": "markivton-001",
       "nation": "markivton",
-      "name": "Estibador del Puerto",
+      "name": "Tom Dust",
       "rarity": "comun",
-      "image": ""
+      "image": "stickers/tom.png"
     },
     {
       "id": "markivton-002",
       "nation": "markivton",
-      "name": "Mercado de Especias",
+      "name": "Truman Dust",
       "rarity": "comun",
-      "image": ""
+      "image": "stickers/truman.png"
     },
     {
       "id": "markivton-003",
       "nation": "markivton",
-      "name": "Marinero Novato",
+      "name": "Bornie Dust",
       "rarity": "comun",
-      "image": ""
+      "image": "stickers/bornie.png"
     },
     {
       "id": "markivton-004",
       "nation": "markivton",
-      "name": "Cambista Portuario",
-      "rarity": "comun",
-      "image": ""
+      "name": "Alnasi",
+      "rarity": "rara",
+      "image": "stickers/alnasi.jpg"
     },
     {
       "id": "markivton-005",
       "nation": "markivton",
-      "name": "Taberna del Muelle",
+      "name": "Bisten Dust",
       "rarity": "comun",
-      "image": ""
+      "image": "stickers/bisten.png"
     },
     {
       "id": "markivton-006",
       "nation": "markivton",
-      "name": "Cartógrafo Menor",
-      "rarity": "comun",
-      "image": ""
+      "name": "Nailis",
+      "rarity": "rara",
+      "image": "stickers/nailis_full.png"
     },
     {
       "id": "markivton-007",
       "nation": "markivton",
-      "name": "Barcaza Comercial",
-      "rarity": "comun",
-      "image": ""
+      "name": "Nefri",
+      "rarity": "rara",
+      "image": "stickers/nefri_full.png"
     },
     {
       "id": "markivton-008",
       "nation": "markivton",
-      "name": "Flota Mercante",
-      "rarity": "rara",
-      "image": ""
+      "name": "Joshua Dust",
+      "rarity": "epica",
+      "image": "stickers/Joshua.png"
     },
     {
       "id": "markivton-09",
       "nation": "markivton",
-      "name": "Faro de Markivton",
-      "rarity": "rara",
-      "image": ""
+      "name": "Darvok",
+      "rarity": "epica",
+      "image": "stickers/Darvok.png"
     },
     {
       "id": "markivton-010",
       "nation": "markivton",
-      "name": "Capitana Comerciante",
-      "rarity": "rara",
-      "image": ""
-    },
-    {
-      "id": "markivton-011",
-      "nation": "markivton",
-      "name": "Ruta de las Sedas",
-      "rarity": "rara",
-      "image": ""
-    },
-    {
-      "id": "markivton-012",
-      "nation": "markivton",
-      "name": "Almirante del Comercio",
-      "rarity": "epica",
-      "image": ""
-    },
-    {
-      "id": "markivton-013",
-      "nation": "markivton",
-      "name": "Gran Armador",
-      "rarity": "epica",
-      "image": ""
-    },
-    {
-      "id": "markivton-014",
-      "nation": "markivton",
-      "name": "El Galeón Dorado",
+      "name": "Laki Dust",
       "rarity": "legendaria",
-      "image": ""
-    },
-    {
-      "id": "markivton-015",
-      "nation": "markivton",
-      "name": "El Señor de los Puertos",
-      "rarity": "legendaria",
-      "image": ""
+      "image": "laki.jpg"
     },
     {
       "id": "negatt-001",
       "nation": "negatt",
-      "name": "Aprendiz de Cripta",
+      "name": "Cuasipapei",
       "rarity": "comun",
-      "image": ""
+      "image": "stickers/CuasiPapei.jpg"
     },
     {
       "id": "negatt-002",
       "nation": "negatt",
-      "name": "Mercado de Huesos",
+      "name": "Ricardo",
       "rarity": "comun",
-      "image": ""
+      "image": "stickers/ricardo.png"
     },
     {
       "id": "negatt-003",
       "nation": "negatt",
-      "name": "Sepulturero Menor",
+      "name": "Lynch",
       "rarity": "comun",
-      "image": ""
+      "image": "stickers/lynch.png"
     },
     {
       "id": "negatt-004",
       "nation": "negatt",
-      "name": "Susurro de Ultratumba",
+      "name": "Diurna Draven",
       "rarity": "comun",
-      "image": ""
+      "image": "stickers/diurna.jpg"
     },
     {
       "id": "negatt-005",
       "nation": "negatt",
-      "name": "Vigía de la Tumba",
-      "rarity": "comun",
-      "image": ""
+      "name": "Tsuji",
+      "rarity": "rara",
+      "image": "stickers/tsuji.jpg"
     },
     {
       "id": "negatt-006",
       "nation": "negatt",
-      "name": "Alquimista Sombrío",
-      "rarity": "comun",
-      "image": ""
+      "name": "Albara",
+      "rarity": "rara",
+      "image": "stickers/Albara.jpg"
     },
     {
       "id": "negatt-007",
       "nation": "negatt",
-      "name": "Cementerio Antiguo",
-      "rarity": "comun",
-      "image": ""
+      "name": "Themis",
+      "rarity": "rara",
+      "image": "stickers/themis.jpg"
     },
     {
       "id": "negatt-008",
       "nation": "negatt",
-      "name": "Portador de Cenizas",
-      "rarity": "comun",
-      "image": ""
+      "name": "Daisuke",
+      "rarity": "epica",
+      "image": "stickers/daisuke.jpg"
     },
     {
       "id": "negatt-009",
       "nation": "negatt",
-      "name": "Cripta de los Nombres",
-      "rarity": "rara",
-      "image": ""
+      "name": "Fudo",
+      "rarity": "epica",
+      "image": "stickers/fudo.jpg"
     },
     {
       "id": "negatt-010",
       "nation": "negatt",
-      "name": "Círculo Nigromante",
-      "rarity": "rara",
-      "image": ""
+      "name": "Niro",
+      "rarity": "epica",
+      "image": "stickers/niro.jpg"
     },
     {
       "id": "negatt-011",
       "nation": "negatt",
-      "name": "Espectro Guardián",
-      "rarity": "rara",
-      "image": ""
+      "name": "Xuelen Draven",
+      "rarity": "epica",
+      "image": "stickers/xuelen.png"
     },
     {
       "id": "negatt-012",
       "nation": "negatt",
-      "name": "Altar de las Sombras",
-      "rarity": "rara",
-      "image": ""
+      "name": "Azalange",
+      "rarity": "epica",
+      "image": "stickers/azalange2_1.png"
     },
     {
       "id": "negatt-013",
       "nation": "negatt",
-      "name": "Archinigromante",
-      "rarity": "epica",
-      "image": ""
+      "name": "Kael Draven",
+      "rarity": "legendaria",
+      "image": "stickers/Kael Draven.png"
     },
     {
       "id": "negatt-014",
       "nation": "negatt",
-      "name": "Señora de los Espíritus",
-      "rarity": "epica",
-      "image": ""
-    },
-    {
-      "id": "negatt-015",
-      "nation": "negatt",
-      "name": "El Rey Sin Tumba",
+      "name": "Caelum",
       "rarity": "legendaria",
-      "image": ""
-    },
-    {
-      "id": "negatt-016",
-      "nation": "negatt",
-      "name": "El Libro de los Muertos",
-      "rarity": "legendaria",
-      "image": ""
+      "image": "stickers/caelum.png"
     },
     {
       "id": "tribus-skaldrak-001",
       "nation": "tribus-skaldrak",
-      "name": "Cazador de las Nieves",
+      "name": "Lobo Helado",
       "rarity": "comun",
-      "image": ""
+      "image": "stickers/lobo.png"
     },
     {
       "id": "tribus-skaldrak-002",
       "nation": "tribus-skaldrak",
-      "name": "Mercado de Pieles",
+      "name": "Astrologa Koko",
       "rarity": "comun",
-      "image": ""
+      "image": "stickers/astrologa.png"
     },
     {
       "id": "tribus-skaldrak-003",
       "nation": "tribus-skaldrak",
-      "name": "Chamán Novato",
+      "name": "Alal",
       "rarity": "comun",
-      "image": ""
+      "image": "stickers/ala_def.png"
     },
     {
       "id": "tribus-skaldrak-004",
       "nation": "tribus-skaldrak",
-      "name": "Guerrero del Hielo",
-      "rarity": "comun",
-      "image": ""
+      "name": "Gigante de Hielo",
+      "rarity": "rara",
+      "image": "stickers/Frost Giant.jpg"
     },
     {
       "id": "tribus-skaldrak-005",
       "nation": "tribus-skaldrak",
-      "name": "Tienda de Cuero",
-      "rarity": "comun",
-      "image": ""
+      "name": "Skaldor Frostpeak",
+      "rarity": "epica",
+      "image": "stickers/skaldor.png"
     },
     {
       "id": "tribus-skaldrak-006",
       "nation": "tribus-skaldrak",
-      "name": "Guía de Montaña",
-      "rarity": "comun",
-      "image": ""
+      "name": "Zazap",
+      "rarity": "epica",
+      "image": "stickers/zazap.png"
     },
     {
       "id": "tribus-skaldrak-007",
       "nation": "tribus-skaldrak",
-      "name": "Tallador de Hueso",
-      "rarity": "comun",
-      "image": ""
+      "name": "Tatal",
+      "rarity": "epica",
+      "image": "stickers/tatal.png"
     },
     {
       "id": "tribus-skaldrak-008",
       "nation": "tribus-skaldrak",
-      "name": "Vigía del Glaciar",
-      "rarity": "comun",
-      "image": ""
+      "name": "Ruruk",
+      "rarity": "epica",
+      "image": "stickers/ruruk.png"
     },
     {
       "id": "tribus-skaldrak-009",
       "nation": "tribus-skaldrak",
-      "name": "Círculo de Piedra",
-      "rarity": "rara",
-      "image": ""
+      "name": "Didih",
+      "rarity": "epica",
+      "image": "stickers/didih.png"
     },
     {
       "id": "tribus-skaldrak-010",
       "nation": "tribus-skaldrak",
-      "name": "Cueva de los Ancestros",
-      "rarity": "rara",
-      "image": ""
+      "name": "Pin Kuku",
+      "rarity": "legendaria",
+      "image": "stickers/pin_5.png"
     },
     {
       "id": "tribus-skaldrak-011",
       "nation": "tribus-skaldrak",
-      "name": "Chamán de las Tormentas",
+      "name": "Sabio Skanuj",
       "rarity": "rara",
-      "image": ""
-    },
-    {
-      "id": "tribus-skaldrak-012",
-      "nation": "tribus-skaldrak",
-      "name": "Estandarte Tribal",
-      "rarity": "rara",
-      "image": ""
-    },
-    {
-      "id": "tribus-skaldrak-013",
-      "nation": "tribus-skaldrak",
-      "name": "Jefe de las Mil Cumbres",
-      "rarity": "epica",
-      "image": ""
-    },
-    {
-      "id": "tribus-skaldrak-014",
-      "nation": "tribus-skaldrak",
-      "name": "Voz de los Espíritus",
-      "rarity": "epica",
-      "image": ""
-    },
-    {
-      "id": "tribus-skaldrak-015",
-      "nation": "tribus-skaldrak",
-      "name": "El Coloso de Hielo",
-      "rarity": "legendaria",
-      "image": ""
-    },
-    {
-      "id": "tribus-skaldrak-016",
-      "nation": "tribus-skaldrak",
-      "name": "El Padre Montaña",
-      "rarity": "legendaria",
-      "image": ""
+      "image": "stickers/sabio_skanuj.png"
     },
     {
       "id": "sinfalia-001",
       "nation": "sinfalia",
-      "name": "Bailarín Callejero",
+      "name": "Ficadiza",
       "rarity": "comun",
-      "image": ""
+      "image": "stickers/random_dragonborn1.png"
     },
     {
       "id": "sinfalia-002",
       "nation": "sinfalia",
-      "name": "Mercado del Regalo",
+      "name": "Ubiubis",
       "rarity": "comun",
-      "image": ""
+      "image": "stickers/random_boy1.png"
     },
     {
       "id": "sinfalia-003",
       "nation": "sinfalia",
-      "name": "Músico Ambulante",
+      "name": "Visu",
       "rarity": "comun",
-      "image": ""
+      "image": "stickers/visu.jpg"
     },
     {
       "id": "sinfalia-004",
       "nation": "sinfalia",
-      "name": "Anfitrión de Barrio",
-      "rarity": "comun",
-      "image": ""
+      "name": "Volmi",
+      "rarity": "rara",
+      "image": "stickers/volmí.jpeg"
     },
     {
       "id": "sinfalia-005",
       "nation": "sinfalia",
-      "name": "Jardín Comunal",
-      "rarity": "comun",
-      "image": ""
+      "name": "Juez Salin",
+      "rarity": "rara",
+      "image": "stickers/salin.jpeg"
     },
     {
       "id": "sinfalia-006",
       "nation": "sinfalia",
-      "name": "Artesano Festivo",
-      "rarity": "comun",
-      "image": ""
+      "name": "Bason",
+      "rarity": "epica",
+      "image": "stickers/bason_new.png"
     },
     {
       "id": "sinfalia-007",
       "nation": "sinfalia",
-      "name": "Cocinera del Pueblo",
-      "rarity": "comun",
-      "image": ""
+      "name": "Valmey Siali",
+      "rarity": "legendaria",
+      "image": "stickers/balmi-sinfalia-fullbody.png"
     },
     {
       "id": "sinfalia-008",
       "nation": "sinfalia",
-      "name": "Portador de Guirnaldas",
-      "rarity": "comun",
-      "image": ""
+      "name": "Seila Aname",
+      "rarity": "legendaria",
+      "image": "stickers/Seilá Anamé_V0.png"
     },
     {
       "id": "sinfalia-009",
       "nation": "sinfalia",
-      "name": "Plaza de la Alegría",
-      "rarity": "rara",
-      "image": ""
-    },
-    {
-      "id": "sinfalia-010",
-      "nation": "sinfalia",
-      "name": "Carnaval Eterno",
-      "rarity": "rara",
-      "image": ""
-    },
-    {
-      "id": "sinfalia-011",
-      "nation": "sinfalia",
-      "name": "Consejo de Vecinos",
-      "rarity": "rara",
-      "image": ""
-    },
-    {
-      "id": "sinfalia-012",
-      "nation": "sinfalia",
-      "name": "Fuente de los Dones",
-      "rarity": "rara",
-      "image": ""
-    },
-    {
-      "id": "sinfalia-013",
-      "nation": "sinfalia",
-      "name": "Heraldo de la Armonía",
-      "rarity": "epica",
-      "image": ""
-    },
-    {
-      "id": "sinfalia-014",
-      "nation": "sinfalia",
-      "name": "Reina del Carnaval",
-      "rarity": "epica",
-      "image": ""
-    },
-    {
-      "id": "sinfalia-015",
-      "nation": "sinfalia",
-      "name": "El Espíritu de la Fiesta",
+      "name": "Gobz Gobinson",
       "rarity": "legendaria",
-      "image": ""
-    },
-    {
-      "id": "sinfalia-016",
-      "nation": "sinfalia",
-      "name": "La Ciudad que Nunca Calla",
-      "rarity": "legendaria",
-      "image": ""
+      "image": "stickers/gobz_sinfalia.png"
     },
     {
       "id": "pongi-001",
       "nation": "pongi",
-      "name": "Vecino Sonriente",
-      "rarity": "comun",
-      "image": ""
-    },
-    {
-      "id": "pongi-002",
-      "nation": "pongi",
-      "name": "Mercado Pastel",
-      "rarity": "comun",
-      "image": ""
-    },
-    {
-      "id": "pongi-003",
-      "nation": "pongi",
-      "name": "Ciclista de Barrio",
-      "rarity": "comun",
-      "image": ""
-    },
-    {
-      "id": "pongi-004",
-      "nation": "pongi",
-      "name": "Peluquera Retro",
-      "rarity": "comun",
-      "image": ""
-    },
-    {
-      "id": "pongi-005",
-      "nation": "pongi",
-      "name": "Quiosco de Chicles",
-      "rarity": "comun",
-      "image": ""
-    },
-    {
-      "id": "pongi-006",
-      "nation": "pongi",
-      "name": "Guardia Cordial",
-      "rarity": "comun",
-      "image": ""
-    },
-    {
-      "id": "pongi-007",
-      "nation": "pongi",
-      "name": "Jardín Geométrico",
-      "rarity": "comun",
-      "image": ""
-    },
-    {
-      "id": "pongi-008",
-      "nation": "pongi",
-      "name": "Repartidor Alegre",
-      "rarity": "comun",
-      "image": ""
-    },
-    {
-      "id": "pongi-009",
-      "nation": "pongi",
-      "name": "Plaza Perfecta",
-      "rarity": "rara",
-      "image": ""
-    },
-    {
-      "id": "pongi-010",
-      "nation": "pongi",
-      "name": "Desfile de Neón",
-      "rarity": "rara",
-      "image": ""
-    },
-    {
-      "id": "pongi-011",
-      "nation": "pongi",
-      "name": "Alcaldesa Eterna",
-      "rarity": "rara",
-      "image": ""
-    },
-    {
-      "id": "pongi-012",
-      "nation": "pongi",
-      "name": "Torre de Caramelo",
-      "rarity": "rara",
-      "image": ""
-    },
-    {
-      "id": "pongi-013",
-      "nation": "pongi",
-      "name": "Ícono de Pongí",
-      "rarity": "epica",
-      "image": ""
-    },
-    {
-      "id": "pongi-014",
-      "nation": "pongi",
-      "name": "Guardián de la Juventud",
-      "rarity": "epica",
-      "image": ""
-    },
-    {
-      "id": "pongi-015",
-      "nation": "pongi",
-      "name": "La Eterna Sonrisa",
-      "rarity": "legendaria",
-      "image": ""
-    },
-    {
-      "id": "pongi-016",
-      "nation": "pongi",
-      "name": "El Corazón Retropop",
-      "rarity": "legendaria",
-      "image": ""
+      "name": "SRSC",
+      "rarity": "unica",
+      "image": "stickers/SRSC_superosasupercool.jpg"
     },
     {
       "id": "disnjav-001",
       "nation": "disnjav",
-      "name": "Recolector de Niebla",
-      "rarity": "comun",
-      "image": ""
-    },
-    {
-      "id": "disnjav-002",
-      "nation": "disnjav",
-      "name": "Mercado Enmascarado",
-      "rarity": "comun",
-      "image": ""
-    },
-    {
-      "id": "disnjav-003",
-      "nation": "disnjav",
-      "name": "Obrero de Filtros",
-      "rarity": "comun",
-      "image": ""
-    },
-    {
-      "id": "disnjav-004",
-      "nation": "disnjav",
-      "name": "Vigía del Vapor",
-      "rarity": "comun",
-      "image": ""
-    },
-    {
-      "id": "disnjav-005",
-      "nation": "disnjav",
-      "name": "Muelle Oxidado",
-      "rarity": "comun",
-      "image": ""
-    },
-    {
-      "id": "disnjav-006",
-      "nation": "disnjav",
-      "name": "Vendedora de Máscaras",
-      "rarity": "comun",
-      "image": ""
-    },
-    {
-      "id": "disnjav-007",
-      "nation": "disnjav",
-      "name": "Callejón Tóxico",
-      "rarity": "comun",
-      "image": ""
-    },
-    {
-      "id": "disnjav-008",
-      "nation": "disnjav",
-      "name": "Técnico de Válvulas",
-      "rarity": "comun",
-      "image": ""
-    },
-    {
-      "id": "disnjav-009",
-      "nation": "disnjav",
-      "name": "Refinería Abandonada",
-      "rarity": "rara",
-      "image": ""
-    },
-    {
-      "id": "disnjav-010",
-      "nation": "disnjav",
-      "name": "Nube Permanente",
-      "rarity": "rara",
-      "image": ""
-    },
-    {
-      "id": "disnjav-011",
-      "nation": "disnjav",
-      "name": "Capataz del Gas",
-      "rarity": "rara",
-      "image": ""
-    },
-    {
-      "id": "disnjav-012",
-      "nation": "disnjav",
-      "name": "Campana de Alarma",
-      "rarity": "rara",
-      "image": ""
-    },
-    {
-      "id": "disnjav-013",
-      "nation": "disnjav",
-      "name": "Amo de la Niebla",
-      "rarity": "epica",
-      "image": ""
-    },
-    {
-      "id": "disnjav-014",
-      "nation": "disnjav",
-      "name": "Comandante de Máscaras",
-      "rarity": "epica",
-      "image": ""
-    },
-    {
-      "id": "disnjav-015",
-      "nation": "disnjav",
-      "name": "El Vapor Eterno",
-      "rarity": "legendaria",
-      "image": ""
-    },
-    {
-      "id": "disnjav-016",
-      "nation": "disnjav",
-      "name": "El Pulmón de Disnjav",
-      "rarity": "legendaria",
-      "image": ""
+      "name": "Ho",
+      "rarity": "unica",
+      "image": "stickers/Ho.jpg"
     },
     {
       "id": "presidio-de-krahn-001",
       "nation": "presidio-de-krahn",
-      "name": "Cadete Silenciador",
-      "rarity": "comun",
-      "image": ""
+      "name": "Karl",
+      "rarity": "rara",
+      "image": "stickers/Karl.jpg"
     },
     {
       "id": "presidio-de-krahn-002",
       "nation": "presidio-de-krahn",
-      "name": "Mercado del Estrecho",
-      "rarity": "comun",
-      "image": ""
+      "name": "Lael",
+      "rarity": "legendaria",
+      "image": "stickers/Lael_fb.jpeg"
     },
     {
       "id": "presidio-de-krahn-003",
       "nation": "presidio-de-krahn",
-      "name": "Vigilante del Ancla",
-      "rarity": "comun",
-      "image": ""
-    },
-    {
-      "id": "presidio-de-krahn-004",
-      "nation": "presidio-de-krahn",
-      "name": "Escriba del Silencio",
-      "rarity": "comun",
-      "image": ""
-    },
-    {
-      "id": "presidio-de-krahn-005",
-      "nation": "presidio-de-krahn",
-      "name": "Guardia Veterana",
-      "rarity": "comun",
-      "image": ""
-    },
-    {
-      "id": "presidio-de-krahn-006",
-      "nation": "presidio-de-krahn",
-      "name": "Ancla Menor",
-      "rarity": "comun",
-      "image": ""
-    },
-    {
-      "id": "presidio-de-krahn-007",
-      "nation": "presidio-de-krahn",
-      "name": "Patrulla del Muelle",
-      "rarity": "comun",
-      "image": ""
-    },
-    {
-      "id": "presidio-de-krahn-008",
-      "nation": "presidio-de-krahn",
-      "name": "Aprendiz Gris",
-      "rarity": "comun",
-      "image": ""
-    },
-    {
-      "id": "presidio-de-krahn-009",
-      "nation": "presidio-de-krahn",
-      "name": "Ancla de Antimagia",
-      "rarity": "rara",
-      "image": ""
-    },
-    {
-      "id": "presidio-de-krahn-010",
-      "nation": "presidio-de-krahn",
-      "name": "Consejo de Ancianos",
-      "rarity": "rara",
-      "image": ""
-    },
-    {
-      "id": "presidio-de-krahn-011",
-      "nation": "presidio-de-krahn",
-      "name": "Silenciador Mayor",
-      "rarity": "rara",
-      "image": ""
-    },
-    {
-      "id": "presidio-de-krahn-012",
-      "nation": "presidio-de-krahn",
-      "name": "Torre del Estrecho",
-      "rarity": "rara",
-      "image": ""
-    },
-    {
-      "id": "presidio-de-krahn-013",
-      "nation": "presidio-de-krahn",
-      "name": "Gran Silenciador",
-      "rarity": "epica",
-      "image": ""
-    },
-    {
-      "id": "presidio-de-krahn-014",
-      "nation": "presidio-de-krahn",
-      "name": "Custodio de la Estática",
-      "rarity": "epica",
-      "image": ""
-    },
-    {
-      "id": "presidio-de-krahn-015",
-      "nation": "presidio-de-krahn",
-      "name": "La Estática Total",
-      "rarity": "legendaria",
-      "image": ""
-    },
-    {
-      "id": "presidio-de-krahn-016",
-      "nation": "presidio-de-krahn",
-      "name": "El Último Anciano",
-      "rarity": "legendaria",
-      "image": ""
+      "name": "Bob",
+      "rarity": "unica",
+      "image": "stickers/Bob.jpg"
     },
     {
       "id": "urdimbre-de-sylvaris-001",
       "nation": "urdimbre-de-sylvaris",
-      "name": "Brote Ancestral",
-      "rarity": "comun",
-      "image": ""
+      "name": "General Beel",
+      "rarity": "legendaria",
+      "image": "stickers/Gran Beel.jpg"
     },
     {
       "id": "urdimbre-de-sylvaris-002",
       "nation": "urdimbre-de-sylvaris",
-      "name": "Mercado de Raíces",
-      "rarity": "comun",
-      "image": ""
-    },
-    {
-      "id": "urdimbre-de-sylvaris-003",
-      "nation": "urdimbre-de-sylvaris",
-      "name": "Susurro de Honor",
-      "rarity": "comun",
-      "image": ""
-    },
-    {
-      "id": "urdimbre-de-sylvaris-004",
-      "nation": "urdimbre-de-sylvaris",
-      "name": "Guardián Vegetal",
-      "rarity": "comun",
-      "image": ""
-    },
-    {
-      "id": "urdimbre-de-sylvaris-005",
-      "nation": "urdimbre-de-sylvaris",
-      "name": "Zarcillo Mensajero",
-      "rarity": "comun",
-      "image": ""
-    },
-    {
-      "id": "urdimbre-de-sylvaris-006",
-      "nation": "urdimbre-de-sylvaris",
-      "name": "Aprendiz de la Urdimbre",
-      "rarity": "comun",
-      "image": ""
-    },
-    {
-      "id": "urdimbre-de-sylvaris-007",
-      "nation": "urdimbre-de-sylvaris",
-      "name": "Sendero de Espinas",
-      "rarity": "comun",
-      "image": ""
-    },
-    {
-      "id": "urdimbre-de-sylvaris-008",
-      "nation": "urdimbre-de-sylvaris",
-      "name": "Portador de Semillas",
-      "rarity": "comun",
-      "image": ""
-    },
-    {
-      "id": "urdimbre-de-sylvaris-009",
-      "nation": "urdimbre-de-sylvaris",
-      "name": "Cámara de los Ancestros",
-      "rarity": "rara",
-      "image": ""
-    },
-    {
-      "id": "urdimbre-de-sylvaris-010",
-      "nation": "urdimbre-de-sylvaris",
-      "name": "Mente Colmena",
-      "rarity": "rara",
-      "image": ""
-    },
-    {
-      "id": "urdimbre-de-sylvaris-011",
-      "nation": "urdimbre-de-sylvaris",
-      "name": "Enredadera Sagrada",
-      "rarity": "rara",
-      "image": ""
-    },
-    {
-      "id": "urdimbre-de-sylvaris-012",
-      "nation": "urdimbre-de-sylvaris",
-      "name": "Consejo Incorpóreo",
-      "rarity": "rara",
-      "image": ""
-    },
-    {
-      "id": "urdimbre-de-sylvaris-013",
-      "nation": "urdimbre-de-sylvaris",
-      "name": "Voz de los Ancestros",
-      "rarity": "epica",
-      "image": ""
-    },
-    {
-      "id": "urdimbre-de-sylvaris-014",
-      "nation": "urdimbre-de-sylvaris",
-      "name": "Tejedora Mayor",
-      "rarity": "epica",
-      "image": ""
-    },
-    {
-      "id": "urdimbre-de-sylvaris-015",
-      "nation": "urdimbre-de-sylvaris",
-      "name": "La Urdimbre Eterna",
-      "rarity": "legendaria",
-      "image": ""
-    },
-    {
-      "id": "urdimbre-de-sylvaris-016",
-      "nation": "urdimbre-de-sylvaris",
-      "name": "El Ancestro Primordial",
-      "rarity": "legendaria",
-      "image": ""
+      "name": "Gran Raiz",
+      "rarity": "unica",
+      "image": "stickers/gran raiz.jpg"
     },
     {
       "id": "ostraca-001",
       "nation": "ostraca",
-      "name": "Clon Numerado",
-      "rarity": "comun",
-      "image": ""
-    },
-    {
-      "id": "ostraca-002",
-      "nation": "ostraca",
-      "name": "Mercado de Sal",
-      "rarity": "comun",
-      "image": ""
-    },
-    {
-      "id": "ostraca-003",
-      "nation": "ostraca",
-      "name": "Burócrata Confundido",
-      "rarity": "comun",
-      "image": ""
-    },
-    {
-      "id": "ostraca-004",
-      "nation": "ostraca",
-      "name": "Guardia Duplicado",
-      "rarity": "comun",
-      "image": ""
-    },
-    {
-      "id": "ostraca-005",
-      "nation": "ostraca",
-      "name": "Vendedor de Coral",
-      "rarity": "comun",
-      "image": ""
-    },
-    {
-      "id": "ostraca-006",
-      "nation": "ostraca",
-      "name": "Escriba Desordenado",
-      "rarity": "comun",
-      "image": ""
-    },
-    {
-      "id": "ostraca-007",
-      "nation": "ostraca",
-      "name": "Recluta Idéntico",
-      "rarity": "comun",
-      "image": ""
-    },
-    {
-      "id": "ostraca-008",
-      "nation": "ostraca",
-      "name": "Vagabundo del Desierto",
-      "rarity": "comun",
-      "image": ""
-    },
-    {
-      "id": "ostraca-009",
-      "nation": "ostraca",
-      "name": "Archivo Incompleto",
-      "rarity": "rara",
-      "image": ""
-    },
-    {
-      "id": "ostraca-010",
-      "nation": "ostraca",
-      "name": "Consejo Caótico",
-      "rarity": "rara",
-      "image": ""
-    },
-    {
-      "id": "ostraca-011",
-      "nation": "ostraca",
-      "name": "Clon Disidente",
-      "rarity": "rara",
-      "image": ""
-    },
-    {
-      "id": "ostraca-012",
-      "nation": "ostraca",
-      "name": "Ruinas de Coral",
-      "rarity": "rara",
-      "image": ""
-    },
-    {
-      "id": "ostraca-013",
-      "nation": "ostraca",
-      "name": "Sumo Burócrata",
-      "rarity": "epica",
-      "image": ""
-    },
-    {
-      "id": "ostraca-014",
-      "nation": "ostraca",
-      "name": "Clon Original (Supuesto)",
-      "rarity": "epica",
-      "image": ""
-    },
-    {
-      "id": "ostraca-015",
-      "nation": "ostraca",
-      "name": "El Decreto Contradictorio",
-      "rarity": "legendaria",
-      "image": ""
-    },
-    {
-      "id": "ostraca-016",
-      "nation": "ostraca",
-      "name": "El Primer Clon",
-      "rarity": "legendaria",
-      "image": ""
+      "name": "Chip",
+      "rarity": "unica",
+      "image": "stickers/chip.jpg"
     },
     {
       "id": "dioses-001",

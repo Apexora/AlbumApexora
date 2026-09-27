@@ -279,6 +279,10 @@ button{cursor:pointer}
 .modal p{margin:.4em 0;opacity:.85;line-height:1.35}
 .modal textarea{width:100%;height:96px;border-radius:10px;border:1px solid #e3bf7344;background:#081020;color:#fff;padding:.6em;font-size:.8rem;word-break:break-all}
 .modal .row{display:flex;gap:8px;margin:10px 0;flex-wrap:wrap}
+.drow{display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid #ffffff1a}
+.dn{flex:1;display:flex;flex-direction:column}
+.dqty{width:50px}
+.redeem{padding:10px;margin-bottom:10px;border:1px dashed #e3bf7355;border-radius:10px}
 .toast{position:fixed;left:50%;bottom:max(24px,env(safe-area-inset-bottom));transform:translateX(-50%);z-index:200;padding:.7em 1.3em;border-radius:99px;background:#101e38;box-shadow:0 0 0 1px #e3bf7366,0 10px 30px #000a;animation:fadein .25s;max-width:90vw;text-align:center}
 
 /* ---------- administración ---------- */
@@ -532,6 +536,8 @@ function albumScreen(){
     <div class="who">
       <span class="pill" id="prog"></span>
       <button class="btn sm gift" id="btnPacks" title="Abrir un sobre">🎁 Sobres <span class="n" id="packN">0</span></button>
+      <button class="btn sm gift" id="btnPacks" title="Abrir un sobre">🎁 Sobres <span class="n" id="packN">0</span></button>
+      <button class="btn ghost sm" id="btnDupes" title="Repetidas">🔁 Repetidas</button>
       <button class="btn ghost sm" id="btnBackup" title="Copia de seguridad" aria-label="Copia de seguridad">💾</button>
       <button class="btn ghost sm" id="btnOut" title="Cerrar sesión">Salir</button>
     </div>
@@ -548,6 +554,7 @@ function albumScreen(){
   $('#btnPacks').onclick = openPackFlow;
   $('#btnOut').onclick = logout;
   $('#btnBackup').onclick = showBackup;
+    $('#btnDupes').onclick = showDupes;
   $('#prev').onclick = prev; $('#next').onclick = next;
 
   const book = $('#book');
@@ -775,7 +782,81 @@ function showBackup(){
     } catch { toast('Ese código no es válido para tu álbum.'); }
   };
 }
+const DUPE_RATE = 5; // cuántas repetidas valen 1 sobre
 
+function removeOneCopy(progress, sid){
+  for (const pack of progress.opened){
+    const idx = pack.ids.indexOf(sid);
+    if (idx !== -1){ pack.ids.splice(idx, 1); return true; }
+  }
+  return false;
+}
+
+async function sendSticker(sid, toId){
+  if (!removeOneCopy(S.progress, sid)) return false;
+  saveProgress();
+  const target = await loadProgress(toId);
+  target.opened.push({ ids: [sid] });
+  try { await db.collection('players').doc(toId).set(target); } catch (e){ console.error(e); return false; }
+  return true;
+}
+
+function extraCopies(){
+  const c = counts();
+  return D.stickers.reduce((sum, s) => sum + Math.max((c[s.id] || 0) - 1, 0), 0);
+}
+
+function redeemDupes(){
+  const groups = Math.floor(extraCopies() / DUPE_RATE);
+  if (groups < 1) return 0;
+  let toRemove = groups * DUPE_RATE, removed = 0;
+  for (const s of D.stickers){
+    while (removed < toRemove && (counts()[s.id] || 0) > 1){
+      if (removeOneCopy(S.progress, s.id)) removed++; else break;
+    }
+    if (removed >= toRemove) break;
+  }
+  S.progress.bonus = (S.progress.bonus || 0) + groups;
+  saveProgress(); updateHeader();
+  return groups;
+}
+
+function showDupes(){
+  const c = counts();
+  const dupes = D.stickers.filter(s => (c[s.id] || 0) > 1);
+  const others = D.players.filter(p => p.id !== S.player.id);
+  const extra = extraCopies(), groups = Math.floor(extra / DUPE_RATE);
+  const redeemBlock = `<div class="redeem">
+    <p>Tenés <b>${extra}</b> repetida${extra === 1 ? '' : 's'} de sobra. Cada ${DUPE_RATE} = 1 sobre.</p>
+    <button class="btn sm" id="btnRedeem" ${groups < 1 ? 'disabled' : ''}>Canjear ${groups} sobre${groups === 1 ? '' : 's'}</button>
+  </div>`;
+  if (!dupes.length){
+    modal(`<h3>Repetidas</h3><p>Todavía no tienes pegatinas repetidas.</p><div class="row"><button class="btn ghost sm" data-close>Cerrar</button></div>`);
+    return;
+  }
+  const rows = others.length ? dupes.map(s => {
+    const n = nationOf(s.nation), r = rarityOf(s.rarity), max = c[s.id] - 1;
+    return `<div class="drow" data-sid="${esc(s.id)}">
+      <span class="de">${esc(n.emoji || '✦')}</span>
+      <span class="dn"><b>${esc(s.name)}</b><i>${esc(r.label)} · tienes ${c[s.id]}</i></span>
+      <select class="dsel">${others.map(p => `<option value="${esc(p.id)}">${esc(p.name)}</option>`).join('')}</select>
+      <input class="dqty" type="number" min="1" max="${max}" value="1">
+      <button class="btn sm dsend">Enviar</button>
+    </div>`;
+  }).join('') : `<p class="hint">No hay otros jugadores todavía.</p>`;
+  const m = modal(`<h3>Repetidas</h3>${redeemBlock}<p>Elegí a quién enviarle una pegatina repetida.</p><div class="dlist">${rows}</div><div class="row"><button class="btn ghost sm" data-close>Cerrar</button></div>`);
+  const rb = $('#btnRedeem', m);
+  if (rb) rb.onclick = () => { const g = redeemDupes(); m.remove(); toast(`Canjeaste ${g} sobre${g === 1 ? '' : 's'}`); showDupes(); };
+  $$('.dsend', m).forEach(btn => btn.onclick = async () => {
+    btn.disabled = true;
+    const row = btn.closest('.drow'), sid = row.dataset.sid;
+    const toId = $('.dsel', row).value, qty = Math.max(1, +$('.dqty', row).value || 1);
+    let sent = 0;
+    for (let i = 0; i < qty; i++){ if (await sendSticker(sid, toId)) sent++; else break; }
+    if (sent){ toast(`Enviaste ${sent} pegatina${sent > 1 ? 's' : ''}`); m.remove(); refreshAlbum(); updateHeader(); showDupes(); }
+    else { toast('No se pudo enviar.'); btn.disabled = false; }
+  });
+}
 /* ================= apertura de sobres ================= */
 function openPackFlow(){
   if (availablePacks() <= 0){ toast('No tienes sobres por abrir. Pídele más al administrador.'); return; }

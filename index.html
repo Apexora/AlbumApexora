@@ -430,13 +430,15 @@ function genPw(){
 async function loadProgress(id){
   try {
     const doc = await db.collection('players').doc(id).get();
-    if (doc.exists){ const o = doc.data(); if (Array.isArray(o.opened)) return { opened: o.opened, bonus: o.bonus || 0 }; }
+    if (doc.exists){ const o = doc.data(); if (Array.isArray(o.opened)) return { opened: o.opened, bonus: o.bonus || 0, streak: o.streak || 0, lastLogin: o.lastLogin || null }; }
   } catch (e){ console.error('No se pudo leer el progreso:', e); }
-  return { opened: [], bonus: 0 };
+  return { opened: [], bonus: 0, streak: 0, lastLogin: null };
 }
 function saveProgress(){
-  db.collection('players').doc(S.player.id).set({ opened: S.progress.opened, bonus: S.progress.bonus || 0 }, { merge: true })
-    .catch(e => { console.error('No se pudo guardar:', e); toast('No se pudo guardar (revisá tu conexión)'); });
+  db.collection('players').doc(S.player.id).set({
+    opened: S.progress.opened, bonus: S.progress.bonus || 0,
+    streak: S.progress.streak || 0, lastLogin: S.progress.lastLogin || null
+  }, { merge: true }).catch(e => { console.error('No se pudo guardar:', e); toast('No se pudo guardar (revisá tu conexión)'); });
 }
 function counts(){
   const c = {};
@@ -561,6 +563,7 @@ async function startAlbum(pl){
   S.progress = await loadProgress(pl.id);
   albumScreen();
   listenInbox(pl.id);
+  checkDailyStreak();
 }
 function listenInbox(id){
   if (S.unsub) S.unsub();
@@ -876,6 +879,23 @@ function removeOneCopy(progress, sid){
     if (idx !== -1){ pack.ids.splice(idx, 1); return true; }
   }
   return false;
+}
+function todayStr(d = new Date()){
+  return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+}
+function checkDailyStreak(){
+  const today = todayStr();
+  if (S.progress.lastLogin === today) return; // ya la reclamó hoy
+  const yest = todayStr(new Date(Date.now() - 86400000));
+  const prev = (S.progress.lastLogin === yest) ? (S.progress.streak || 0) : 0;
+  S.progress.streak = prev >= 7 ? 1 : prev + 1;
+  S.progress.lastLogin = today;
+  const reward = S.progress.streak;
+  S.progress.bonus = (S.progress.bonus || 0) + reward;
+  saveProgress(); updateHeader();
+  modal(`<h3>🔥 Racha de ${S.progress.streak} día${S.progress.streak === 1 ? '' : 's'}</h3>
+    <p>Ganaste ${reward} sobre${reward === 1 ? '' : 's'} por entrar hoy.${S.progress.streak === 7 ? ' ¡Racha máxima! Mañana vuelve a empezar.' : ''}</p>
+    <div class="row"><button class="btn sm" data-close>Genial</button></div>`);
 }
 
 async function sendSticker(sid, toId){

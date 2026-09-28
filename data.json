@@ -199,7 +199,7 @@
     {
       "id": "objetos-005",
       "nation": "objetos",
-      "name": "Negatt",
+      "name": "Arboris",
       "rarity": "comun",
       "image": "stickers/Arboris.jpg"
     },
@@ -647,7 +647,7 @@
     {
       "id": "lumis-013",
       "nation": "lumis",
-      "name": "Directora del Núcleo",
+      "name": "Orx y Archy",
       "rarity": "epica",
       "image": "stickers/orx_archy.png"
     },
@@ -675,7 +675,7 @@
     {
       "id": "arboris-002",
       "nation": "arboris",
-      "name": "Mercado de Musgo",
+      "name": "Aranis Durgun",
       "rarity": "comun",
       "image": "stickers/aranis durgun.jpg"
     },

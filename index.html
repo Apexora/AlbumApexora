@@ -279,6 +279,7 @@ button{cursor:pointer}
 .modal p{margin:.4em 0;opacity:.85;line-height:1.35}
 .modal textarea{width:100%;height:96px;border-radius:10px;border:1px solid #e3bf7344;background:#081020;color:#fff;padding:.6em;font-size:.8rem;word-break:break-all}
 .modal .row{display:flex;gap:8px;margin:10px 0;flex-wrap:wrap}
+.rqty{width:56px}
 #pdfStage .art{background:var(--nc)!important}
 .drow{display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid #ffffff1a}
 .dn{flex:1;display:flex;flex-direction:column}
@@ -841,7 +842,7 @@ async function exportAlbumPDF(){
     if (btn){ btn.disabled = false; btn.textContent = original; }
   }
 }
-const DUPE_RATE = 5; // cuántas repetidas valen 1 sobre
+const DUPE_RATE = 20; // cuántas repetidas valen 1 sobre
 
 function removeOneCopy(progress, sid){
   for (const pack of progress.opened){
@@ -868,19 +869,61 @@ function extraCopies(){
   return D.stickers.reduce((sum, s) => sum + Math.max((c[s.id] || 0) - 1, 0), 0);
 }
 
-function redeemDupes(){
-  const groups = Math.floor(extraCopies() / DUPE_RATE);
+function redeemSelected(sel){
+  const total = Object.values(sel).reduce((a, b) => a + b, 0);
+  const groups = Math.floor(total / DUPE_RATE);
   if (groups < 1) return 0;
-  let toRemove = groups * DUPE_RATE, removed = 0;
-  for (const s of D.stickers){
-    while (removed < toRemove && (counts()[s.id] || 0) > 1){
-      if (removeOneCopy(S.progress, s.id)) removed++; else break;
+  let left = groups * DUPE_RATE;
+  for (const [sid, qty] of Object.entries(sel)){
+    let n = qty;
+    while (n > 0 && left > 0 && (counts()[sid] || 0) > 1){
+      if (removeOneCopy(S.progress, sid)){ n--; left--; } else break;
     }
-    if (removed >= toRemove) break;
+    if (left <= 0) break;
   }
   S.progress.bonus = (S.progress.bonus || 0) + groups;
   saveProgress(); updateHeader();
   return groups;
+}
+
+function showRedeem(){
+  const c = counts();
+  const dupes = D.stickers.filter(s => (c[s.id] || 0) > 1);
+  const rows = dupes.map(s => {
+    const n = nationOf(s.nation), r = rarityOf(s.rarity), max = c[s.id] - 1;
+    return `<div class="drow" data-sid="${esc(s.id)}" data-max="${max}">
+      <span class="de">${esc(n.emoji || '✦')}</span>
+      <span class="dn"><b>${esc(s.name)}</b><i>${esc(r.label)} · repetidas: ${max}</i></span>
+      <input class="rqty" type="number" min="0" max="${max}" value="0">
+    </div>`;
+  }).join('');
+  const m = modal(`<h3>Canjear por sobres</h3>
+    <p>Elegí cuántas repetidas de cada una querés canjear. ${DUPE_RATE} repetidas = 1 sobre.</p>
+    <div class="dlist">${rows}</div>
+    <p class="hint" id="rsum"></p>
+    <div class="row"><button class="btn sm" id="rgo" disabled>Canjear</button><button class="btn ghost sm" data-close>Cancelar</button></div>`);
+  const readSel = () => {
+    const sel = {};
+    $$('.drow', m).forEach(row => {
+      const max = +row.dataset.max, inp = $('.rqty', row);
+      const v = Math.min(max, Math.max(0, Math.floor(+inp.value || 0)));
+      if (String(v) !== inp.value) inp.value = v;
+      if (v > 0) sel[row.dataset.sid] = v;
+    });
+    return sel;
+  };
+  const update = () => {
+    const total = Object.values(readSel()).reduce((a, b) => a + b, 0);
+    const groups = Math.floor(total / DUPE_RATE), unused = total - groups * DUPE_RATE;
+    $('#rsum', m).textContent = `Elegidas: ${total}` + (groups ? ` → ${groups} sobre${groups === 1 ? '' : 's'}` : ` (faltan ${DUPE_RATE - total} para 1 sobre)`) + (groups && unused ? `. ${unused} quedan sin gastar.` : '');
+    const go = $('#rgo', m); go.disabled = groups < 1; go.textContent = groups ? `Canjear ${groups} sobre${groups === 1 ? '' : 's'}` : 'Canjear';
+  };
+  m.addEventListener('input', update); update();
+  $('#rgo', m).onclick = () => {
+    const g = redeemSelected(readSel());
+    m.remove(); refreshAlbum(); updateHeader();
+    modal(`<h3>¡Canje listo! 🎁</h3><p>Ganaste ${g} sobre${g === 1 ? '' : 's'}.</p><div class="row"><button class="btn sm" data-close>Genial</button></div>`);
+  };
 }
 
 function showDupes(){
@@ -890,7 +933,7 @@ function showDupes(){
   const extra = extraCopies(), groups = Math.floor(extra / DUPE_RATE);
   const redeemBlock = `<div class="redeem">
     <p>Tenés <b>${extra}</b> repetida${extra === 1 ? '' : 's'} de sobra. Cada ${DUPE_RATE} = 1 sobre.</p>
-    <button class="btn sm" id="btnRedeem" ${groups < 1 ? 'disabled' : ''}>Canjear ${groups} sobre${groups === 1 ? '' : 's'}</button>
+        <button class="btn sm" id="btnRedeem" ${groups < 1 ? 'disabled' : ''}>Elegir y canjear</button>
   </div>`;
   if (!dupes.length){
     modal(`<h3>Repetidas</h3><p>Todavía no tienes pegatinas repetidas.</p><div class="row"><button class="btn ghost sm" data-close>Cerrar</button></div>`);
@@ -908,7 +951,7 @@ function showDupes(){
   }).join('') : `<p class="hint">No hay otros jugadores todavía.</p>`;
   const m = modal(`<h3>Repetidas</h3>${redeemBlock}<p>Elegí a quién enviarle una pegatina repetida.</p><div class="dlist">${rows}</div><div class="row"><button class="btn ghost sm" data-close>Cerrar</button></div>`);
   const rb = $('#btnRedeem', m);
-  if (rb) rb.onclick = () => { const g = redeemDupes(); m.remove(); toast(`Canjeaste ${g} sobre${g === 1 ? '' : 's'}`); showDupes(); };
+    if (rb) rb.onclick = () => { m.remove(); showRedeem(); };
   $$('.dsend', m).forEach(btn => btn.onclick = async () => {
     btn.disabled = true;
     const row = btn.closest('.drow'), sid = row.dataset.sid;

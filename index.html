@@ -469,22 +469,44 @@ function drawPack(player, index){
 }
 
 /* ================= arranque ================= */
-async function init(){
-  try {
-    const r = await fetch('data.json?v=' + Date.now(), { cache: 'no-store' });
-    if (!r.ok) throw new Error('HTTP ' + r.status);
-    D = await r.json();
-  } catch (e){
-    app.innerHTML = `<div class="login"><div class="login-card"><h1>No se pudo cargar</h1>
-      <p>No encuentro <b>data.json</b>. Si abriste el archivo haciendo doble clic, ábrelo desde un servidor (por ejemplo GitHub Pages, o <code>python -m http.server</code> en la carpeta).</p>
-      <div class="err">${esc(e.message)}</div></div></div>`;
-    return;
-  }
+function normalizeD(){
   D.kdf = D.kdf || 100000; D.packSize = D.packSize || 5;
   D.nations = D.nations || []; D.stickers = D.stickers || []; D.players = D.players || [];
   D.rarities = D.rarities || { comun: { label: 'Común', weight: 1, color: '#b9c2cc' } };
+}
+let firstCfg = true;
+function onConfigUpdate(snap){
+  if (firstCfg){ firstCfg = false; return; }
+  if (!snap.exists || snap.metadata.hasPendingWrites || A.ok) return;
+  D = snap.data(); normalizeD();
+  document.title = D.title || 'Álbum';
+  if (S.player){
+    const pl = D.players.find(p => p.id === S.player.id);
+    if (!pl){ logout(); return; }
+    S.player = pl; updateHeader(); refreshAlbum();
+  }
+}
+async function init(){
+  const ref = db.collection('config').doc('album');
+  try {
+    const snap = await ref.get();
+    if (snap.exists) D = snap.data();
+    else {
+      const r = await fetch('data.json?v=' + Date.now(), { cache: 'no-store' });
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      D = await r.json();
+      await ref.set(D);
+    }
+  } catch (e){
+    app.innerHTML = `<div class="login"><div class="login-card"><h1>No se pudo cargar</h1>
+      <p>No pude leer los datos del álbum. Revisa tu conexión y recarga la página.</p>
+      <div class="err">${esc(e.message)}</div></div></div>`;
+    return;
+  }
+  normalizeD();
   document.title = D.title || 'Álbum';
   route();
+  ref.onSnapshot(onConfigUpdate, e => console.error(e));
 }
 window.addEventListener('hashchange', route);
 
@@ -1082,7 +1104,19 @@ function openPackFlow(){
 
 /* ================= administración ================= */
 const A = { ok: false, d: null, tab: 'players', dirty: false, filter: '' };
-const persist = () => { A.dirty = true; store.set(K_DRAFT, JSON.stringify(A.d)); const b = $('#aBan'); if (b) b.classList.remove('hidden'); };
+const setSaveState = t => { A.msg = t; const b = $('#aBan'); if (b){ b.classList.remove('hidden'); b.textContent = t; } };
+let saveTimer = null;
+const persist = () => {
+  A.dirty = true; setSaveState('Guardando…');
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(async () => {
+    try {
+      await db.collection('config').doc('album').set(clone(A.d));
+      D = clone(A.d); A.dirty = false;
+      setSaveState('✔ Guardado. Los jugadores ven los cambios en tiempo real.');
+    } catch (e){ console.error(e); setSaveState('⚠ No se pudo guardar. Revisa tu conexión.'); }
+  }, 500);
+};
 const slug = s => String(s).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') || 'x';
 
 function adminScreen(){
@@ -1093,7 +1127,7 @@ function adminScreen(){
   <header class="top"><div class="brand"><span class="logo">⚙</span><b>Panel de administración</b></div>
     <div class="who"><button class="btn sm" id="aDl">⬇ Descargar data.json</button><button class="btn ghost sm" id="aOut">Salir</button></div></header>
   <div class="admwrap">
-    <div class="banner ${A.dirty ? '' : 'hidden'}" id="aBan">Hay cambios sin publicar. Descarga <b>data.json</b> y súbelo a tu repositorio de GitHub para que los jugadores los vean.</div>
+    <div class="banner" id="aBan">${esc(A.msg || 'Los cambios se guardan solos y los jugadores los ven en tiempo real.')}</div>
     <nav class="tabs">${tabs.map(([k, l]) => `<button class="tab${A.tab === k ? ' on' : ''}" data-tab="${k}">${l}</button>`).join('')}</nav>
     <div id="aBody"></div>
   </div>`;
@@ -1118,14 +1152,13 @@ function adminLogin(){
   const go = async () => {
     const pw = $('#apw').value.trim(); if (pw.length < 4){ $('#err').textContent = 'Usa al menos 4 caracteres.'; return; }
     try {
-      const drRaw = store.get(K_DRAFT);
-      let base; try { base = drRaw ? JSON.parse(drRaw) : clone(D); } catch { base = clone(D); }
+      const base = clone(D);
       if (first){
         const salt = newSalt(); base.adminAuth = { salt, hash: await hashPw(pw, salt, D.kdf) };
-        A.d = base; A.dirty = true; store.set(K_DRAFT, JSON.stringify(base)); A.ok = true;
+        A.d = base; A.ok = true; persist();
       } else {
         if (await hashPw(pw, D.adminAuth.salt, D.kdf) !== D.adminAuth.hash){ $('#err').textContent = 'Contraseña incorrecta.'; return; }
-        A.d = base; A.dirty = !!drRaw; A.ok = true;
+        A.d = base; A.dirty = false; A.ok = true;
       }
       adminScreen();
     } catch { $('#err').textContent = 'No se pudo comprobar la contraseña (usa https o localhost).'; }
@@ -1320,7 +1353,7 @@ function tabPublish(){
   return `<div class="panel"><h3>Publicar cambios</h3>
     <p class="hint">GitHub Pages solo sirve archivos, así que los jugadores leen todo desde <b>data.json</b>. Para que vean tus cambios (sobres nuevos, pegatinas, jugadores):</p>
     <p class="hint">1. Descarga el archivo. 2. En tu repositorio de GitHub, entra a <b>Add file, Upload files</b> y sube <b>data.json</b> (reemplaza el anterior). 3. Espera uno o dos minutos y pídeles que recarguen la página.</p>
-    <div class="acts"><button class="btn" data-act="dl">⬇ Descargar data.json</button><button class="btn ghost sm" data-act="copyJson">Copiar JSON</button><button class="mini warn" data-act="discard">Descartar borrador</button></div></div>
+    <div class="acts"><button class="btn" data-act="dl">⬇ Descargar data.json</button><button class="btn ghost sm" data-act="copyJson">Copiar JSON</button></div></div>
   <div class="panel"><h3>Vista previa del archivo</h3><textarea class="code" readonly>${esc(JSON.stringify(A.d, null, 2))}</textarea></div>`;
 }
 

@@ -130,7 +130,7 @@ button{cursor:pointer}
 .index .who2{margin:1.5cqw 0 4cqw;font-style:italic;font-size:4cqw;opacity:.7}
 .index .tot{display:flex;align-items:baseline;gap:2cqw;font:700 9cqw var(--ft);margin-bottom:3cqw}
 .index .tot small{font:400 4cqw var(--fb);opacity:.7}
-.index ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2.4cqw;flex:1;min-height:0;overflow:hidden}
+.index ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2.4cqw;flex:1;min-height:0;overflow-y:auto}
 .index li{display:flex;align-items:center;gap:3cqw;padding:1.6cqw 2.4cqw;border-radius:2.4cqw;cursor:pointer;background:#2b211710;transition:background .2s}
 .index li:hover{background:#2b211724}
 .index li .e{font-size:5.4cqw;width:8cqw;text-align:center}
@@ -429,15 +429,8 @@ async function loadProgress(id){
   } catch (e){ console.error('No se pudo leer el progreso:', e); }
   return { opened: [], bonus: 0 };
 }
-function showNotices(){
-  const notices = S.progress.notices || [];
-  if (!notices.length) return;
-  const list = notices.map(nt => { const s = stickerById(nt.sid); return `<li>${esc(nt.from)} te envió <b>${esc(s ? s.name : nt.sid)}</b></li>`; }).join('');
-  modal(`<h3>¡Recibiste pegatinas! 🎉</h3><ul class="nlist">${list}</ul><div class="row"><button class="btn sm" data-close>Genial</button></div>`);
-  S.progress.notices = []; saveProgress();
-}
 function saveProgress(){
-  db.collection('players').doc(S.player.id).set(S.progress)
+  db.collection('players').doc(S.player.id).set({ opened: S.progress.opened, bonus: S.progress.bonus || 0 }, { merge: true })
     .catch(e => { console.error('No se pudo guardar:', e); toast('No se pudo guardar (revisá tu conexión)'); });
 }
 function counts(){
@@ -445,7 +438,7 @@ function counts(){
   for (const pk of S.progress.opened) for (const id of pk.ids) if (stickerById(id)) c[id] = (c[id] || 0) + 1;
   return c;
 }
-const availablePacks = () => Math.max(0, S.player.packs - S.progress.opened.length);
+const availablePacks = () => Math.max(0, S.player.packs - S.progress.opened.length + (S.progress.bonus || 0));
 
 /* ================= sobres (determinista) ================= */
 function xmur3(str){
@@ -530,6 +523,7 @@ function loginScreen(msg = ''){
   $('#pw').focus();
 }
 function logout(){
+  if (S.unsub){ S.unsub(); S.unsub = null; }
   sess.del(K_SESSION); store.del(K_REMEMBER);
   S.player = null; loginScreen();
 }
@@ -539,7 +533,30 @@ async function startAlbum(pl){
   S.player = pl; S.p = 0; S.newIds = new Set();
   S.progress = await loadProgress(pl.id);
   albumScreen();
-  showNotices();
+  listenInbox(pl.id);
+}
+function listenInbox(id){
+  if (S.unsub) S.unsub();
+  S.unsub = db.collection('players').doc(id).onSnapshot(snap => {
+    if (snap.metadata.hasPendingWrites || !S.player || S.player.id !== id) return;
+    const inbox = (snap.data() || {}).inbox || [];
+    if (inbox.length) claimInbox(id, inbox);
+  }, e => console.error(e));
+}
+let claiming = false;
+async function claimInbox(id, items){
+  if (claiming) return; claiming = true;
+  try {
+    items.forEach(g => S.progress.opened.push({ ids: [g.sid] }));
+    await db.collection('players').doc(id).set({
+      opened: S.progress.opened, bonus: S.progress.bonus || 0,
+      inbox: firebase.firestore.FieldValue.arrayRemove(...items)
+    }, { merge: true });
+    refreshAlbum(); updateHeader();
+    const list = items.map(g => { const s = stickerById(g.sid); return `<li>${esc(g.from)} te envió <b>${esc(s ? s.name : g.sid)}</b></li>`; }).join('');
+    modal(`<h3>¡Recibiste pegatinas! 🎉</h3><ul class="nlist">${list}</ul><div class="row"><button class="btn sm" data-close>Genial</button></div>`);
+  } catch (e){ console.error(e); }
+  finally { claiming = false; }
 }
 
 function albumScreen(){
@@ -566,6 +583,7 @@ function albumScreen(){
   </footer>`;
   $('#btnPacks').onclick = openPackFlow;
   $('#btnOut').onclick = logout;
+  $('#chips').addEventListener('wheel', e => { if (e.deltaY){ e.preventDefault(); e.currentTarget.scrollLeft += e.deltaY; } }, { passive: false });
   $('#btnBackup').onclick = showBackup;
   $('#btnPDF').onclick = exportAlbumPDF;
     $('#btnDupes').onclick = showDupes;
@@ -834,13 +852,14 @@ function removeOneCopy(progress, sid){
 }
 
 async function sendSticker(sid, toId){
-  if (!removeOneCopy(S.progress, sid)) return false;
+  if ((counts()[sid] || 0) < 2) return false;
+  try {
+    await db.collection('players').doc(toId).set({
+      inbox: firebase.firestore.FieldValue.arrayUnion({ sid, from: S.player.name, at: Date.now(), k: Math.random().toString(36).slice(2) })
+    }, { merge: true });
+  } catch (e){ console.error(e); return false; }
+  removeOneCopy(S.progress, sid);
   saveProgress();
-  const target = await loadProgress(toId);
-  target.opened.push({ ids: [sid] });
-  target.notices = target.notices || [];
-  target.notices.push({ from: S.player.name, sid, at: Date.now() });
-  try { await db.collection('players').doc(toId).set(target); } catch (e){ console.error(e); return false; }
   return true;
 }
 

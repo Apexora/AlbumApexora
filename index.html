@@ -392,7 +392,11 @@ let D = null;                    // datos publicados (data.json)
 const S = { player: null, progress: { opened: [] }, p: 0, mode: 'desktop', pages: [], L: 0, newIds: new Set(), lock: 0 };
 
 const rKeys   = () => Object.keys(D.rarities);
-const tierOf  = k => { const n = rKeys().length, i = Math.max(0, rKeys().indexOf(k)); return n <= 1 ? 0 : Math.round(i / (n - 1) * 3); };
+const tierOf = k => {
+  const keys = Object.keys(D.rarities).sort((a, b) => (+D.rarities[b].weight || 0) - (+D.rarities[a].weight || 0));
+  const n = keys.length, i = Math.max(0, keys.indexOf(k));
+  return n <= 1 ? 0 : Math.round(i / (n - 1) * 3);
+};
 const nationOf = id => D.nations.find(n => n.id === id) || { id, name: '¿?', emoji: '✦', color: '#999' };
 const isHoriz = s => !!nationOf(s.nation).horiz;
 const stickerById = id => D.stickers.find(s => s.id === id);

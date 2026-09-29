@@ -4,6 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0a1220">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
 <title>Álbum de Apexora</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1386,6 +1388,10 @@ function tabPublish(){
     <p class="hint">1. Descarga el archivo. 2. En tu repositorio de GitHub, entra a <b>Add file, Upload files</b> y sube <b>data.json</b> (reemplaza el anterior). 3. Espera uno o dos minutos y pídeles que recarguen la página.</p>
     <div class="acts"><button class="btn" data-act="dl">⬇ Descargar data.json</button><button class="btn ghost sm" data-act="copyJson">Copiar JSON</button></div></div>
   <div class="panel"><h3>Vista previa del archivo</h3><textarea class="code" readonly>${esc(JSON.stringify(A.d, null, 2))}</textarea></div>`;
+}
+
+if ('serviceWorker' in navigator){
+  window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(e => console.error('SW error:', e)));
 }
 
 init();

@@ -340,6 +340,24 @@ button.mini.warn{background:#c0483a99}
   .pack,.gift.has,.foil,.t3 .sk,.slot.is-new{animation:none!important}
   .leaf,.book,.pinner{transition-duration:.01s!important}
 }
+/* ===== Ajustes móvil ===== */
+.top,.foot{position:relative;z-index:20}
+.stage{position:relative;z-index:1;overflow:hidden}
+.book,.leaf{will-change:transform}
+.navrow{width:100%;max-width:420px}
+.plabel{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-height:1.4em}
+
+.ov{backdrop-filter:none;-webkit-backdrop-filter:none;
+  background:radial-gradient(900px 600px at 50% 40%,#2a2350,#080d18)}
+.pack{will-change:transform}
+.pack .shine{mix-blend-mode:normal;opacity:.55}
+.pack-ov{padding-top:56px}
+.pk-stage{width:min(76vw,calc((100dvh - 350px)*.714),330px)}
+
+@media (max-width:859px){
+  .viewport{filter:none}
+  .stage.mobile .viewport{box-shadow:0 18px 30px -12px #000b;border-radius:6px}
+}
 </style>
 <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
@@ -657,14 +675,14 @@ const onKey = e => {
   if (e.key === 'ArrowRight') next();
   if (e.key === 'ArrowLeft') prev();
 };
-let rzT; const onResize = () => { clearTimeout(rzT); rzT = setTimeout(() => layout(false), 120); };
+let rzT; const onResize = () => { clearTimeout(rzT); rzT = setTimeout(() => layout(false), 200); };
 
 function layout(first){
   const st = $('#stage'); if (!st) return;
   const mobile = innerWidth < 860;
   const w = st.clientWidth - 16, h = st.clientHeight - 16;
   let pw = mobile ? Math.min(w, h * 0.72) : Math.min(w / 2, h * 0.72, 640);
-  pw = Math.max(150, pw);
+  pw = Math.max(150, Math.floor(pw / 8) * 8);
   st.style.setProperty('--pw', pw + 'px'); st.style.setProperty('--ph', (pw / 0.72) + 'px');
   const mode = mobile ? 'mobile' : 'desktop';
   st.classList.toggle('mobile', mobile);

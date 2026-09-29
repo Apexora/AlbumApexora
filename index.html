@@ -430,14 +430,21 @@ function genPw(){
 async function loadProgress(id){
   try {
     const doc = await db.collection('players').doc(id).get();
-    if (doc.exists){ const o = doc.data(); if (Array.isArray(o.opened)) return { opened: o.opened, bonus: o.bonus || 0, streak: o.streak || 0, lastLogin: o.lastLogin || null }; }
+    if (doc.exists){
+      const o = doc.data();
+      if (Array.isArray(o.opened)){
+        const packsOpened = (typeof o.packsOpened === 'number') ? o.packsOpened : o.opened.filter(pk => pk.ids && pk.ids.length > 1).length;
+        return { opened: o.opened, bonus: o.bonus || 0, streak: o.streak || 0, lastLogin: o.lastLogin || null, packsOpened };
+      }
+    }
   } catch (e){ console.error('No se pudo leer el progreso:', e); }
-  return { opened: [], bonus: 0, streak: 0, lastLogin: null };
+  return { opened: [], bonus: 0, streak: 0, lastLogin: null, packsOpened: 0 };
 }
 function saveProgress(){
   db.collection('players').doc(S.player.id).set({
     opened: S.progress.opened, bonus: S.progress.bonus || 0,
-    streak: S.progress.streak || 0, lastLogin: S.progress.lastLogin || null
+    streak: S.progress.streak || 0, lastLogin: S.progress.lastLogin || null,
+    packsOpened: S.progress.packsOpened || 0
   }, { merge: true }).catch(e => { console.error('No se pudo guardar:', e); toast('No se pudo guardar (revisá tu conexión)'); });
 }
 function counts(){
@@ -445,7 +452,7 @@ function counts(){
   for (const pk of S.progress.opened) for (const id of pk.ids) if (stickerById(id)) c[id] = (c[id] || 0) + 1;
   return c;
 }
-const availablePacks = () => Math.max(0, S.player.packs - S.progress.opened.length + (S.progress.bonus || 0));
+const availablePacks = () => Math.max(0, S.player.packs - (S.progress.packsOpened || 0) + (S.progress.bonus || 0));
 
 /* ================= sobres (determinista) ================= */
 function xmur3(str){
@@ -1048,7 +1055,7 @@ function openPackFlow(){
     // Se guarda al abrir: el contenido ya no cambia aunque cierres a medias
     const before = counts(), seen = new Set();
     ids.forEach(id => { newFlags.push(!before[id] && !seen.has(id)); seen.add(id); });
-    S.progress.opened.push({ ids }); saveProgress(); saved = true; updateHeader();
+    S.progress.opened.push({ ids }); S.progress.packsOpened = (S.progress.packsOpened || 0) + 1; saveProgress(); saved = true; updateHeader();
     S.newIds = new Set(ids.filter((id, k) => newFlags[k]));
     pack.classList.add('open'); msg.textContent = '';
     setTimeout(() => { pack.remove(); deal(); }, 1050);

@@ -1,4 +1,4 @@
-const CACHE = 'apexora-v1';
+const CACHE = 'apexora-v2';
 const CORE = ['./', './index.html', './manifest.json'];
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(CORE)));

@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="theme-color" content="#0a1220">
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icons/icon-192.png">
@@ -18,7 +18,7 @@
   --fb:'Crimson Pro',Georgia,'Times New Roman',serif;
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{height:100%;margin:0}
+html,body{height:100%;margin:0;touch-action:manipulation;-webkit-text-size-adjust:100%}
 body{
   font-family:var(--fb);font-size:18px;color:#f3ead6;overflow:hidden;position:relative;
   background:
@@ -35,7 +35,7 @@ body::before{
     radial-gradient(1px 1px at 170px 170px,#fff6,transparent);
   background-size:200px 200px;
 }
-#app{position:relative;height:100%;display:flex;flex-direction:column}
+#app{position:relative;height:100%;height:100dvh;display:flex;flex-direction:column}
 .hidden{display:none!important}
 button,input,select,textarea{font-family:inherit}
 button{cursor:pointer}
@@ -332,6 +332,9 @@ button.mini.warn{background:#c0483a99}
   .brand b{display:none}
   .pill{font-size:.85rem}
   .plabel{min-width:0;flex:1;font-size:.85rem}
+  .top{height:auto;min-height:52px;flex-wrap:wrap;padding-top:6px;padding-bottom:6px;gap:6px}
+  .who{flex-wrap:wrap;justify-content:flex-end;gap:6px}
+  .who .btn.sm{padding:.4em .6em;font-size:.82rem}
 }
 @media (prefers-reduced-motion:reduce){
   .pack,.gift.has,.foil,.t3 .sk,.slot.is-new{animation:none!important}
@@ -642,7 +645,7 @@ function albumScreen(){
   }, { passive: true });
   document.addEventListener('keydown', onKey);
   window.addEventListener('resize', onResize);
-
+  window.addEventListener('orientationchange', onResize);
   layout(true);
   buildBook();
   buildChips();
@@ -658,10 +661,10 @@ let rzT; const onResize = () => { clearTimeout(rzT); rzT = setTimeout(() => layo
 
 function layout(first){
   const st = $('#stage'); if (!st) return;
-  const vw = innerWidth, vh = innerHeight, mobile = vw < 860;
-  const availH = vh - 60 - 118 - 20;
-  let pw = mobile ? Math.min(vw - 28, availH * 0.72) : Math.min((vw - 120) / 2, availH * 0.72, 640);
-  pw = Math.max(190, pw);
+  const mobile = innerWidth < 860;
+  const w = st.clientWidth - 16, h = st.clientHeight - 16;
+  let pw = mobile ? Math.min(w, h * 0.72) : Math.min(w / 2, h * 0.72, 640);
+  pw = Math.max(150, pw);
   st.style.setProperty('--pw', pw + 'px'); st.style.setProperty('--ph', (pw / 0.72) + 'px');
   const mode = mobile ? 'mobile' : 'desktop';
   st.classList.toggle('mobile', mobile);

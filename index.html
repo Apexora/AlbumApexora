@@ -343,7 +343,7 @@ button.mini.warn{background:#c0483a99}
 /* ===== Ajustes móvil ===== */
 .top,.foot{position:relative;z-index:20}
 .stage{position:relative;z-index:1;overflow:hidden}
-.book,.leaf{will-change:transform}
+.book{will-change:transform}
 .navrow{width:100%;max-width:420px}
 .plabel{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-height:1.4em}
 
@@ -357,6 +357,11 @@ button.mini.warn{background:#c0483a99}
 @media (max-width:859px){
   .viewport{filter:none}
   .stage.mobile .viewport{box-shadow:0 18px 30px -12px #000b;border-radius:6px}
+}
+@media (max-width:859px){
+  .foil{animation:none;mix-blend-mode:normal;opacity:.35;background-position:60% 0}
+  .t3 .sk{animation:none}
+  .t1 .sk,.t2 .sk,.t3 .sk{box-shadow:0 1cqw 2.4cqw #0007,0 0 0 1.2cqw var(--rc)}
 }
 </style>
 <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
@@ -769,7 +774,7 @@ function pageHTML(pg, idx){
 function stickerHTML(s, o = {}){
   const r = rarityOf(s.rarity), n = nationOf(s.nation), t = tierOf(s.rarity);
   const art = s.image
-    ? `<img src="${esc(s.image)}" alt="${esc(s.name)}" draggable="false">`
+    ? `<img src="${esc(s.image)}" alt="${esc(s.name)}" draggable="false" decoding="async">`
     : `<div class="ph">${esc(s.emoji || n.emoji || '✦')}</div>`;
   return `<div class="sticker t${t}${o.mini ? ' mini' : ''}" style="--rc:${col(r.color, '#bbb')};--nc:${col(n.color)}">
     <div class="sk"><div class="art">${art}<div class="cap"><b>${esc(s.name)}</b><i>${esc(r.label)}</i></div></div>
@@ -804,6 +809,7 @@ function apply(){
       lf.style.zIndex = L + 5; lf.classList.toggle('flipped', flipped);
       clearTimeout(lf._t); lf._t = setTimeout(() => { lf.style.zIndex = flipped ? i : L - i; }, 1000);
     }
+    lf.style.visibility = Math.abs(i - f) <= 2 ? 'visible' : 'hidden';
   });
   const tx = mobile ? (S.p % 2 === 0 ? -50 : 0) : (f === 0 ? -25 : (f === L ? 25 : 0));
   $('#book').style.transform = `translateX(${tx}%)`;

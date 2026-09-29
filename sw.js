@@ -1,4 +1,4 @@
-const CACHE = 'apexora-v2';
+const CACHE = 'apexora-v4';
 const CORE = ['./', './index.html', './manifest.json'];
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(CORE)));
@@ -10,11 +10,12 @@ self.addEventListener('activate', e => {
 });
 self.addEventListener('fetch', e => {
   if (e.request.method !== 'GET') return;
-  e.respondWith(
-    fetch(e.request).then(res => {
-      const copy = res.clone();
-      caches.open(CACHE).then(c => c.put(e.request, copy));
-      return res;
-    }).catch(() => caches.match(e.request))
-  );
+  const url = new URL(e.request.url);
+  if (url.origin !== location.origin) return;
+  const store = res => { if (res.status === 200) { const copy = res.clone(); caches.open(CACHE).then(c => c.put(e.request, copy)); } return res; };
+  if (/\.(png|jpe?g|webp|gif|mp3|ogg|wav)$/i.test(url.pathname)) {
+    e.respondWith(caches.match(e.request).then(hit => hit || fetch(e.request).then(store)));
+    return;
+  }
+  e.respondWith(fetch(e.request).then(store).catch(() => caches.match(e.request)));
 });

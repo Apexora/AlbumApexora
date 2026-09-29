@@ -1,1462 +1,1476 @@
 {
-  "title": "Álbum de Apexora",
-  "kdf": 100000,
-  "packSize": 5,
   "adminAuth": {
-    "salt": "d5a65389309a0723130e613f",
-    "hash": "742da92f2bc63b9db77b1d9f7e82a9d58bd8d21fa0b4785fa1709ee1fdb026c9"
+    "hash": "742da92f2bc63b9db77b1d9f7e82a9d58bd8d21fa0b4785fa1709ee1fdb026c9",
+    "salt": "d5a65389309a0723130e613f"
   },
-  "rarities": {
-    "comun": {
-      "label": "Común",
-      "weight": 61,
-      "color": "#b9c2cc",
-      "sound": "sounds/comun.mp3"
+  "kdf": 100000,
+  "players": [
+    {
+      "packs": 100,
+      "salt": "83798bcf9e1e7a015cf64cd4",
+      "id": "demo",
+      "hash": "66cb469a5a8b99de1bca6862fcf234ee0b0a93a9cddc8521464e32193499e5bf",
+      "name": "Demo"
     },
-    "rara": {
-      "label": "Rara",
-      "weight": 25,
-      "color": "#4aa3ff",
-      "sound": "sounds/rara.mp3"
+    {
+      "hash": "c66ca2556d3f374073746167f448023370156af1ff6626a80fdf0786b3c31c3d",
+      "name": "Aria",
+      "id": "aria",
+      "packs": 100,
+      "salt": "0df4a4e515204dc8332ba4ec"
     },
-    "epica": {
-      "label": "Épica",
-      "weight": 10,
-      "color": "#b46bff",
-      "sound": "sounds/epica.mp3"
+    {
+      "salt": "760bc85b9d6e1e3d188a6ba1",
+      "packs": 5,
+      "name": "Demian",
+      "id": "demian",
+      "hash": "ce714e2681eba1aa6a798b8623ef2473e94cf1971fcd01ba68587a020e15ab90"
     },
-    "legendaria": {
-      "label": "Legendaria",
-      "weight": 3,
-      "color": "#ffc93c",
-      "sound": "sounds/legendaria.mp3"
+    {
+      "salt": "4565c056eabf582917550b6b",
+      "id": "blade",
+      "hash": "06de78a4dd89c5dfc23464a0c756ad6d311021a6f757bce8cb2e798af01d6498",
+      "packs": 16,
+      "name": "Blade"
     },
-    "unica": {
-      "label": "unica",
-      "weight": 1,
-      "color": "#000000",
-      "sound": "sounds/unica.mp3"
+    {
+      "hash": "c9e2f58e3effbff2f98b2d06ffdbb7f12eab8f28332e609cd2bc3bad4b406aa5",
+      "name": "Acalik",
+      "id": "acalik",
+      "packs": 16,
+      "salt": "bd28a9637877b74b5fcadb46"
+    },
+    {
+      "hash": "661e3bb875c565c924243afcaaafc5063624d352384af82acf28c73e6f90e5fe",
+      "name": "Nones",
+      "id": "nones",
+      "packs": 17,
+      "salt": "8ddb54b97073bca92450439e"
+    },
+    {
+      "hash": "bef3f2a0f9d5add83f2e1d4b8aecd3fac4b232a1f8ea1d34e09b37685dfa2130",
+      "name": "Pura",
+      "packs": 5,
+      "id": "pura",
+      "salt": "a04eb0ea7e2d8bed710bd947"
+    },
+    {
+      "hash": "05c987f23d3b0f6c9db82e6634e03164d1850fcba065da15984e86618d30c8df",
+      "packs": 5,
+      "id": "santi",
+      "name": "Santi",
+      "salt": "20bf77723f1094fb54ea30a0"
+    },
+    {
+      "name": "Mica",
+      "id": "mica",
+      "hash": "b11ea0f15027eb5f35dc014a53902b0974b9a9cd8cb0c7315b804142af0f6c62",
+      "salt": "53b077f904f3472d5551fbf8",
+      "packs": 5
+    },
+    {
+      "name": "Rulo",
+      "hash": "03c433f9922d8025ba94a970aef8e12b20b48a8d67b1c4444723caa44b6eb3a8",
+      "salt": "5cda09852b8902d04025a733",
+      "id": "rulo",
+      "packs": 5
+    },
+    {
+      "packs": 5,
+      "salt": "b68862fcbd93aa79a61bab25",
+      "id": "ladyan",
+      "hash": "b48287da65340fa111d64b446a523e26153154e79022fe1c9cd9d6f98944d568",
+      "name": "LadyAn"
+    },
+    {
+      "name": "Sans",
+      "hash": "a741c020b01385b5c3df4e8db7942091146f3fcfbad3cf23b3488ea484f67d92",
+      "id": "sans",
+      "salt": "95aeadad391190beb9b57548",
+      "packs": 5
     }
-  },
+  ],
   "nations": [
     {
+      "emoji": "📍",
+      "horiz": true,
+      "color": "#fef9be",
       "id": "objetos",
       "name": "Lugares",
-      "emoji": "📍",
-      "color": "#fef9be",
-      "motto": "Fragmentados pero unidos",
-      "horiz": true
+      "motto": "Fragmentados pero unidos"
     },
     {
-      "id": "umbra",
+      "color": "#8a1c1c",
       "name": "Umbra",
       "emoji": "⚔️",
-      "color": "#8a1c1c",
+      "id": "umbra",
       "motto": "La paz es solo la guerra que aún no ha empezado"
     },
     {
-      "id": "luminarae",
+      "color": "#e8b923",
       "name": "Luminarae",
       "emoji": "🕊️",
-      "color": "#e8b923",
+      "id": "luminarae",
       "motto": "Donde la fe se viste de oro"
     },
     {
-      "id": "luxor",
-      "name": "Luxor",
-      "emoji": "🔮",
       "color": "#9b6fd1",
+      "name": "Luxor",
+      "id": "luxor",
+      "emoji": "🔮",
       "motto": "Los dioses susurran, solo algunos escuchan"
     },
     {
-      "id": "lumis",
-      "name": "Lumis",
       "emoji": "🤖",
+      "id": "lumis",
       "color": "#6fa8c9",
+      "name": "Lumis",
       "motto": "El futuro ya fue calculado"
     },
     {
-      "id": "arboris",
+      "motto": "Cada raíz guarda un hechizo antiguo",
       "name": "Arboris",
-      "emoji": "🌳",
+      "id": "arboris",
       "color": "#3f7a4a",
-      "motto": "Cada raíz guarda un hechizo antiguo"
+      "emoji": "🌳"
     },
     {
-      "id": "skaldrum",
       "name": "Skaldrum",
-      "emoji": "🏰",
+      "motto": "El honor se hereda, la tierra se defiende",
       "color": "#d9821b",
-      "motto": "El honor se hereda, la tierra se defiende"
+      "emoji": "🏰",
+      "id": "skaldrum"
     },
     {
-      "id": "boro",
+      "color": "#7c3aed",
       "name": "Boro",
       "emoji": "🕶️",
-      "color": "#7c3aed",
-      "motto": "Todo se vende, todo se esconde"
+      "motto": "Todo se vende, todo se esconde",
+      "id": "boro"
     },
     {
-      "id": "markivton",
+      "color": "#a85c32",
       "name": "Markivton",
       "emoji": "⚓",
-      "color": "#a85c32",
-      "motto": "Ningún puerto es ajeno al que comercia bien"
+      "motto": "Ningún puerto es ajeno al que comercia bien",
+      "id": "markivton"
     },
     {
-      "id": "negatt",
-      "name": "Negatt",
       "emoji": "💀",
       "color": "#3b1655",
+      "name": "Negatt",
+      "id": "negatt",
       "motto": "La muerte también tiene reino"
     },
     {
-      "id": "tribus-skaldrak",
-      "name": "Tribus Skaldrak",
       "emoji": "🏔️",
       "color": "#8fd1e0",
+      "id": "tribus-skaldrak",
+      "name": "Tribus Skaldrak",
       "motto": "El frío templa lo que el fuego no puede"
     },
     {
+      "motto": "Nadie gobierna la alegría",
+      "emoji": "🎉",
       "id": "sinfalia",
       "name": "Sinfalía",
-      "emoji": "🎉",
-      "color": "#29c7c7",
-      "motto": "Nadie gobierna la alegría"
+      "color": "#29c7c7"
     },
     {
       "id": "pongi",
-      "name": "Pongí",
+      "motto": "Siempre joven y libre",
       "emoji": "🎀",
-      "color": "#e0529b",
-      "motto": "Siempre joven y libre"
+      "name": "Pongí",
+      "color": "#e0529b"
     },
     {
       "id": "disnjav",
-      "name": "Disnjav",
+      "motto": "Respira hondo, si puedes",
       "emoji": "☣️",
-      "color": "#8a9a3b",
-      "motto": "Respira hondo, si puedes"
+      "name": "Disnjav",
+      "color": "#8a9a3b"
     },
     {
+      "motto": "El silencio también es una frontera",
       "id": "presidio-de-krahn",
       "name": "Presidio de Krahn",
-      "emoji": "🔇",
       "color": "#5c6f7e",
-      "motto": "El silencio también es una frontera"
+      "emoji": "🔇"
     },
     {
-      "id": "urdimbre-de-sylvaris",
+      "color": "#33517a",
       "name": "La Urdimbre de Sylvaris",
       "emoji": "🕸️",
-      "color": "#33517a",
+      "id": "urdimbre-de-sylvaris",
       "motto": "Los ancestros nunca dejaron de opinar"
     },
     {
-      "id": "ostraca",
+      "motto": "Ningún clon comete el mismo error dos veces",
       "name": "Ostraca",
       "emoji": "🏺",
-      "color": "#b5432f",
-      "motto": "Ningún clon comete el mismo error dos veces"
+      "id": "ostraca",
+      "color": "#b5432f"
     },
     {
       "id": "dioses",
-      "name": "Dioses",
-      "emoji": "🌌",
       "color": "#d9c46a",
+      "emoji": "🌌",
+      "name": "Dioses",
       "motto": "Antes de las naciones, ya había dioses"
     }
   ],
+  "packSize": 5,
+  "title": "Álbum de Apexora",
+  "rarities": {
+    "rara": {
+      "label": "Rara",
+      "sound": "sounds/rara.mp3",
+      "weight": 25,
+      "color": "#4aa3ff"
+    },
+    "unica": {
+      "sound": "sounds/unica.mp3",
+      "weight": 0.01,
+      "label": "Unica",
+      "color": "#000000"
+    },
+    "comun": {
+      "sound": "sounds/comun.mp3",
+      "label": "Común",
+      "weight": 63.99,
+      "color": "#b9c2cc"
+    },
+    "legendaria": {
+      "label": "Legendaria",
+      "weight": 1,
+      "sound": "sounds/legendaria.mp3",
+      "color": "#ffc93c"
+    },
+    "epica": {
+      "weight": 10,
+      "sound": "sounds/epica.mp3",
+      "label": "Épica",
+      "color": "#b46bff"
+    }
+  },
   "stickers": [
     {
       "id": "objetos-001",
-      "nation": "objetos",
       "name": "Luminarae",
       "rarity": "comun",
+      "nation": "objetos",
       "image": "stickers/recital_luminarae.jpg"
     },
     {
       "id": "objetos-002",
-      "nation": "objetos",
+      "image": "stickers/Negatt.jpg",
       "name": "Negatt",
-      "rarity": "comun",
-      "image": "stickers/Negatt.jpg"
+      "nation": "objetos",
+      "rarity": "comun"
     },
     {
-      "id": "objetos-003",
-      "nation": "objetos",
       "name": "Luxor",
       "rarity": "comun",
+      "nation": "objetos",
+      "id": "objetos-003",
       "image": "stickers/Luxor.jpg"
     },
     {
-      "id": "objetos-004",
+      "image": "stickers/Boro.jpg",
       "nation": "objetos",
-      "name": "Boro",
       "rarity": "comun",
-      "image": "stickers/Boro.jpg"
+      "id": "objetos-004",
+      "name": "Boro"
     },
     {
+      "rarity": "comun",
       "id": "objetos-005",
       "nation": "objetos",
-      "name": "Arboris",
-      "rarity": "comun",
-      "image": "stickers/Arboris.jpg"
+      "image": "stickers/Arboris.jpg",
+      "name": "Arboris"
     },
     {
+      "image": "stickers/mark.png",
       "id": "objetos-006",
       "nation": "objetos",
-      "name": "Markivton",
       "rarity": "comun",
-      "image": "stickers/mark.png"
+      "name": "Markivton"
     },
     {
-      "id": "objetos-007",
-      "nation": "objetos",
       "name": "Lumis",
+      "id": "objetos-007",
       "rarity": "comun",
-      "image": "stickers/lumis.png"
+      "image": "stickers/lumis.png",
+      "nation": "objetos"
     },
     {
+      "image": "stickers/Skaldrum_Capital1.jpg",
       "id": "objetos-008",
-      "nation": "objetos",
       "name": "Skaldrum",
-      "rarity": "comun",
-      "image": "stickers/Skaldrum_Capital1.jpg"
+      "nation": "objetos",
+      "rarity": "comun"
     },
     {
+      "image": "stickers/Tribu_Frostpeak.jpg",
       "id": "objetos-009",
       "nation": "objetos",
-      "name": "Tribus Skaldrak",
       "rarity": "comun",
-      "image": "stickers/Tribu_Frostpeak.jpg"
+      "name": "Tribus Skaldrak"
     },
     {
-      "id": "objetos-010",
       "nation": "objetos",
+      "id": "objetos-010",
       "name": "Umbra",
       "rarity": "comun",
       "image": "stickers/Umbra.jpg"
     },
     {
-      "id": "objetos-011",
-      "nation": "objetos",
       "name": "Sinfalia",
       "rarity": "comun",
+      "nation": "objetos",
+      "id": "objetos-011",
       "image": "stickers/sinfalia.png"
     },
     {
-      "id": "umbra-001",
-      "nation": "umbra",
       "name": "Moktar",
       "rarity": "comun",
+      "nation": "umbra",
+      "id": "umbra-001",
       "image": "stickers/Moktar.png"
     },
     {
       "id": "umbra-002",
-      "nation": "umbra",
-      "name": "Grakk",
       "rarity": "comun",
-      "image": "stickers/Grakk.png"
+      "image": "stickers/Grakk.png",
+      "name": "Grakk",
+      "nation": "umbra"
     },
     {
+      "rarity": "comun",
       "id": "umbra-003",
       "nation": "umbra",
-      "name": "Rob",
-      "rarity": "comun",
-      "image": "stickers/rob.png"
+      "image": "stickers/rob.png",
+      "name": "Rob"
     },
     {
       "id": "umbra-004",
-      "nation": "umbra",
       "name": "Drog",
       "rarity": "comun",
+      "nation": "umbra",
       "image": "stickers/Drog.jpeg"
     },
     {
+      "nation": "umbra",
       "id": "umbra-005",
-      "nation": "umbra",
       "name": "Jaep",
-      "rarity": "comun",
-      "image": "stickers/jaep.png"
+      "image": "stickers/jaep.png",
+      "rarity": "comun"
     },
     {
-      "id": "umbra-006",
+      "rarity": "comun",
       "nation": "umbra",
+      "image": "stickers/jup.png",
       "name": "Jup",
-      "rarity": "comun",
-      "image": "stickers/jup.png"
+      "id": "umbra-006"
     },
     {
-      "id": "umbra-007",
-      "nation": "umbra",
+      "image": "stickers/lyra_shadowntorn.png",
       "name": "Lyra Shadowntorn",
-      "rarity": "comun",
-      "image": "stickers/lyra_shadowntorn.png"
+      "nation": "umbra",
+      "id": "umbra-007",
+      "rarity": "comun"
     },
     {
-      "id": "umbra-008",
-      "nation": "umbra",
       "name": "Reggina",
       "rarity": "rara",
+      "nation": "umbra",
+      "id": "umbra-008",
       "image": "stickers/reggina.png"
     },
     {
-      "id": "umbra-09",
-      "nation": "umbra",
       "name": "Sapot",
+      "id": "umbra-09",
       "rarity": "rara",
-      "image": "stickers/sapot.png"
+      "image": "stickers/sapot.png",
+      "nation": "umbra"
     },
     {
-      "id": "umbra-010",
-      "nation": "umbra",
       "name": "Abyssara",
       "rarity": "rara",
+      "nation": "umbra",
+      "id": "umbra-010",
       "image": "stickers/abyssara.png"
     },
     {
+      "rarity": "rara",
       "id": "umbra-011",
       "nation": "umbra",
-      "name": "Ova Caleus",
-      "rarity": "rara",
-      "image": "stickers/ova caleus.png"
+      "image": "stickers/ova caleus.png",
+      "name": "Ova Caleus"
     },
     {
-      "id": "umbra-012",
-      "nation": "umbra",
       "name": "General Voragos",
+      "id": "umbra-012",
       "rarity": "epica",
-      "image": "stickers/voragos.png"
+      "image": "stickers/voragos.png",
+      "nation": "umbra"
     },
     {
-      "id": "umbra-013",
+      "image": "stickers/Kru.jpeg",
       "nation": "umbra",
+      "rarity": "epica",
       "name": "Kru",
-      "rarity": "epica",
-      "image": "stickers/Kru.jpeg"
+      "id": "umbra-013"
     },
     {
+      "nation": "umbra",
       "id": "umbra-014",
-      "nation": "umbra",
-      "name": "Mit Caleus",
+      "image": "stickers/caleus.png",
       "rarity": "legendaria",
-      "image": "stickers/caleus.png"
+      "name": "Mit Caleus"
     },
     {
+      "image": "stickers/puj.png",
       "id": "umbra-015",
-      "nation": "umbra",
       "name": "Puj",
-      "rarity": "legendaria",
-      "image": "stickers/puj.png"
+      "nation": "umbra",
+      "rarity": "legendaria"
     },
     {
-      "id": "luminarae-001",
       "nation": "luminarae",
-      "name": "Escin Cob",
+      "image": "stickers/escin_cob.png",
+      "id": "luminarae-001",
       "rarity": "comun",
-      "image": "stickers/escin_cob.png"
+      "name": "Escin Cob"
     },
     {
       "id": "luminarae-002",
-      "nation": "luminarae",
-      "name": "Icowha Soliem",
       "rarity": "comun",
-      "image": "stickers/icowha kartohs soliem.png"
+      "nation": "luminarae",
+      "image": "stickers/icowha kartohs soliem.png",
+      "name": "Icowha Soliem"
     },
     {
+      "image": "stickers/ibrich_yugos.png",
       "id": "luminarae-003",
       "nation": "luminarae",
-      "name": "ibrich Yugos",
       "rarity": "comun",
-      "image": "stickers/ibrich_yugos.png"
+      "name": "ibrich Yugos"
     },
     {
-      "id": "luminarae-004",
-      "nation": "luminarae",
       "name": "Echo",
       "rarity": "comun",
+      "nation": "luminarae",
+      "id": "luminarae-004",
       "image": "stickers/echo.png"
     },
     {
-      "id": "luminarae-005",
-      "nation": "luminarae",
       "name": "Silith",
+      "image": "stickers/silith.png",
+      "nation": "luminarae",
       "rarity": "comun",
-      "image": "stickers/silith.png"
+      "id": "luminarae-005"
     },
     {
-      "id": "luminarae-006",
+      "rarity": "comun",
       "nation": "luminarae",
       "name": "Galel",
-      "rarity": "comun",
+      "id": "luminarae-006",
       "image": "stickers/galel.png"
     },
     {
-      "id": "luminarae-007",
+      "image": "stickers/chudo.png",
       "nation": "luminarae",
-      "name": "Chudo",
       "rarity": "comun",
-      "image": "stickers/chudo.png"
+      "id": "luminarae-007",
+      "name": "Chudo"
     },
     {
+      "rarity": "rara",
       "id": "luminarae-008",
       "nation": "luminarae",
       "name": "Secta Subterranea",
-      "rarity": "rara",
       "image": "stickers/secta_subterranea.png"
     },
     {
       "id": "luminarae-009",
+      "image": "stickers/Luminara_Vigna.jpg",
       "nation": "luminarae",
-      "name": "Luminara Vigna",
       "rarity": "rara",
-      "image": "stickers/Luminara_Vigna.jpg"
+      "name": "Luminara Vigna"
     },
     {
       "id": "luminarae-010",
-      "nation": "luminarae",
       "name": "File",
       "rarity": "rara",
+      "nation": "luminarae",
       "image": "stickers/file.png"
     },
     {
+      "name": "Teniente Bull",
+      "image": "stickers/teniente_bull.png",
       "id": "luminarae-011",
       "nation": "luminarae",
-      "name": "Teniente Bull",
-      "rarity": "rara",
-      "image": "stickers/teniente_bull.png"
+      "rarity": "rara"
     },
     {
       "id": "luminarae-012",
-      "nation": "luminarae",
       "name": "Tomah de la Luz de Xora",
       "rarity": "epica",
-      "image": "stickers/tomah.png"
+      "image": "stickers/tomah.png",
+      "nation": "luminarae"
     },
     {
-      "id": "luminarae-013",
-      "nation": "luminarae",
       "name": "Capitan Fuego",
       "rarity": "epica",
+      "nation": "luminarae",
+      "id": "luminarae-013",
       "image": "stickers/cap-fuego.png"
     },
     {
+      "image": "stickers/luminaraIV.png",
       "id": "luminarae-014",
       "nation": "luminarae",
       "name": "Reina Luminara IV",
-      "rarity": "legendaria",
-      "image": "stickers/luminaraIV.png"
+      "rarity": "legendaria"
     },
     {
-      "id": "luminarae-015",
-      "nation": "luminarae",
       "name": "Solaris el Primero",
-      "rarity": "legendaria",
-      "image": "stickers/solaris.png"
+      "image": "stickers/solaris.png",
+      "nation": "luminarae",
+      "id": "luminarae-015",
+      "rarity": "legendaria"
     },
     {
       "id": "luxor-001",
-      "nation": "luxor",
       "name": "Cyic",
-      "rarity": "comun",
-      "image": "stickers/CYIC.png"
+      "image": "stickers/CYIC.png",
+      "nation": "luxor",
+      "rarity": "comun"
     },
     {
-      "id": "luxor-002",
-      "nation": "luxor",
       "name": "Iris Rin",
       "rarity": "comun",
-      "image": "stickers/IRIS_RIN.png"
+      "nation": "luxor",
+      "image": "stickers/IRIS_RIN.png",
+      "id": "luxor-002"
     },
     {
-      "id": "luxor-003",
       "nation": "luxor",
+      "image": "stickers/astra.png",
+      "rarity": "comun",
       "name": "Astra Solaris",
-      "rarity": "comun",
-      "image": "stickers/astra.png"
+      "id": "luxor-003"
     },
     {
+      "rarity": "comun",
+      "nation": "luxor",
+      "image": "stickers/KLYTH.png",
       "id": "luxor-004",
-      "nation": "luxor",
-      "name": "Klyth",
-      "rarity": "comun",
-      "image": "stickers/KLYTH.png"
+      "name": "Klyth"
     },
     {
-      "id": "luxor-005",
       "nation": "luxor",
-      "name": "Nova",
+      "id": "luxor-005",
       "rarity": "rara",
+      "name": "Nova",
       "image": "stickers/Nova.png"
     },
     {
-      "id": "luxor-006",
-      "nation": "luxor",
       "name": "Lyra",
+      "id": "luxor-006",
       "rarity": "rara",
+      "nation": "luxor",
       "image": "stickers/Lyra.png"
     },
     {
-      "id": "luxor-007",
       "nation": "luxor",
       "name": "Orion",
+      "image": "stickers/Orion.png",
       "rarity": "rara",
-      "image": "stickers/Orion.png"
+      "id": "luxor-007"
     },
     {
-      "id": "luxor-08",
-      "nation": "luxor",
       "name": "Luma Mazae",
-      "rarity": "rara",
-      "image": "stickers/luma.png"
+      "image": "stickers/luma.png",
+      "nation": "luxor",
+      "id": "luxor-08",
+      "rarity": "rara"
     },
     {
-      "id": "luxor-09",
       "nation": "luxor",
       "name": "Zack Mazae",
       "rarity": "rara",
-      "image": "stickers/zack.png"
+      "image": "stickers/zack.png",
+      "id": "luxor-09"
     },
     {
+      "rarity": "epica",
       "id": "luxor-010",
       "nation": "luxor",
-      "name": "Aldebaran",
-      "rarity": "epica",
-      "image": "stickers/aldebaran.png"
+      "image": "stickers/aldebaran.png",
+      "name": "Aldebaran"
     },
     {
-      "id": "luxor-011",
+      "rarity": "epica",
       "nation": "luxor",
-      "name": "Vela VI",
-      "rarity": "epica",
-      "image": "stickers/vela.png"
+      "image": "stickers/vela.png",
+      "id": "luxor-011",
+      "name": "Vela VI"
     },
     {
+      "image": "stickers/corvus.png",
       "id": "luxor-012",
       "nation": "luxor",
-      "name": "Corvus V",
       "rarity": "epica",
-      "image": "stickers/corvus.png"
+      "name": "Corvus V"
     },
     {
-      "id": "luxor-013",
+      "image": "stickers/draco.png",
       "nation": "luxor",
-      "name": "Draco Goldsmith",
+      "id": "luxor-013",
       "rarity": "epica",
-      "image": "stickers/draco.png"
+      "name": "Draco Goldsmith"
     },
     {
       "id": "luxor-014",
-      "nation": "luxor",
-      "name": "Amark de Xora",
       "rarity": "legendaria",
+      "name": "Amark de Xora",
+      "nation": "luxor",
       "image": "stickers/amark.png"
     },
     {
-      "id": "luxor-015",
-      "nation": "luxor",
-      "name": "Klio de Xavandra",
       "rarity": "legendaria",
+      "name": "Klio de Xavandra",
+      "nation": "luxor",
+      "id": "luxor-015",
       "image": "stickers/Klio.png"
     },
     {
       "id": "lumis-001",
-      "nation": "lumis",
-      "name": "Señora Abreluz",
       "rarity": "comun",
-      "image": "stickers/abreluz.png"
+      "image": "stickers/abreluz.png",
+      "name": "Señora Abreluz",
+      "nation": "lumis"
     },
     {
-      "id": "lumis-002",
+      "rarity": "comun",
       "nation": "lumis",
       "name": "Barrigan Zepi VII",
-      "rarity": "comun",
+      "id": "lumis-002",
       "image": "stickers/Barrigan_Zepi_VII.png"
     },
     {
-      "id": "lumis-003",
       "nation": "lumis",
+      "id": "lumis-003",
       "name": "Nira Luth",
-      "rarity": "comun",
-      "image": "stickers/Nira_Luth.png"
+      "image": "stickers/Nira_Luth.png",
+      "rarity": "comun"
     },
     {
-      "id": "lumis-004",
-      "nation": "lumis",
       "name": "Jarek Nohr",
       "rarity": "comun",
+      "id": "lumis-004",
+      "nation": "lumis",
       "image": "stickers/Jarek_Nohr.png"
     },
     {
+      "rarity": "comun",
       "id": "lumis-005",
-      "nation": "lumis",
+      "image": "stickers/liora_venn.png",
       "name": "Liora Venn",
-      "rarity": "comun",
-      "image": "stickers/liora_venn.png"
+      "nation": "lumis"
     },
     {
-      "id": "lumis-006",
+      "rarity": "comun",
       "nation": "lumis",
+      "image": "stickers/ia.png",
       "name": "DetectIA",
-      "rarity": "comun",
-      "image": "stickers/ia.png"
+      "id": "lumis-006"
     },
     {
-      "id": "lumis-007",
-      "nation": "lumis",
       "name": "Arkonia",
-      "rarity": "comun",
-      "image": "stickers/Arkonia.png"
-    },
-    {
-      "id": "lumis-008",
+      "image": "stickers/Arkonia.png",
       "nation": "lumis",
-      "name": "Chunchunmaru",
-      "rarity": "rara",
-      "image": "stickers/Chunchunmaru.png"
+      "id": "lumis-007",
+      "rarity": "comun"
     },
     {
+      "image": "stickers/Chunchunmaru.png",
+      "nation": "lumis",
+      "rarity": "rara",
+      "id": "lumis-008",
+      "name": "Chunchunmaru"
+    },
+    {
+      "image": "stickers/LVL3BOT.png",
       "id": "lumis-09",
       "nation": "lumis",
       "name": "LVL3BOT",
-      "rarity": "rara",
-      "image": "stickers/LVL3BOT.png"
+      "rarity": "rara"
     },
     {
-      "id": "lumis-010",
-      "nation": "lumis",
-      "name": "LVL4BOT",
       "rarity": "rara",
+      "name": "LVL4BOT",
+      "nation": "lumis",
+      "id": "lumis-010",
       "image": "stickers/LVL4BOT.png"
     },
     {
+      "image": "stickers/rolac.png",
+      "name": "Rolac (Falso Bane)",
       "id": "lumis-011",
       "nation": "lumis",
-      "name": "Rolac (Falso Bane)",
-      "rarity": "rara",
-      "image": "stickers/rolac.png"
+      "rarity": "rara"
     },
     {
-      "id": "lumis-012",
-      "nation": "lumis",
       "name": "Solara Dawn",
-      "rarity": "epica",
-      "image": "stickers/solara.png"
+      "image": "stickers/solara.png",
+      "nation": "lumis",
+      "id": "lumis-012",
+      "rarity": "epica"
     },
     {
-      "id": "lumis-013",
+      "image": "stickers/orx_archy.png",
       "nation": "lumis",
+      "rarity": "epica",
       "name": "Orx y Archy",
-      "rarity": "epica",
-      "image": "stickers/orx_archy.png"
+      "id": "lumis-013"
     },
     {
-      "id": "lumis-014",
       "nation": "lumis",
-      "name": "Bane Ironhand",
+      "image": "stickers/bane.png",
       "rarity": "legendaria",
-      "image": "stickers/bane.png"
+      "name": "Bane Ironhand",
+      "id": "lumis-014"
     },
     {
-      "id": "lumis-015",
+      "rarity": "legendaria",
       "nation": "lumis",
       "name": "Neo NE7",
-      "rarity": "legendaria",
+      "id": "lumis-015",
       "image": "stickers/NE7_NEO.png"
     },
     {
-      "id": "arboris-001",
+      "image": "stickers/Vrako Unis.jpg",
       "nation": "arboris",
-      "name": "Vrako Unis",
       "rarity": "comun",
-      "image": "stickers/Vrako Unis.jpg"
+      "name": "Vrako Unis",
+      "id": "arboris-001"
     },
     {
-      "id": "arboris-002",
-      "nation": "arboris",
-      "name": "Aranis Durgun",
       "rarity": "comun",
+      "name": "Aranis Durgun",
+      "nation": "arboris",
+      "id": "arboris-002",
       "image": "stickers/aranis durgun.jpg"
     },
     {
       "id": "arboris-003",
-      "nation": "arboris",
-      "name": "Torio",
       "rarity": "comun",
-      "image": "stickers/torio.png"
+      "nation": "arboris",
+      "image": "stickers/torio.png",
+      "name": "Torio"
     },
     {
+      "image": "stickers/mido.png",
+      "name": "Mido",
       "id": "arboris-004",
       "nation": "arboris",
-      "name": "Mido",
-      "rarity": "comun",
-      "image": "stickers/mido.png"
+      "rarity": "comun"
     },
     {
+      "name": "Mas-K-rade",
+      "image": "stickers/Mas-K-rade.jpg",
       "id": "arboris-005",
       "nation": "arboris",
-      "name": "Mas-K-rade",
-      "rarity": "comun",
-      "image": "stickers/Mas-K-rade.jpg"
+      "rarity": "comun"
     },
     {
       "id": "arboris-006",
-      "nation": "arboris",
-      "name": "Whillow Wis",
       "rarity": "comun",
+      "name": "Whillow Wis",
+      "nation": "arboris",
       "image": "stickers/whilow.jpg"
     },
     {
-      "id": "arboris-007",
-      "nation": "arboris",
-      "name": "Zarick",
+      "image": "stickers/zarick.png",
       "rarity": "legendaria",
-      "image": "stickers/zarick.png"
+      "id": "arboris-007",
+      "name": "Zarick",
+      "nation": "arboris"
     },
     {
-      "id": "arboris-008",
-      "nation": "arboris",
       "name": "Hati",
+      "id": "arboris-008",
       "rarity": "rara",
+      "nation": "arboris",
       "image": "stickers/hati.png"
     },
     {
-      "id": "arboris-09",
       "nation": "arboris",
-      "name": "Piuk de Chawces",
+      "image": "stickers/piuk.jpg",
       "rarity": "rara",
-      "image": "stickers/piuk.jpg"
+      "id": "arboris-09",
+      "name": "Piuk de Chawces"
     },
     {
       "id": "arboris-010",
-      "nation": "arboris",
       "name": "Asan Chawces",
       "rarity": "rara",
+      "nation": "arboris",
       "image": "stickers/asan.jpg"
     },
     {
-      "id": "arboris-011",
-      "nation": "arboris",
-      "name": "Plumarquias",
       "rarity": "rara",
-      "image": "stickers/plumarquias.png"
+      "id": "arboris-011",
+      "image": "stickers/plumarquias.png",
+      "name": "Plumarquias",
+      "nation": "arboris"
     },
     {
       "id": "arboris-012",
-      "nation": "arboris",
       "name": "Aelyon",
       "rarity": "epica",
+      "nation": "arboris",
       "image": "stickers/Aelyon.png"
     },
     {
+      "rarity": "epica",
       "id": "arboris-013",
       "nation": "arboris",
-      "name": "Tilimad",
-      "rarity": "epica",
-      "image": "stickers/tilimad.png"
+      "image": "stickers/tilimad.png",
+      "name": "Tilimad"
     },
     {
+      "image": "stickers/agamuno.jpg",
+      "nation": "arboris",
       "id": "arboris-014",
-      "nation": "arboris",
-      "name": "Agamuno",
       "rarity": "legendaria",
-      "image": "stickers/agamuno.jpg"
+      "name": "Agamuno"
     },
     {
+      "rarity": "legendaria",
+      "nation": "arboris",
       "id": "arboris-015",
-      "nation": "arboris",
-      "name": "Seah de Pato",
-      "rarity": "legendaria",
-      "image": "stickers/seah.jpg"
+      "image": "stickers/seah.jpg",
+      "name": "Seah de Pato"
     },
     {
-      "id": "skaldrum-001",
-      "nation": "skaldrum",
       "name": "Burun Balteus",
+      "image": "stickers/Burun.png",
+      "nation": "skaldrum",
       "rarity": "comun",
-      "image": "stickers/Burun.png"
+      "id": "skaldrum-001"
     },
     {
-      "id": "skaldrum-002",
+      "image": "stickers/ollontras_hijo.jpg",
       "nation": "skaldrum",
-      "name": "Ullontras Hijo",
       "rarity": "comun",
-      "image": "stickers/ollontras_hijo.jpg"
+      "name": "Ullontras Hijo",
+      "id": "skaldrum-002"
     },
     {
       "id": "skaldrum-003",
-      "nation": "skaldrum",
-      "name": "Ullontras Padre",
       "rarity": "comun",
-      "image": "stickers/ullontras_padre.jpg"
+      "nation": "skaldrum",
+      "image": "stickers/ullontras_padre.jpg",
+      "name": "Ullontras Padre"
     },
     {
       "id": "skaldrum-004",
-      "nation": "skaldrum",
-      "name": "Pinzarrak",
       "rarity": "comun",
-      "image": "stickers/Pinzarrak.jpeg"
+      "image": "stickers/Pinzarrak.jpeg",
+      "name": "Pinzarrak",
+      "nation": "skaldrum"
     },
     {
-      "id": "skaldrum-005",
-      "nation": "skaldrum",
       "name": "Saneones",
-      "rarity": "rara",
-      "image": "stickers/Saneones.jpeg"
+      "id": "skaldrum-005",
+      "image": "stickers/Saneones.jpeg",
+      "nation": "skaldrum",
+      "rarity": "rara"
     },
     {
+      "image": "stickers/santomachelo.jpg",
       "id": "skaldrum-006",
       "nation": "skaldrum",
-      "name": "Santomachelo",
       "rarity": "rara",
-      "image": "stickers/santomachelo.jpg"
+      "name": "Santomachelo"
     },
     {
+      "rarity": "rara",
       "id": "skaldrum-007",
-      "nation": "skaldrum",
+      "image": "stickers/axeraide_3.png",
       "name": "Axeraide",
-      "rarity": "rara",
-      "image": "stickers/axeraide_3.png"
+      "nation": "skaldrum"
     },
     {
+      "rarity": "rara",
+      "nation": "skaldrum",
       "id": "skaldrum-008",
-      "nation": "skaldrum",
-      "name": "Julio Balteus",
-      "rarity": "rara",
-      "image": "stickers/julio.jpg"
+      "image": "stickers/julio.jpg",
+      "name": "Julio Balteus"
     },
     {
+      "image": "stickers/lurim.jpg",
+      "nation": "skaldrum",
       "id": "skaldrum-009",
-      "nation": "skaldrum",
-      "name": "Reina Lurim",
       "rarity": "epica",
-      "image": "stickers/lurim.jpg"
+      "name": "Reina Lurim"
     },
     {
-      "id": "skaldrum-010",
-      "nation": "skaldrum",
+      "image": "stickers/oci.jpg",
       "name": "Emperador Oci",
+      "nation": "skaldrum",
       "rarity": "legendaria",
-      "image": "stickers/oci.jpg"
+      "id": "skaldrum-010"
     },
     {
+      "nation": "skaldrum",
       "id": "skaldrum-011",
-      "nation": "skaldrum",
-      "name": "Karim Balteus",
       "rarity": "legendaria",
-      "image": "stickers/karim.jpg"
+      "image": "stickers/karim.jpg",
+      "name": "Karim Balteus"
     },
     {
-      "id": "skaldrum-012",
-      "nation": "skaldrum",
       "name": "Vina Miceus",
-      "rarity": "legendaria",
-      "image": "stickers/vina.jpg"
+      "id": "skaldrum-012",
+      "image": "stickers/vina.jpg",
+      "nation": "skaldrum",
+      "rarity": "legendaria"
     },
     {
       "id": "boro-001",
+      "rarity": "comun",
       "nation": "boro",
       "name": "Sistar",
-      "rarity": "comun",
       "image": "stickers/sistar.png"
     },
     {
-      "id": "boro-002",
+      "image": "stickers/doctorM.png",
       "nation": "boro",
+      "rarity": "comun",
       "name": "Doctor M",
-      "rarity": "comun",
-      "image": "stickers/doctorM.png"
+      "id": "boro-002"
     },
     {
+      "nation": "boro",
+      "image": "stickers/Iris.jpg",
+      "rarity": "comun",
       "id": "boro-003",
-      "nation": "boro",
-      "name": "Iris Mercader",
-      "rarity": "comun",
-      "image": "stickers/Iris.jpg"
+      "name": "Iris Mercader"
     },
     {
-      "id": "boro-004",
-      "nation": "boro",
       "name": "Marcel Tak",
       "rarity": "comun",
+      "id": "boro-004",
+      "nation": "boro",
       "image": "stickers/El Magnífico Marcel.png"
     },
     {
       "id": "boro-005",
+      "rarity": "rara",
       "nation": "boro",
       "name": "Liyu Tak",
-      "rarity": "rara",
       "image": "stickers/LIYU.png"
     },
     {
-      "id": "boro-006",
       "nation": "boro",
       "name": "Aldric",
-      "rarity": "rara",
-      "image": "stickers/aldric.jpg"
+      "id": "boro-006",
+      "image": "stickers/aldric.jpg",
+      "rarity": "rara"
     },
     {
-      "id": "boro-007",
-      "nation": "boro",
       "name": "Sao",
+      "id": "boro-007",
       "rarity": "rara",
+      "nation": "boro",
       "image": "stickers/sao.png"
     },
     {
       "id": "boro-008",
-      "nation": "boro",
-      "name": "Zhorak de Hierro",
+      "image": "stickers/Zhorak de Hierro.png",
       "rarity": "epica",
-      "image": "stickers/Zhorak de Hierro.png"
+      "name": "Zhorak de Hierro",
+      "nation": "boro"
     },
     {
-      "id": "boro-09",
-      "nation": "boro",
       "name": "Beo de Boro",
       "rarity": "epica",
+      "nation": "boro",
+      "id": "boro-09",
       "image": "stickers/beoDeBoro.png"
     },
     {
+      "image": "stickers/criatura.jpg",
       "id": "boro-010",
       "nation": "boro",
-      "name": "Criatura",
       "rarity": "epica",
-      "image": "stickers/criatura.jpg"
+      "name": "Criatura"
     },
     {
-      "id": "boro-011",
-      "nation": "boro",
-      "name": "Dorianus",
       "rarity": "epica",
-      "image": "stickers/Dorianus.jpg"
+      "image": "stickers/Dorianus.jpg",
+      "name": "Dorianus",
+      "id": "boro-011",
+      "nation": "boro"
     },
     {
       "id": "boro-012",
-      "nation": "boro",
-      "name": "Sara",
       "rarity": "legendaria",
-      "image": "stickers/Sara.jpeg"
+      "image": "stickers/Sara.jpeg",
+      "name": "Sara",
+      "nation": "boro"
     },
     {
-      "id": "boro-013",
-      "nation": "boro",
       "name": "Liyam Tak",
       "rarity": "Legendaria",
+      "nation": "boro",
+      "id": "boro-013",
       "image": "stickers/Liyam Tak.png"
     },
     {
-      "id": "markivton-001",
       "nation": "markivton",
       "name": "Tom Dust",
+      "image": "stickers/tom.png",
       "rarity": "comun",
-      "image": "stickers/tom.png"
+      "id": "markivton-001"
     },
     {
-      "id": "markivton-002",
+      "rarity": "comun",
       "nation": "markivton",
-      "name": "Truman Dust",
-      "rarity": "comun",
-      "image": "stickers/truman.png"
+      "id": "markivton-002",
+      "image": "stickers/truman.png",
+      "name": "Truman Dust"
     },
     {
-      "id": "markivton-003",
+      "rarity": "comun",
       "nation": "markivton",
       "name": "Bornie Dust",
-      "rarity": "comun",
+      "id": "markivton-003",
       "image": "stickers/bornie.png"
     },
     {
-      "id": "markivton-004",
-      "nation": "markivton",
       "name": "Alnasi",
+      "id": "markivton-004",
       "rarity": "rara",
+      "nation": "markivton",
       "image": "stickers/alnasi.jpg"
     },
     {
+      "rarity": "comun",
       "id": "markivton-005",
       "nation": "markivton",
-      "name": "Bisten Dust",
-      "rarity": "comun",
-      "image": "stickers/bisten.png"
+      "image": "stickers/bisten.png",
+      "name": "Bisten Dust"
     },
     {
-      "id": "markivton-006",
-      "nation": "markivton",
-      "name": "Nailis",
       "rarity": "rara",
-      "image": "stickers/nailis_full.png"
+      "nation": "markivton",
+      "image": "stickers/nailis_full.png",
+      "name": "Nailis",
+      "id": "markivton-006"
     },
     {
       "id": "markivton-007",
+      "image": "stickers/nefri_full.png",
       "nation": "markivton",
-      "name": "Nefri",
       "rarity": "rara",
-      "image": "stickers/nefri_full.png"
+      "name": "Nefri"
     },
     {
-      "id": "markivton-008",
-      "nation": "markivton",
-      "name": "Joshua Dust",
       "rarity": "epica",
-      "image": "stickers/Joshua.png"
+      "nation": "markivton",
+      "id": "markivton-008",
+      "image": "stickers/Joshua.png",
+      "name": "Joshua Dust"
     },
     {
+      "rarity": "epica",
       "id": "markivton-09",
       "nation": "markivton",
-      "name": "Darvok",
-      "rarity": "epica",
-      "image": "stickers/Darvok.png"
+      "image": "stickers/Darvok.png",
+      "name": "Darvok"
     },
     {
-      "id": "markivton-010",
-      "nation": "markivton",
       "name": "Laki Dust",
+      "id": "markivton-010",
       "rarity": "legendaria",
-      "image": "stickers/laki.jpg"
+      "image": "stickers/laki.jpg",
+      "nation": "markivton"
     },
     {
-      "id": "negatt-001",
-      "nation": "negatt",
-      "name": "Cuasipapei",
       "rarity": "comun",
-      "image": "stickers/CuasiPapei.jpg"
+      "image": "stickers/CuasiPapei.jpg",
+      "name": "Cuasipapei",
+      "id": "negatt-001",
+      "nation": "negatt"
     },
     {
-      "id": "negatt-002",
       "nation": "negatt",
       "name": "Ricardo",
       "rarity": "comun",
-      "image": "stickers/ricardo.png"
+      "image": "stickers/ricardo.png",
+      "id": "negatt-002"
     },
     {
+      "image": "stickers/lynch.png",
       "id": "negatt-003",
       "nation": "negatt",
-      "name": "Lynch",
       "rarity": "comun",
-      "image": "stickers/lynch.png"
+      "name": "Lynch"
     },
     {
+      "nation": "negatt",
+      "image": "stickers/diurna.jpg",
+      "rarity": "comun",
       "id": "negatt-004",
-      "nation": "negatt",
-      "name": "Diurna Draven",
-      "rarity": "comun",
-      "image": "stickers/diurna.jpg"
+      "name": "Diurna Draven"
     },
     {
-      "id": "negatt-005",
-      "nation": "negatt",
       "name": "Tsuji",
+      "id": "negatt-005",
       "rarity": "rara",
+      "nation": "negatt",
       "image": "stickers/tsuji.jpg"
     },
     {
       "id": "negatt-006",
-      "nation": "negatt",
-      "name": "Albara",
       "rarity": "rara",
-      "image": "stickers/Albara.jpg"
+      "image": "stickers/Albara.jpg",
+      "name": "Albara",
+      "nation": "negatt"
     },
     {
+      "name": "Themis",
+      "image": "stickers/themis.jpg",
       "id": "negatt-007",
       "nation": "negatt",
-      "name": "Themis",
-      "rarity": "rara",
-      "image": "stickers/themis.jpg"
+      "rarity": "rara"
     },
     {
       "id": "negatt-008",
+      "rarity": "epica",
       "nation": "negatt",
       "name": "Daisuke",
-      "rarity": "epica",
       "image": "stickers/daisuke.jpg"
     },
     {
-      "id": "negatt-009",
-      "nation": "negatt",
-      "name": "Fudo",
       "rarity": "epica",
-      "image": "stickers/fudo.jpg"
+      "nation": "negatt",
+      "id": "negatt-009",
+      "image": "stickers/fudo.jpg",
+      "name": "Fudo"
     },
     {
+      "rarity": "epica",
       "id": "negatt-010",
       "nation": "negatt",
       "name": "Niro",
-      "rarity": "epica",
       "image": "stickers/niro.jpg"
     },
     {
-      "id": "negatt-011",
-      "nation": "negatt",
       "name": "Xuelen Draven",
       "rarity": "epica",
-      "image": "stickers/xuelen.png"
+      "nation": "negatt",
+      "image": "stickers/xuelen.png",
+      "id": "negatt-011"
     },
     {
-      "id": "negatt-012",
-      "nation": "negatt",
       "name": "Azalange",
+      "id": "negatt-012",
       "rarity": "epica",
-      "image": "stickers/azalange2_1.png"
+      "image": "stickers/azalange2_1.png",
+      "nation": "negatt"
     },
     {
-      "id": "negatt-013",
+      "rarity": "legendaria",
       "nation": "negatt",
+      "image": "stickers/Kael Draven.png",
       "name": "Kael Draven",
-      "rarity": "legendaria",
-      "image": "stickers/Kael Draven.png"
+      "id": "negatt-013"
     },
     {
+      "rarity": "legendaria",
       "id": "negatt-014",
-      "nation": "negatt",
       "name": "Caelum",
-      "rarity": "legendaria",
-      "image": "stickers/caelum.png"
+      "image": "stickers/caelum.png",
+      "nation": "negatt"
     },
     {
-      "id": "tribus-skaldrak-001",
-      "nation": "tribus-skaldrak",
       "name": "Lobo Helado",
+      "id": "tribus-skaldrak-001",
       "rarity": "comun",
-      "image": "stickers/lobo.png"
+      "image": "stickers/lobo.png",
+      "nation": "tribus-skaldrak"
     },
     {
-      "id": "tribus-skaldrak-002",
+      "image": "stickers/astrologa.png",
       "nation": "tribus-skaldrak",
-      "name": "Astrologa Koko",
       "rarity": "comun",
-      "image": "stickers/astrologa.png"
+      "name": "Astrologa Koko",
+      "id": "tribus-skaldrak-002"
     },
     {
       "id": "tribus-skaldrak-003",
-      "nation": "tribus-skaldrak",
       "name": "Alal",
       "rarity": "comun",
+      "nation": "tribus-skaldrak",
       "image": "stickers/ala_def.png"
     },
     {
-      "id": "tribus-skaldrak-004",
+      "image": "stickers/Frost Giant.jpg",
       "nation": "tribus-skaldrak",
-      "name": "Gigante de Hielo",
+      "id": "tribus-skaldrak-004",
       "rarity": "rara",
-      "image": "stickers/Frost Giant.jpg"
+      "name": "Gigante de Hielo"
     },
     {
       "id": "tribus-skaldrak-005",
-      "nation": "tribus-skaldrak",
+      "rarity": "epica",
+      "image": "stickers/skaldor.png",
       "name": "Skaldor Frostpeak",
-      "rarity": "epica",
-      "image": "stickers/skaldor.png"
+      "nation": "tribus-skaldrak"
     },
     {
-      "id": "tribus-skaldrak-006",
-      "nation": "tribus-skaldrak",
+      "image": "stickers/zazap.png",
       "name": "Zazap",
+      "nation": "tribus-skaldrak",
       "rarity": "epica",
-      "image": "stickers/zazap.png"
+      "id": "tribus-skaldrak-006"
     },
     {
-      "id": "tribus-skaldrak-007",
       "nation": "tribus-skaldrak",
       "name": "Tatal",
-      "rarity": "epica",
-      "image": "stickers/tatal.png"
+      "image": "stickers/tatal.png",
+      "id": "tribus-skaldrak-007",
+      "rarity": "epica"
     },
     {
-      "id": "tribus-skaldrak-008",
+      "image": "stickers/ruruk.png",
       "nation": "tribus-skaldrak",
-      "name": "Ruruk",
       "rarity": "epica",
-      "image": "stickers/ruruk.png"
+      "name": "Ruruk",
+      "id": "tribus-skaldrak-008"
     },
     {
+      "rarity": "epica",
       "id": "tribus-skaldrak-009",
       "nation": "tribus-skaldrak",
-      "name": "Didih",
-      "rarity": "epica",
-      "image": "stickers/didih.png"
+      "image": "stickers/didih.png",
+      "name": "Didih"
     },
     {
-      "id": "tribus-skaldrak-010",
+      "image": "stickers/pin_5.png",
       "nation": "tribus-skaldrak",
-      "name": "Pin Kuku",
       "rarity": "legendaria",
-      "image": "stickers/pin_5.png"
+      "name": "Pin Kuku",
+      "id": "tribus-skaldrak-010"
     },
     {
-      "id": "tribus-skaldrak-011",
-      "nation": "tribus-skaldrak",
       "name": "Sabio Skanuj",
-      "rarity": "rara",
+      "rarity": "legendaria",
+      "nation": "tribus-skaldrak",
+      "id": "tribus-skaldrak-011",
       "image": "stickers/sabio_skanuj.png"
     },
     {
-      "id": "sinfalia-001",
-      "nation": "sinfalia",
       "name": "Ficadiza",
       "rarity": "comun",
+      "id": "sinfalia-001",
+      "nation": "sinfalia",
       "image": "stickers/random_dragonborn1.png"
     },
     {
       "id": "sinfalia-002",
-      "nation": "sinfalia",
       "name": "Ubiubis",
       "rarity": "comun",
+      "nation": "sinfalia",
       "image": "stickers/random_boy1.png"
     },
     {
-      "id": "sinfalia-003",
-      "nation": "sinfalia",
       "name": "Visu",
       "rarity": "comun",
-      "image": "stickers/visu.jpg"
+      "nation": "sinfalia",
+      "image": "stickers/visu.jpg",
+      "id": "sinfalia-003"
     },
     {
       "id": "sinfalia-004",
-      "nation": "sinfalia",
-      "name": "Volmi",
       "rarity": "rara",
-      "image": "stickers/volmí.jpeg"
+      "image": "stickers/volmí.jpeg",
+      "name": "Volmi",
+      "nation": "sinfalia"
     },
     {
-      "id": "sinfalia-005",
-      "nation": "sinfalia",
       "name": "Juez Salin",
       "rarity": "rara",
+      "id": "sinfalia-005",
+      "nation": "sinfalia",
       "image": "stickers/salin.jpeg"
     },
     {
-      "id": "sinfalia-006",
+      "image": "stickers/bason_new.png",
       "nation": "sinfalia",
-      "name": "Bason",
       "rarity": "epica",
-      "image": "stickers/bason_new.png"
+      "id": "sinfalia-006",
+      "name": "Bason"
     },
     {
-      "id": "sinfalia-007",
-      "nation": "sinfalia",
       "name": "Valmey Siali",
+      "image": "stickers/balmi-sinfalia-fullbody.png",
       "rarity": "legendaria",
-      "image": "stickers/balmi-sinfalia-fullbody.png"
+      "id": "sinfalia-007",
+      "nation": "sinfalia"
     },
     {
-      "id": "sinfalia-008",
+      "rarity": "legendaria",
       "nation": "sinfalia",
       "name": "Seila Aname",
-      "rarity": "legendaria",
-      "image": "stickers/Seilá Anamé_V0.png"
+      "image": "stickers/Seilá Anamé_V0.png",
+      "id": "sinfalia-008"
     },
     {
-      "id": "sinfalia-009",
-      "nation": "sinfalia",
       "name": "Gobz Gobinson",
+      "nation": "sinfalia",
+      "image": "stickers/gobz_sinfalia.png",
       "rarity": "legendaria",
-      "image": "stickers/gobz_sinfalia.png"
+      "id": "sinfalia-009"
     },
     {
-      "id": "pongi-001",
-      "nation": "pongi",
-      "name": "SRSC",
       "rarity": "unica",
-      "image": "stickers/SRSC_superosasupercool.jpg"
+      "nation": "pongi",
+      "image": "stickers/SRSC_superosasupercool.jpg",
+      "name": "SRSC",
+      "id": "pongi-001"
     },
     {
-      "id": "disnjav-001",
+      "rarity": "unica",
       "nation": "disnjav",
       "name": "Ho",
-      "rarity": "unica",
-      "image": "stickers/Ho.jpg"
+      "image": "stickers/Ho.jpg",
+      "id": "disnjav-001"
     },
     {
-      "id": "presidio-de-krahn-001",
-      "nation": "presidio-de-krahn",
-      "name": "Karl",
       "rarity": "rara",
+      "id": "presidio-de-krahn-001",
+      "name": "Karl",
+      "nation": "presidio-de-krahn",
       "image": "stickers/Karl.jpg"
     },
     {
       "id": "presidio-de-krahn-002",
-      "nation": "presidio-de-krahn",
       "name": "Lael",
-      "rarity": "legendaria",
-      "image": "stickers/Lael_fb.jpeg"
-    },
-    {
-      "id": "presidio-de-krahn-003",
+      "image": "stickers/Lael_fb.jpeg",
       "nation": "presidio-de-krahn",
-      "name": "Bob",
-      "rarity": "unica",
-      "image": "stickers/Bob.jpg"
+      "rarity": "legendaria"
     },
     {
-      "id": "urdimbre-de-sylvaris-001",
+      "image": "stickers/Bob.jpg",
+      "nation": "presidio-de-krahn",
+      "rarity": "unica",
+      "id": "presidio-de-krahn-003",
+      "name": "Bob"
+    },
+    {
+      "image": "stickers/Gran Beel.jpg",
       "nation": "urdimbre-de-sylvaris",
-      "name": "General Beel",
       "rarity": "legendaria",
-      "image": "stickers/Gran Beel.jpg"
+      "name": "General Beel",
+      "id": "urdimbre-de-sylvaris-001"
     },
     {
-      "id": "urdimbre-de-sylvaris-002",
       "nation": "urdimbre-de-sylvaris",
-      "name": "Gran Raiz",
+      "id": "urdimbre-de-sylvaris-002",
+      "image": "stickers/gran raiz.jpg",
       "rarity": "unica",
-      "image": "stickers/gran raiz.jpg"
+      "name": "Gran Raiz"
     },
     {
-      "id": "ostraca-001",
-      "nation": "ostraca",
       "name": "Chip",
-      "rarity": "unica",
-      "image": "stickers/chip.jpg"
+      "image": "stickers/chip.jpg",
+      "nation": "ostraca",
+      "id": "ostraca-001",
+      "rarity": "unica"
     },
     {
       "id": "dioses-001",
+      "rarity": "legendaria",
       "nation": "dioses",
       "name": "Ganore (La Nada)",
-      "rarity": "legendaria",
       "image": "stickers/ganore.jpg"
     },
     {
+      "rarity": "legendaria",
+      "nation": "dioses",
+      "image": "stickers/kiprika.jpg",
       "id": "dioses-002",
-      "nation": "dioses",
-      "name": "Kiprika (El Todo)",
-      "rarity": "legendaria",
-      "image": "stickers/kiprika.jpg"
+      "name": "Kiprika (El Todo)"
     },
     {
-      "id": "dioses-003",
-      "nation": "dioses",
       "name": "Tapiem (Gravedad)",
+      "id": "dioses-003",
       "rarity": "legendaria",
-      "image": "stickers/tapiem.jpg"
+      "image": "stickers/tapiem.jpg",
+      "nation": "dioses"
     },
     {
+      "image": "stickers/dacama.jpg",
       "id": "dioses-004",
       "nation": "dioses",
-      "name": "Dacama (Tiempo)",
       "rarity": "legendaria",
-      "image": "stickers/dacama.jpg"
+      "name": "Dacama (Tiempo)"
     },
     {
-      "id": "dioses-005",
+      "rarity": "legendaria",
       "nation": "dioses",
       "name": "Millot (Creación)",
-      "rarity": "legendaria",
+      "id": "dioses-005",
       "image": "stickers/millot.jpg"
     },
     {
+      "image": "stickers/jilper.jpg",
       "id": "dioses-006",
       "nation": "dioses",
-      "name": "Jilper (Destrucción)",
       "rarity": "legendaria",
-      "image": "stickers/jilper.jpg"
+      "name": "Jilper (Destrucción)"
     },
     {
+      "image": "stickers/cumacur.jpg",
+      "name": "Cumacur (Infinidad)",
       "id": "dioses-007",
       "nation": "dioses",
-      "name": "Cumacur (Infinidad)",
-      "rarity": "legendaria",
-      "image": "stickers/cumacur.jpg"
+      "rarity": "legendaria"
     },
     {
-      "id": "dioses-008",
       "nation": "dioses",
       "name": "Cabala (Finito)",
       "rarity": "legendaria",
-      "image": "stickers/cabala.jpg"
+      "image": "stickers/cabala.jpg",
+      "id": "dioses-008"
     },
     {
+      "rarity": "legendaria",
       "id": "dioses-009",
       "nation": "dioses",
       "name": "Ape (Entropía y Oscuridad)",
-      "rarity": "legendaria",
       "image": "stickers/ape.jpg"
     },
     {
-      "id": "dioses-010",
-      "nation": "dioses",
       "name": "Xora (Orden y Luz)",
       "rarity": "legendaria",
+      "id": "dioses-010",
+      "nation": "dioses",
       "image": "stickers/xora.jpg"
     },
     {
+      "rarity": "unica",
       "id": "dioses-011",
       "nation": "dioses",
       "name": "Espacio",
-      "rarity": "unica",
       "image": "stickers/espacio.jpg"
-    }
-  ],
-  "players": [
-    {
-      "id": "demo",
-      "name": "Demo",
-      "salt": "83798bcf9e1e7a015cf64cd4",
-      "hash": "66cb469a5a8b99de1bca6862fcf234ee0b0a93a9cddc8521464e32193499e5bf",
-      "packs": 100
-    },
-    {
-      "id": "aria",
-      "name": "Aria",
-      "salt": "0df4a4e515204dc8332ba4ec",
-      "hash": "c66ca2556d3f374073746167f448023370156af1ff6626a80fdf0786b3c31c3d",
-      "packs": 100
-    },
-    {
-      "id": "demian",
-      "name": "Demian",
-      "salt": "760bc85b9d6e1e3d188a6ba1",
-      "hash": "ce714e2681eba1aa6a798b8623ef2473e94cf1971fcd01ba68587a020e15ab90",
-      "packs": 5
-    },
-    {
-      "id": "blade",
-      "name": "Blade",
-      "salt": "4565c056eabf582917550b6b",
-      "hash": "06de78a4dd89c5dfc23464a0c756ad6d311021a6f757bce8cb2e798af01d6498",
-      "packs": 15
-    },
-    {
-      "id": "acalik",
-      "name": "Acalik",
-      "salt": "bd28a9637877b74b5fcadb46",
-      "hash": "c9e2f58e3effbff2f98b2d06ffdbb7f12eab8f28332e609cd2bc3bad4b406aa5",
-      "packs": 16
-    },
-    {
-      "id": "nones",
-      "name": "Nones",
-      "salt": "8ddb54b97073bca92450439e",
-      "hash": "661e3bb875c565c924243afcaaafc5063624d352384af82acf28c73e6f90e5fe",
-      "packs": 15
-    },
-    {
-      "id": "pura",
-      "name": "Pura",
-      "salt": "a04eb0ea7e2d8bed710bd947",
-      "hash": "bef3f2a0f9d5add83f2e1d4b8aecd3fac4b232a1f8ea1d34e09b37685dfa2130",
-      "packs": 5
-    },
-    {
-      "id": "santi",
-      "name": "Santi",
-      "salt": "20bf77723f1094fb54ea30a0",
-      "hash": "05c987f23d3b0f6c9db82e6634e03164d1850fcba065da15984e86618d30c8df",
-      "packs": 5
-    },
-    {
-      "id": "mica",
-      "name": "Mica",
-      "salt": "53b077f904f3472d5551fbf8",
-      "hash": "b11ea0f15027eb5f35dc014a53902b0974b9a9cd8cb0c7315b804142af0f6c62",
-      "packs": 5
-    },
-    {
-      "id": "rulo",
-      "name": "Rulo",
-      "salt": "5cda09852b8902d04025a733",
-      "hash": "03c433f9922d8025ba94a970aef8e12b20b48a8d67b1c4444723caa44b6eb3a8",
-      "packs": 5
     }
   ]
 }

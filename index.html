@@ -363,6 +363,15 @@ button.mini.warn{background:#c0483a99}
   .t3 .sk{animation:none}
   .t1 .sk,.t2 .sk,.t3 .sk{box-shadow:0 1cqw 2.4cqw #0007,0 0 0 1.2cqw var(--rc)}
 }
+/* ===== Reordenar pegatinas ===== */
+.arow.st{position:relative;padding-left:32px}
+.dh{position:absolute;left:4px;top:50%;width:22px;height:26px;margin-top:-13px;display:flex;align-items:center;justify-content:center;cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none;opacity:.6}
+.dh:hover{opacity:1}
+.dh::before{content:"";width:14px;height:7px;border-top:2px solid var(--gold-2,#e6c66a);border-bottom:2px solid var(--gold-2,#e6c66a)}
+.arow.st.dragging{opacity:.4}
+.arow.st.drop-before{box-shadow:0 -3px 0 0 var(--gold-2,#e6c66a)}
+.arow.st.drop-after{box-shadow:0 3px 0 0 var(--gold-2,#e6c66a)}
+body.dragging-st{cursor:grabbing;user-select:none;-webkit-user-select:none}
 </style>
 <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
@@ -1196,6 +1205,7 @@ function adminScreen(){
   $('.tabs').onclick = e => { const t = e.target.closest('[data-tab]'); if (t){ A.tab = t.dataset.tab; adminScreen(); } };
   const body = $('#aBody');
   body.addEventListener('click', adminClick); body.addEventListener('change', adminChange);
+  body.addEventListener('pointerdown', dragStart);
   renderTab();
 }
 
@@ -1347,6 +1357,41 @@ function adminChange(e){
   if (f === 'packSize'){ d.packSize = clamp(parseInt(el.value, 10) || 5, 1, 10); el.value = d.packSize; return persist(); }
   if (f === 'filter'){ A.filter = el.value; return renderTab(); }
 }
+function dragStart(e){
+  const h = e.target.closest('.dh'); if (!h) return;
+  const row = h.closest('.arow.st'); if (!row) return;
+  e.preventDefault();
+  const from = +row.dataset.si, nation = A.d.stickers[from].nation;
+  const rows = $$('#aBody .arow.st');
+  let target = null, after = false;
+  row.classList.add('dragging'); document.body.classList.add('dragging-st');
+  const clear = () => rows.forEach(r => r.classList.remove('drop-before', 'drop-after'));
+  const move = ev => {
+    if (ev.clientY < 90) window.scrollBy(0, -14);
+    else if (ev.clientY > innerHeight - 90) window.scrollBy(0, 14);
+    clear(); target = null;
+    const el = document.elementFromPoint(ev.clientX, ev.clientY);
+    const r = el && el.closest('.arow.st');
+    if (!r || r === row || A.d.stickers[+r.dataset.si].nation !== nation) return;
+    const b = r.getBoundingClientRect();
+    after = ev.clientY > b.top + b.height / 2;
+    target = r; r.classList.add(after ? 'drop-after' : 'drop-before');
+  };
+  const up = () => {
+    document.removeEventListener('pointermove', move);
+    document.removeEventListener('pointerup', up);
+    document.removeEventListener('pointercancel', up);
+    row.classList.remove('dragging'); document.body.classList.remove('dragging-st'); clear();
+    if (!target) return;
+    const arr = A.d.stickers, s = arr.splice(from, 1)[0];
+    let to = +target.dataset.si; if (from < to) to--; if (after) to++;
+    arr.splice(to, 0, s);
+    persist(); renderTab();
+  };
+  document.addEventListener('pointermove', move);
+  document.addEventListener('pointerup', up);
+  document.addEventListener('pointercancel', up);
+}
 function newStickerId(nid){
   let k = A.d.stickers.filter(s => s.nation === nid).length + 1, id;
   do { id = `${nid}-${String(k++).padStart(3, '0')}`; } while (A.d.stickers.some(s => s.id === id));
@@ -1369,7 +1414,7 @@ function tabStickers(){
       <div><button class="btn sm" data-act="addS">Añadir</button></div></div></div>
   <div class="panel"><h3>Pegatinas (${list.length}${A.filter ? ' de ' + d.stickers.length : ''})</h3>
     <div class="formrow"><div><label>Filtrar por nación</label><select data-f="filter"><option value="">Todas</option>${nOpts(A.filter)}</select></div></div>
-    ${list.length ? list.map(({ s, i }) => `<div class="arow st" data-si="${i}">
+    ${list.length ? list.map(({ s, i }) => `<div class="arow st" data-si="${i}"><div class="dh" title="Arrastra para reordenar" aria-label="Reordenar"></div>
       <div class="thumb">${s.image ? `<img src="${esc(s.image)}" alt="" onerror="this.replaceWith('✦')">` : esc(nationOf(s.nation).emoji || '✦')}</div>
       <input data-f="name" value="${esc(s.name)}" aria-label="Nombre">
       <select data-f="nation" aria-label="Nación">${nOpts(s.nation)}</select>

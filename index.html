@@ -41,6 +41,64 @@ button,input,select,textarea{font-family:inherit}
 button{cursor:pointer}
 :focus-visible{outline:2px solid var(--gold-2);outline-offset:2px}
 
+.public-ranking{
+  width:min(420px, calc(100% - 32px));
+  margin:18px auto 30px;
+  padding:18px;
+  border-radius:16px;
+  background:#081020cc;
+  border:1px solid #ffffff18;
+  box-shadow:0 12px 35px #0008;
+}
+
+.public-ranking h2{
+  margin:0 0 4px;
+  text-align:center;
+  font-size:1.15rem;
+}
+
+.public-ranking > p{
+  margin:0 0 14px;
+  text-align:center;
+  opacity:.6;
+  font-size:.82rem;
+}
+
+.ranking-row{
+  display:grid;
+  grid-template-columns:34px 1fr auto;
+  align-items:center;
+  gap:10px;
+  padding:9px 4px;
+  border-top:1px solid #ffffff12;
+}
+
+.ranking-position{
+  font-weight:800;
+  opacity:.7;
+  text-align:center;
+}
+
+.ranking-name{
+  font-weight:600;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.ranking-progress{
+  font-weight:800;
+  color:var(--gold-2);
+  font-variant-numeric:tabular-nums;
+}
+
+.ranking-loading,
+.ranking-error{
+  text-align:center;
+  opacity:.65;
+  padding:12px;
+}
+
 /* ---------- botones ---------- */
 .btn{
   border:0;border-radius:999px;padding:.62em 1.3em;font-family:var(--ft);font-weight:700;letter-spacing:.05em;
@@ -605,6 +663,55 @@ function route(){
   const id = sess.get(K_SESSION) || store.get(K_REMEMBER);
   const pl = id && D.players.find(p => p.id === id);
   if (pl) return startAlbum(pl);
+  async function loadPublicRanking(){
+  const ranking = $('#ranking');
+  if (!ranking) return;
+
+  ranking.innerHTML = '<div class="ranking-loading">Cargando ranking…</div>';
+
+  try {
+    const snap = await db.collection('players').get();
+
+    const total = D.stickers.length;
+
+    const players = snap.docs.map(doc => {
+      const data = doc.data() || {};
+      const opened = Array.isArray(data.opened) ? data.opened : [];
+
+      // Contar pegatinas únicas obtenidas
+      const ids = new Set();
+
+      opened.forEach(pack => {
+        if (Array.isArray(pack.ids)) {
+          pack.ids.forEach(id => {
+            if (stickerById(id)) ids.add(id);
+          });
+        }
+      });
+
+      return {
+        name: data.name || 'Jugador',
+        got: ids.size,
+        total
+      };
+    });
+
+    // Ordenar de mayor a menor cantidad obtenida
+    players.sort((a, b) => b.got - a.got);
+
+    ranking.innerHTML = players.map((p, i) => `
+      <div class="ranking-row">
+        <span class="ranking-position">${i + 1}</span>
+        <span class="ranking-name">${esc(p.name)}</span>
+        <span class="ranking-progress">${p.got}/${p.total}</span>
+      </div>
+    `).join('');
+
+  } catch (e) {
+    console.error('No se pudo cargar el ranking:', e);
+    ranking.innerHTML = '<div class="ranking-error">No se pudo cargar el ranking.</div>';
+  }
+}
   loginScreen();
 }
 
@@ -612,15 +719,85 @@ function route(){
 function loginScreen(msg = ''){
   document.removeEventListener('keydown', onKey);
   window.removeEventListener('resize', onResize);
-  app.innerHTML = `<div class="login"><div class="login-card">
-    ${EMBLEM}
-    <h1>${esc(D.title)}</h1>
-    <p>Escribe tu contraseña privada para abrir tu álbum.</p>
-    <input id="pw" type="password" autocomplete="current-password" placeholder="Contraseña" aria-label="Contraseña">
-    <label class="chk"><input type="checkbox" id="rem"> Recordarme en este dispositivo</label>
-    <button class="btn" id="go">Abrir mi álbum</button>
-    <div class="err" id="err" role="alert">${esc(msg)}</div>
-  </div></div>`;
+
+  app.innerHTML = `<div class="login">
+    <div class="login-card">
+      ${EMBLEM}
+      <h1>${esc(D.title)}</h1>
+      <p>Escribe tu contraseña privada para abrir tu álbum.</p>
+
+      <input id="pw" type="password"
+        autocomplete="current-password"
+        placeholder="Contraseña"
+        aria-label="Contraseña">
+
+      <label class="chk">
+        <input type="checkbox" id="rem">
+        Recordarme en este dispositivo
+      </label>
+
+      <button class="btn" id="go">Abrir mi álbum</button>
+
+      <div class="err" id="err" role="alert">${esc(msg)}</div>
+    </div>
+
+    <div class="public-ranking">
+      <h2>🏆 Ranking de colección</h2>
+      <p>Progreso de todos los jugadores</p>
+      <div id="ranking"></div>
+    </div>
+  </div>`;
+
+  loadPublicRanking();
+
+  const go = async () => {
+    const pw = $('#pw').value.trim();
+    if (!pw) return;
+
+    const btn = $('#go');
+    btn.disabled = true;
+    btn.textContent = 'Comprobando…';
+
+    let found = null;
+
+    try {
+      for (const p of D.players){
+        if (await hashPw(pw, p.salt, D.kdf) === p.hash){
+          found = p;
+          break;
+        }
+      }
+    } catch {
+      $('#err').textContent =
+        'Tu navegador no permite comprobar contraseñas aquí. Usa https o localhost.';
+      btn.disabled = false;
+      btn.textContent = 'Abrir mi álbum';
+      return;
+    }
+
+    if (!found){
+      $('#err').textContent =
+        'Contraseña incorrecta. Revisa mayúsculas y espacios.';
+      btn.disabled = false;
+      btn.textContent = 'Abrir mi álbum';
+      return;
+    }
+
+    (($('#rem').checked) ? store : sess).set(
+      ($('#rem').checked) ? K_REMEMBER : K_SESSION,
+      found.id
+    );
+
+    startAlbum(found);
+  };
+
+  $('#go').onclick = go;
+  $('#pw').addEventListener('keydown', e => {
+    if (e.key === 'Enter') go();
+  });
+
+  $('#pw').focus();
+}
   const go = async () => {
     const pw = $('#pw').value.trim(); if (!pw) return;
     const btn = $('#go'); btn.disabled = true; btn.textContent = 'Comprobando…';
@@ -819,7 +996,6 @@ function sfxPlay(lv){
     [1568, 2093, 2637, 3136].forEach((f, i) => sfxNote(m, t + 0.9 + i * 0.12, f, 0.6, { vol: 0.07 }));
   }
 }
-window.sfxTest = lv => sfxPlay(lv);
 function albumScreen(){
   app.innerHTML = `
   <header class="top">

@@ -342,6 +342,11 @@ button.mini.warn{background:#c0483a99}
 }
 /* ===== Ajustes móvil ===== */
 .top,.foot{position:relative;z-index:20}
+.mus{position:relative;flex:none}
+.mus-b{min-width:38px}
+.mus-p{position:absolute;left:0;top:calc(100% + 6px);z-index:30;display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:14px;background:#101e38;box-shadow:0 0 0 1px #e3bf7355,0 10px 24px #000a;white-space:nowrap}
+.mus-p[hidden]{display:none}
+.mus-v{width:120px;height:28px;accent-color:var(--gold)}
 .stage{position:relative;z-index:1;overflow:hidden}
 .book{will-change:transform}
 .navrow{width:100%;max-width:420px}
@@ -631,6 +636,7 @@ function loginScreen(msg = ''){
   $('#pw').focus();
 }
 function logout(){
+musicPause();
   if (S.unsub){ S.unsub(); S.unsub = null; }
   sess.del(K_SESSION); store.del(K_REMEMBER);
   S.player = null; loginScreen();
@@ -669,7 +675,90 @@ async function claimInbox(id, items){
   } catch (e){ console.error(e); }
   finally { claiming = false; }
 }
-
+/* ===== Música de fondo ===== */
+const MUSIC_SRC = 'sounds/musica.mp3';
+const music = { el: null, ctx: null, gain: null, ui: null, vol: 0.35, muted: false, armed: false };
+try {
+  const m = JSON.parse(localStorage.getItem('apexora_music') || '{}');
+  if (typeof m.vol === 'number') music.vol = Math.min(1, Math.max(0, m.vol));
+  music.muted = !!m.muted;
+} catch {}
+function musicSave(){ try { localStorage.setItem('apexora_music', JSON.stringify({ vol: music.vol, muted: music.muted })); } catch {} }
+function musicApplyVol(){
+  if (!music.el) return;
+  const v = music.vol * music.vol; // curva suave: el oído percibe mejor así
+  if (music.gain){ music.gain.gain.value = v; music.el.volume = 1; }
+  else music.el.volume = v;
+}
+function musicInit(){
+  if (music.el) return;
+  const a = new Audio(MUSIC_SRC); a.loop = true; a.preload = 'auto';
+  music.el = a;
+  try {
+    const AC = window.AudioContext || window.webkitAudioContext;
+    music.ctx = new AC(); music.gain = music.ctx.createGain();
+    music.ctx.createMediaElementSource(a).connect(music.gain);
+    music.gain.connect(music.ctx.destination);
+  } catch { music.ctx = null; music.gain = null; }
+  musicApplyVol();
+}
+function musicPlay(){
+  if (music.muted || !S.player) return Promise.resolve(false);
+  musicInit();
+  if (music.ctx && music.ctx.state === 'suspended') music.ctx.resume().catch(() => {});
+  return music.el.play().then(() => true, () => false);
+}
+function musicPause(){ if (music.el) music.el.pause(); }
+function musicArm(){
+  if (music.armed) return;
+  music.armed = true;
+  const ev = ['click', 'touchend', 'keydown'];
+  const off = () => { ev.forEach(t => document.removeEventListener(t, go, true)); music.armed = false; };
+  const go = () => { musicPlay().then(ok => { if (ok || music.muted) off(); }); };
+  ev.forEach(t => document.addEventListener(t, go, true));
+}
+function musicRefresh(){
+  if (!music.ui) return;
+  const off = music.muted || music.vol === 0;
+  music.ui.querySelector('.mus-b').textContent = off ? '🔇' : (music.vol < 0.5 ? '🔉' : '🔊');
+  music.ui.querySelector('.mus-m').textContent = music.muted ? 'Activar' : 'Silenciar';
+  music.ui.querySelector('.mus-v').value = Math.round(music.vol * 100);
+}
+function musicBuildUI(){
+  const w = document.createElement('div');
+  w.className = 'mus';
+  w.innerHTML = '<button class="btn ghost sm mus-b" type="button" aria-label="Música" aria-expanded="false"></button>' +
+    '<div class="mus-p" hidden><button class="btn sm mus-m" type="button"></button>' +
+    '<input class="mus-v" type="range" min="0" max="100" step="1" aria-label="Volumen de la música"></div>';
+  const btn = w.querySelector('.mus-b'), pan = w.querySelector('.mus-p'), mute = w.querySelector('.mus-m'), vol = w.querySelector('.mus-v');
+  const close = () => { pan.hidden = true; btn.setAttribute('aria-expanded', 'false'); vol.blur(); };
+  btn.onclick = e => { e.stopPropagation(); pan.hidden = !pan.hidden; btn.setAttribute('aria-expanded', String(!pan.hidden)); };
+  mute.onclick = () => {
+    music.muted = !music.muted; musicSave(); musicRefresh();
+    if (music.muted) musicPause(); else musicPlay();
+  };
+  vol.oninput = () => {
+    music.vol = vol.value / 100;
+    if (music.vol > 0 && music.muted){ music.muted = false; musicPlay(); }
+    musicApplyVol(); musicSave(); musicRefresh();
+  };
+  vol.addEventListener('keydown', e => e.stopPropagation());
+  document.addEventListener('click', e => { if (!w.contains(e.target)) close(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+  return w;
+}
+function musicAttach(){
+  if (!music.ui) music.ui = musicBuildUI();
+  const brand = document.querySelector('.top .brand');
+  if (brand) brand.prepend(music.ui);
+  musicRefresh();
+  if (!music.muted) musicPlay().then(ok => { if (!ok) musicArm(); });
+}
+document.addEventListener('visibilitychange', () => {
+  if (!music.el) return;
+  if (document.hidden) music.el.pause();
+  else if (!music.muted && S.player) musicPlay().then(ok => { if (!ok) musicArm(); });
+});
 function albumScreen(){
   app.innerHTML = `
   <header class="top">
@@ -698,6 +787,7 @@ function albumScreen(){
   $('#btnBackup').onclick = showBackup;
   $('#btnPDF').onclick = exportAlbumPDF;
     $('#btnDupes').onclick = showDupes;
+        musicAttach();
   $('#prev').onclick = prev; $('#next').onclick = next;
 
   const book = $('#book');

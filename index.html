@@ -372,6 +372,29 @@ button.mini.warn{background:#c0483a99}
 .arow.st.drop-before{box-shadow:0 -3px 0 0 var(--gold-2,#e6c66a)}
 .arow.st.drop-after{box-shadow:0 3px 0 0 var(--gold-2,#e6c66a)}
 body.dragging-st{cursor:grabbing;user-select:none;-webkit-user-select:none}
+/* ===== Subcolecciones ===== */
+.slot.grp::before{content:"";position:absolute;inset:-1.1cqw;border:.55cqw solid var(--gc);border-radius:2.2cqw;opacity:.5;box-shadow:0 0 1.8cqw var(--gc);pointer-events:none;z-index:3}
+.slot.gdone::before{opacity:1;box-shadow:0 0 3cqw .6cqw var(--gc)}
+.slot.gr::before{right:-1.3cqw;border-right-color:transparent;border-top-right-radius:0;border-bottom-right-radius:0}
+.slot.gl::before{left:-1.3cqw;border-left-color:transparent;border-top-left-radius:0;border-bottom-left-radius:0}
+.slot.gb::before{bottom:-1.3cqw;border-bottom-color:transparent;border-bottom-left-radius:0;border-bottom-right-radius:0}
+.slot.gt::before{top:-1.3cqw;border-top-color:transparent;border-top-left-radius:0;border-top-right-radius:0}
+.gbar{display:flex;flex-wrap:wrap;gap:1.6cqw;margin-top:-1cqw}
+.gchip{font:700 3.3cqw var(--ft);padding:.7cqw 2.4cqw;border-radius:99cqw;border:.4cqw solid var(--gc);color:var(--ink);background:#2b211710;opacity:.85}
+.gchip.done{background:var(--gc);color:#1a1208;opacity:1;box-shadow:0 0 2cqw var(--gc)}
+.ach{display:grid;justify-items:center;gap:4px;padding:16px;margin:8px 0;border-radius:14px;border:1px solid var(--gc);box-shadow:0 0 24px -4px var(--gc);text-align:center}
+.ach-i{font-size:2.4rem}
+.ach b{font:700 1.15rem var(--ft);color:var(--gold-2)}
+.ach small{opacity:.7}
+/* panel admin */
+.gths{display:grid;grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:8px;margin:10px 0}
+.gth{position:relative;height:88px;padding:0;border-radius:8px;overflow:hidden;border:2px solid #ffffff22;background:#ffffff10;color:#fff;font-size:1.6rem;display:grid;place-items:center}
+.gth img{width:100%;height:100%;object-fit:cover}
+.gth .gn{position:absolute;left:3px;top:2px;z-index:1;font:700 .7rem var(--ft);background:#000a;padding:0 4px;border-radius:4px}
+.gth.on{border-color:var(--gold-2);box-shadow:0 0 0 2px var(--gold-2)}
+.gth.used{opacity:.4}
+.garow{display:grid;grid-template-columns:1.4fr 60px 1fr auto;gap:10px;align-items:center;padding:10px 0;border-top:1px solid #ffffff12}
+@media (max-width:520px){.garow{grid-template-columns:1fr 60px}}
 </style>
 <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
@@ -471,17 +494,28 @@ async function loadProgress(id){
       const o = doc.data();
       if (Array.isArray(o.opened)){
         const packsOpened = (typeof o.packsOpened === 'number') ? o.packsOpened : o.opened.filter(pk => pk.ids && pk.ids.length > 1).length;
-        return { opened: o.opened, bonus: o.bonus || 0, streak: o.streak || 0, lastLogin: o.lastLogin || null, packsOpened };
+        return { opened: o.opened, bonus: o.bonus || 0, streak: o.streak || 0, lastLogin: o.lastLogin || null, packsOpened, groups: Array.isArray(o.groups) ? o.groups : [] };
       }
     }
   } catch (e){ console.error('No se pudo leer el progreso:', e); }
-  return { opened: [], bonus: 0, streak: 0, lastLogin: null, packsOpened: 0 };
+  return { opened: [], bonus: 0, streak: 0, lastLogin: null, packsOpened: 0, groups: [] };
+}
+function checkGroups(){
+  if (!S.player || !S.progress) return;
+  const c = counts(), done = S.progress.groups = S.progress.groups || [];
+  const nuevos = (D.groups || []).filter(g => g.ids.length && g.ids.every(id => c[id]) && !done.includes(g.id));
+  if (!nuevos.length) return;
+  nuevos.forEach(g => done.push(g.id));
+  saveProgress();
+  const html = nuevos.map(g => `<div class="ach" style="--gc:${col(g.color, '#f5c542')}"><div class="ach-i">🏆</div><b>${esc(g.name)}</b><small>${esc(nationOf(g.nation).name)}, ${g.ids.length} pegatinas</small></div>`).join('');
+  const m = modal(`<h3>¡Logro desbloqueado!</h3>${html}<div class="row"><button class="btn sm" data-goto>Verla en el álbum</button><button class="btn ghost sm" data-close>Genial</button></div>`);
+  $('[data-goto]', m).onclick = () => { m.remove(); const pi = firstPageOfNation(nuevos[0].nation); if (pi >= 0) goToPage(pi); };
 }
 function saveProgress(){
   db.collection('players').doc(S.player.id).set({
     opened: S.progress.opened, bonus: S.progress.bonus || 0,
     streak: S.progress.streak || 0, lastLogin: S.progress.lastLogin || null,
-    packsOpened: S.progress.packsOpened || 0
+    packsOpened: S.progress.packsOpened || 0, groups: S.progress.groups || []
   }, { merge: true }).catch(e => { console.error('No se pudo guardar:', e); toast('No se pudo guardar (revisá tu conexión)'); });
 }
 function counts(){
@@ -521,7 +555,7 @@ function drawPack(player, index){
 /* ================= arranque ================= */
 function normalizeD(){
   D.kdf = D.kdf || 100000; D.packSize = D.packSize || 5;
-  D.nations = D.nations || []; D.stickers = D.stickers || []; D.players = D.players || [];
+  D.nations = D.nations || []; D.stickers = D.stickers || []; D.players = D.players || []; D.groups = D.groups || [];
   D.rarities = D.rarities || { comun: { label: 'Común', weight: 1, color: '#b9c2cc' } };
 }
 let firstCfg = true;
@@ -608,6 +642,7 @@ async function startAlbum(pl){
   albumScreen();
   listenInbox(pl.id);
   checkDailyStreak();
+  setTimeout(checkGroups, 1200);
 }
 function listenInbox(id){
   if (S.unsub) S.unsub();
@@ -627,6 +662,7 @@ async function claimInbox(id, items){
       inbox: firebase.firestore.FieldValue.arrayRemove(...items)
     }, { merge: true });
     refreshAlbum(); updateHeader();
+    setTimeout(checkGroups, 900);
     const list = items.map(g => { const s = stickerById(g.sid); return `<li>${esc(g.from)} te envió <b>${esc(s ? s.name : g.sid)}</b></li>`; }).join('');
     modal(`<h3>¡Recibiste pegatinas! 🎉</h3><ul class="nlist">${list}</ul><div class="row"><button class="btn sm" data-close>Genial</button></div>`);
   } catch (e){ console.error(e); }
@@ -767,15 +803,27 @@ function pageHTML(pg, idx){
   const allGot = allSt.filter(s => c[s.id]).length;
   const baseNum = pg.part === 2 ? Math.ceil(allSt.length / 2) : 0;
   const cols = st.length <= 9 ? 3 : st.length <= 16 ? 4 : 5, rows = Math.max(1, Math.ceil(st.length / cols));
+    const gOf = id => (D.groups || []).find(g => g.ids.includes(id));
+  const gDone = g => g.ids.every(x => c[x]);
   const slots = st.map((s, k) => {
-    const r = rarityOf(s.rarity);
-    if (c[s.id]) return `<div class="slot${S.newIds.has(s.id) ? ' is-new' : ''}" data-sid="${esc(s.id)}">${stickerHTML(s, { count: c[s.id], num: baseNum + k + 1 })}</div>`;
-    return `<div class="slot"><div class="empty" style="--rc:${col(r.color, '#999')}"><b>${pad(baseNum + k + 1)}</b><span>${esc(s.name)}</span></div></div>`;
+    const r = rarityOf(s.rarity), g = gOf(s.id);
+    let gc = '', gs = '';
+    if (g){
+      const same = j => j >= 0 && j < st.length && gOf(st[j].id) === g;
+      gc = ' grp' + (gDone(g) ? ' gdone' : '')
+        + (same(k + 1) && (k + 1) % cols ? ' gr' : '') + (same(k - 1) && k % cols ? ' gl' : '')
+        + (same(k + cols) ? ' gb' : '') + (same(k - cols) ? ' gt' : '');
+      gs = ` style="--gc:${col(g.color, '#f5c542')}"`;
+    }
+    if (c[s.id]) return `<div class="slot${S.newIds.has(s.id) ? ' is-new' : ''}${gc}"${gs} data-sid="${esc(s.id)}">${stickerHTML(s, { count: c[s.id], num: baseNum + k + 1 })}</div>`;
+    return `<div class="slot${gc}"${gs}><div class="empty" style="--rc:${col(r.color, '#999')}"><b>${pad(baseNum + k + 1)}</b><span>${esc(s.name)}</span></div></div>`;
   }).join('');
+  const gl = [...new Set(st.map(s => gOf(s.id)).filter(Boolean))];
+  const gbar = gl.length ? `<div class="gbar">${gl.map(g => `<span class="gchip${gDone(g) ? ' done' : ''}" style="--gc:${col(g.color, '#f5c542')}">${gDone(g) ? '★' : '☆'} ${esc(g.name)} ${g.ids.filter(x => c[x]).length}/${g.ids.length}</span>`).join('')}</div>` : '';
   return `<div class="page paper"><div class="in nation" style="--nc:${col(n.color)}">
     <div class="mark">${esc(n.emoji || '✦')}</div>
     <div class="nh"><div class="nb">${esc(n.emoji || '✦')}</div><div class="nt"><h2>${esc(n.name)}${pg.parts > 1 ? ` <small style="opacity:.6">· Hoja ${pg.part}/${pg.parts}</small>` : ''}</h2><p>${esc(n.motto || '')}</p></div><div class="np">${allGot}/${allSt.length}</div></div>
-    ${st.length ? `<div class="grid" style="--cols:${cols};--rows:${rows}">${slots}</div>` : `<div class="none">Todavía no hay pegatinas en esta hoja.</div>`}
+    ${gbar}$${st.length ? `<div class="grid" style="--cols:${cols};--rows:${rows}">${slots}</div>` : `<div class="none">Todavía no hay pegatinas en esta hoja.</div>`}
     ${st.length && got === st.length && allGot === allSt.length ? '<div class="stamp">Nación completa</div>' : ''}
     <div class="pn">${idx}</div></div></div>`;
 }
@@ -1082,7 +1130,7 @@ function openPackFlow(){
 
   const close = () => {
     ov.remove(); document.removeEventListener('keydown', onEsc);
-    if (saved){ refreshAlbum(); clearTimeout(S._nt); S._nt = setTimeout(() => { S.newIds.clear(); $$('.slot.is-new').forEach(e => e.classList.remove('is-new')); }, 9000); }
+    if (saved){ refreshAlbum(); setTimeout(checkGroups, 500); clearTimeout(S._nt); S._nt = setTimeout(() => { S.newIds.clear(); $$('.slot.is-new').forEach(e => e.classList.remove('is-new')); }, 9000); }
   };
   const onEsc = e => { if (e.key === 'Escape') close(); };
   document.addEventListener('keydown', onEsc);
@@ -1191,7 +1239,7 @@ const slug = s => String(s).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toL
 function adminScreen(){
   document.removeEventListener('keydown', onKey); window.removeEventListener('resize', onResize);
   if (!A.ok) return adminLogin();
-  const tabs = [['players', 'Jugadores y sobres'], ['stickers', 'Pegatinas'], ['nations', 'Naciones'], ['settings', 'Ajustes'], ['publish', 'Publicar']];
+  const tabs = [['players', 'Jugadores y sobres'], ['stickers', 'Pegatinas'], ['nations', 'Naciones'], ['groups', 'Subcolecciones'], ['settings', 'Ajustes'], ['publish', 'Publicar']];
   app.innerHTML = `
   <header class="top"><div class="brand"><span class="logo">⚙</span><b>Panel de administración</b></div>
     <div class="who"><button class="btn sm" id="aDl">⬇ Descargar data.json</button><button class="btn ghost sm" id="aOut">Salir</button></div></header>
@@ -1206,6 +1254,7 @@ function adminScreen(){
   const body = $('#aBody');
   body.addEventListener('click', adminClick); body.addEventListener('change', adminChange);
   body.addEventListener('pointerdown', dragStart);
+  body.addEventListener('click', groupClick); body.addEventListener('change', groupChange);
   renderTab();
 }
 
@@ -1244,7 +1293,7 @@ function downloadJson(){
 
 function renderTab(){
   const b = $('#aBody'); if (!b) return;
-  b.innerHTML = ({ players: tabPlayers, stickers: tabStickers, nations: tabNations, settings: tabSettings, publish: tabPublish })[A.tab]();
+  b.innerHTML = ({ players: tabPlayers, stickers: tabStickers, nations: tabNations, groups: tabGroups, settings: tabSettings, publish: tabPublish })[A.tab]();
 }
 
 /* --- pestaña jugadores --- */
@@ -1391,6 +1440,66 @@ function dragStart(e){
   document.addEventListener('pointermove', move);
   document.addEventListener('pointerup', up);
   document.addEventListener('pointercancel', up);
+}
+function tabGroups(){
+  const d = A.d; d.groups = d.groups || [];
+  if (!d.nations.some(n => n.id === A.gNation)) A.gNation = d.nations[0] ? d.nations[0].id : '';
+  const nid = A.gNation, sel = A.gSel || [], dr = A.gDraft || { name: '', color: '#f5c542' };
+  const st = d.stickers.filter(s => s.nation === nid);
+  const used = new Set(d.groups.flatMap(g => g.ids));
+  const nSel = d.nations.map(n => `<option value="${esc(n.id)}"${n.id === nid ? ' selected' : ''}>${esc(n.name)}</option>`).join('');
+  const thumbs = st.map((s, k) => `<button type="button" class="gth${sel.includes(s.id) ? ' on' : ''}${used.has(s.id) ? ' used' : ''}" data-gid="${esc(s.id)}" title="${esc(s.name)}"><span class="gn">${pad(k + 1)}</span>${s.image ? `<img src="${esc(s.image)}" alt="">` : esc(nationOf(s.nation).emoji || '✦')}</button>`).join('');
+  return `<div class="panel"><h3>Nueva subcolección</h3>
+    <p class="hint">1. Elige la nación. 2. Toca la primera pegatina del grupo y luego la última: se marcan todas las de en medio. 3. Ponle nombre y color. Al completarla, el jugador recibe un logro.</p>
+    <div class="formrow"><div><label>Nación</label><select data-gf="nation">${nSel}</select></div>
+      <div><label>Nombre</label><input id="gName" value="${esc(dr.name)}" placeholder="Ej.: Los Cinco Guardianes"></div>
+      <div><label>Color</label><input id="gColor" type="color" value="${esc(dr.color)}"></div></div>
+    <div class="gths">${thumbs || '<p class="hint">Esta nación no tiene pegatinas.</p>'}</div>
+    <div class="acts"><span class="hint">${sel.length ? sel.length + ' seleccionadas' : 'Ninguna seleccionada'}</span><button class="btn sm" data-gact="add">Crear subcolección</button><button class="btn ghost sm" data-gact="clear">Limpiar selección</button></div></div>
+  <div class="panel"><h3>Subcolecciones (${d.groups.length})</h3>
+    ${d.groups.length ? d.groups.map((g, i) => `<div class="garow" data-gi="${i}">
+      <input data-gf="name" value="${esc(g.name)}" aria-label="Nombre">
+      <input data-gf="color" type="color" value="${col(g.color, '#f5c542')}" aria-label="Color">
+      <small>${esc(nationOf(g.nation).name)}, ${g.ids.length} pegatinas</small>
+      <button class="mini warn" data-gact="del" aria-label="Eliminar">✕</button></div>`).join('') : '<p class="hint">Todavía no hay subcolecciones.</p>'}
+  </div>`;
+}
+function groupClick(e){
+  const d = A.d; d.groups = d.groups || [];
+  const saveDraft = () => { const n = $('#gName'), c = $('#gColor'); if (n && c) A.gDraft = { name: n.value, color: c.value }; };
+  const th = e.target.closest('.gth');
+  if (th){
+    const st = d.stickers.filter(s => s.nation === A.gNation), id = th.dataset.gid;
+    if (d.groups.some(g => g.ids.includes(id))) return toast('Esa pegatina ya está en una subcolección.');
+    const sel = A.gSel || [];
+    if (sel.length === 1 && sel[0] !== id){
+      const a = st.findIndex(s => s.id === sel[0]), b = st.findIndex(s => s.id === id);
+      const ids = st.slice(Math.min(a, b), Math.max(a, b) + 1).map(s => s.id);
+      if (ids.some(x => d.groups.some(g => g.ids.includes(x)))) return toast('El rango incluye pegatinas que ya están en otra subcolección.');
+      A.gSel = ids;
+    } else A.gSel = [id];
+    saveDraft(); return renderTab();
+  }
+  const el = e.target.closest('[data-gact]'); if (!el) return;
+  const act = el.dataset.gact;
+  if (act === 'clear'){ A.gSel = []; saveDraft(); return renderTab(); }
+  if (act === 'add'){
+    const name = $('#gName').value.trim(), sel = A.gSel || [];
+    if (!name) return toast('Falta el nombre.');
+    if (sel.length < 2) return toast('Elige al menos 2 pegatinas.');
+    d.groups.push({ id: 'g-' + Date.now().toString(36), name, nation: A.gNation, ids: sel.slice(), color: $('#gColor').value });
+    A.gSel = []; A.gDraft = null; persist(); return renderTab();
+  }
+  if (act === 'del'){
+    const i = +el.closest('[data-gi]').dataset.gi;
+    if (confirm(`¿Eliminar la subcolección ${d.groups[i].name}? Los logros ya ganados se conservan en los jugadores.`)){ d.groups.splice(i, 1); persist(); renderTab(); }
+  }
+}
+function groupChange(e){
+  const el = e.target, f = el.dataset.gf; if (!f) return;
+  if (f === 'nation'){ A.gNation = el.value; A.gSel = []; return renderTab(); }
+  const row = el.closest('[data-gi]'); if (!row) return;
+  A.d.groups[+row.dataset.gi][f] = el.value; persist();
 }
 function newStickerId(nid){
   let k = A.d.stickers.filter(s => s.nation === nid).length + 1, id;

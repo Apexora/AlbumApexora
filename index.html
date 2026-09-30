@@ -759,6 +759,67 @@ document.addEventListener('visibilitychange', () => {
   if (document.hidden) music.el.pause();
   else if (!music.muted && S.player) musicPlay().then(ok => { if (!ok) musicArm(); });
 });
+/* ===== Sonidos de rareza (sintetizados) ===== */
+let sfxCtx = null;
+function sfxUnlock(){
+  try {
+    if (!sfxCtx){ const AC = window.AudioContext || window.webkitAudioContext; sfxCtx = new AC(); }
+    if (sfxCtx.state === 'suspended') sfxCtx.resume().catch(() => {});
+  } catch {}
+}
+function sfxNote(dest, t, f, dur, o = {}){
+  const c = sfxCtx, osc = c.createOscillator(), g = c.createGain();
+  osc.type = o.type || 'sine';
+  osc.frequency.setValueAtTime(f, t);
+  if (o.to) osc.frequency.exponentialRampToValueAtTime(o.to, t + dur);
+  const v = o.vol == null ? 0.25 : o.vol, a = o.att || 0.008;
+  g.gain.setValueAtTime(0.0001, t);
+  g.gain.exponentialRampToValueAtTime(v, t + a);
+  g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+  osc.connect(g).connect(dest);
+  osc.start(t); osc.stop(t + dur + 0.05);
+}
+const sfxLevel = k => {
+  const keys = Object.keys(D.rarities).sort((a, b) => (+D.rarities[b].weight || 0) - (+D.rarities[a].weight || 0));
+  const n = keys.length, i = Math.max(0, keys.indexOf(k));
+  return n <= 1 ? 0 : Math.round(i / (n - 1) * 4);
+};
+function sfxPlay(lv){
+  sfxUnlock();
+  if (!sfxCtx) return;
+  const c = sfxCtx, t = c.currentTime + 0.02;
+  const m = c.createGain(); m.gain.value = 0.7; m.connect(c.destination);
+  if (lv <= 0){ // común: pop suave
+    sfxNote(m, t, 520, 0.14, { to: 780, vol: 0.22 });
+    sfxNote(m, t, 1040, 0.08, { to: 1560, vol: 0.06, type: 'triangle' });
+  } else if (lv === 1){ // rara: campanita de dos notas
+    sfxNote(m, t, 659.25, 0.35, { vol: 0.22 });
+    sfxNote(m, t + 0.11, 987.77, 0.6, { vol: 0.22 });
+    sfxNote(m, t + 0.11, 1975.5, 0.4, { vol: 0.05, type: 'triangle' });
+  } else if (lv === 2){ // épica: arpegio ascendente
+    [523.25, 659.25, 783.99, 1046.5].forEach((f, i) => {
+      sfxNote(m, t + i * 0.09, f, 0.7, { type: 'triangle', vol: 0.2 });
+      sfxNote(m, t + i * 0.09, f * 2, 0.5, { vol: 0.06 });
+    });
+  } else if (lv === 3){ // legendaria: acorde brillante con destellos
+    [261.63, 329.63, 392, 523.25].forEach(f => sfxNote(m, t, f, 1.5, { type: 'triangle', vol: 0.13, att: 0.12 }));
+    [1046.5, 1318.5, 1568, 2093, 2637].forEach((f, i) => sfxNote(m, t + 0.15 + i * 0.1, f, 0.5, { vol: 0.09 }));
+  } else { // única: retumbo, subida y acorde final
+    sfxNote(m, t, 110, 0.9, { to: 40, vol: 0.5 });
+    const o = c.createOscillator(), fl = c.createBiquadFilter(), g = c.createGain();
+    o.type = 'sawtooth';
+    o.frequency.setValueAtTime(120, t); o.frequency.exponentialRampToValueAtTime(900, t + 0.85);
+    fl.type = 'lowpass';
+    fl.frequency.setValueAtTime(300, t); fl.frequency.exponentialRampToValueAtTime(5000, t + 0.85);
+    g.gain.setValueAtTime(0.0001, t);
+    g.gain.exponentialRampToValueAtTime(0.1, t + 0.8);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + 0.9);
+    o.connect(fl); fl.connect(g); g.connect(m); o.start(t); o.stop(t + 1);
+    [261.63, 392, 523.25, 659.25, 783.99].forEach(f => sfxNote(m, t + 0.85, f, 1.3, { type: 'triangle', vol: 0.12, att: 0.05 }));
+    [1568, 2093, 2637, 3136].forEach((f, i) => sfxNote(m, t + 0.9 + i * 0.12, f, 0.6, { vol: 0.07 }));
+  }
+}
+window.sfxTest = lv => sfxPlay(lv);
 function albumScreen(){
   app.innerHTML = `
   <header class="top">
@@ -1253,7 +1314,8 @@ function openPackFlow(){
   function reveal(){
     phase = 'flipping'; const s = stickers[i], t = tierOf(s.rarity), r = rarityOf(s.rarity);
     card.classList.remove('stack'); card.classList.add('flip');
-    setTimeout(() => { burst(t, col(r.color, '#ffd76b')); playRaritySound(r); }, 380);
+    sfxUnlock();
+    setTimeout(() => { burst(t, col(r.color, '#ffd76b')); sfxPlay(sfxLevel(s.rarity)); }, 380);
     if (t >= 3){ ov.classList.add('flash'); setTimeout(() => ov.classList.remove('flash'), 850); }
     setTimeout(() => {
       phase = 'shown';
@@ -1262,10 +1324,6 @@ function openPackFlow(){
       msg.innerHTML = `<b>${esc(s.name)}</b>${esc(r.label)}, ${esc(nationOf(s.nation).name)}. Toca para guardarla.`;
     }, 760);
   }
-  function playRaritySound(r){
-  if (!r.sound) return;
-  try { const a = new Audio(r.sound); a.volume = 0.8; a.play().catch(() => {}); } catch {}
-}
   function burst(t, color){
     const fx = document.createElement('div'); fx.className = 'fx'; fx.innerHTML = `<u style="--c:${color}"></u>`;
     const cnt = 8 + t * 9;

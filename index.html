@@ -506,9 +506,10 @@ function checkGroups(){
   const nuevos = (D.groups || []).filter(g => g.ids.length && g.ids.every(id => c[id]) && !done.includes(g.id));
   if (!nuevos.length) return;
   nuevos.forEach(g => done.push(g.id));
-  saveProgress();
+  S.progress.bonus = (S.progress.bonus || 0) + nuevos.length; // 1 sobre por subcolección
+  saveProgress(); updateHeader();
   const html = nuevos.map(g => `<div class="ach" style="--gc:${col(g.color, '#f5c542')}"><div class="ach-i">🏆</div><b>${esc(g.name)}</b><small>${esc(nationOf(g.nation).name)}, ${g.ids.length} pegatinas</small></div>`).join('');
-  const m = modal(`<h3>¡Logro desbloqueado!</h3>${html}<div class="row"><button class="btn sm" data-goto>Verla en el álbum</button><button class="btn ghost sm" data-close>Genial</button></div>`);
+  const m = modal(`<h3>¡Logro desbloqueado!</h3>${html}<p>🎁 Ganaste ${nuevos.length} sobre${nuevos.length === 1 ? '' : 's'} de regalo.</p><div class="row"><button class="btn sm" data-goto>Verla en el álbum</button><button class="btn ghost sm" data-close>Genial</button></div>`);
   $('[data-goto]', m).onclick = () => { m.remove(); const pi = firstPageOfNation(nuevos[0].nation); if (pi >= 0) goToPage(pi); };
 }
 function saveProgress(){

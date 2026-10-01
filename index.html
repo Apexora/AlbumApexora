@@ -347,6 +347,17 @@ button.mini.warn{background:#c0483a99}
 .mus-p{position:absolute;left:0;top:calc(100% + 6px);z-index:30;display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:14px;background:#101e38;box-shadow:0 0 0 1px #e3bf7355,0 10px 24px #000a;white-space:nowrap}
 .mus-p[hidden]{display:none}
 .mus-v{width:120px;height:28px;accent-color:var(--gold)}
+.wheel-wrap{position:relative;width:min(280px,72vw);aspect-ratio:1;margin:14px auto 8px}
+.wheel{width:100%;height:100%;transition:transform 4.2s cubic-bezier(.15,.7,.1,1)}
+.wheel svg{width:100%;height:100%;display:block;border-radius:50%;box-shadow:0 0 0 4px var(--gold)}
+.wheel-ptr{position:absolute;left:50%;top:-8px;width:0;height:0;margin-left:-11px;border:11px solid transparent;border-top:20px solid #fff;z-index:2}
+.pkmenu{display:grid;gap:10px;margin:12px 0}
+.pk-tray.many .tslot{width:clamp(34px,10.5vw,56px)}
+.pk-tray.many.done{transform:scale(1.1)}
+.pk-ape .pack .body{background:linear-gradient(160deg,#2a7fd6,#12306b 48%,#4fd1c5 125%)}
+.pk-ape .pack .body::before,.pk-ape .pack .body::after,.pk-ape .pack .flap{background:repeating-linear-gradient(90deg,#0000004d 0 2px,#ffffff30 2px 4px),#1d4f8f}
+.pk-xora .pack .body{background:linear-gradient(160deg,#ffcf4a,#b2531a 48%,#5a1a7a 125%)}
+.pk-xora .pack .body::before,.pk-xora .pack .body::after,.pk-xora .pack .flap{background:repeating-linear-gradient(90deg,#0000004d 0 2px,#ffffff30 2px 4px),#8a4a12}
 .stage{position:relative;z-index:1;overflow:hidden}
 .book{will-change:transform}
 .navrow{width:100%;max-width:420px}
@@ -499,7 +510,7 @@ async function loadProgress(id){
       const o = doc.data();
       if (Array.isArray(o.opened)){
         const packsOpened = (typeof o.packsOpened === 'number') ? o.packsOpened : o.opened.filter(pk => pk.ids && pk.ids.length > 1).length;
-        return { opened: o.opened, bonus: o.bonus || 0, streak: o.streak || 0, lastLogin: o.lastLogin || null, packsOpened, groups: Array.isArray(o.groups) ? o.groups : [] };
+        return { opened: o.opened, bonus: o.bonus || 0, streak: o.streak || 0, lastLogin: o.lastLogin || null, packsOpened, groups: Array.isArray(o.groups) ? o.groups : [], apePacks: o.apePacks || 0, xoraPacks: o.xoraPacks || 0, spinsLeft: o.spinsLeft || 0, spinsDone: o.spinsDone || 0 };
       }
     }
   } catch (e){ console.error('No se pudo leer el progreso:', e); }
@@ -521,7 +532,9 @@ function saveProgress(){
   db.collection('players').doc(S.player.id).set({
     opened: S.progress.opened, bonus: S.progress.bonus || 0,
     streak: S.progress.streak || 0, lastLogin: S.progress.lastLogin || null,
-    packsOpened: S.progress.packsOpened || 0, groups: S.progress.groups || []
+    packsOpened: S.progress.packsOpened || 0, groups: S.progress.groups || [],
+    apePacks: S.progress.apePacks || 0, xoraPacks: S.progress.xoraPacks || 0,
+    spinsLeft: S.progress.spinsLeft || 0, spinsDone: S.progress.spinsDone || 0
   }, { merge: true }).catch(e => { console.error('No se pudo guardar:', e); toast('No se pudo guardar (revisá tu conexión)'); });
 }
 function counts(){
@@ -540,19 +553,28 @@ function xmur3(str){
 function mulberry32(a){
   return () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
 }
-function drawPack(player, index){
-  const rnd = mulberry32(xmur3(`${player.id}|${index}|${player.salt}`)());
+function drawPack(player, index, type = 'taverna'){
+  const rnd = mulberry32(xmur3(`${player.id}|${index}|${player.salt}` + (type === 'taverna' ? '' : '|' + type))());
   const byR = {};
   for (const s of D.stickers) (byR[s.rarity] = byR[s.rarity] || []).push(s);
   const rs = rKeys().filter(k => byR[k] && byR[k].length);
   if (!rs.length) return [];
   const total = rs.reduce((a, k) => a + Math.max(0, +D.rarities[k].weight || 0), 0) || rs.length;
   const out = [];
-  for (let i = 0; i < (D.packSize || 5); i++){
+  const size = type === 'ape' ? 7 : (D.packSize || 5);
+  for (let i = 0; i < size; i++){
     let x = rnd() * total, pick = rs[rs.length - 1];
     for (const k of rs){ x -= (Math.max(0, +D.rarities[k].weight || 0) || (total === rs.length ? 1 : 0)); if (x < 0){ pick = k; break; } }
     const arr = byR[pick];
     out.push(arr[Math.floor(rnd() * arr.length)]);
+  }
+    if (type === 'xora'){
+    const pool = byR.legendaria;
+    if (pool && pool.length && !out.some(s => s.rarity === 'legendaria')){
+      const wt = s => +D.rarities[s.rarity].weight || 0;
+      let j = 0; out.forEach((s, k) => { if (wt(s) > wt(out[j])) j = k; });
+      out[j] = pool[Math.floor(rnd() * pool.length)];
+    }
   }
   // Las mejores salen al final para dar suspenso
   return out.sort((a, b) => rKeys().indexOf(a.rarity) - rKeys().indexOf(b.rarity)).map(s => s.id);
@@ -819,6 +841,82 @@ function sfxPlay(lv){
     [1568, 2093, 2637, 3136].forEach((f, i) => sfxNote(m, t + 0.9 + i * 0.12, f, 0.6, { vol: 0.07 }));
   }
 }
+/* ===== Tipos de sobre y ruleta ===== */
+const PACKS = {
+  taverna: { name: 'Taverna', emoji: '🍺', c: '#c9a24d' },
+  ape:     { name: 'Ape',     emoji: '😈', c: '#4aa3ff' },
+  xora:    { name: 'Xora',    emoji: '✨', c: '#b46bff' }
+};
+const WHEEL = (() => {
+  let a = 0;
+  return [['taverna', 70], ['ape', 20], ['xora', 10]].map(([k, p]) => { const w = { k, p, a0: a, a1: a + p * 3.6 }; a = w.a1; return w; });
+})();
+function wheelSVG(){
+  const pt = (a, r) => { const t = (a - 90) * Math.PI / 180; return [100 + r * Math.cos(t), 100 + r * Math.sin(t)]; };
+  const out = WHEEL.map(w => {
+    const [x0, y0] = pt(w.a0, 96), [x1, y1] = pt(w.a1, 96), mid = (w.a0 + w.a1) / 2, [tx, ty] = pt(mid, 62);
+    const rot = mid - 90 + (mid > 180 ? 180 : 0);
+    return `<path d="M100 100 L${x0} ${y0} A96 96 0 ${w.a1 - w.a0 > 180 ? 1 : 0} 1 ${x1} ${y1} Z" fill="${PACKS[w.k].c}" stroke="#0a1220" stroke-width="2"/>` +
+      `<text x="${tx}" y="${ty}" text-anchor="middle" dominant-baseline="middle" font-size="${w.p >= 20 ? 13 : 9}" font-weight="700" fill="#0a1220" transform="rotate(${rot} ${tx} ${ty})">${PACKS[w.k].name}</text>`;
+  }).join('');
+  return `<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">${out}</svg>`;
+}
+function spinOutcome(n){
+  const rnd = mulberry32(xmur3(`${S.player.id}|rueda|${n}|${S.player.salt}`)());
+  let x = rnd() * 100, w = WHEEL[0];
+  for (const s of WHEEL){ x -= s.p; if (x < 0){ w = s; break; } }
+  return { w, a: w.a0 + 4 + rnd() * (w.a1 - w.a0 - 8) };
+}
+function grantPack(k){
+  const p = S.progress;
+  if (k === 'ape') p.apePacks = (p.apePacks || 0) + 1;
+  else if (k === 'xora') p.xoraPacks = (p.xoraPacks || 0) + 1;
+  else p.bonus = (p.bonus || 0) + 1;
+}
+function openWheel(){
+  const m = modal(`<h3>🎡 Ruleta diaria</h3>
+    <div class="wheel-wrap"><div class="wheel-ptr"></div><div class="wheel" id="wheel">${wheelSVG()}</div></div>
+    <p id="wmsg" style="text-align:center"></p>
+    <div class="row" style="justify-content:center"><button class="btn sm" id="wgo">Girar</button><button class="btn ghost sm" data-close>Cerrar</button></div>`);
+  m.style.backdropFilter = 'none'; m.style.background = '#050a14ee';
+  const wheel = $('#wheel', m), msg = $('#wmsg', m), go = $('#wgo', m);
+  let busy = false, rot = 0;
+  const refresh = () => {
+    const n = S.progress.spinsLeft || 0;
+    msg.innerHTML = n > 0 ? `Giros disponibles: <b>${n}</b>` : 'Ya usaste todos tus giros de hoy. ¡Vuelve mañana!';
+    go.disabled = busy || n < 1;
+  };
+  go.onclick = () => {
+    if (busy || (S.progress.spinsLeft || 0) < 1) return;
+    busy = true; go.disabled = true;
+    if (typeof sfxUnlock === 'function') sfxUnlock();
+    const r = spinOutcome(S.progress.spinsDone || 0);
+    // se guarda el premio ANTES de animar: cerrar a medias no sirve para repetir
+    S.progress.spinsLeft -= 1; S.progress.spinsDone = (S.progress.spinsDone || 0) + 1;
+    grantPack(r.w.k); saveProgress(); updateHeader();
+    rot += 1800 + ((((360 - r.a) - rot) % 360) + 360) % 360;
+    wheel.style.transform = `rotate(${rot}deg)`;
+    msg.textContent = 'Girando…';
+    setTimeout(() => {
+      busy = false;
+      if (typeof sfxPlay === 'function') sfxPlay(r.w.k === 'xora' ? 3 : r.w.k === 'ape' ? 1 : 0);
+      if (!m.isConnected){ toast(`🎁 Te tocó un Sobre ${PACKS[r.w.k].name}`); return; }
+      refresh();
+      msg.innerHTML = `¡Te tocó un <b>Sobre ${PACKS[r.w.k].name}</b>! 🎁<br><small>` + msg.innerHTML + '</small>';
+    }, 4400);
+  };
+  refresh();
+}
+function openPackMenu(){
+  const c = { taverna: availablePacks(), ape: S.progress.apePacks || 0, xora: S.progress.xoraPacks || 0 };
+  const kinds = Object.keys(c).filter(k => c[k] > 0);
+  if (!kinds.length){ toast('No tienes sobres por abrir. Gira la ruleta o pídele más al administrador.'); return; }
+  if (kinds.length === 1) return openPackFlow(kinds[0]);
+  const m = modal(`<h3>¿Qué sobre abres?</h3><div class="pkmenu">${kinds.map(k =>
+    `<button class="btn" data-k="${k}">${PACKS[k].emoji} Sobre ${PACKS[k].name} <span class="n">${c[k]}</span></button>`).join('')}</div>
+    <div class="row"><button class="btn ghost sm" data-close>Cancelar</button></div>`);
+  $$('[data-k]', m).forEach(b => b.onclick = () => { m.remove(); openPackFlow(b.dataset.k); });
+}
 function albumScreen(){
   app.innerHTML = `
   <header class="top">
@@ -826,6 +924,7 @@ function albumScreen(){
     <div class="who">
       <span class="pill" id="prog"></span>
       <button class="btn sm gift" id="btnPacks" title="Abrir un sobre">🎁 Sobres <span class="n" id="packN">0</span></button>
+      <button class="btn sm gift" id="btnSpin" title="Ruleta diaria">🎡 Ruleta <span class="n" id="spinN">0</span></button>
       <button class="btn ghost sm" id="btnDupes" title="Repetidas">🔁 Repetidas</button>
       <button class="btn ghost sm" id="btnBackup" title="Copia de seguridad" aria-label="Copia de seguridad">💾</button>
         <button class="btn ghost sm" id="btnPDF" title="Exportar a PDF">📄 PDF</button>
@@ -841,7 +940,8 @@ function albumScreen(){
     </div>
     <nav class="chips" id="chips" aria-label="Naciones"></nav>
   </footer>`;
-  $('#btnPacks').onclick = openPackFlow;
+  $('#btnPacks').onclick = openPackMenu;
+  $('#btnSpin').onclick = openWheel;
   $('#btnOut').onclick = logout;
   $('#chips').addEventListener('wheel', e => { if (e.deltaY){ e.preventDefault(); e.currentTarget.scrollLeft += e.deltaY; } }, { passive: false });
   $('#btnBackup').onclick = showBackup;
@@ -1044,8 +1144,10 @@ function buildChips(){
 function updateHeader(){
   const c = counts(), total = D.stickers.length, got = D.stickers.filter(s => c[s.id]).length;
   $('#prog').textContent = `${got} de ${total}`;
-  const n = availablePacks();
+  const n = availablePacks() + (S.progress.apePacks || 0) + (S.progress.xoraPacks || 0);
   $('#packN').textContent = n; $('#btnPacks').classList.toggle('has', n > 0);
+  const sp = S.progress.spinsLeft || 0;
+  $('#spinN').textContent = sp; $('#btnSpin').classList.toggle('has', sp > 0);
 }
 function refreshAlbum(){ buildBook(); updateHeader(); }
 
@@ -1135,11 +1237,12 @@ function checkDailyStreak(){
   S.progress.streak = prev >= 7 ? 1 : prev + 1;
   S.progress.lastLogin = today;
   const reward = S.progress.streak;
-  S.progress.bonus = (S.progress.bonus || 0) + reward;
+  S.progress.spinsLeft = (S.progress.spinsLeft || 0) + reward;
   saveProgress(); updateHeader();
-  modal(`<h3>🔥 Racha de ${S.progress.streak} día${S.progress.streak === 1 ? '' : 's'}</h3>
-    <p>Ganaste ${reward} sobre${reward === 1 ? '' : 's'} por entrar hoy.${S.progress.streak === 7 ? ' ¡Racha máxima! Mañana vuelve a empezar.' : ''}</p>
-    <div class="row"><button class="btn sm" data-close>Genial</button></div>`);
+  const m = modal(`<h3>🔥 Racha de ${S.progress.streak} día${S.progress.streak === 1 ? '' : 's'}</h3>
+    <p>Ganaste ${reward} giro${reward === 1 ? '' : 's'} de la ruleta por entrar hoy.${S.progress.streak === 7 ? ' ¡Racha máxima! Mañana vuelve a empezar.' : ''}</p>
+    <div class="row"><button class="btn sm" data-wheel>🎡 Girar ahora</button><button class="btn ghost sm" data-close>Luego</button></div>`);
+  $('[data-wheel]', m).onclick = () => { m.remove(); openWheel(); };
 }
 
 async function sendSticker(sid, toId){
@@ -1256,25 +1359,26 @@ function showDupes(){
   });
 }
 /* ================= apertura de sobres ================= */
-function openPackFlow(){
-  if (availablePacks() <= 0){ toast('No tienes sobres por abrir. Pídele más al administrador.'); return; }
+function openPackFlow(type = 'taverna'){
+  const stock = type === 'ape' ? (S.progress.apePacks || 0) : type === 'xora' ? (S.progress.xoraPacks || 0) : availablePacks();
+  if (stock <= 0){ toast('No tienes sobres de este tipo por abrir.'); return; }
   const idx = S.progress.opened.length;
-  const ids = drawPack(S.player, idx);
+  const ids = drawPack(S.player, idx, type);
   if (!ids.length){ toast('Todavía no hay pegatinas cargadas en el álbum.'); return; }
   const stickers = ids.map(stickerById), n = ids.length;
   let phase = 'sealed', i = 0, saved = false, card = null;
   const newFlags = [];
 
-  const ov = document.createElement('div'); ov.className = 'ov pack-ov';
+  const ov = document.createElement('div'); ov.className = 'ov pack-ov pk-' + type;
   ov.innerHTML = `
     <button class="x" aria-label="Cerrar">✕</button>
-    <div class="pk-top"><div class="pk-title">Sobre de naciones</div></div>
+    <div class="pk-top"><div class="pk-title">Sobre ${PACKS[type].name}</div></div>
     <div class="pk-stage" id="pkStage">
       <button class="pack" id="pack" aria-label="Abrir sobre"><div class="flap"></div>
         <div class="body">${EMBLEM}<b>APEXORA</b><small>${n} pegatinas</small><div class="shine"></div></div></button>
     </div>
     <div class="pk-msg" id="pkMsg">Toca el sobre para abrirlo</div>
-        <div class="pk-tray" id="pkTray">${ids.map((_, k) => `<div class="tslot${isHoriz(stickers[k]) ? ' horiz' : ''}" data-i="${k}">${k + 1}</div>`).join('')}</div>
+        <div class="pk-tray${n > 5 ? ' many' : ''}" id="pkTray">${ids.map((_, k) => `<div class="tslot${isHoriz(stickers[k]) ? ' horiz' : ''}" data-i="${k}">${k + 1}</div>`).join('')}</div>
     <div class="pk-actions" id="pkActs"></div>`;
   document.body.appendChild(ov);
   const stage = $('#pkStage', ov), msg = $('#pkMsg', ov), tray = $('#pkTray', ov), acts = $('#pkActs', ov), pack = $('#pack', ov);
@@ -1292,7 +1396,11 @@ function openPackFlow(){
     // Se guarda al abrir: el contenido ya no cambia aunque cierres a medias
     const before = counts(), seen = new Set();
     ids.forEach(id => { newFlags.push(!before[id] && !seen.has(id)); seen.add(id); });
-    S.progress.opened.push({ ids }); S.progress.packsOpened = (S.progress.packsOpened || 0) + 1; saveProgress(); saved = true; updateHeader();
+    S.progress.opened.push({ ids });
+    if (type === 'ape') S.progress.apePacks = Math.max(0, (S.progress.apePacks || 0) - 1);
+    else if (type === 'xora') S.progress.xoraPacks = Math.max(0, (S.progress.xoraPacks || 0) - 1);
+    else S.progress.packsOpened = (S.progress.packsOpened || 0) + 1;
+    saveProgress(); saved = true; updateHeader();
     S.newIds = new Set(ids.filter((id, k) => newFlags[k]));
     pack.classList.add('open'); msg.textContent = '';
     setTimeout(() => { pack.remove(); deal(); }, 1050);
@@ -1355,7 +1463,7 @@ function openPackFlow(){
     msg.innerHTML = `<b>¡Sobre completo!</b>${nn ? `${nn} ${nn === 1 ? 'pegatina nueva' : 'pegatinas nuevas'}` : 'Todas repetidas esta vez'}${n - nn ? `, ${n - nn} ${n - nn === 1 ? 'repetida' : 'repetidas'}` : ''}.`;
     tray.classList.add('done');
     tray.onclick = e => { const sl = e.target.closest('.tslot'); if (sl) showSticker(stickers[+sl.dataset.i].id); };
-    const left = availablePacks();
+    const left = availablePacks() + (S.progress.apePacks || 0) + (S.progress.xoraPacks || 0);
     acts.innerHTML = `<button class="btn" id="aSee">Ver en el álbum</button>${left ? `<button class="btn ghost" id="aAgain">Abrir otro (${left})</button>` : ''}`;
     $('#aSee', acts).onclick = () => {
       close();
@@ -1363,7 +1471,7 @@ function openPackFlow(){
       const pi = firstPageOfNation(stickerById(first).nation);
       if (pi >= 0) setTimeout(() => goToPage(pi), 150);
     };
-    const ag = $('#aAgain', acts); if (ag) ag.onclick = () => { close(); setTimeout(openPackFlow, 60); };
+    const ag = $('#aAgain', acts); if (ag) ag.onclick = () => { close(); setTimeout(openPackMenu, 60); };
   }
 }
 

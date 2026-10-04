@@ -295,7 +295,7 @@ button{cursor:pointer}
 /* ---------- administración ---------- */
 .admwrap{flex:1;min-height:0;overflow:auto;padding:6px max(14px,env(safe-area-inset-left)) 40px;width:100%;max-width:1040px;margin:0 auto}
 .banner{margin:6px 0 12px;padding:.7em 1em;border-radius:12px;background:#e3bf7322;box-shadow:inset 0 0 0 1px #e3bf7366;line-height:1.3}
-.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.atabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
 .tab{border:0;border-radius:99px;padding:.45em 1.1em;background:#ffffff12;color:#f3ead6;font-size:.95rem}
 .tab.on{background:var(--gold);color:#2b1c05;font-weight:600}
 .panel{background:#ffffff0c;border-radius:16px;padding:16px;margin-bottom:16px;box-shadow:inset 0 0 0 1px #ffffff14}
@@ -305,7 +305,7 @@ button{cursor:pointer}
 .arow:first-of-type{border-top:0}
 .arow.pl{grid-template-columns:minmax(120px,1.2fr) 110px 1fr auto}
 .arow.st{grid-template-columns:56px 1.2fr 1fr 1fr 1.4fr 40px}
-.arow.na{grid-template-columns:70px 1fr 2fr 56px auto}
+.arow.na{grid-template-columns:70px 1.2fr 1fr 2fr 56px auto}
 .arow small{display:block;opacity:.6;font-size:.82rem}
 .arow .big{font:700 1.5rem var(--ft);color:var(--gold-2)}
 .acts{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
@@ -412,6 +412,135 @@ body.dragging-st{cursor:grabbing;user-select:none;-webkit-user-select:none}
 .gth.used{opacity:.4}
 .garow{display:grid;grid-template-columns:1.4fr 60px 1fr auto;gap:10px;align-items:center;padding:10px 0;border-top:1px solid #ffffff12}
 @media (max-width:520px){.garow{grid-template-columns:1fr 60px}}
+[hidden]{display:none!important}
+.who{position:relative}
+.tabs{display:flex;gap:4px;margin-left:12px}
+.tabs button{border:0;background:none;color:inherit;font:600 .8rem var(--ft);padding:.5em .9em;border-radius:99px;cursor:pointer;opacity:.7}
+.tabs button.on{background:#e3bf7326;color:var(--gold-2);opacity:1;box-shadow:0 0 0 1px #e3bf7366}
+.more{position:absolute;right:0;top:calc(100% + 6px);z-index:40;display:grid;gap:6px;padding:10px;border-radius:14px;background:#101e38;box-shadow:0 0 0 1px #e3bf7355,0 10px 24px #000a}
+.view{flex:1;min-height:0;overflow:auto;width:100%;max-width:1100px;margin:0 auto;padding:18px clamp(14px,4vw,40px) 32px}
+.hi{margin:0 0 14px;font:700 1.5rem var(--ft);color:var(--gold-2)}
+.sub{opacity:.75;margin:0 0 14px}
+.hero{padding:22px;border-radius:20px;background:linear-gradient(135deg,#1c3a6e,#2b2a75 55%,#7a4aa8);box-shadow:0 0 0 1px #e3bf7344}
+.hero b{display:block;font:800 2rem var(--ft)}
+.hero small,.hero span{display:block;opacity:.8;margin:4px 0 10px}
+.bar{height:8px;border-radius:99px;background:#ffffff22;overflow:hidden}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-2))}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;margin:14px 0}
+.card,.nat{display:grid;gap:2px;justify-items:start;padding:14px;border-radius:16px;border:0;color:inherit;text-align:left;background:#101e38;box-shadow:0 0 0 1px #e3bf7333;cursor:pointer}
+.card{font-size:1.3rem}
+.card b{font:800 1.8rem var(--ft)}
+.card span{font-size:.8rem;opacity:.7}
+.nats,.ugrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.nat .bar{width:100%;margin-top:4px}
+.ucard{display:grid;gap:6px;justify-items:center;text-align:center;padding:12px;border-radius:14px;background:#101e38;box-shadow:0 0 0 1px #e3bf7322}
+.ucard{min-width:0;overflow:hidden}
+.ucard b{font-size:.82rem;line-height:1.15;overflow-wrap:anywhere}
+.ucost{font-size:.7rem;opacity:.7}
+.ucard .btn{width:100%;white-space:nowrap}
+.uth{position:relative;width:90px;aspect-ratio:5/7}
+.lvl{color:var(--gold-2);letter-spacing:2px}
+.sticker.lv1 .sk{outline:2px solid #4ade80;outline-offset:-2px}
+.sticker.lv2 .sk{outline:2px solid #38bdf8;outline-offset:-2px}
+.sticker.lv3 .sk{outline:2px solid #a78bfa;outline-offset:-2px}
+.sticker.lv4 .sk{outline:2px solid #fbbf24;outline-offset:-2px}
+.sticker.lv5 .sk{outline:3px solid #f472b6;outline-offset:-3px}
+.lvb{position:absolute;left:3%;bottom:3%;z-index:3;padding:.1em .4em;border-radius:99px;background:#000a;font-size:.8em;line-height:1.2;color:#ffd76b}
+@media(max-width:700px){.tabs{margin-left:4px}.tabs button{padding:.45em .6em}.tabs button span{display:none}}
+.rail button{width:64px;display:grid;justify-items:center;gap:2px;padding:10px 0;border:0;border-radius:16px;background:none;color:inherit;font-size:1.3rem;cursor:pointer;opacity:.65}
+.rail button small{font:600 .6rem var(--ft)}
+.rail button.on{opacity:1;background:#e3bf7326;box-shadow:0 0 0 1px #e3bf7366;color:var(--gold-2)}
+.hero{position:relative;overflow:hidden;min-height:170px}
+.hero-art{position:absolute;right:0;top:0;height:100%;width:55%;object-fit:cover;object-position:top}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#1c3a6e 35%,#1c3a6e00 85%)}
+.hero-tx{position:relative;z-index:2;max-width:60%}
+.hero-tx .btn{margin-top:4px}
+.dash{display:grid;grid-template-columns:1fr;gap:16px}
+.panel{padding:16px;border-radius:20px;background:#101e38;box-shadow:0 0 0 1px #e3bf7333}
+.panel h3{margin:0 0 10px;font:700 1.05rem var(--ft);color:var(--gold-2)}
+.ring{position:relative;width:130px;margin:0 auto 8px}
+.ring svg{width:100%;display:block}
+.ring b{position:absolute;inset:0;display:grid;place-items:center;font:800 1.5rem var(--ft)}
+.rrow{display:grid;grid-template-columns:auto 1fr auto;gap:6px;align-items:center;margin:9px 0;font-size:.85rem}
+.rrow .bar{grid-column:1/-1}
+.rrow em{font-style:normal;opacity:.7}
+@media(min-width:860px){
+  #app:has(>.rail){display:grid;grid-template-columns:84px minmax(0,1fr);grid-template-rows:60px minmax(0,1fr) auto}
+  #app:has(>.rail)>*{grid-column:2}
+  #app:has(>.rail)>.rail{display:flex;grid-column:1;grid-row:1/-1;flex-direction:column;align-items:center;gap:8px;padding:14px 0;margin:10px 0 10px 10px;border-radius:22px;background:#101e38;box-shadow:0 0 0 1px #e3bf7333}
+  #app:has(>.rail)>.top{grid-row:1}
+  #app:has(>.rail)>.stage,#app:has(>.rail)>.view{grid-row:2}
+  #app:has(>.rail)>.foot{grid-row:3}
+  .tabs{display:none}
+  .dash{grid-template-columns:minmax(0,1fr) 300px}
+}
+.tabs{display:none}
+@media(max-width:859px){
+  .rail{display:flex;flex:none;order:99;justify-content:space-around;gap:4px;padding:6px 8px max(6px,env(safe-area-inset-bottom));background:#0e1a33;box-shadow:0 -1px 0 #e3bf7333}
+  .rail .logo{display:none}
+  .rail button{flex:1;width:auto;padding:6px 0;font-size:1.25rem}
+}
+@media(max-width:560px){
+  .hero-tx{max-width:100%}
+  .hero-art{width:100%;opacity:.3}
+}
+@media(min-width:860px){.rail{order:0}}
+.modal .box{border-radius:22px;background:linear-gradient(180deg,#14264a,#0e1a33)}
+.pkmenu .btn{display:flex;justify-content:space-between;align-items:center;padding:.9em 1.1em;font-size:.95rem}
+.wheel svg{box-shadow:0 0 0 4px var(--gold),0 0 28px #e3bf7366}
+.filt{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 14px}
+.filt button{border:0;border-radius:99px;padding:.4em .9em;background:#ffffff14;color:inherit;font:600 .78rem var(--ft);cursor:pointer}
+.filt button.on{background:#e3bf7333;color:var(--gold-2);box-shadow:0 0 0 1px #e3bf7388}
+.recent{display:flex;gap:10px;overflow-x:auto;padding:2px 2px 8px;margin-bottom:6px}
+.recent .uth{flex:none;width:72px;cursor:zoom-in}
+@media(min-width:860px){.brand .logo{display:none}}
+.streak{display:flex;justify-content:space-between;gap:4px;margin:10px 0 4px}
+.streak span{flex:1;max-width:34px;aspect-ratio:1;display:grid;place-items:center;border-radius:50%;background:#ffffff14;font:700 .75rem var(--ft);opacity:.7}
+.streak span.on{background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#1a1208;opacity:1}
+.lb-info .lvl{display:block;margin:2px 0 8px}
+.ic{flex:none;vertical-align:-.25em}
+.btn .ic{margin-right:.15em}
+.card .ic{color:var(--gold-2)}
+.rail button .ic{margin-bottom:2px}
+.nico{width:1em;height:1em;object-fit:contain;vertical-align:-.15em;display:inline-block}
+.nb .nico{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.index li .e .nico{width:100%;height:100%}
+.chip .nico{width:1.25em;height:1.25em}
+.atabs{position:sticky;top:0;z-index:5;flex-wrap:nowrap;overflow-x:auto;padding:8px 0 10px;background:linear-gradient(#0a1220 75%,#0a122000)}
+.tab{display:inline-flex;align-items:center;gap:.4em;white-space:nowrap}
+.tab:not(.on):hover{background:#ffffff22}
+.banner{display:flex;align-items:center;gap:8px;background:#e3bf7314;box-shadow:inset 0 0 0 1px #e3bf7355;font-size:.9rem}
+.banner::before{content:"";flex:none;width:8px;height:8px;border-radius:50%;background:#4ade80}
+.arow{border-radius:10px;padding:10px 8px;transition:background .15s}
+.arow:hover{background:#ffffff08}
+.admwrap input:focus,.admwrap select:focus,.admwrap textarea:focus{outline:0;border-color:var(--gold);box-shadow:0 0 0 3px #e3bf7333}
+/* ===== Estilo juego ===== */
+:root{--cut:14px}
+.card,.nat,.ucard,.panel,.hero{clip-path:polygon(var(--cut) 0,100% 0,100% calc(100% - var(--cut)),calc(100% - var(--cut)) 100%,0 100%,0 var(--cut))}
+.card,.nat,.ucard,.panel{background:linear-gradient(160deg,#14264a,#0c1730) padding-box,linear-gradient(135deg,#e3bf73,#4a3a1a 45%,#7a4aa8) border-box;border:1px solid transparent;box-shadow:none}
+.hero{border:1px solid #e3bf7366;box-shadow:none}
+.hi{background:linear-gradient(90deg,var(--gold-2),#fff 60%,var(--gold-2));-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:.04em;text-transform:uppercase}
+.top{background:linear-gradient(#0a1220f5,#0a1220d0);box-shadow:0 1px 0 #e3bf7340}
+.rail button{position:relative}
+.rail button.on{box-shadow:inset 3px 0 0 var(--gold),0 0 0 1px #e3bf7366}
+@media(max-width:859px){.rail button.on{box-shadow:inset 0 3px 0 var(--gold)}}
+.rank{display:grid;gap:3px;margin-bottom:12px}
+.rank span{font:700 .62rem var(--ft);letter-spacing:.22em;color:var(--gold-2)}
+.hero .rank b{font:800 1.1rem var(--ft);letter-spacing:.05em;text-transform:uppercase}
+.rank .bar{height:5px;max-width:230px}
+.rank em{font-style:normal;font-size:.7rem;opacity:.7}
+@keyframes up{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.view.enter .hero,.view.enter .cards>*,.view.enter .nat,.view.enter .ucard,.view.enter .panel,.view.enter .recent,.view.enter .filt{animation:up .4s both}
+.view.enter .cards>*:nth-child(2){animation-delay:.06s}
+.view.enter .cards>*:nth-child(3){animation-delay:.12s}
+.view.enter .nat:nth-child(n+2),.view.enter .ucard:nth-child(n+2){animation-delay:.1s}
+.view.enter .panel{animation-delay:.08s}
+@keyframes lvup{0%{transform:scale(.93)}55%{transform:scale(1.05)}100%{transform:none}}
+.ucard.lvup{animation:lvup .5s}
+.ucard.lvup .lvl{color:#fff}
+.card,.nat,.ucard{transition:transform .15s}
+@media(hover:hover){.card:hover,.nat:hover,.ucard:hover{transform:translateY(-3px)}}
+@media(prefers-reduced-motion:reduce){.view.enter *,.ucard.lvup{animation:none!important}}
 </style>
 <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
@@ -511,7 +640,7 @@ async function loadProgress(id){
       const o = doc.data();
       if (Array.isArray(o.opened)){
         const packsOpened = (typeof o.packsOpened === 'number') ? o.packsOpened : o.opened.filter(pk => pk.ids && pk.ids.length > 1).length;
-        return { opened: o.opened, bonus: o.bonus || 0, streak: o.streak || 0, lastLogin: o.lastLogin || null, packsOpened, groups: Array.isArray(o.groups) ? o.groups : [], apePacks: o.apePacks || 0, xoraPacks: o.xoraPacks || 0, spinsLeft: o.spinsLeft || 0, spinsDone: o.spinsDone || 0 };
+        return { opened: o.opened, bonus: o.bonus || 0, streak: o.streak || 0, lastLogin: o.lastLogin || null, packsOpened, groups: Array.isArray(o.groups) ? o.groups : [], apePacks: o.apePacks || 0, xoraPacks: o.xoraPacks || 0, spinsLeft: o.spinsLeft || 0, spinsDone: o.spinsDone || 0, up: (o.up && typeof o.up === 'object') ? o.up : {} };
       }
     }
   } catch (e){ console.error('No se pudo leer el progreso:', e); }
@@ -535,7 +664,7 @@ function saveProgress(){
     streak: S.progress.streak || 0, lastLogin: S.progress.lastLogin || null,
     packsOpened: S.progress.packsOpened || 0, groups: S.progress.groups || [],
     apePacks: S.progress.apePacks || 0, xoraPacks: S.progress.xoraPacks || 0,
-    spinsLeft: S.progress.spinsLeft || 0, spinsDone: S.progress.spinsDone || 0
+    spinsLeft: S.progress.spinsLeft || 0, spinsDone: S.progress.spinsDone || 0, up: S.progress.up || {}
   }, { merge: true }).catch(e => { console.error('No se pudo guardar:', e); toast('No se pudo guardar (revisá tu conexión)'); });
 }
 function counts(){
@@ -640,10 +769,12 @@ function loginScreen(msg = ''){
     <h1>${esc(D.title)}</h1>
     <p>Escribe tu contraseña privada para abrir tu álbum.</p>
     <input id="pw" type="password" autocomplete="current-password" placeholder="Contraseña" aria-label="Contraseña">
+    <label class="chk"><input type="checkbox" id="showpw"> Mostrar contraseña</label>
     <label class="chk"><input type="checkbox" id="rem"> Recordarme en este dispositivo</label>
     <button class="btn" id="go">Abrir mi álbum</button>
-    <div class="err" id="err" role="alert">${esc(msg)}</div>
+      <div class="err" id="err" role="alert">${esc(msg)}</div>
   </div></div>`;
+  $('#showpw').onchange = e => { $('#pw').type = e.target.checked ? 'text' : 'password'; };
   const go = async () => {
     const pw = $('#pw').value.trim(); if (!pw) return;
     const btn = $('#go'); btn.disabled = true; btn.textContent = 'Comprobando…';
@@ -743,7 +874,7 @@ function musicArm(){
 function musicRefresh(){
   if (!music.ui) return;
   const off = music.muted || music.vol === 0;
-  music.ui.querySelector('.mus-b').textContent = off ? '🔇' : (music.vol < 0.5 ? '🔉' : '🔊');
+  music.ui.querySelector('.mus-b').innerHTML = ico(off ? 'mute' : 'vol', 16);
   music.ui.querySelector('.mus-m').textContent = music.muted ? 'Activar' : 'Silenciar';
   music.ui.querySelector('.mus-v').value = Math.round(music.vol * 100);
 }
@@ -875,7 +1006,7 @@ function grantPack(k){
   else p.bonus = (p.bonus || 0) + 1;
 }
 function openWheel(){
-  const m = modal(`<h3>🎡 Ruleta diaria</h3>
+  const m = modal(`<h3>${ico('wheel',20)} Ruleta diaria</h3>
     <div class="wheel-wrap"><div class="wheel-ptr"></div><div class="wheel" id="wheel">${wheelSVG()}</div></div>
     <p id="wmsg" style="text-align:center"></p>
     <div class="row" style="justify-content:center"><button class="btn sm" id="wgo">Girar</button><button class="btn ghost sm" data-close>Cerrar</button></div>`);
@@ -914,22 +1045,141 @@ function openPackMenu(){
   if (!kinds.length){ toast('No tienes sobres por abrir. Gira la ruleta o pídele más al administrador.'); return; }
   if (kinds.length === 1) return openPackFlow(kinds[0]);
   const m = modal(`<h3>¿Qué sobre abres?</h3><div class="pkmenu">${kinds.map(k =>
-    `<button class="btn" data-k="${k}">${PACKS[k].emoji} Sobre ${PACKS[k].name} <span class="n">${c[k]}</span></button>`).join('')}</div>
+    `<button class="btn" data-k="${k}"><span style="color:${PACKS[k].c}">${ico('gift',20)}</span> Sobre ${PACKS[k].name} <span class="n">${c[k]}</span></button>`).join('')}</div>
     <div class="row"><button class="btn ghost sm" data-close>Cancelar</button></div>`);
   $$('[data-k]', m).forEach(b => b.onclick = () => { m.remove(); openPackFlow(b.dataset.k); });
 }
+/* ===== Vistas: inicio y mejoras ===== */
+const UP_MAX = 5, upCost = l => l + 1;
+function setView(v){
+  S.view = v;
+  $('#stage').hidden = $('.foot').hidden = v !== 'album';
+  $('#vHome').hidden = v !== 'home'; $('#vUp').hidden = v !== 'up';
+  $$('#tabs button, #rail button').forEach(b => b.classList.toggle('on', b.dataset.v === v));
+  const el = v === 'home' ? $('#vHome') : v === 'up' ? $('#vUp') : null;
+  if (el){ el.classList.add('enter'); setTimeout(() => el.classList.remove('enter'), 700); }
+  if (v === 'home') renderHome(); else if (v === 'up') renderUp(); else { layout(true); refreshAlbum(); }
+}
+const onDark = h => {
+  const m = /^#?([0-9a-f]{6})$/i.exec(h || ''); if (!m) return '#bbb';
+  const n = parseInt(m[1], 16), l = (0.299 * (n >> 16) + 0.587 * ((n >> 8) & 255) + 0.114 * (n & 255)) / 255;
+  return l < 0.35 ? '#e6e6f2' : h;
+};
+function renderHome(){
+  const c = counts(), tot = D.stickers.length, got = D.stickers.filter(s => c[s.id]).length, pct = tot ? Math.round(got / tot * 100) : 0;
+  const packs = availablePacks() + (S.progress.apePacks || 0) + (S.progress.xoraPacks || 0), sp = S.progress.spinsLeft || 0;
+  const lv = Object.values(S.progress.up || {}).reduce((a, b) => a + b, 0), st = S.progress.streak || 0;
+  const nat = D.nations.map(n => { const l = D.stickers.filter(s => s.nation === n.id); return { n, g: l.filter(s => c[s.id]).length, t: l.length }; })
+    .filter(x => x.t).sort((a, b) => b.g / b.t - a.g / a.t).slice(0, 6);
+  const lastPk = [...S.progress.opened].reverse().find(p => p.ids.length), ls = lastPk && stickerById(lastPk.ids[lastPk.ids.length - 1]);
+  const gs = D.groups || [], gdone = gs.filter(g => g.ids.every(x => c[x])).length;
+  const rar = Object.entries(D.rarities).sort((a, b) => (+b[1].weight || 0) - (+a[1].weight || 0)).map(([k, r]) => {
+    const l = D.stickers.filter(s => s.rarity === k); return { r, g: l.filter(s => c[s.id]).length, t: l.length };
+  }).filter(x => x.t);
+    const seen = new Set(), rec = [];
+  for (const pk of [...S.progress.opened].reverse()) for (const id of [...pk.ids].reverse()){
+    if (!seen.has(id) && stickerById(id)){ seen.add(id); rec.push(stickerById(id)); }
+  }
+  rec.length = Math.min(rec.length, 8);
+  const RANKS = ['Aspirante', 'Explorador', 'Cazador', 'Veterano', 'Maestro', 'Leyenda'];
+  const xp = got * 10 + lv * 25 + st * 5, rk = Math.min(RANKS.length - 1, Math.floor(xp / 400));
+  const into = rk === RANKS.length - 1 ? 100 : (xp % 400) / 4;
+  $('#vHome').innerHTML = `<h2 class="hi">Hola, ${esc(S.player.name)}</h2>
+  <div class="dash"><div>
+    <div class="hero">${ls && ls.image ? `<img class="hero-art" src="${esc(ls.image)}" alt="" decoding="async">` : ''}
+      <div class="hero-tx"><div class="rank"><span>RANGO</span><b>${RANKS[rk]}</b><div class="bar"><i style="width:${into}%"></i></div><em>${xp} XP</em></div><small>${ls ? 'Última pegatina: ' + esc(ls.name) : 'Tu colección'}</small><b>${got} / ${tot}</b>
+        <div class="bar"><i style="width:${pct}%"></i></div><span>${pct}% completado</span><button class="btn" data-go="album">Abrir álbum</button></div></div>
+    <div class="cards">
+      <button class="card" data-act="packs">${ico('gift',26)}<b>${packs}</b><span>Sobres</span></button>
+      <button class="card" data-act="spin">${ico('wheel',26)}<b>${sp}</b><span>Giros</span></button>
+      <button class="card" data-go="up">${ico('zap',26)}<b>${lv}</b><span>Niveles de mejora</span></button></div>
+        ${rec.length ? `<h3 class="hi" style="font-size:1.1rem">Obtenidas recientemente</h3><div class="recent">${rec.map(s => `<div class="uth" data-sid="${s.id}">${stickerHTML(s, { mini: true })}</div>`).join('')}</div>` : ''}
+    <h3 class="hi" style="font-size:1.1rem">Naciones más avanzadas</h3>
+    <div class="nats">${nat.map(x => `<button class="nat" data-nation="${x.n.id}">${nIcon(x.n)} <b>${esc(x.n.name)}</b><span>${x.g}/${x.t}</span><div class="bar"><i style="width:${Math.round(x.g / x.t * 100)}%"></i></div></button>`).join('')}</div>
+  </div>
+  <aside><div class="panel"><h3>Tu progreso</h3>
+    <div class="ring"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" fill="none" stroke="#ffffff1c" stroke-width="10"/><circle cx="60" cy="60" r="52" fill="none" stroke="var(--gold)" stroke-width="10" stroke-linecap="round" stroke-dasharray="${(pct * 3.267).toFixed(1)} 327" transform="rotate(-90 60 60)"/></svg><b>${pct}%</b></div>
+    <p class="sub" style="text-align:center">Subcolecciones ${gdone}/${gs.length} · Racha ${st} día${st === 1 ? '' : 's'}</p>
+        <div class="streak">${[1, 2, 3, 4, 5, 6, 7].map(d => `<span class="${d <= st ? 'on' : ''}">${d}</span>`).join('')}</div>
+    <p class="sub" style="text-align:center;font-size:.8rem">Si entras mañana: +${st >= 7 ? 1 : st + 1} giro${(st >= 7 ? 1 : st + 1) === 1 ? '' : 's'} 🎡</p>
+    ${rar.map(x => `<div class="rrow"><span style="color:${onDark(x.r.color)}">●</span><span>${esc(x.r.label)}</span><em>${x.g}/${x.t}</em><div class="bar"><i style="width:${Math.round(x.g / x.t * 100)}%"></i></div></div>`).join('')}
+  </div></aside></div>`;
+}
+function renderUp(){
+  const c = counts(), up = S.progress.up || {}, f = S.upf || 'all';
+  const can = (n, l) => l < UP_MAX && n - 1 >= upCost(l);
+  let rows = D.stickers.filter(s => c[s.id]).map(s => ({ s, n: c[s.id], l: up[s.id] || 0 }));
+  const nCan = rows.filter(x => can(x.n, x.l)).length, nMax = rows.filter(x => x.l >= UP_MAX).length;
+  rows = rows.filter(x => f === 'can' ? can(x.n, x.l) : f === 'max' ? x.l >= UP_MAX : true)
+    .sort((a, b) => can(b.n, b.l) - can(a.n, a.l) || b.l - a.l);
+  const fb = (k, t) => `<button class="${f === k ? 'on' : ''}" data-f="${k}">${t}</button>`;
+  $('#vUp').innerHTML = `<h2 class="hi">Mejorar personajes</h2>
+    <p class="sub">Gasta repetidas de una pegatina para subirla de nivel (máx. ${UP_MAX}). Del nivel N al N+1 cuesta N+1 repetidas. ¡Al llegar al nivel 5 ganas un giro de la ruleta!</p>
+    <div class="filt">${fb('all', 'Todas')}${fb('can', `Mejorables (${nCan})`)}${fb('max', `Nivel máximo (${nMax})`)}</div>
+    <div class="ugrid">${rows.map(({ s, n, l }) => `<div class="ucard"><div class="uth">${stickerHTML(s, { mini: true })}</div><b>${esc(s.name)}</b>
+      <span class="lvl">${'★'.repeat(l)}${'☆'.repeat(UP_MAX - l)}</span>
+      <small class="ucost">${l >= UP_MAX ? 'Nivel máximo' : `Cuesta ${upCost(l)} · tienes ${n - 1}`}</small>
+      <button class="btn sm" data-up="${s.id}" ${can(n, l) ? '' : 'disabled'}>${ico('zap',14)} Mejorar</button></div>`).join('') || '<p class="sub">No hay pegatinas en este filtro.</p>'}</div>`;
+}
+function upgradeSticker(sid){
+  const up = S.progress.up = S.progress.up || {}, l = up[sid] || 0, cost = upCost(l);
+  if (l >= UP_MAX || (counts()[sid] || 0) - 1 < cost) return;
+  for (let i = 0; i < cost; i++) removeOneCopy(S.progress, sid);
+  up[sid] = l + 1;
+  const maxed = up[sid] >= UP_MAX;
+  if (maxed) S.progress.spinsLeft = (S.progress.spinsLeft || 0) + 1;
+  saveProgress(); renderUp(); updateHeader();
+  const cd = document.querySelector('#vUp [data-up="' + sid + '"]'); if (cd) cd.closest('.ucard').classList.add('lvup');
+  toast(`⚡ ${stickerById(sid).name} sube a nivel ${l + 1}${maxed ? ' · ¡Nivel máximo! +1 giro 🎡' : ''}`);
+}
+/* ===== Iconos ===== */
+const ICONS = {
+  home: '<path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',
+  book: '<path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2z"/><path d="M22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z"/>',
+  zap: '<path d="M13 2 4 14h7l-1 8 9-12h-7z"/>',
+  gift: '<rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8s1-5 4.5-5a2.5 2.5 0 0 1 0 5"/>',
+  wheel: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2"/><path d="M12 3v7M12 14v7M3 12h7M14 12h7M5.6 5.6l5 5M13.4 13.4l5 5M18.4 5.6l-5 5M10.6 13.4l-5 5"/>',
+  more: '<circle cx="5" cy="12" r="1.3"/><circle cx="12" cy="12" r="1.3"/><circle cx="19" cy="12" r="1.3"/>',
+  repeat: '<path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/>',
+  file: '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h5"/>',
+  out: '<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/>',
+  vol: '<path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/>',
+  mute: '<path d="M11 5 6 9H2v6h4l5 4z"/><path d="m22 9-6 6m0-6 6 6"/>',
+  flame: '<path d="M12 2c1 3.5 5 5.5 5 10a5 5 0 0 1-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3-1-6 1-9z"/>'
+};
+const ico = (n, s = 18) => `<svg class="ic" width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[n]}</svg>`;
+Object.assign(ICONS, {
+  users: '<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6.5 6.5 0 0 1 3.5 6"/>',
+  image: '<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="1.8"/><path d="m21 15-5-5L5 21"/>',
+  flag: '<path d="M5 22V4"/><path d="M5 4h12l-2 4 2 4H5"/>',
+  layers: '<path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5"/>',
+  sliders: '<path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/>',
+  upload: '<path d="M12 16V4"/><path d="m6 10 6-6 6 6"/><path d="M4 20h16"/>',
+  download: '<path d="M12 4v12"/><path d="m6 10 6 6 6-6"/><path d="M4 20h16"/>'
+});
+const nIcon = n => n.icon
+  ? `<img class="nico" src="${esc(n.icon)}" alt="" decoding="async" onerror="this.replaceWith('✦')">`
+  : esc(n.emoji || '✦');
 function albumScreen(){
   app.innerHTML = `
-  <header class="top">
+    <aside class="rail" id="rail"><span class="logo">✦</span>
+    <button data-v="home" title="Inicio">${ico('home',24)}<small>Inicio</small></button>
+    <button data-v="album" title="Álbum">${ico('book',24)}<small>Álbum</small></button>
+    <button data-v="up" title="Mejoras">${ico('zap',24)}<small>Mejoras</small></button>
+  </aside>
+    <header class="top">
     <div class="brand"><span class="logo">✦</span><b>${esc(D.title)}</b></div>
+    <nav class="tabs" id="tabs"><button data-v="home">🏠<span> Inicio</span></button><button data-v="album">📖<span> Álbum</span></button><button data-v="up">⚡<span> Mejoras</span></button></nav>
     <div class="who">
       <span class="pill" id="prog"></span>
-      <button class="btn sm gift" id="btnPacks" title="Abrir un sobre">🎁 Sobres <span class="n" id="packN">0</span></button>
-      <button class="btn sm gift" id="btnSpin" title="Ruleta diaria">🎡 Ruleta <span class="n" id="spinN">0</span></button>
-      <button class="btn ghost sm" id="btnDupes" title="Repetidas">🔁 Repetidas</button>
-      <button class="btn ghost sm" id="btnBackup" title="Copia de seguridad" aria-label="Copia de seguridad">💾</button>
-        <button class="btn ghost sm" id="btnPDF" title="Exportar a PDF">📄 PDF</button>
-      <button class="btn ghost sm" id="btnOut" title="Cerrar sesión">Salir</button>
+      <button class="btn sm gift" id="btnPacks" title="Abrir un sobre">${ico('gift',16)} Sobres <span class="n" id="packN">0</span></button>
+      <button class="btn sm gift" id="btnSpin" title="Ruleta diaria">${ico('wheel',16)} Ruleta <span class="n" id="spinN">0</span></button>
+      <button class="btn ghost sm" id="btnMore" aria-label="Más">${ico('more',18)}</button>
+      <div class="more" id="more" hidden>
+        <button class="btn ghost sm" id="btnDupes">${ico('repeat',16)} Repetidas</button>
+        <button class="btn ghost sm" id="btnPDF">${ico('file',16)} PDF</button>
+        <button class="btn ghost sm" id="btnOut">${ico('out',16)} Salir</button>
+      </div>
     </div>
   </header>
   <main class="stage" id="stage"><div class="viewport"><div class="book" id="book"></div></div><div id="pdfStage" style="position:fixed;left:-99999px;top:0;width:var(--pw);height:var(--ph);overflow:hidden"></div></main>
@@ -940,15 +1190,32 @@ function albumScreen(){
       <button class="btn round" id="next" aria-label="Página siguiente">›</button>
     </div>
     <nav class="chips" id="chips" aria-label="Naciones"></nav>
-  </footer>`;
+  </footer>
+  <section class="view" id="vHome" hidden></section>
+  <section class="view" id="vUp" hidden></section>`;
   $('#btnPacks').onclick = openPackMenu;
   $('#btnSpin').onclick = openWheel;
   $('#btnOut').onclick = logout;
   $('#chips').addEventListener('wheel', e => { if (e.deltaY){ e.preventDefault(); e.currentTarget.scrollLeft += e.deltaY; } }, { passive: false });
-  $('#btnBackup').onclick = showBackup;
   $('#btnPDF').onclick = exportAlbumPDF;
     $('#btnDupes').onclick = showDupes;
         musicAttach();
+    $('#rail').onclick = $('#tabs').onclick = e => { const b = e.target.closest('[data-v]'); if (b) setView(b.dataset.v); };
+  $('#btnMore').onclick = e => { e.stopPropagation(); $('#more').hidden = !$('#more').hidden; };
+  document.addEventListener('click', () => { const m = $('#more'); if (m) m.hidden = true; });
+    $('#vUp').onclick = e => {
+    const f = e.target.closest('[data-f]'); if (f){ S.upf = f.dataset.f; renderUp(); return; }
+    const b = e.target.closest('[data-up]'); if (b && !b.disabled) upgradeSticker(b.dataset.up);
+  };
+    $('#vHome').onclick = e => {
+    const b = e.target.closest('[data-go],[data-act],[data-nation],[data-sid]'); if (!b) return;
+    if (b.dataset.sid) showSticker(b.dataset.sid);
+    else if (b.dataset.go) setView(b.dataset.go);
+    else if (b.dataset.act === 'packs') openPackMenu();
+    else if (b.dataset.act === 'spin') openWheel();
+    else { setView('album'); goToPage(firstPageOfNation(b.dataset.nation)); }
+  };
+  setView('home');
   $('#prev').onclick = prev; $('#next').onclick = next;
 
   const book = $('#book');
@@ -1043,7 +1310,7 @@ function pageHTML(pg, idx){
     const total = D.stickers.length, got = D.stickers.filter(s => c[s.id]).length;
     const rows = D.nations.map((n, i) => {
       const st = D.stickers.filter(s => s.nation === n.id), g = st.filter(s => c[s.id]).length;
-      return `<li data-goto="${firstPageOfNation(n.id)}" style="--nc:${col(n.color)}"><span class="e">${esc(n.emoji || '✦')}</span>
+      return `<li data-goto="${firstPageOfNation(n.id)}" style="--nc:${col(n.color)}"><span class="e">${nIcon(n)}</span>
         <span class="t"><b>${esc(n.name)}</b><div class="bar"><i style="width:${st.length ? g / st.length * 100 : 0}%"></i></div></span><span class="c">${g}/${st.length}</span></li>`;
     }).join('');
     const leg = rKeys().map(k => `<span style="--rc:${col(D.rarities[k].color, '#999')}"><i></i>${esc(D.rarities[k].label)}</span>`).join('');
@@ -1073,9 +1340,9 @@ function pageHTML(pg, idx){
   const gl = [...new Set(st.map(s => gOf(s.id)).filter(Boolean))];
   const gbar = gl.length ? `<div class="gbar">${gl.map(g => `<span class="gchip${gDone(g) ? ' done' : ''}" style="--gc:${col(g.color, '#f5c542')}">${gDone(g) ? '★' : '☆'} ${esc(g.name)} ${g.ids.filter(x => c[x]).length}/${g.ids.length}</span>`).join('')}</div>` : '';
   return `<div class="page paper"><div class="in nation" style="--nc:${col(n.color)}">
-    <div class="mark">${esc(n.emoji || '✦')}</div>
-    <div class="nh"><div class="nb">${esc(n.emoji || '✦')}</div><div class="nt"><h2>${esc(n.name)}${pg.parts > 1 ? ` <small style="opacity:.6">· Hoja ${pg.part}/${pg.parts}</small>` : ''}</h2><p>${esc(n.motto || '')}</p></div><div class="np">${allGot}/${allSt.length}</div></div>
-    ${gbar}$${st.length ? `<div class="grid" style="--cols:${cols};--rows:${rows}">${slots}</div>` : `<div class="none">Todavía no hay pegatinas en esta hoja.</div>`}
+    <div class="mark">${nIcon(n)}</div>
+    <div class="nh"><div class="nb">${nIcon(n)}</div><div class="nt"><h2>${esc(n.name)}${pg.parts > 1 ? ' ' + (['', 'I', 'II', 'III', 'IV', 'V', 'VI'][pg.part] || pg.part) : ''}</h2><p>${esc(n.motto || '')}</p></div><div class="np">${allGot}/${allSt.length}</div></div>
+    ${gbar}${st.length ? `<div class="grid" style="--cols:${cols};--rows:${rows}">${slots}</div>` : `<div class="none">Todavía no hay pegatinas en esta hoja.</div>`}
     ${st.length && got === st.length && allGot === allSt.length ? '<div class="stamp">Nación completa</div>' : ''}
     <div class="pn">${idx}</div></div></div>`;
 }
@@ -1085,9 +1352,9 @@ function stickerHTML(s, o = {}){
   const art = s.image
     ? `<img src="${esc(s.image)}" alt="${esc(s.name)}" draggable="false" decoding="async">`
     : `<div class="ph">${esc(s.emoji || n.emoji || '✦')}</div>`;
-  return `<div class="sticker t${t}${o.mini ? ' mini' : ''}" style="--rc:${col(r.color, '#bbb')};--nc:${col(n.color)}">
+  return `<div class="sticker t${t} lv${(S.progress && S.progress.up && S.progress.up[s.id]) || 0}${o.mini ? ' mini' : ''}" style="--rc:${col(r.color, '#bbb')};--nc:${col(n.color)}">
     <div class="sk"><div class="art">${art}<div class="cap"><b>${esc(s.name)}</b><i>${esc(r.label)}</i></div></div>
-    ${o.num ? `<span class="no">${pad(o.num)}</span>` : ''}${o.count > 1 ? `<span class="dup">×${o.count}</span>` : ''}<div class="foil"></div></div></div>`;
+    ${(S.progress && S.progress.up && S.progress.up[s.id]) ? `<span class="lvb">${'★'.repeat(S.progress.up[s.id])}</span>` : ''}${o.num ? `<span class="no">${pad(o.num)}</span>` : ''}${o.count > 1 ? `<span class="dup">×${o.count}</span>` : ''}<div class="foil"></div></div></div>`;
 }
 // Si una imagen falla, se muestra el marcador de posición
 document.addEventListener('error', e => {
@@ -1139,7 +1406,7 @@ function updateNav(){
 }
 function buildChips(){
   $('#chips').innerHTML = `<button class="chip" data-goto="1" title="Atlas">📖 Atlas</button>` +
-    D.nations.map((n, i) => `<button class="chip" data-goto="${firstPageOfNation(n.id)}">${esc(n.emoji || '✦')} ${esc(n.name)}</button>`).join('');
+    D.nations.map((n, i) => `<button class="chip" data-goto="${firstPageOfNation(n.id)}">${nIcon(n)} ${esc(n.name)}</button>`).join('');
   $('#chips').onclick = e => { const b = e.target.closest('[data-goto]'); if (b) goToPage(+b.dataset.goto); };
 }
 function updateHeader(){
@@ -1149,6 +1416,7 @@ function updateHeader(){
   $('#packN').textContent = n; $('#btnPacks').classList.toggle('has', n > 0);
   const sp = S.progress.spinsLeft || 0;
   $('#spinN').textContent = sp; $('#btnSpin').classList.toggle('has', sp > 0);
+  if (S.view === 'home') renderHome();
 }
 function refreshAlbum(){ buildBook(); updateHeader(); }
 
@@ -1156,9 +1424,11 @@ function refreshAlbum(){ buildBook(); updateHeader(); }
 function showSticker(sid){
   const s = stickerById(sid); if (!s) return;
   const c = counts()[sid] || 0, r = rarityOf(s.rarity), n = nationOf(s.nation);
+  const lv = (S.progress.up || {})[sid] || 0;
   const ov = document.createElement('div'); ov.className = 'ov lightbox';
   ov.innerHTML = `<div class="lb-card${isHoriz(s) ? ' horiz' : ''}">${stickerHTML(s, { count: c })}</div>
-    <div class="lb-info"><h3>${esc(s.name)}</h3><p>${esc(r.label)}, ${esc(n.name)}${c > 1 ? `. Tienes ${c} copias.` : ''}</p></div>`;
+    <div class="lb-info"><h3>${esc(s.name)}</h3><p>${esc(r.label)}, ${esc(n.name)}${c > 1 ? `. Tienes ${c} copias.` : ''}</p>
+    ${c ? `<span class="lvl">${'★'.repeat(lv)}${'☆'.repeat(UP_MAX - lv)} Nivel ${lv}</span><button class="btn sm" id="lbUp" style="pointer-events:auto">${ico('zap',14)} Mejorar</button>` : ''}</div>`;
   const card = $('.lb-card', ov);
   const tilt = e => {
     const b = card.getBoundingClientRect(), x = ((e.clientX ?? e.touches[0].clientX) - b.left) / b.width - .5, y = ((e.clientY ?? e.touches[0].clientY) - b.top) / b.height - .5;
@@ -1169,6 +1439,7 @@ function showSticker(sid){
   const esc2 = e => { if (e.key === 'Escape') close(); };
   ov.addEventListener('click', close); document.addEventListener('keydown', esc2);
   document.body.appendChild(ov);
+  const ub = $('#lbUp', ov); if (ub) ub.onclick = e => { e.stopPropagation(); close(); setView('up'); };
 }
 
 /* --- copia de seguridad --- */
@@ -1240,9 +1511,9 @@ function checkDailyStreak(){
   const reward = S.progress.streak;
   S.progress.spinsLeft = (S.progress.spinsLeft || 0) + reward;
   saveProgress(); updateHeader();
-  const m = modal(`<h3>🔥 Racha de ${S.progress.streak} día${S.progress.streak === 1 ? '' : 's'}</h3>
+  const m = modal(`<h3>${ico('flame',20)} Racha de ${S.progress.streak} día${S.progress.streak === 1 ? '' : 's'}</h3>
     <p>Ganaste ${reward} giro${reward === 1 ? '' : 's'} de la ruleta por entrar hoy.${S.progress.streak === 7 ? ' ¡Racha máxima! Mañana vuelve a empezar.' : ''}</p>
-    <div class="row"><button class="btn sm" data-wheel>🎡 Girar ahora</button><button class="btn ghost sm" data-close>Luego</button></div>`);
+    <div class="row"><button class="btn sm" data-wheel>${ico('wheel',16)} Girar ahora</button><button class="btn ghost sm" data-close>Luego</button></div>`);
   $('[data-wheel]', m).onclick = () => { m.remove(); openWheel(); };
 }
 
@@ -1286,7 +1557,7 @@ function showRedeem(){
   const rows = dupes.map(s => {
     const n = nationOf(s.nation), r = rarityOf(s.rarity), max = c[s.id] - 1;
     return `<div class="drow" data-sid="${esc(s.id)}" data-max="${max}">
-      <span class="de">${esc(n.emoji || '✦')}</span>
+      <span class="de">${nIcon(n)}</span>
       <span class="dn"><b>${esc(s.name)}</b><i>${esc(r.label)} · repetidas: ${max}</i></span>
       <input class="rqty" type="number" min="0" max="${max}" value="0">
     </div>`;
@@ -1336,7 +1607,7 @@ function showDupes(){
   const rows = others.length ? dupes.map(s => {
     const n = nationOf(s.nation), r = rarityOf(s.rarity), max = c[s.id] - 1;
     return `<div class="drow" data-sid="${esc(s.id)}">
-      <span class="de">${esc(n.emoji || '✦')}</span>
+      <span class="de">${nIcon(n)}</span>
       <span class="dn"><b>${esc(s.name)}</b><i>${esc(r.label)} · tienes ${c[s.id]}</i></span>
       <select class="dsel">${others.map(p => `<option value="${esc(p.id)}">${esc(p.name)}</option>`).join('')}</select>
       <input class="dqty" type="number" min="1" max="${max}" value="1">
@@ -1496,18 +1767,18 @@ const slug = s => String(s).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toL
 function adminScreen(){
   document.removeEventListener('keydown', onKey); window.removeEventListener('resize', onResize);
   if (!A.ok) return adminLogin();
-  const tabs = [['players', 'Jugadores y sobres'], ['stickers', 'Pegatinas'], ['nations', 'Naciones'], ['groups', 'Subcolecciones'], ['settings', 'Ajustes'], ['publish', 'Publicar']];
+  const tabs = [['players', 'Jugadores y sobres', 'users'], ['stickers', 'Pegatinas', 'image'], ['nations', 'Naciones', 'flag'], ['groups', 'Subcolecciones', 'layers'], ['settings', 'Ajustes', 'sliders'], ['publish', 'Publicar', 'upload']];
   app.innerHTML = `
   <header class="top"><div class="brand"><span class="logo">⚙</span><b>Panel de administración</b></div>
-    <div class="who"><button class="btn sm" id="aDl">⬇ Descargar data.json</button><button class="btn ghost sm" id="aOut">Salir</button></div></header>
+    <div class="who"><button class="btn sm" id="aDl">${ico('download',16)} Descargar data.json</button><button class="btn ghost sm" id="aOut">${ico('out',16)} Salir</button></div></header>
   <div class="admwrap">
     <div class="banner" id="aBan">${esc(A.msg || 'Los cambios se guardan solos y los jugadores los ven en tiempo real.')}</div>
-    <nav class="tabs">${tabs.map(([k, l]) => `<button class="tab${A.tab === k ? ' on' : ''}" data-tab="${k}">${l}</button>`).join('')}</nav>
+    <nav class="atabs">${tabs.map(([k, l, i]) => `<button class="tab${A.tab === k ? ' on' : ''}" data-tab="${k}">${ico(i, 16)} ${l}</button>`).join('')}</nav>
     <div id="aBody"></div>
   </div>`;
   $('#aDl').onclick = downloadJson;
   $('#aOut').onclick = () => { A.ok = false; location.hash = ''; route(); };
-  $('.tabs').onclick = e => { const t = e.target.closest('[data-tab]'); if (t){ A.tab = t.dataset.tab; adminScreen(); } };
+  $('.atabs').onclick = e => { const t = e.target.closest('[data-tab]'); if (t){ A.tab = t.dataset.tab; adminScreen(); } };
   const body = $('#aBody');
   body.addEventListener('click', adminClick); body.addEventListener('change', adminChange);
   body.addEventListener('pointerdown', dragStart);
@@ -1630,7 +1901,7 @@ async function adminClick(e){
   if (act === 'addN'){
     const name = $('#nnName').value.trim(); if (!name) return toast('Falta el nombre de la nación.');
     let id = slug(name), k = 2; while (d.nations.some(n => n.id === id)) id = slug(name) + '-' + k++;
-    d.nations.push({ id, name, emoji: $('#nnEmoji').value.trim() || '✦', color: $('#nnColor').value, motto: $('#nnMotto').value.trim() }); return rerender();
+    d.nations.push({ id, name, emoji: $('#nnEmoji').value.trim() || '✦', icon: $('#nnIcon').value.trim(),color: $('#nnColor').value, motto: $('#nnMotto').value.trim() }); return rerender();
   }
   // ajustes y publicar
   if (act === 'adminPw'){
@@ -1797,6 +2068,7 @@ function tabNations(){
   return `<div class="panel"><h3>Naciones</h3><p class="hint">Cada nación es una página del álbum. El orden de esta lista es el orden de las páginas.</p>
     ${d.nations.map((n, i) => `<div class="arow na" data-ni="${i}">
       <input data-f="emoji" value="${esc(n.emoji || '')}" aria-label="Emoji" style="text-align:center;font-size:1.3rem">
+      <input data-f="icon" value="${esc(n.icon || '')}" placeholder="naciones/atlas.png" aria-label="Icono PNG">
       <input data-f="name" value="${esc(n.name)}" aria-label="Nombre">
       <input data-f="motto" value="${esc(n.motto || '')}" placeholder="Lema" aria-label="Lema">
       <input data-f="color" type="color" value="${col(n.color, '#c9a24a').slice(0, 7)}" aria-label="Color">
@@ -1804,6 +2076,7 @@ function tabNations(){
   </div>
   <div class="panel"><h3>Nueva nación</h3>
     <div class="formrow"><div><label>Nombre</label><input id="nnName"></div><div><label>Emoji</label><input id="nnEmoji" placeholder="🏔️"></div>
+    <div><label>Icono PNG</label><input id="nnIcon" placeholder="naciones/atlas.png"></div>
       <div><label>Color</label><input id="nnColor" type="color" value="#c9a24a"></div><div><label>Lema</label><input id="nnMotto"></div>
       <div><button class="btn sm" data-act="addN">Añadir nación</button></div></div></div>`;
 }
@@ -1824,7 +2097,7 @@ function tabPublish(){
   return `<div class="panel"><h3>Publicar cambios</h3>
     <p class="hint">GitHub Pages solo sirve archivos, así que los jugadores leen todo desde <b>data.json</b>. Para que vean tus cambios (sobres nuevos, pegatinas, jugadores):</p>
     <p class="hint">1. Descarga el archivo. 2. En tu repositorio de GitHub, entra a <b>Add file, Upload files</b> y sube <b>data.json</b> (reemplaza el anterior). 3. Espera uno o dos minutos y pídeles que recarguen la página.</p>
-    <div class="acts"><button class="btn" data-act="dl">⬇ Descargar data.json</button><button class="btn ghost sm" data-act="copyJson">Copiar JSON</button></div></div>
+    <div class="acts"><button class="btn" data-act="dl">${ico('download',16)} Descargar data.json</button><button class="btn ghost sm" data-act="copyJson">Copiar JSON</button></div></div>
   <div class="panel"><h3>Vista previa del archivo</h3><textarea class="code" readonly>${esc(JSON.stringify(A.d, null, 2))}</textarea></div>`;
 }
 
